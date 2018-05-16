@@ -1,0 +1,21 @@
+#body {
+  min-height: calc(100vh - 2em);
+
+  background: #fff;
+  font-family: monospace;
+  font-size: 16px;
+  padding: 1em;
+}
+
+#body.dark-theme,
+#body.dark-theme img {
+  filter: invert(100%);
+}
+
+#body > footer {
+  border-top: 0.05em solid #aaa;
+  color: #666;
+  font-size: 0.8em;
+  text-align: center;
+}
+

@@ -1,0 +1,7 @@
+<link rel="stylesheet" href="{{ relURL "vendor/normalize.css" }}"/>
+<link rel="stylesheet" href="{{ relURL "css/main.css" }}"/>
+
+{{ if eq .Kind "page" }}
+  <link rel="stylesheet" href="{{ relURL "vendor/github-markdown.css" }}"/>
+{{ end }}
+

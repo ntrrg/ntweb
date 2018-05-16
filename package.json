@@ -68,7 +68,6 @@
     "branches": 80,
     "exclude": [
       ".vendor/",
-      "config/",
       "node_modules/",
       "test/"
     ]

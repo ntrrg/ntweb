@@ -3,7 +3,11 @@ title: NtWeb
 copyright: Copyright © 2018 Miguel Angel Rivera Notararigo
 enableRobotsTXT: true
 params:
-  author: Miguel Angel Rivera Notararigo
+  author:
+    id: ntrrg
+    name: Miguel Angel Rivera Notararigo
+    email: ntrrgx@gmail.com
+  image: images/logo.png
   social:
     - name: Telegram
       weight: 1
@@ -24,20 +28,8 @@ languages:
     languageName: English
     params:
       description: A small site with great intentions.
-      keywords: personal-site,portfolio,blog,developer,backend,devops
-    menu:
-      main:
-        - name: Blog
-          weight: 1
-          url: /en/blog/
   es:
     languageName: Español
     params:
       description: Un pequeño sitio web con grandes intenciones.
-      keywords: pagina-personal,portafolio,blog,desarrollador,backend,devops
-    menu:
-      main:
-        - name: Blog
-          weight: 1
-          url: /es/blog/
 

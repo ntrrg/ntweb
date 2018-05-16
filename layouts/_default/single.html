@@ -1,11 +1,18 @@
 {{ define "main" }}
-    
-    <br/>
-    <article class="markdown-body">
-      <h1>{{ .Title }}</h1>
+  <br/>
 
-      {{ .Content }}
-    </article>
-    <br/>
+  <article class="markdown-body">
+    <h1>{{ .Title }}</h1>
 
+    {{ $title := .Title }}
+
+    {{ with .Params.image }}
+      <img alt="{{ $title }}" src="{{ . }}" class="article-image"/>
+    {{ end }}
+
+    {{ .Content }}
+  </article>
+
+  <br/>
 {{ end }}
+

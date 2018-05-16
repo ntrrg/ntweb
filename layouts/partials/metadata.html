@@ -1,0 +1,46 @@
+{{ $author := $.Param "author" }}
+{{ $description := $.Param "description" }}
+{{ $image := (printf "%v%v" .Permalink ($.Param "image")) }}
+
+<link rel="canonical" href="{{ .Permalink }}"/>
+<meta name="robots" content="index, follow"/>
+
+<meta name="author" content="{{ $author.name }}"/>
+<meta name="description" content="{{ $description }}"/>
+
+<!-- Open Graph -->
+
+<meta property="og:url" content="{{ .Permalink }}"/>
+<meta property="og:site_name" content="{{ .Site.Title }}"/>
+<meta property="og:title" content="{{ .Title }}"/>
+<meta property="og:description" content="{{ $description }}"/>
+
+<meta property="og:type"
+      content="{{ if eq .Kind "page" }}article{{ else }}website{{ end }}"/>
+
+{{ if eq .Kind "page" }}
+  <meta property="og:image" content="{{ $image }}"/>
+
+  <!-- Rich Snippets -->
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "BlogPosting",
+      "headline": "{{ $description }}",
+
+      {{ with .Params.image }}
+        "image": "{{ $image }}",
+      {{ end }}
+
+      "author": {
+        "@type": "Person",
+        "name": "{{ $author.name }}",
+        "email": "{{ $author.email }}"
+      }
+    }
+  </script>
+{{ else }}
+  <meta property="og:image" content="{{ absURL .Site.Params.image }}"/>
+{{ end }}
+

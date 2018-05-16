@@ -1,9 +1,14 @@
 <header class="site-header" role="banner">
-  <strong><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></strong>
+  <strong><a href="{{ .Site.Home.URL }}">{{ .Site.Title }}</a></strong>
     
   {{ if .IsTranslated }}
     {{ range .Translations }}
       [<a href="{{ .Permalink }}">{{ .Language.LanguageName }}</a>]
     {{ end }}
   {{ end }}
+
+  <label>
+    <input id="theme-toggler" type="checkbox">
+    <span>{{ i18n "DARK_THEME" }}</span>
+  </label>
 </header>
