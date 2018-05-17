@@ -3,18 +3,15 @@ title: Hugo
 date: 2018-05-06T01:19:25-04:00
 image: images/hugo.png
 categories:
-  - tecnología
-  - referencias
+  - programación
 tags:
+  - referencias
+  - frontend
   - generador-de-sitios-estáticos
   - hugo
   - sitios-web
   - sitios-web-staticos
-  - frontend
-  - html
-  - css
-  - javascript
-  - go-html-templates
+  - go-templates
 draft: true
 ---
 

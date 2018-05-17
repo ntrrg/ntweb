@@ -2,18 +2,15 @@
 title: Hugo
 date: 2018-05-05T01:19:25-04:00
 categories:
-  - technology
-  - references
+  - development
 tags:
+  - references
+  - frontend
   - static-sites-generator
   - hugo
   - web-sites
   - static-web-sites
-  - frontend
-  - html
-  - css
-  - javascript
-  - go-html-templates
+  - go-templates
 draft: true
 ---
 

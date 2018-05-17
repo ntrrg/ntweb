@@ -1,0 +1,38 @@
+@media print {
+  #body > header,
+  #body > footer {
+    display: none;
+  }
+}
+
+.article-image {
+  max-height: 80vh;
+
+  display: block;
+  margin: 2em auto;
+}
+
+@media screen and (min-width: 768px), print {
+  .article-image {
+    max-width: 40% !important;
+    max-height: 50vh;
+
+    float: right;
+    margin: 2em;
+  }
+}
+
+.note {
+  border: 0.1em solid;
+  margin: 2em;
+  padding: 1em 2em;
+}
+
+.note header {
+  border-bottom: 0.1em solid;
+  font-weight: bold;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  padding-bottom: 0.5em;
+}
+
