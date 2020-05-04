@@ -1,0 +1,7 @@
+{
+  "environment": {{ hugo.Environment | jsonify }},
+  "hash": {{ hugo.CommitHash | jsonify }},
+  "date": {{ hugo.BuildDate | jsonify }},
+  "hugoVersion": {{ hugo.Version | jsonify }}
+}
+

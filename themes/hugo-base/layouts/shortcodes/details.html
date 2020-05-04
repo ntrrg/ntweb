@@ -1,0 +1,10 @@
+{{ $summary := .Get "summary" | default (.Get 0) }}
+{{ $open := .Get "open" }}
+{{ $class := .Get "class" }}
+
+<details {{ with $open }}open="open"{{ end }}
+         class="details {{ with $class }}{{ . }}{{ end }}">
+  {{ with $summary }}<summary>{{ $.Page.RenderString . }}</summary>{{ end }}
+  {{ .Inner }}
+</details>
+

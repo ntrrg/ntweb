@@ -1,0 +1,23 @@
+{{ $tc := .Get "tc" | default (.Get 0) | default "00" }}
+{{ $open := .Get "open" | default true }}
+
+<details {{ with $open }}open="open"{{ end }}>
+  <summary>
+    <a href="input/input{{ $tc }}.txt" download="">input{{ $tc }}.txt </a>
+  </summary>
+
+  <pre><code>
+    {{- printf "content/%s/input/input%s.txt" $.Page.File.Dir $tc | readFile -}}
+  </code></pre>
+</details>
+
+<details {{ with $open }}open="open"{{ end }}>
+  <summary>
+    <a href="output/output{{ $tc }}.txt" download="">output{{ $tc }}.txt </a>
+  </summary>
+
+  <pre><code>
+    {{- printf "content/%s/output/output%s.txt" $.Page.File.Dir $tc | readFile -}}
+  </code></pre>
+</details>
+

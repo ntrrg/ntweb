@@ -1,0 +1,19 @@
+{{ $name := .Get "name" }}
+{{ $type := .Get "type" | default "String" }}
+{{ $default := .Get "default" }}
+
+<div class="param">
+  <div class="param-header">
+    <span class="param-name"><code>{{ $name }}</code></span>
+    - <span class="param-type">{{ $type }}</span>
+
+    {{ with $default }}
+      <span class="param-default">(<code>{{ . }}</code>)</span>
+    {{ end }}
+  </div>
+
+  <div class="param-body">
+    {{ .Inner }}
+  </div>
+</div>
+

@@ -1,0 +1,24 @@
+[METADATA_CLIENT]
+other = "Cliente"
+
+[METADATA_DIFFICULTY]
+other = "Dificultad"
+
+[METADATA_LICENSE]
+other = "Licencia"
+
+[METADATA_PLATFORM]
+other = "Plataforma"
+
+[METADATA_ROLE]
+other = "Rol"
+
+[METADATA_SOURCE_CODE]
+other = "Código fuente"
+
+[METADATA_URL]
+other = "URL"
+
+[METADATA_WEBSITE]
+other = "Sitio web"
+

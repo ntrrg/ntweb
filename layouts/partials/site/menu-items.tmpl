@@ -1,0 +1,29 @@
+{{ $menu := index .Site.Params (.Scratch.Get "menuItems") }}
+
+{{ range $i, $x := $menu.items }}
+  <span class="menu-item">
+    {{- if eq $i 0 -}}{{- $menu.before -}}{{- end -}}
+    {{- $menu.beforeEach -}}
+
+    {{- if strings.HasPrefix .url "http" -}}
+      <a href="{{ .url }}" target="_blank"
+         rel="noopener noreferrer">{{ .text }}</a>
+    {{- else -}}
+      {{- $page := $.Site.GetPage (strings.TrimRight "/" .url) -}}
+      {{- $active := "" -}}
+
+      {{- if and (eq .url "/") $.IsHome -}}
+        {{- $active = "is-active" -}}
+      {{- else if and (ne .url "/") (hasPrefix $.Permalink $page.Permalink) -}}
+        {{- $active = "is-active" -}}
+      {{- end -}}
+
+      <a href="{{ $page.Permalink }}"
+         class="{{ $active }}">{{ .text | default $page.Title }}</a>
+    {{- end -}}
+
+    {{- $menu.afterEach -}}
+    {{- if eq $i (sub (len $menu.items) 1) -}}{{- $menu.after -}}{{- end -}}
+  </span>
+{{ end }}
+

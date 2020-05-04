@@ -1,0 +1,47 @@
+.body > main {
+  padding: 0em 1.5em;
+}
+
+.section-title h1 {
+  font-size: 2.5em;
+}
+
+/* Intro */
+
+.site-intro .site-image svg {
+  max-width: 100%;
+
+  display: block;
+  margin: 2em auto;
+}
+
+.site-intro .tui-image {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .site-intro .site-image svg {
+    max-width: 15em;
+  }
+}
+
+/* Contact */
+
+.contact-list {
+  list-style: none;
+  padding-left: 1em;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+}
+
+.contact-item-icon {
+  width: 1.5em;
+
+  line-height: 1;
+
+  margin-right: 0.5em;
+}
+

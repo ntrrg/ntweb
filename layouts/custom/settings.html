@@ -1,0 +1,24 @@
+{{ define "article-content-before" }}
+  <section class="site-settings">
+    {{ range .Params.actions }}
+      <div class="action">
+        <strong>{{ .text }}:</strong>
+
+        <select id="{{ .id }}">
+          <option value="">{{ .text }}</option>
+
+          {{ range .options }}
+            <option value="{{ .value }}">{{ .text }}</option>
+          {{ end }}
+        </select>
+
+        <span class="loader"></span>
+
+        {{ with .help }}
+          <div class="small muted">{{ . }}</div>
+        {{ end }}
+      </div>
+    {{ end }}
+  </section>
+{{ end }}
+

@@ -1,0 +1,59 @@
+<section class="article-toc">
+  {{ if ne .Params.toc false }}
+    {{ partial "page/toc.tmpl" . }}
+  {{ end }}
+</section>
+
+<section class="article-sharing">
+  {{ partial "page/share.tmpl" . }}
+</section>
+
+{{ .Scratch.Set "relsPrefix" ".series." }}
+{{ partial "get-rels.tmpl" . }}
+
+<section class="article-series">
+  {{ with .Scratch.Get "rels" }}
+    {{ range sort . "Title" }}
+      <table class="article-series-serie">
+      <thead>
+        <tr><th>
+          <a href="{{ .Permalink | default "#" }}">{{ .Title }}</a>
+        </th></tr>
+      </thead>
+
+      <tbody>
+        {{ partial "get-refs.tmpl" . }}
+        {{ $refs := .Scratch.Get "refs" }}
+        {{ $slug := .Scratch.Get "refsSlug" }}
+
+        {{ $pages := slice }}
+
+        {{ range $refs.Pages }}
+          {{ $weight := 999999 }}
+
+          {{ if isset .Params "relsweight" }}
+            {{ $weight = index .Params.relsweight $slug }}
+          {{ end }}
+
+          {{ $pages = $pages | append (dict "Page" . "Weight" $weight) }}
+        {{ end }}
+
+        {{ range $i, $x := sort $pages "Weight" }}
+          {{ $page := .Page }}
+          {{ $active := "" }}
+
+          {{ if eq $.Permalink $page.Permalink }}
+            {{ $active = "is-active" }}
+          {{ end }}
+
+          <tr><td class="{{ $active }}">
+            <a href="{{ $page.Permalink }}">
+              {{ add $i 1 }}. {{ $page.Title }}
+            </a>
+          </td></td>
+        {{ end }}
+      </tbody>
+      </table>
+    {{ end }}
+  {{ end }}
+</section>

@@ -1,0 +1,42 @@
+{
+  "url": {{ jsonify .Permalink }},
+  "kind": {{ jsonify .Kind }},
+  "type": {{ jsonify .Type }},
+  "lang": {{ jsonify .Language.Lang }},
+  "title": {{ jsonify .Title }},
+
+  {{ $image := .Params.image | default "" }}
+
+  {{ if ne $image "" }}
+    {{ if hasPrefix $image "/" }}
+      {{ $image = absURL $image }}
+    {{ else if not (strings.HasPrefix .Params.image "http") }}
+      {{ $image = printf "%s/%s" .Permalink $image | absURL }}
+    {{ end }}
+  {{ end }}
+
+  "image": {{ jsonify $image }},
+
+  "params": {{ block "params" . }}{{ jsonify .Params }}{{ end }},
+  "content": {{ base64Encode .Content | jsonify }},
+  "data": {{ block "data" . }}{}{{ end }},
+  "altLang": [
+    {{ range $i, $val := .Translations }}
+      {{ if ne $i 0 }},{{ end }}
+      {
+        "lang": {{ jsonify .Language.Lang }},
+        "url": {{ jsonify .Permalink }}
+      }
+    {{ end }}
+  ],
+  "altMediaType": [
+    {{ range $i, $val := .AlternativeOutputFormats }}
+      {{ if ne $i 0 }},{{ end }}
+      {
+        "mediaType": {{ jsonify .MediaType.Type }},
+        "url": {{ jsonify .Permalink }}
+      }
+    {{ end }}
+  ]
+}
+

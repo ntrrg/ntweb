@@ -1,0 +1,36 @@
+[COMMENTS_SHOW]
+other = "Show comments"
+
+[MODIFIED]
+other = "Modified"
+
+[NO_CONTENT]
+other = "[WIP] There is no content in this section yet."
+
+[PAGE_SHARING]
+other = "Share"
+
+[PUBLISHED]
+other = "Published"
+
+[SHORTCODE_GO_PLAYGROUND_ERROR]
+other = "Couldn't send the source code, try again"
+
+[SHORTCODE_GO_PLAYGROUND_OPEN]
+other = "Open in Go Playground"
+
+[SHORTCODE_GO_PLAYGROUND_RUN]
+other = "Run in Go Playground"
+
+[SHORTCODE_GO_PLAYGROUND_SENDING]
+other = "Sending the source code.."
+
+[SHORTCODE_NOTE_TITLE]
+other = "Note"
+
+[TAGS]
+other = "Tags"
+
+[TOC_TITLE]
+other = "Table of Contents"
+

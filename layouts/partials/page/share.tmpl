@@ -1,0 +1,22 @@
+<div class="share-buttons">
+  <a href="https://www.facebook.com/sharer/sharer.php?u={{ .Permalink }}"
+     rel="noopener noreferrer" target="_blank">
+    {{ readFile "/static/images/fa/facebook.svg" | safeHTML }}</a>
+
+  <a href="https://twitter.com/intent/tweet?text={{ .Title }}&url={{ .Permalink }}{{ if isset .Params "tags" }}&hashtags={{ replace (delimit .Params.tags ",") "-" "_" }}{{ end }}&via=ntrrg"
+     rel="noopener noreferrer" target="_blank">
+    {{ readFile "/static/images/fa/twitter.svg" | safeHTML }}</a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ .Permalink }}&summary={{ .Params.description }}"
+     rel="noopener noreferrer" target="_blank">
+    {{ readFile "/static/images/fa/linkedin.svg" | safeHTML }}</a>
+
+  <a href="https://telegram.me/share/url?url={{ .Permalink }}{{ if isset .Params "tags" }}&text=%0D%0A%23{{ replace (delimit .Params.tags " #") "-" "_" }}{{ end }}"
+     rel="noopener noreferrer" target="_blank">
+    {{ readFile "/static/images/fa/telegram.svg" | safeHTML }}</a>
+
+  <a href="https://www.addtoany.com/share#url={{ .Permalink }}&amp;title={{ .Title }}"
+     rel="noopener noreferrer" target="_blank">
+    {{ readFile "/static/images/fa/share-alt.svg" | safeHTML }}</a>
+</div>
+

@@ -1,0 +1,46 @@
+@media (min-width: 130ex) {
+  .body {
+    grid-template-columns: auto 90ex auto;
+    grid-template-areas: 
+      ".    header ."
+      "main  main  main"
+      ".    footer .";
+  }
+
+  .body > main > article {
+    display: grid;
+    grid-template-columns: auto 90ex 40ex auto;
+    grid-template-areas: 
+      ". header   sidebar ."
+      ". content  sidebar ."
+      ". comments sidebar .";
+  }
+
+  .body > main > article .article-header {
+    grid-area: header;
+  }
+
+  .body > main > article .article-sidebar {
+    grid-area: sidebar;
+
+    position: relative;
+  }
+
+  .body > main > article .article-sidebar > div {
+    width: 40ex;
+    max-height: 75vh;
+    overflow: auto;
+
+    position: fixed;
+    top: 20vh;
+  }
+
+  .body > main > article .article-content {
+    grid-area: content;
+  }
+
+  .body > main > article .article-comments {
+    grid-area: comments;
+  }
+}
+

@@ -1,0 +1,206 @@
+.markdown {
+  position: relative;
+}
+
+/* Paragrahps */
+
+.markdown p {
+  margin-bottom: 0.5em;
+}
+
+.markdown p:last-child {
+  margin-bottom: 0em;
+}
+
+/* Separators */
+
+.markdown hr {
+  width: 80%;
+}
+
+/* Heading */
+
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4,
+.markdown h5,
+.markdown h6 {
+  clear: both;
+
+  margin: 0.5em 0em;
+}
+
+.markdown h1 {
+  font-size: 2em;
+}
+
+.markdown h2 {
+  font-size: 1.8em;
+}
+
+.markdown h3 {
+  font-size: 1.6em;
+}
+
+.markdown h4 {
+  font-size: 1.4em;
+}
+
+.markdown h5 {
+  font-size: 1.2em;
+}
+
+.markdown h6 {
+  font-size: 1.1em;
+}
+
+/* Text decoration */
+
+.markdown b, .mkardown strong {
+  font-weight: bolder;
+}
+
+.markdown i, .mkardown em {
+  font-style: italic;
+}
+
+.markdown a {
+  text-decoration: underline;
+}
+
+.markdown kbd {
+  border-color: lightgrey;
+  border-radius: 0.2em;
+  border-style: outset;
+  border-width: 0.2em;
+  display: inline-block;
+  font-family: monospace;
+  padding: 0em 0.5em;
+}
+
+/* Lists */
+
+.markdown ol,
+.markdown ul {
+  margin-left: 1.5em;
+  padding-left: 0em;
+}
+
+.markdown dt {
+  font-weight: bold;
+}
+
+.markdown .task-list {
+  list-style: none;
+
+  margin: 0.5em;
+}
+
+.markdown ul li input[type="checkbox"] {
+  margin-right: 0.5em;
+}
+
+/* Quotes */
+
+.markdown .footnotes {
+  font-size: 0.8em;
+  margin-top: 2em;
+}
+
+.markdown blockquote {
+  border-left: 0.2em solid;
+  font-style: italic;
+  margin: 0em;
+  opacity: 0.5;
+  padding-left: 1em;
+}
+
+/* Tables */
+
+.markdown table:not(.lntable) th, 
+.markdown table:not(.lntable) td {
+  border: 0.1em solid;
+  padding: 0.5em 1em;
+}
+
+/* Images */
+
+.markdown img {
+  max-width: 100%;
+}
+
+.markdown figure {
+  margin: 0em;
+
+  position: relative;
+}
+
+.markdown figure figcaption {
+  font-size: 0.8em;
+  opacity: 0.8;
+}
+
+.markdown figure figcaption p:not(:first-child) {
+  margin: 0em !important;
+}
+
+/* Code */
+
+.markdown code,
+.markdown pre,
+.markdown pre > code,
+.markdown pre code,
+.markdown .chroma {
+  font-family: monospace;
+}
+
+.markdown code {
+  padding: 0.1em 0.3em;
+}
+
+.markdown code:not([class]) {
+  word-break: break-word;
+}
+
+.markdown pre {
+  overflow: auto;
+  padding: 0.5em 1em;
+}
+
+.markdown pre > code {
+  padding: 0em;
+  padding-right: 1em;
+}
+
+.markdown .highlight table {
+  padding: 0.5em 1em;
+}
+
+.markdown .highlight table td:first-child {
+  padding-right: 0.5em;
+}
+
+.markdown .highlight table td:last-child {
+  width: 100%;
+}
+
+.markdown .highlight table td pre {
+  padding: 0.5em 0em;
+
+  margin: 0em;
+}
+
+.markdown .highlight table td code {
+  padding: 0em;
+}
+
+@media print {
+  .markdown code,
+  .markdown pre,
+  .markdown pre > code,
+  .markdown pre code {
+    white-space: pre-wrap !important;
+    word-break: break-all !important;
+  }
+}

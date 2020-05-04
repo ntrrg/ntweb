@@ -1,0 +1,43 @@
+{{ define "pagination-item" }}
+  <span class="pagination-item">
+    {{ with . }}
+      <a href="{{ .URL }}" class="pagination-link"
+         aria-label="Goto page {{ .PageNumber }}">
+        {{ .PageNumber }}</a>
+    {{ else }}
+      &hellip;
+    {{ end }}
+  </span>
+{{ end }}
+
+{{ if gt .Paginator.TotalPages 1 }}
+  <nav class="pagination center" role="navigation" aria-label="pagination">
+    {{ $p := .Paginator }}
+
+    {{ if gt $p.PageNumber 2 }}
+      {{ template "pagination-item" .Paginator.First }}
+    {{ end }}
+
+    {{ if gt $p.PageNumber 3 }}
+      {{ template "pagination-item" }}
+    {{ end }}
+
+    {{ if $p.HasPrev }}
+      {{ template "pagination-item" .Paginator.Prev }}
+    {{ end }}
+
+    <strong>({{ template "pagination-item" $p }})</strong>
+
+    {{ if $p.HasNext }}
+      {{ template "pagination-item" .Paginator.Next }}
+    {{ end }}
+
+    {{ if gt (sub $p.TotalPages $p.PageNumber) 2 }}
+      {{ template "pagination-item" }}
+    {{ end }}
+
+    {{ if gt (sub $p.TotalPages $p.PageNumber) 1 }}
+      {{ template "pagination-item" .Paginator.Last }}
+    {{ end }}
+  </nav>
+{{ end }}

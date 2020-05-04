@@ -1,0 +1,3 @@
+{{ $page := $.Site.GetPage (.Get 0 | strings.TrimRight "/") }}
+{{ partial "page/card.tmpl" $page }}
+

@@ -1,0 +1,8 @@
+{{ $title := .Scratch.Get "tocTitle" | default (i18n "TOC_TITLE") }}
+{{ $open := .Scratch.Get "tocOpen" }}
+
+<details class="toc" {{ with $open }}open="open"{{ end }}>
+  <summary class="toc-title"><strong>{{ $title }}</strong></summary>
+  {{ .TableOfContents }}
+</details>
+

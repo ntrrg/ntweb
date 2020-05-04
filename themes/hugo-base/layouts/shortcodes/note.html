@@ -1,0 +1,11 @@
+{{ $title := .Get "title" | default (.Get 0) | default (i18n "SHORTCODE_NOTE_TITLE") }}
+{{ $class := .Get "class" }}
+
+<div class="note {{ with $class }}{{ . }}{{ end }}">
+  <div class="note-header">{{ $title }}</div>
+
+  <div class="note-body">
+    {{ .Inner }}
+  </div>
+</div>
+

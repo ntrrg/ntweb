@@ -1,0 +1,32 @@
+{{ define "article-content-after" }}
+  <section class="article-pages">
+    {{ $pages := slice }}
+
+    {{ if eq .Kind "taxonomyTerm" }}
+      {{ $pages = sort .Pages "Title" }}
+    {{ else if and (eq .Params.paginate true) (ne .Paginator nil) }}
+      {{ $pages = .Paginator.Pages }}
+    {{ else }}
+      {{ $pages = .Pages }}
+    {{ end }}
+
+    {{ if gt (len $pages) 0 }}
+      {{ if and (eq .Params.paginate true) (ne .Paginator nil) }}
+        {{ partial "page/pagination.tmpl" . }}
+      {{ end }}
+
+      <ul>
+        {{ range $pages }}
+          <li>{{ partial "page/card.tmpl" . }}</li>
+        {{ end }}
+      </ul>
+
+      {{ if and (eq .Params.paginate true) (ne .Paginator nil) }}
+        {{ partial "page/pagination.tmpl" . }}
+      {{ end }}
+    {{ else }}
+      <p>{{ i18n "NO_CONTENT" }}</p>
+    {{ end }}
+  </section>
+{{ end }}
+

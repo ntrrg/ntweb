@@ -1,0 +1,38 @@
+{{ $src := .Get "src" }}
+{{ $caption := .Get "caption" }}
+{{ $alt := .Get "alt" | default $caption }}
+{{ $class := .Get "class" }}
+{{ $style := .Get "style" }}
+{{ $imgclass := .Get "imgclass" }}
+{{ $imgstyle := .Get "imgstyle" }}
+{{ $lazy := .Get "lazy" }}
+
+{{ with $lazy }}
+  {{ $imgclass = printf "%s lazy-load" $imgclass }} 
+{{ end }}
+
+<figure {{ with $class }}class="{{ . }}"{{ end }}
+        {{ with $style }}style="{{ safeCSS . }}"{{ end }}>
+  <img {{ with $lazy }}data-{{end}}src="{{ $src }}" alt="{{ $alt }}"
+       {{ with $imgclass }}class="{{ . }}"{{ end }}
+       {{ with $imgstyle }}style="{{ safeCSS . }}"{{ end }}/>
+
+  <figcaption>
+    {{ $.Page.RenderString $caption }}
+  </figcaption>
+</figure>
+
+{{ if and (eq $lazy true) (ne ($.Page.Scratch.Get "lazy-load") true) }}
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const images = document.querySelectorAll('img.lazy-load')
+
+      for (const img of images) {
+        img.src = img.dataset.src 
+      }
+    })
+  </script>
+
+  {{ $.Page.Scratch.Set "lazy-load" true }}
+{{ end }}
+

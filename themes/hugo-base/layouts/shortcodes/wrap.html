@@ -1,0 +1,10 @@
+{{ $id := .Get "id" }}
+{{ $class := .Get "class" | default (.Get 0) }}
+{{ $style := .Get "style" }}
+
+<div {{ with $id }}id="{{ . }}"{{ end }}
+     {{ with $class }}class="{{ . }}"{{ end }}
+     {{ with $style }}style="{{ . }}"{{ end }}>
+  {{ .Inner }}
+</div>
+

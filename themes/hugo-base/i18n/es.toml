@@ -1,0 +1,36 @@
+[COMMENTS_SHOW]
+other = "Mostrar comentarios"
+
+[MODIFIED]
+other = "Modificado"
+
+[NO_CONTENT]
+other = "[WIP] Todavía no hay contenido en esta sección."
+
+[PAGE_SHARING]
+other = "Compartir"
+
+[PUBLISHED]
+other = "Publicado"
+
+[SHORTCODE_GO_PLAYGROUND_ERROR]
+other = "No se pudo enviar el código fuente, intente de nuevo"
+
+[SHORTCODE_GO_PLAYGROUND_OPEN]
+other = "Abrir en el Playground de Go"
+
+[SHORTCODE_GO_PLAYGROUND_RUN]
+other = "Correr en el Playground de Go"
+
+[SHORTCODE_GO_PLAYGROUND_SENDING]
+other = "Enviando el código fuente.."
+
+[SHORTCODE_NOTE_TITLE]
+other = "Nota"
+
+[TAGS]
+other = "Etiquetas"
+
+[TOC_TITLE]
+other = "Tabla de Contenido"
+

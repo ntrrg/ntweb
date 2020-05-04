@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="{{ .Site.Language | default "en" }}">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+
+  {{ range .AlternativeOutputFormats }}
+    <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}"
+          href="{{ .Permalink | safeURL }}"/>
+  {{ end }}
+
+  {{ block "head-metadata" . }}
+    {{ partial "page/head-metadata.tmpl" . }}
+    {{ partial "page/head-app.tmpl" . }}
+    {{ hugo.Generator }}
+  {{ end }}
+
+  <title>
+    {{ block "head-title" . }}
+      {{ if not .IsHome }}
+        {{ .Title }} {{ .Site.Params.titleSeparator }}
+      {{ end }}
+
+      {{ .Site.Params.title }}
+    {{ end }}
+  </title>
+
+  {{ block "styles" . }}{{ partial "site/styles.tmpl" . }}{{ end }}
+  {{ block "scripts" . }}{{ partial "site/scripts.tmpl" . }}{{ end }}
+</head>
+<body>
+  {{ if ne hugo.Environment "development" }}
+    {{ with .Site.Params.googleTagManager }}
+      {{ partial "google-tag-manager.tmpl" . }}
+    {{ end }}
+  {{ end }}
+
+  {{ block "body" . }}
+    <div class="body">
+      {{ block "header" . }}
+        <header role="banner">
+          {{ partial "site/header.tmpl" . }}
+        </header>
+      {{ end }}
+
+      {{ block "main" . }}
+        <main>
+          <article>
+            {{ block "article-header" . }}
+              <section class="article-header">
+                {{ partial "page/card.tmpl" . }}
+              </section>
+            {{ end }}
+
+            {{ block "article-content-before" . }}{{ end }}
+
+            {{ block "article-content" . }}
+              <section class="article-content markdown">
+                {{ .Content }}
+              </section>
+            {{ end }}
+
+            {{ block "article-content-after" . }}{{ end }}
+          </article>
+        </main>
+      {{ end }}
+
+      {{ block "footer" . }}
+        <footer>
+          {{ partial "site/footer.tmpl" . }}
+        </footer>
+      {{ end }}
+
+      {{ block "pop-up" . }}{{ partial "site/popup.tmpl" . }}{{ end }}
+    </div>
+  {{ end }}
+</body>
+</html>
+

@@ -1,0 +1,36 @@
+<div class="page-card {{ with .Params.image }}has-image{{ end }}">
+  {{ if isset .Params "image" }}
+    {{ $image := .Params.image }}
+
+    {{ if hasPrefix $image "/" }}
+      {{ $image = absURL $image }}
+    {{ else if not (strings.HasPrefix $image "http") }}
+      {{ $image = printf "%s/%s" .Permalink $image | absURL }}
+    {{ end }}
+
+    <div class="page-card-image">
+      <a href="{{ .Permalink }}">
+        <img alt="{{ .Title }}" src="{{ $image }}"/>
+      </a>
+    </div>
+  {{ end }}
+
+  <div class="page-card-body">
+    <div class="page-card-title">
+      <a href="{{ .Permalink }}">
+        {{ .Title }}{{ with .Pages }}<sup>({{ len . }})</sup>{{ end }}
+      </a>
+    </div>
+
+    <p class="page-card-description">
+      {{ with .Description }}
+        {{ $sectDesc := ($.Site.GetPage $.Section).Description }}
+        {{ if or ($.IsSection) (ne . $sectDesc) }}{{ . }}{{ end }}
+      {{ end }}
+    </p>
+
+    <div class="page-card-metadata">
+      {{ partial "page/metadata.tmpl" . }}
+    </div>
+  </div>
+</div>

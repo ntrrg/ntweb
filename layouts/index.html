@@ -1,0 +1,55 @@
+{{ define "main" }}
+  <main>
+    {{ with .Site.GetPage "/home/intro" }}
+      <section class="site-intro">
+        <div class="site-image">
+          {{ readFile .Params.image | safeHTML }}
+
+          <pre class="tui-image"><code>
+    ▗██▖  ▗██▖
+    █▐▌█  █▐▌█         ▐▌
+    ▝██▘▙ ▝██▘   ▐▙██▖▐███ ▐▙██▖▐▙██▖▗██▟▌
+     ▐▌▝█▙ ▐▌    ▐▛ ▐▌ ▐▌  ▐▛   ▐▛   ▐▛ ▐▌
+    ▗██▖▝█▗██▖   ▐▌ ▐▌ ▐▌  ▐▌   ▐▌   ▐▌ ▐▌
+    █▐▌█  █▐▌█   ▐▌ ▐▌ ▐▙▄ ▐▌   ▐▌   ▐▙▄▟▌ █  █
+    ▝██▘  ▝██▘   ▝▘ ▝▘  ▀▀ ▝▘   ▝▘    ▀▀▐▌ ▀  ▀
+                                     ▐▄▄▟▌
+                                      ▀▀▀ </code></pre>
+        </div>
+
+        <div class="section-content markdown">{{ .Content }}</div>
+      </section>
+    {{ end }}
+
+    {{ with .Site.GetPage "/home/skills" }}
+      <section class="site-skills markdown">
+        <div class="section-title"><h1>{{ .Title }}</h1></div>
+        <div class="section-content markdown">{{ .Content }}</div>
+      </section>
+    {{ end }}
+
+    {{ with .Site.GetPage "/home/social" }}
+      <section class="site-social markdown">
+        <div class="section-title"><h1>{{ .Title }}</h1></div>
+
+        <div class="section-content">
+          <ul class="contact-list">
+            {{ range sort .Params.social "weight" }}
+              {{ if gt .weight 0 }}
+                <li class="contact-item" title="{{ .label }}">
+                  <span class="contact-item-icon">
+                    {{ readFile .icon | safeHTML }}
+                  </span>
+
+                  <a href="{{ .url | safeURL }}"
+                     target="_blank" rel="noopener noreferrer">{{ .text }}</a>
+                </li>
+              {{ end }}
+            {{ end }}
+          </ul>
+        </div>
+      </section>
+    {{ end }}
+  </main>
+{{ end }}
+

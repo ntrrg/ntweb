@@ -1,0 +1,105 @@
+.markdown h1::before,
+.markdown h2::before,
+.markdown h3::before,
+.markdown h4::before,
+.markdown h5::before,
+.markdown h6::before {
+  opacity: 0.25;
+}
+
+.markdown h1::before {
+  content: "# ";
+}
+
+.markdown h2::before {
+  content: "## ";
+}
+
+.markdown h3::before {
+  content: "### ";
+}
+
+.markdown h4::before {
+  content: "#### ";
+}
+
+.markdown h5::before {
+  content: "##### ";
+}
+
+.markdown h6::before {
+  content: "###### ";
+}
+
+/* Aside */
+
+.article-sidebar {
+  clear: both;
+}
+
+@media print {
+  .article-sidebar {
+    display: none;
+  }
+}
+
+  /* Sharing */
+
+.article-sharing {
+  text-align: center;
+}
+
+.article-sharing .share-buttons svg {
+  width: 1.5em;
+
+  margin-top: 1em;
+  margin-left: 0.5em;
+}
+
+  /* Series */
+
+.article-series {
+  text-align: center;
+}
+
+.article-series-serie {
+  margin: 1em auto;
+}
+
+.article-series-serie th,
+.article-series-serie td {
+  border: 0.1em solid;
+  padding: 0.5em 1em;
+}
+
+.article-series-serie th a {
+  text-decoration: none;
+}
+
+.article-series-serie td a {
+  color: inherit;
+}
+
+.article-series-serie td.is-active {
+  border: 0.2em solid;
+  font-weight: bold;
+}
+
+/* Comments */
+
+.article-comments {
+  margin-top: 2em;
+}
+
+.article-comments #comments-toggler {
+  border: 0.25em dashed;
+  display: block;
+  font-size: 1.15em;
+  text-align: center;
+  padding: 0.5em 1em;
+}
+
+.article-comments #comments-toggler a {
+  text-decoration: none;
+}
+

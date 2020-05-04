@@ -1,0 +1,71 @@
+{{ if ne .Site.Params.singleAuthor true }}
+  {{ .Scratch.Set "relsPrefix" ".authors." }}
+  {{ partial "get-rels.tmpl" . }}
+
+  {{ with .Scratch.Get "rels" }}
+    <div>
+      <strong>{{ ($.Site.GetPage "/authors").Title }}:</strong>
+
+      {{ range $i, $x := . -}}
+        {{- if gt $i 0 }}, {{ end -}}
+
+        <a href="{{ .Permalink | default "#" }}"
+           title="{{ .Params.metadata.name }}">
+          {{ .Title }}</a>
+      {{- end }}
+    </div>
+  {{ end }}
+{{ end }}
+
+{{ if isset .Params "date" }}
+  <div>
+    <strong>{{ i18n "PUBLISHED" }}:</strong>
+    <span>{{ .PublishDate.Format "2006/01/02 15:04:05 -07:00" }}</span>
+  </div>
+
+  {{ if ne .Params.date .Params.publishdate }}
+    <div>
+      <strong>{{ i18n "MODIFIED" }}:</strong>
+      <span>{{ .Date.Format "2006/01/02 15:04:05 -07:00" }}</span>
+    </div>
+  {{ end }}
+{{ end }}
+
+{{ if ne .Params.hidemetadata true }}
+  {{ range $key, $value := .Params.metadata }}
+    <div>
+      <strong>
+        {{ replace $key "-" "_" | printf "METADATA_%s" | upper | i18n }}:
+      </strong>
+
+      <span>{{ $.RenderString $value }}</span>
+    </div>
+  {{ end }}
+{{ end }}
+
+{{ .Scratch.Set "relsPrefix" ".series." }}
+{{ partial "get-rels.tmpl" . }}
+
+{{ with .Scratch.Get "rels" }}
+  <div>
+    <strong>{{ ($.Site.GetPage "/series").Title }}:</strong>
+
+    {{ range $i, $x := . -}}
+      {{- if gt $i 0 }}, {{ end -}}
+      <a href="{{ .Permalink | default "#" }}" title="{{ .Description }}">
+        {{ .Title }}</a>
+    {{- end }}
+  </div>
+{{ end }}
+
+{{ if isset .Params "tags" }}
+  <div>
+    <strong>{{ i18n "TAGS" }}:</strong>
+
+    {{ range $i, $x := .Params.tags -}}
+      {{- if gt $i 0 }} {{ end -}}
+      <a href="{{ absLangURL "tags" }}/{{ . | urlize }}">#{{ . }}</a>
+    {{- end }}
+  </div>
+{{ end }}
+

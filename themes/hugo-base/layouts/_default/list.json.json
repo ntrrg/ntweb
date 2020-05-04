@@ -1,0 +1,120 @@
+{{ define "data" }}
+  {
+    "pages": [
+      {{ $pages := slice }}
+
+      {{ if eq .Kind "taxonomyTerm" }}
+        {{ $pages = sort .Pages "Title" }}
+      {{ else if and (eq .Params.paginate true) (ne .Paginator nil) }}
+        {{ $pages = .Paginator.Pages }}
+      {{ else }}
+        {{ $pages = .Pages }}
+      {{ end }}
+
+      {{ range $i, $page := $pages }}
+        {{ if ne $i 0 }},{{ end }}
+        {{ if gt (len .Pages) 0 }}
+          {
+            "url": {{ jsonify .Permalink }},
+            "title": {{ jsonify .Title }},
+            "pages": {{ len .Pages }}
+          }
+        {{ else }}
+          {
+            "url": {{ jsonify .Permalink }},
+            "title": {{ jsonify .Title }},
+
+            {{ $image := .Params.image | default "" }}
+
+            {{ if ne $image "" }}
+              {{ if hasPrefix $image "/" }}
+                {{ $image = absURL $image }}
+              {{ else if not (strings.HasPrefix .Params.image "http") }}
+                {{ $image = printf "%s/%s" .Permalink $image | absURL }}
+              {{ end }}
+            {{ end }}
+
+            "image": {{ jsonify $image }},
+
+            {{ if isset .Params "date" }}
+              "publishdate": {{ jsonify .PublishDate }},
+              "date": {{ jsonify .Date }},
+            {{ end }}
+
+            {{ $sectDesc := $.Description }}
+
+            {{ if ne .Description $sectDesc }}
+              "description": {{ jsonify .Description }},
+            {{ else }}
+              "description": "",
+            {{ end }}
+
+            "refs": [
+              {{ partial "get-refs.tmpl" . }}
+              {{ $slug := .Scratch.Get "refsSlug" }}
+
+              {{ with .Scratch.Get "refs" }}
+                {{ $i := 0 }}
+                {{ range $i, $x := .Pages }}
+                  {{ if ne $i 0 }},{{ end }}
+                  {{ $weight := 999999 }}
+
+                  {{ if isset .Params "relsweight" }}
+                    {{ $weight = index .Params.relsweight $slug }}
+                  {{ end }}
+
+                  {
+                    "url": {{ jsonify .Permalink }},
+                    "type": {{ jsonify .Type }},
+                    "title": {{ jsonify .Title }},
+                    "weight": {{ jsonify $weight }}
+                  }
+
+                  {{ $i = add $i 1 }}
+                {{ end }}
+              {{ end }}
+            ],
+            "rels": [
+              {{ .Scratch.Set "relsPrefix" "." }}
+              {{ partial "get-rels.tmpl" . }}
+
+              {{ $i := 0 }}
+              {{ range $i, $rel := (.Scratch.Get "rels") }}
+                {{ if ne $i 0 }},{{ end }}
+
+                {
+                  "url": {{ jsonify .Permalink }},
+                  "type": {{ jsonify .Type }},
+                  "title": {{ jsonify .Title }}
+                }
+
+                {{ $i = add $i 1 }}
+              {{ end }}
+            ],
+            "taxonomies": {
+              {{ $i := 0 }}
+              {{ range $name, $terms := $.Site.Taxonomies }}
+                {{ if ne $i 0 }},{{ end }}
+                "{{ $name }}": {{ index $page.Params $name | default slice | jsonify }}
+                {{ $i = add $i 1 }}
+              {{ end }}
+            }
+          }
+        {{ end }}
+      {{ end }}
+    ]
+    {{ if and (eq .Params.paginate true) (ne .Paginator nil) }}
+      ,
+      {{ $prefix := printf "%spage/" .Permalink }}
+
+      "pagination": {
+        "prefix": "{{ $prefix }}",
+        "first": "{{ with .Paginator.First }}{{ $prefix }}{{ .PageNumber }}{{ end }}",
+        "prev": "{{ with .Paginator.Prev }}{{ $prefix }}{{ .PageNumber }}{{ end }}",
+        "next": "{{ with .Paginator.Next }}{{ $prefix }}{{ .PageNumber }}{{ end }}",
+        "last": "{{ with .Paginator.Last }}{{ $prefix }}{{ .PageNumber }}{{ end }}"
+      }
+    {{ end }}
+  }
+{{ end }}
+

@@ -1,0 +1,9 @@
+{{ $title := .Get "title" | default (.Get 0) }}
+{{ $open := .Get "open" }}
+
+{{ .Page.Scratch.Set "tocTitle" $title }}
+{{ .Page.Scratch.Set "tocOpen" $open }}
+{{ partial "page/toc.tmpl" .Page }}
+{{ .Page.Scratch.Delete "tocTitle" }}
+{{ .Page.Scratch.Delete "tocOpen" }}
+

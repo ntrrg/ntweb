@@ -1,0 +1,56 @@
+name: Site
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+jobs:
+  ci:
+    name: CI
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+        go_version:
+          - "1.14"
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Set up Go
+        uses: actions/setup-go@v1
+        with:
+          go-version: ${{ matrix.go_version }}
+
+      - name: Set up tools
+        run: |
+          wget -qO "/tmp/mage.tar.gz" 'https://github.com/magefile/mage/releases/download/v1.9.0/mage_1.9.0_Linux-64bit.tar.gz'
+          tar -xf "/tmp/mage.tar.gz" -C "/tmp/"
+          sudo cp "/tmp/mage" "/usr/bin/"
+          #
+          wget -qO "/tmp/hugo.tar.gz" 'https://github.com/gohugoio/hugo/releases/download/v0.69.2/hugo_0.69.2_Linux-64bit.tar.gz'
+          tar -xf "/tmp/hugo.tar.gz" -C "/tmp/"
+          sudo cp "/tmp/hugo" "/usr/bin/"
+          #
+          wget -qO "/tmp/minify.tar.gz" 'https://github.com/tdewolff/minify/releases/download/v2.7.4/minify_2.7.4_linux_amd64.tar.gz'
+          tar -xf "/tmp/minify.tar.gz" -C "/tmp/"
+          sudo cp "/tmp/minify" "/usr/bin/"
+
+      - name: Get source code
+        uses: actions/checkout@v2
+
+      - name: Lint
+        run: ./mage -v lint
+
+      - name: Build
+        run: ./mage -v buildall
+
+      - name: Deploy
+        uses: netlify/actions/cli@master
+        if: ${{ github.ref == 'refs/heads/master' }}
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        with:
+          args: deploy --prod --dir public
+

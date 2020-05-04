@@ -1,0 +1,30 @@
+{{ define "scripts" }}
+  {{ $scripts := slice }}
+  {{ $bundle := "js/bundle-base64js-lunr.js" }}
+
+  {{ $scripts = $scripts | append "vendor/base64js-v1.3.1.min.js" }}
+  {{ $scripts = $scripts | append "vendor/lunr-v2.3.8.js" }}
+
+  {{ .Scratch.Set "scripts" $scripts }}
+  {{ .Scratch.Set "bundle" $bundle }}
+  {{ .Scratch.Set "mode" "defer" }}
+  {{ partial "import-scripts.tmpl" . }}
+
+  {{ partial "site/scripts.tmpl" . }}
+{{ end }}
+
+{{ define "article-content-before" }}
+  <section class="search-form">
+    <form id="search-box">
+      <input type="search" name="q" placeholder="{{ .Title }}..." required=""/>
+      <span class="loader"></span>
+    </form>
+  </section>
+{{ end }}
+
+{{ define "article-content-after" }}
+  <section class="search-results">
+    <ul id="search-results"></ul>
+  </section>
+{{ end }}
+

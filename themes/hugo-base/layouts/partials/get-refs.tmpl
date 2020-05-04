@@ -1,0 +1,7 @@
+{{ $slug := .File.Dir | strings.TrimSuffix "/" | printf "/%s" }}
+{{ $slug = replace $slug "/" "." }}
+{{ $refs := .Site.GetPage (printf "/rels/%s" $slug) }}
+
+{{ .Scratch.Set "refsSlug" $slug }}
+{{ .Scratch.Set "refs" $refs }}
+

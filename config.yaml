@@ -1,0 +1,113 @@
+baseURL: https://www.ntrrg.dev/
+title: ntrrg
+params:
+  name: ntrrg
+  title: ntrrg
+  titleSeparator: "-"
+  copyright: Miguel Angel Rivera Notararigo 2020
+  author:
+    type: Person
+    name: Miguel Angel Rivera Notararigo
+    email: ntrrgx@gmail.com
+    website: https://ntrrg.dev/
+  singleAuthor: true
+  image: /favicon-512x512.png
+  ampImage: /icon-206x60.png
+  articleTypes:
+    - blog
+    - series
+  searchIndexTypes:
+    - blog
+    - challenges
+    - projects
+    - series
+  menu:
+    items:
+      - url: "/blog/"
+      - url: "/projects/"
+      - url: "/challenges/"
+      - text: "Gallery"
+        url: "https://www.instagram.com/ntrrg/"
+    beforeEach: "| "
+  secundaryMenu:
+    items:
+      - url: "/settings/"
+    beforeEach: "["
+    afterEach: "]"
+  footerMenu:
+    items:
+      - url: "/pay/"
+    beforeEach: "["
+    afterEach: "] "
+  # googleTagManager: GTM-NZ2R3W7
+  disqus: ntweb
+  goPlayground: https://play.golang.org
+  projects:
+    - https://github.com/ntrrg/docker-hugo
+    - https://github.com/ntrrg/ntgo
+defaultContentLanguage: en
+defaultContentLanguageInSubdir: true
+languages:
+  en:
+    languageName: English
+    params:
+      description: I am Miguel Angel, just another developer working hard to not be just another developer.
+  es:
+    languageName: Español
+    params:
+      description: Soy Miguel Angel, solo otro desarrollador más trabajando duro para no ser solo otro desarrollador más.
+      menu:
+        items:
+          - url: "/blog/"
+          - url: "/projects/"
+          - text: "Galería"
+            url: "https://www.instagram.com/ntrrg/"
+        beforeEach: "| "
+taxonomies:
+  rel: rels
+  tag: tags
+permalinks:
+  blog: /:sections/:slug/
+  projects: /:sections/:slug/
+  series: /:sections/:slug/
+theme:
+  - hugo-base
+Paginate: 10
+enableEmoji: true
+markup:
+  highlight:
+    codeFences: true
+    hl_Lines: ""
+    lineNoStart: 1
+    lineNos: false
+    lineNumbersInTable: true
+    noClasses: false
+    tabWidth: 2
+  tableOfContents:
+    startLevel: 1
+    endLevel: 6
+  goldmark:
+    renderer:
+      unsafe: true
+enableRobotsTXT: true
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
+  section:
+    - HTML
+    - RSS
+    - JSON
+  taxonomy:
+    - HTML
+    - RSS
+    - JSON
+  taxonomyTerm:
+    - HTML
+    - RSS
+    - JSON
+  page:
+    - HTML
+    - JSON
+

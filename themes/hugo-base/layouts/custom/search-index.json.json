@@ -1,0 +1,48 @@
+{
+  "documents": [
+    {{ $i := 0 }}
+
+    {{ range $.Site.Sections }}
+      {{ if in $.Site.Params.searchIndexTypes .Type }}
+        {{ range .Pages }}
+          {{ if ne $i 0 }},{{ end }}
+          {{ template "document" . }}
+          {{ $i = add $i 1 }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+  ]
+}
+
+{{ define "document" }}
+  {
+    "url": {{ jsonify .Permalink }},
+    "type": {{ jsonify .Type }},
+    "title": {{ jsonify .Title }},
+
+    {{ if isset .Params "date" }}
+      "publishdate": {{ jsonify .PublishDate }},
+      "date": {{ jsonify .Date }},
+    {{ end }}
+
+    {{ $sectDesc := (.Site.GetPage .Section).Description }}
+
+    {{ if ne .Description $sectDesc }}
+      "description": {{ jsonify .Description }},
+    {{ else }}
+      "description": "",
+    {{ end }}
+
+    "content": {{ base64Encode .Plain | jsonify }},
+
+    "taxonomies": {
+      {{ $i := 0 }}
+      {{ range $name, $terms := $.Site.Taxonomies }}
+        {{ if ne $i 0 }},{{ end }}
+        "{{ $name }}": {{ index $.Params $name | default slice | jsonify }}
+        {{ $i = add $i 1 }}
+      {{ end }}
+    }
+  }
+{{ end }}
+

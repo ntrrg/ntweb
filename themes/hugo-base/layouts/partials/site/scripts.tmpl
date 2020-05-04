@@ -1,0 +1,79 @@
+<!-- Externals -->
+
+{{ $scripts := slice }}
+
+{{ .Scratch.Set "scripts" $scripts }}
+{{ .Scratch.Set "mode" "defer" }}
+{{ partial "import-scripts.tmpl" . }}
+
+<!-- Bundle (Async) -->
+
+{{ $scripts = slice }}
+{{ $bundle := "js/bundle-async" }}
+
+{{ with .Params.math }}
+  {{ $bundle = printf "%s-mathjax" $bundle  }}
+  {{ $scripts = $scripts | append "vendor/mathjax-v3.0.0.js" }}
+{{ end }}
+
+{{ $bundle = printf "%s.js" $bundle  }}
+
+{{ .Scratch.Set "scripts" $scripts }}
+{{ .Scratch.Set "bundle" $bundle }}
+{{ .Scratch.Set "mode" "async" }}
+{{ partial "import-scripts.tmpl" . }}
+
+<!-- Bundle -->
+
+{{ $scripts = slice }}
+{{ $bundle = "js/bundle" }}
+
+{{ $scripts = $scripts | append "js/sw.js" }}
+{{ $scripts = $scripts | append "js/main.js" }}
+
+{{ if .IsHome }}
+  {{ $bundle = printf "%s-home" $bundle  }}
+  {{ $scripts = $scripts | append "js/home.js" }}
+{{ else if gt (len .Pages) 0 }}
+  {{ $bundle = printf "%s-list" $bundle  }}
+  {{ $scripts = $scripts | append "js/list.js" }}
+
+  {{ $suffix := .Type }}
+  {{ $path := printf "js/list-%s.js" $suffix }}
+
+  {{ if fileExists (printf "/assets/%s" $path) }}
+    {{ $bundle = printf "%s-%s" $bundle $suffix  }}
+    {{ $scripts = $scripts | append $path }}
+  {{ end }}
+{{ else if eq .Kind "page" }}
+  {{ $bundle = printf "%s-single" $bundle  }}
+  {{ $scripts = $scripts | append "js/single.js" }}
+
+  {{ if ne .Type "custom" }}
+    {{ $suffix := .Type }}
+    {{ $path := printf "js/single-%s.js" $suffix }}
+
+    {{ if fileExists (printf "/assets/%s" $path) }}
+      {{ $bundle = printf "%s-%s" $bundle $suffix  }}
+      {{ $scripts = $scripts | append $path }}
+    {{ end }}
+  {{ else }}
+    {{ $bundle = printf "%s-custom" $bundle  }}
+
+    {{ $suffix := replace (index (split .File ".") 0) "/" "-" }}
+    {{ $path := printf "js/custom-%s.js" $suffix }}
+
+    {{ if fileExists (printf "/assets/%s" $path) }}
+      {{ $bundle = printf "%s-%s" $bundle $suffix  }}
+      {{ $scripts = $scripts | append $path }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{ $bundle = printf "%s.js" $bundle  }}
+
+{{ .Scratch.Set "scripts" $scripts }}
+{{ .Scratch.Set "bundle" $bundle }}
+{{ .Scratch.Set "mode" "defer" }}
+{{ partial "import-scripts.tmpl" . }}
+

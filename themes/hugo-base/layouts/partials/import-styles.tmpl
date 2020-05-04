@@ -1,0 +1,30 @@
+{{ $sheets := .Scratch.Get "sheets" }}
+{{ $bundle := .Scratch.Get "bundle" }}
+
+{{ $force := .Scratch.Get "forceBundle" }}
+
+{{ if eq $bundle nil }}
+  {{ range $sheets }}
+    <link rel="stylesheet" type="text/css" href="{{ . }}"/>
+  {{ end }}
+{{ else if and (eq hugo.Environment "development") (ne $force true) }}
+  {{ range $sheets }}
+    {{ $sheet := resources.Get . }}
+    <link rel="stylesheet" type="text/css" href="{{ $sheet.Permalink }}"/>
+  {{ end }}
+{{ else }}
+  {{ if gt (len $sheets) 0 }}
+    {{ $res := slice }}
+
+    {{ range $sheets }}
+      {{ $res = $res | append (resources.Get .) }}
+    {{ end }}
+
+    {{ $sheet := resources.Concat $bundle $res | minify }}
+    <link rel="stylesheet" type="text/css" href="{{ $sheet.Permalink }}"/>
+  {{ end }}
+{{ end }}
+
+{{ .Scratch.Delete "sheets" }}
+{{ .Scratch.Delete "bundle" }}
+

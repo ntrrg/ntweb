@@ -1,0 +1,72 @@
+{{ $id := .Get "id" | default (.Get 0) }}
+
+{{ $content := split .Inner "\n--- PLAYGROUND ---\n" }}
+{{ $code := index $content 0 }}
+
+{{ $.Page.RenderString $code }}
+
+{{ if gt (len $content) 1 }}
+  {{ $code = index $content 1 }}
+{{ end }}
+
+{{ $code = trim $code "\n" }}
+{{ $code = strings.TrimPrefix "```go\n" $code }}
+{{ $code = strings.TrimSuffix "\n```" $code }}
+
+<div class="go-playground">
+  <a target="_blank" rel="noopener noreferrer"
+     {{ with $id }}
+       href="{{ $.Page.Site.Params.goPlayground }}/p/{{ . }}"
+     {{ else }}
+       class="go-playground-link" href="#" data-code="{{ base64Encode $code }}"
+     {{ end }}>
+    {{ i18n "SHORTCODE_GO_PLAYGROUND_RUN" }}
+  </a>
+</div>
+
+{{ if ne ($.Page.Scratch.Get "go-playground") true }}
+  <script>
+    async function getGoPlaygroundLink(e) {
+      const goPlaygroundURL = '{{ $.Page.Site.Params.goPlayground }}'
+      const link = e.target
+      const code = link.dataset.code
+      const done = link.href[link.href.length - 1] !== "#"
+
+      if (code === undefined || done) {
+        return
+      }
+
+      e.preventDefault()
+      link.title = ''
+      link.innerText = '{{ i18n "SHORTCODE_GO_PLAYGROUND_SENDING" }}'
+
+      const res = await fetch(goPlaygroundURL + '/share', {
+        method: 'POST',
+        body: atob(code)
+      }).catch((err) => {
+        link.title = err
+        link.innerText = '{{ i18n "SHORTCODE_GO_PLAYGROUND_ERROR" }}'
+      })
+
+      if (res.ok) {
+        const id = await res.text()
+        link.href = `${goPlaygroundURL}/p/${id}`
+        link.innerText = '{{ i18n "SHORTCODE_GO_PLAYGROUND_OPEN" }}'
+      } else {
+        link.title = `${res.status} ${res.statusText}`
+        link.innerText = '{{ i18n "SHORTCODE_GO_PLAYGROUND_ERROR" }}'
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const links = document.querySelectorAll('a.go-playground-link')
+
+      for (const link of links) {
+        link.addEventListener('click', getGoPlaygroundLink)
+      }
+    })
+  </script>
+
+  {{ $.Page.Scratch.Set "go-playground" true }}
+{{ end }}
+

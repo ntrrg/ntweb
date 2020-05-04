@@ -1,0 +1,32 @@
+{{ $scripts := .Scratch.Get "scripts" }}
+{{ $bundle := .Scratch.Get "bundle" }}
+{{ $mode := .Scratch.Get "mode" | default "" }}
+
+{{ $force := .Scratch.Get "forceBundle" }}
+
+{{ if eq $bundle nil }}
+  {{ range $scripts }}
+    <script {{ $mode | safeHTMLAttr }} src="{{ . }}"></script>
+  {{ end }}
+{{ else if and (eq hugo.Environment "development") (ne $force true) }}
+  {{ range $scripts }}
+    {{ $script := resources.Get . }}
+    <script {{ $mode | safeHTMLAttr }} src="{{ $script.Permalink }}"></script>
+  {{ end }}
+{{ else }}
+  {{ if gt (len $scripts) 0 }}
+    {{ $res := slice }}
+
+    {{ range $scripts }}
+      {{ $res = $res | append (resources.Get .) }}
+    {{ end }}
+
+    {{ $script := resources.Concat $bundle $res | minify }}
+    <script {{ $mode | safeHTMLAttr }} src="{{ $script.Permalink }}"></script>
+  {{ end }}
+{{ end }}
+
+{{ .Scratch.Delete "scripts" }}
+{{ .Scratch.Delete "bundle" }}
+{{ .Scratch.Delete "mode" }}
+

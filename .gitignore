@@ -1,0 +1,37 @@
+nogit-*
+/content/challenges/**/solution
+/static/cache.json
+
+#######################
+# Frameworks and libs #
+#######################
+
+# Hugo
+/public/
+/resources/
+
+#########
+# Tools #
+#########
+
+# GNU Screen
+.screenrc
+
+# Mage
+.mage/output/
+
+# Sublime Text
+*.sublime*
+
+# Vim
+*.sw[op]
+Session.vim
+*~
+
+######
+# OS #
+######
+
+# MacOS
+.DS_Store
+

@@ -1,0 +1,47 @@
+{{ define "data" }}
+  {
+    "refs": [
+      {{ partial "get-refs.tmpl" . }}
+      {{ $slug := .Scratch.Get "refsSlug" }}
+
+      {{ with .Scratch.Get "refs" }}
+        {{ $i := 0 }}
+        {{ range $i, $x := .Pages }}
+          {{ if ne $i 0 }},{{ end }}
+          {{ $weight := 999999 }}
+
+          {{ if isset .Params "relsweight" }}
+            {{ $weight = index .Params.relsweight $slug }}
+          {{ end }}
+
+          {
+            "url": {{ jsonify .Permalink }},
+            "type": {{ jsonify .Type }},
+            "title": {{ jsonify .Title }},
+            "weight": {{ jsonify $weight }}
+          }
+
+          {{ $i = add $i 1 }}
+        {{ end }}
+      {{ end }}
+    ],
+    "rels": [
+      {{ .Scratch.Set "relsPrefix" "." }}
+      {{ partial "get-rels.tmpl" . }}
+
+      {{ $i := 0 }}
+      {{ range $i, $rel := (.Scratch.Get "rels") }}
+        {{ if ne $i 0 }},{{ end }}
+
+        {
+          "url": {{ jsonify .Permalink }},
+          "type": {{ jsonify .Type }},
+          "title": {{ jsonify .Title }}
+        }
+
+        {{ $i = add $i 1 }}
+      {{ end }}
+    ]
+  }
+{{ end }}
+

@@ -1,0 +1,30 @@
+{{ $path := .Get "path" | default (.Get 0) }}
+{{ $hl := .Get "hl" }}
+{{ $foldable := .Get "foldable" }}
+{{ $name := .Get "name" | default $path }}
+{{ $open := .Get "open" }}
+
+{{ if not (strings.HasPrefix $path "/") }}
+  {{ $path = printf "content/%s/%s" $.Page.File.Dir $path }}
+{{ end }}
+
+{{ $content := "```" }}
+
+{{ with $hl }}
+  {{ $content = printf "%s%s" $content . }}
+{{ end }}
+
+{{ $content = printf "%s\n" $content }}
+{{ $content = readFile $path | printf "%s%s" $content }}
+{{ $content = replace $content "\t" "  " }}
+{{ $content = printf "%s```" $content }}
+
+{{ with $foldable }}
+  <details class="foldable-snippet" {{ with $open }}open="open"{{ end }}>
+    <summary><code>{{ $name }}</code></summary>
+    {{ $.Page.RenderString $content }}
+  </details>
+{{ else }}
+  {{ $.Page.RenderString $content }}
+{{ end }}
+
