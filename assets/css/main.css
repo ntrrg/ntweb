@@ -408,10 +408,14 @@ figure.right figcaption {
   padding: 1em 1.5em;
 }
 
-.page-card-title {
+.page-card .page-card-title {
   font-size: 1.5em;
 
   margin: 0em;
+}
+
+.page-card .page-card-title::before {
+  content: "";
 }
 
 .page-card-description {
