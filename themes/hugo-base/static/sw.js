@@ -1,40 +1,41 @@
 let ENABLED = true
 
 const BASEURL = new Request('/').url
-const BUCKET = '1'
-const PREFETCH = []
-
-self.addEventListener('install', (event) => {
-  event.waitUntil(
-    caches.open(BUCKET).then((cache) => cache.addAll(PREFETCH))
-  )
-})
-
-self.addEventListener('activate', (event) => {
-  event.waitUntil(
-    caches.keys().then((keys) => {
-      for (const key of keys)
-        if (key !== BUCKET)
-          caches.delete(key)
-    })
-  )
-})
-
-const BLACKLIST = [
-  (url) => !url.startsWith(BASEURL),
-]
+const BUCKET = 'v1'
+const DEFAULT_EXT = 'html'
 
 const TTL = {
   html: 60 * 60,
   json: 60 * 60,
   js:   60 * 60 * 24,
   css:  60 * 60 * 24,
-  svg:  60 * 60 * 24,
-  png:  60 * 60 * 24 * 30,
-  jpg:  60 * 60 * 24 * 30,
-  jpeg: 60 * 60 * 24 * 30,
-  pdf:  60 * 60 * 24 * 30,
 }
+
+const PREFETCH = [
+]
+
+const BLACKLIST = [
+  (url) => !url.startsWith(BASEURL),
+]
+
+self.addEventListener('install', (event) => {
+  self.skipWaiting()
+
+  event.waitUntil(
+    caches.open(BUCKET).then((cache) => cache.addAll(PREFETCH))
+  )
+})
+
+self.addEventListener('activate', (event) => {
+  event.waitUntil(Promise.all([
+    clients.claim(),
+    caches.keys().then((keys) => {
+      for (const key of keys)
+        if (key !== BUCKET)
+          caches.delete(key)
+    }),
+  ]))
+})
 
 /**
  * Gets the file extension from the given URL.
@@ -46,7 +47,7 @@ function getFileExt(url) {
   url = url.split('#')[0].split('?')[0]
 
   if (url.endsWith('/'))
-    return 'html'
+    return DEFAULT_EXT
 
   return url.split('.').reverse()[0]
 }
@@ -58,7 +59,7 @@ function getFileExt(url) {
  * @returns {Response}
  */
 async function getResponse(req) {
-  if (!ENABLED || isBlacklisted(req.url))
+  if (isBlacklisted(req.url))
     return await fetch(req).catch(() => {})
 
   const cache = await caches.open(BUCKET)
@@ -78,7 +79,7 @@ async function getResponse(req) {
     const age = parseInt((new Date().getTime() - date.getTime()) / 1000)
     const ttl = getTTL(req.url)
 
-    if (ttl > 0 || age <= ttl)
+    if (ttl === 0 || age <= ttl)
       return res
   }
 
@@ -124,6 +125,9 @@ function getTTL(url) {
  * @returns {Boolean}
  */
 function isBlacklisted(url) {
+  if (!ENABLED || url.startsWith('http://localhost/'))
+    return true
+
   for (const fn of BLACKLIST)
     if (!fn(url))
       return false
@@ -139,30 +143,29 @@ self.addEventListener('message', (event) => {
   if (typeof event.data !== 'object')
     return
 
-  switch(event.data.action) {
+  const {action, value} = event.data
+
+  switch(action) {
     case 'enabled':
-      ENABLED = (event.data.value) ? true : false
+      ENABLED = (value) ? true : false
       break
 
     case 'add':
-      caches.open(BUCKET).then((cache) => cache.add(event.data.value))
+      caches.open(BUCKET).then((cache) => cache.add(value))
       break
     case 'addAll':
-      for (const url of event.data.value)
+      for (const url of value)
         caches.open(BUCKET).then((cache) => cache.add(url))
       break
     case 'delete':
-      caches.open(BUCKET).then((cache) => cache.delete(event.data.value))
+      caches.open(BUCKET).then((cache) => cache.delete(value))
       break
     case 'deleteAll':
-      caches.delete(BUCKET).then(() => {
-        caches.open(BUCKET)
-      })
-
+      caches.delete(BUCKET).then(() => caches.open(BUCKET))
       break
 
     default:
-      console.log(`Unknown action: ${event.data.action}`)
+      console.log(`Unknown action: ${action}`)
       break
   }
 })
