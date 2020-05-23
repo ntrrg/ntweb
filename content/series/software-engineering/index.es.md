@@ -18,7 +18,7 @@ draft: true
 
 # Introducción
 
-{{< card "blog/introduction-to-cs" >}}
+{{< card "blog/technology/computer-science/intro" >}}
 
 **Prakhar Srivastav.** *Awesome CS Courses.* <https://github.com/prakhar1989/awesome-courses>
 
