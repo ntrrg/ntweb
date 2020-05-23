@@ -1,7 +1,7 @@
 {{ $path := .Get 0 }}
 
 {{ if not (strings.HasPrefix $path "/") }}
-  {{ $path = printf "content/%s/%s" $.Page.File.Dir $path }}
+  {{ $path = path.Join "content" $.Page.File.Dir $path }}
 {{ end }}
 
 {{ readFile $path | $.Page.RenderString (dict "display" "block") }}
