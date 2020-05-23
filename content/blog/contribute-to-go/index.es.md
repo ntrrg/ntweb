@@ -1,7 +1,7 @@
 ---
 title: ¿Cómo hacer contribuciones a Go?
 publishdate: 2018-07-06T12:42:47-04:00
-date: 2020-05-15T10:30:00-04:00
+date: 2020-05-23T09:20:00-04:00
 description: Contribuir a Go sin morir en el intento.
 image: images/go.png
 tags:
@@ -15,10 +15,10 @@ toc: true
 ---
 
 Además de intimidante, hacer una contribución por primera vez en cualquier
-proyecto open source suele ser complicado (aunque no lo sea), o por lo menos
-para mí suele ser así. Más cuando se trata del código fuente de un lenguaje
-de programación, que normalmente tiene a un equipo de genios trabajando sobre
-él y sus flujos de trabajo suelen ser complejos.
+proyecto de cóidgo abierto suele ser complicado (aunque no lo sea), o por lo
+menos para mí suele ser así. Más cuando se trata del código fuente de un
+lenguaje de programación, que normalmente tiene a un equipo de genios
+trabajando sobre él y sus flujos de trabajo suelen ser complejos.
 
 [Go Contributing]: https://golang.org/doc/contribute.html
 
