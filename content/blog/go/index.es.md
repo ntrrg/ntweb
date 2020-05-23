@@ -59,7 +59,7 @@ Algunas de sus características más resaltantes son:
 Para empezar a programar solo hacen falta dos cosas:
 
 [Install Go]: https://golang.org/doc/install
-[Instalar Go]: ./../blog/install-go-1-14
+[Instalar Go]: ./../blog/install-go/1-14
 
 * El compilador (se pueden ver las instrucciones para instalarlo en la
   [documentación oficial][Install Go] o en este [artículo][Instalar Go]).
