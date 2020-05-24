@@ -1,4 +1,4 @@
-{{ $title := .Scratch.Get "tocTitle" | default (i18n "TOC_TITLE") }}
+{{ $title := .Scratch.Get "tocTitle" | default (i18n "PAGE_TOC_TITLE") }}
 {{ $open := .Scratch.Get "tocOpen" }}
 
 <details class="toc" {{ with $open }}open="open"{{ end }}>

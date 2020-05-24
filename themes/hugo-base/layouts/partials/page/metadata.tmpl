@@ -19,13 +19,13 @@
 
 {{ if isset .Params "date" }}
   <div>
-    <strong>{{ i18n "PUBLISHED" }}:</strong>
+    <strong>{{ i18n "METADATA_DATE_PUBLISHED" }}:</strong>
     <span>{{ .PublishDate.Format "2006/01/02 15:04:05 -07:00" }}</span>
   </div>
 
   {{ if ne .Params.date .Params.publishdate }}
     <div>
-      <strong>{{ i18n "MODIFIED" }}:</strong>
+      <strong>{{ i18n "METADATA_DATE_MODIFIED" }}:</strong>
       <span>{{ .Date.Format "2006/01/02 15:04:05 -07:00" }}</span>
     </div>
   {{ end }}
@@ -60,7 +60,7 @@
 
 {{ if isset .Params "tags" }}
   <div>
-    <strong>{{ i18n "TAGS" }}:</strong>
+    <strong>{{ i18n "METADATA_TAGS" }}:</strong>
 
     {{ range $i, $x := .Params.tags -}}
       {{- if gt $i 0 }} {{ end -}}

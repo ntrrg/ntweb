@@ -1,17 +1,23 @@
-[COMMENTS_SHOW]
-other = "Show comments"
-
-[MODIFIED]
+[METADATA_DATE_MODIFIED]
 other = "Modified"
 
-[NO_CONTENT]
+[METADATA_DATE_PUBLISHED]
+other = "Published"
+
+[METADATA_TAGS]
+other = "Tags"
+
+[PAGE_COMMENTS_SHOW]
+other = "Show comments"
+
+[PAGE_NO_PAGES]
 other = "[WIP] There is no content in this section yet."
 
 [PAGE_SHARING]
 other = "Share"
 
-[PUBLISHED]
-other = "Published"
+[PAGE_TOC_TITLE]
+other = "Table of Contents"
 
 [SHORTCODE_GO_PLAYGROUND_ERROR]
 other = "Couldn't send the source code, try again"
@@ -27,10 +33,4 @@ other = "Sending the source code.."
 
 [SHORTCODE_NOTE_TITLE]
 other = "Note"
-
-[TAGS]
-other = "Tags"
-
-[TOC_TITLE]
-other = "Table of Contents"
 
