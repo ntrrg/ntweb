@@ -5,7 +5,7 @@
     {{ if hasPrefix $image "/" }}
       {{ $image = absURL $image }}
     {{ else if not (strings.HasPrefix $image "http") }}
-      {{ $image = path.Join .Permalink $image | absURL }}
+      {{ $image = path.Join .RelPermalink $image | absURL }}
     {{ end }}
 
     <div class="page-card-image">

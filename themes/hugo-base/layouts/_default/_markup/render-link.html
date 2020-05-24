@@ -6,7 +6,7 @@
       href="{{ .Permalink | safeURL }}"
       title="{{ .Title }}"
     {{ else }}
-      {{ warnf "Invalid link reference: %s" .Destination  }}
+      {{ warnf "Invalid link reference '%s' in content/%s" .Destination .Page.File }}
       href="{{ .Destination | safeURL }}"
     {{ end }}
   {{ else }}

@@ -11,7 +11,7 @@
     {{ if hasPrefix $image "/" }}
       {{ $image = absURL $image }}
     {{ else if not (strings.HasPrefix .Params.image "http") }}
-      {{ $image = path.Join .Permalink $image | absURL }}
+      {{ $image = path.Join .RelPermalink $image | absURL }}
     {{ end }}
   {{ end }}
 
