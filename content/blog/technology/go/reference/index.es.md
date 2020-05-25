@@ -1,6 +1,6 @@
 ---
 title: Go (Golang)
-date: 2020-02-11T16:40:00-04:00
+date: 2020-05-24T10:30:00-04:00
 image: images/go.png
 description: Es un lenguaje de código abierto, minimalista y de alto rendimiento. Esta es una referencia del lenguaje y sus herramientas.
 tags:
@@ -9,8 +9,6 @@ tags:
   - programación
   - lenguajes-de-programación
   - go
-  - programación-de-sistemas
-  - programación-web
 toc: true
 ---
 
@@ -41,28 +39,26 @@ Algunas de sus características más resaltantes son:
   ser modificado.
 
 * Fuertemente tipado, no permite realizar operaciones entre datos de diferente
-  tipo, deben hacerse cambios de tipo explícitamente.
+  tipo, se deben hacer cambios de tipo explícitamente.
 
 * No es necesario liberar manualmente la memoria asignada, usa un [GC][] que se
   encarga de esto, pero también ofrece algunas utilidades de bajo nivel para el
   manejo de memoria.
 
 * Concurrencia y paralelismo de manera nativa (por medio de palabras reservadas
-  y operadores, también tiene algunas bibliotecas que permiten aplicar técnicas
-  de sincronización).
+  y operadores), también tiene algunas bibliotecas que permiten aplicar técnicas
+  de sincronización.
 
 * Minimalista, la mayoría de las utilidades que faltan en el lenguaje fueron
   [excluidas intencionalmente](#funcionalidades-excluidas).
 
 # Herramientas necesarias
 
-Para empezar a programar solo hacen falta dos cosas:
+Para empezar a programar solo se necesitan dos cosas:
 
-[Install Go]: https://golang.org/doc/install
-[Instalar Go]: ./../install/1-14
+* Un compilador de código fuente Go.
 
-* El compilador (se pueden ver las instrucciones para instalarlo en la
-  [documentación oficial][Install Go] o en este [artículo][Instalar Go]).
+{{< card "blog/technology/go/install/1-14" >}}
 
 * Un editor de texto.
 
@@ -78,32 +74,31 @@ algunas de las que conozco son:
 
 * [Mage](https://magefile.org/) para automatizar tareas (muy parecido a Make).
 
-* [reflex](https://github.com/cespare/reflex) para ejecutar comandos cuando se
-  modifique un archivo.
-
 * [GoDoc](https://godoc.org/golang.org/x/tools/cmd/godoc) para ver la
   [documentación](#documentación) de los paquetes.
 
-* [GolangCI](https://golangci.com) para hacer análisis estático del código.
+* [GolangCI](https://golangci.com) para análisis estático del código.
 
 * [Delve](https://github.com/go-delve/delve) para debugging.
 
-* [Go Playground][Playground] que permite probar código directamente en el
-  navegador.
+* [reflex](https://github.com/cespare/reflex) para ejecutar comandos cuando se
+  modifique un archivo.
+
+* [Go Playground][Playground] para probar código directamente en el navegador.
 
 # Archivos
 
-Un archivo escrito en Go debe contener texto codificado en UTF-8, lo que
-permite usar un amplio rango de caracteres naturalmente (como `á`, `ñ`, `β`,
-`本` y `😂`).  Cada caracter es único, es decir que `a`, `á`, `à` y `A` son
-identificados independientemente.
+Un archivo de código fuente Go es un archivo de texto codificado con UTF-8, lo
+que permite usar un amplio rango de caracteres naturalmente (como `á`, `ñ`,
+`β`, `本` y `😂`).  Cada caracter es único, es decir que `a`, `á`, `à` y `A`
+son identificados independientemente.
 
 Algunas de las extensiones usadas son:
 
 [Go Templates]: https://golang.org/pkg/text/template/
 
 * `.go`: para código fuente escrito en Go.
-* `.tmpl`, `.gotxt`, `.gohtml`: para código fuente que use [Go Templates][].
+* `.tmpl`, `.gotxt`, `.gohtml`: para [Go Templates][].
 
 La primera línea de código de cualquier archivo Go debe ser la definición del
 paquete (ver [Paquetes](#paquetes)).
@@ -133,7 +128,7 @@ func main() {                // ┐
 En resumen, todo archivo escrito en Go tendrá la siguiente estructura:
 
 1. Definición del paquete.
-2. Llamado a otros paquetes (opcional).
+2. Llamado a paquetes externos (opcional).
 3. Cuerpo del archivo (opcional).
 
 Siguiendo estas reglas, el programa más famoso ([hello, world][]) escrito en
@@ -154,7 +149,8 @@ func main() {
 ## Paquetes
 
 En Go, la unidad mínima con sentido es el paquete, que es un conjunto de
-archivos `.go` con el mismo nombre de paquete y están en la misma carpeta. 
+[Archivos](#archivos) `.go` con el mismo nombre de paquete y están en la misma
+carpeta. 
 
 Para definir el nombre del paquete, los archivos deben iniciar con una línea
 que contenga `package NOMBRE`, donde `NOMBRE` es un valor arbitrario y es el
@@ -165,56 +161,32 @@ Todos los archivos de un paquete comparten el ambito global, por lo que al
 declarar un indentificador global en un archivo, este podrá ser utilizado en
 cualquier otro archivo (ver [Ámbito](#ámbito)).
 
+Dentro de un paquete pueden existir archivos de prueba, estos son ignorados al
+momento de compilar el paquete, pero serán procesados al usar el comando `go
+test`. Los archivos de prueba pueden usar el mismo nombre de paquete que los
+demás archivos, pero también es posible agregarle el sufijo `_test`, lo que
+permite probar el paquete desde la perspectiva de un usuario (Ver
+[Pruebas](#pruebas)).
+
 Cuando se pretende desarrollar un programa, se debe usar `main` como nombre del
 paquete. `main` es un valor especial que le dice al compilador que la intención
-del paquete es crear un archivo ejecutable y no una biblioteca. También deberá
-definirse una función que tenga `main` como nombre, esta función será llamada
+del paquete es crear un archivo ejecutable y no una biblioteca. También debe
+definirse una función que tenga `main` como nombre, esta función es llamada
 cuando se ejecute que programa.
 
 ## Módulos
 
-# Sintaxis
+Aunque los [Paquetes](#paquetes) son la unidad mínima con sentido para Go, los
+módulos son la unidad mínima de distribución, es decir, cuando se quiere
+publicar un paquete para que sea usado por otros proyectos, este deberá ser
+publicado dentro de un módulo.
 
-## Comentarios
+Un módulo es un conjunto de paquetes, su función es controlar el versionamiento
+y facilitar el manejo de dependencias, para ello se apoya en dos archivos:
 
-{{% details summary="Enlaces de interes" %}}
-* <https://golang.org/ref/spec#Comments>
-{{% /details %}}
+* `go.mod`: contiene todas las 
 
-Los comentarios son texto ignorado por el compilador, su función principal es
-documentar ciertas secciones de código que sean un poco difíciles de entender
-a simple vista, pero en muchas ocasiones también son usados para ocultar
-código de los ojos del compilador y ver como se comporta el programa. Existen
-dos tipos de comentarios:
-
-* De línea
-
-{{< go-playground id="4g5BEqD0RGU" >}}
-```go
-fmt.Println("hola, mundo") // Esto muestra "hola, mundo"
-
-// Las sentencias comentadas no son procesadas por el compilador
-// fmt.Println("chao, mundo")
-```
-{{< /go-playground >}}
-
-* Generales
-
-{{< go-playground id="4HyigTWqiZ8" >}}
-```go
-/*
-  Así se escribe un comentario general
-
-  fmt.Println("hola, mundo")
-  fmt.Println("chao, mundo")
-
-  Este programa no hace nada..
-*/
-```
-{{< /go-playground >}}
-
-**Nota:** ningún tipo de comentario puede usarse dentro de runas o cadenas
-literales.
+* `go.sum`
 
 # Tipos de datos
 
@@ -251,7 +223,7 @@ estándar dice que son 8 bits.
 bool
 ```
 
-### Ejemplos
+Ejemplos
 
 ```go
 true
@@ -360,7 +332,7 @@ int     // Equivale a int32 o int64
 uintptr // Permite almacenar direcciones de memoria
 ```
 
-#### Ejemplos
+Ejemplos
 
 ```go
 5     // Decimal
@@ -457,7 +429,7 @@ float32
 float64
 ```
 
-#### Ejemplos
+Ejemplos
 
 ```go
 0.         // Nivel de bondad en nuestra raza
@@ -517,7 +489,7 @@ complex64
 complex128
 ```
 
-#### Ejemplos
+Ejemplos
 
 ```go
 1 + 2i
@@ -724,7 +696,7 @@ for i := 0; i < len(x); {
 string
 ```
 
-### Ejemplos
+Ejemplos
 
 ```go
 'M'  // 74 -> U+004d -> 1001101 (7 bits)
@@ -842,7 +814,7 @@ len(x)) // 3
 [CANTIDAD]TIPO
 ```
 
-### Ejemplos
+Ejemplos
 
 ```go
 [5]byte{1, 2, 3, 4, 5}   // [1 2 3 4 5]
@@ -861,7 +833,7 @@ len(x)) // 3
                 // los demás serán inicializados con su valor 0
 
 [...]byte{2: 'M', 'A', 4: 'R', 'N'} // [0 0 77 64 0 82 78]
-                                    // Si se especifíca un índice, los
+                                    // Si se especifica un índice, los
                                     // siguientes elementos sin índice
                                     // sumarán uno al valor anterior
 
@@ -869,8 +841,8 @@ len(x)) // 3
   "Miguel",     // legibilidad
   "Angel",
   "Rivera",
-  "Notararigo", // Pero incluso el último elemento deberá tener una
-}               // coma
+  "Notararigo", // Pero incluso el último elemento debe tener una coma
+}
 
 [...]struct{ X, Y float64 }{
   struct{ X, Y float64 }{5, 10},
@@ -1141,7 +1113,7 @@ porción a una nueva con un arreglo propio.
 []TIPO
 ```
 
-### Ejemplos
+Ejemplos
 
 ```go
 []byte{1, 2, 3, 4, 5} // [1 2 3 4 5]
@@ -1159,8 +1131,8 @@ porción a una nueva con un arreglo propio.
   "Miguel",     // legibilidad
   "Angel",
   "Rivera",
-  "Notararigo", // Pero incluso el último elemento deberá tener una
-}               // coma
+  "Notararigo", // Pero incluso el último elemento debe tener una coma
+}
 
 []struct{ X, Y float64 }{
   struct{ X, Y float64 }{5, 10},
@@ -1333,7 +1305,7 @@ delete(x, 1<<30)
 map[TIPO_CLAVE]TIPO_VALOR
 ```
 
-### Ejemplos
+Ejemplos
 
 ```go
 map[string]int{
@@ -1421,7 +1393,43 @@ x + y // (2+3i)
 
 # Concurrencia
 
-# Pruebas
+# Comentarios
+
+{{% details summary="Enlaces de interes" %}}
+* <https://golang.org/ref/spec#Comments>
+{{% /details %}}
+
+Los comentarios son texto ignorado por el compilador, su función principal es
+documentar ciertas secciones de código que sean un poco difíciles de entender
+a simple vista, pero en muchas ocasiones también son usados para ocultar
+código de los ojos del compilador y ver como se comporta el programa. Existen
+dos tipos de comentarios:
+
+* De línea
+
+{{< go-playground id="4g5BEqD0RGU" >}}
+```go
+fmt.Println("hola, mundo") // Esto muestra "hola, mundo"
+
+// Las sentencias comentadas no son procesadas por el compilador
+// fmt.Println("chao, mundo")
+```
+{{< /go-playground >}}
+
+* Generales
+
+{{< go-playground id="4HyigTWqiZ8" >}}
+```go
+/*
+  Así se escribe un comentario general
+
+  fmt.Println("hola, mundo")
+  fmt.Println("chao, mundo")
+
+  Este programa no hace nada..
+*/
+```
+{{< /go-playground >}}
 
 # Documentación
 
@@ -1429,24 +1437,27 @@ x + y // (2+3i)
 * <https://blog.golang.org/godoc-documenting-go-code>
 {{% /details %}}
 
-[GoDoc]: https://godoc.org
-[Docutils]: http://docutils.sourceforge.net/
+Los comentarios también pueden usarse para automatizar la generación de la
+documentación. El objetivo principal de la documentación son las definiciones
+exportadas (`package`, `const`, `var`, `type`, `func`, etc...), solo aquellas
+precedidas directamente por una o más líneas de comentarios son procesadas como
+documentación.
 
-[GoDoc][] es una herramienta que permite usar los comentarios para generar
-documentación, algo parecida a [Docutils][] en Python, solo que un poco más
-sencilla, pues no requiere de un lenguaje de marcas para generar buena
-documentación, sino que usa texto plano.
+Es común (y una buena práctica) que cada comentario inicie con el
+identificador del elemento que se quiere documentar, con la excepción de:
 
-El objetivo principal de la documentación son las definiciones (`package`,
-`const`, `var`, `type`, `func`, etc...) exportadas, GoDoc procesará solo
-aquellas precedidas directamente por una o más líneas de comentarios.
+* El nombre del paquete, que debería iniciar con la palabra `Package` y luego
+  sí el nombre del paquete.
+
+* Las constantes y variables agrupadas, que suele ser suficiente con documentar
+  el grupo y no cada una de ellas.
 
 `arithmetic/go.mod`:
 
 ```
 module arithmetic
 
-go 1.13
+go 1.14
 ```
 
 `arithmetic/arithmetic.go`:
@@ -1485,38 +1496,10 @@ func Add(operands ...Operander) float64 {
 }
 ```
 
-Para ver el resultado se debe iniciar GoDoc e ir a la ruta <http://localhost:6060/pkg/arithmetic/>
-con un navegador web.
-
-```shell-session
-$ godoc -http :6060
-```
-
-Es común (y una buena práctica) que cada comentario inicie con el
-identificador del elemento que se quiere documentar, con la excepción de:
-
-* El nombre del paquete, que debería iniciar con la palabra `Package` y luego
-  sí el nombre del paquete.
-
-* Las constantes y variables agrupadas, que suele ser suficiente con documentar
-  el grupo y no cada una de ellas.
-
-Aunque solo se use texto plano, GoDoc puede dar formato especial a algún texto
-si tiene:
-
-* Formato de un URL, será convertido a un enlace HTML.
-
-* Indentación, será convertido a un bloque de código.
-
-* El formato `IDENTIFICADOR(USUARIO): DESCRIPCIÓN.`, será agregado a la lista
-  de notas del paquete. `IDENTIFICADOR` puede ser cualquier combinación de más
-  de dos letras mayúsculas. El identificador `BUG` tiene el comportamiento
-  especial de crear una lista de bugs en la página del paquete.
-
 Cuando se tiene un paquete con múltiple archivos, cada uno de ellos tendrá la
 sentencia `package NOMBRE`, pero esto no quiere decir que sea necesario repetir
 el comentario del paquete en cada archivo, en realidad basta con que uno de los
-archivos lo tenga.
+archivos lo tenga (si varios archivos contienen este comentario, se unirán).
 
 Si la documentación es algo extensa, se recomienda crear un archivo `doc.go`
 que contenga solo en nombre del paquete y su comentario de documentación.
@@ -1527,18 +1510,18 @@ Package arithmetic provides arithmetic operations for any type.
 
 This is a long description of the Arithmetic package.
 
-	type Operand string
+  type Operand string
 
-	func (o Operand) Val() float64 {
-		return float64(len(o))
-	}
+  func (o Operand) Val() float64 {
+    return float64(len(o))
+  }
 
-	func main() {
-		var x, y Operand = "a", "b"
+  func main() {
+    var x, y Operand = "a", "b"
 
-		r := Add(x, y)
-		fmt.Println(r)
-	}
+    r := Add(x, y)
+    fmt.Println(r)
+  }
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
 euismod egestas elit sed viverra. Nunc tincidunt lacinia orci in
@@ -1565,31 +1548,104 @@ justo molestie congue.
 package arithmetic
 ```
 
-Además de texto, GoDoc da la posibilidad de mostrar el funcionamiento con
-ejemplos dinámicos, que pueden ser ejecutados e incluso modificados en la
-interfaz web. Para más información sobre este tema ver la sección de
-[Ejemplos](#ejemplos-documentación).
+Para obtener la documentación se usa el comando `go doc` dentro de la carpeta
+del módulo.
 
-## Ejemplos (documentación)
+```shell-session
+$ cd arithmetic
+$ go doc -all .
+```
 
-{{% details summary="Enlaces de interes" %}}
-* <https://blog.golang.org/examples>
-{{% /details %}}
+## GoDoc
 
-Además de texto, GoDoc da la posibilidad de mostrar el funcionamiento con
-ejemplos dinámicos, que pueden ser ejecutados e incluso modificados en la
-interfaz web. Para usar esta gran utilidad se deben crear funciones de ejemplo
-en archivos `*_test.go`, estas funciones deberán tener como nombre `Example`
-si se quiere mostrar algún ejemplo que use varios elementos del paquete, o
-`ExampleIDENTIFICADOR` / `ExampleIDENTIFICADOR_MÉTODO` para tener como objetivo
-solo un elemento.
+[GoDoc]: https://godoc.org
+
+[GoDoc][] es una herramienta que permite obtener la documentación en formato
+HTML y tiene algunas funcionalidades extras. Para instalarlo se debe ejecutar
+el siguiente comando:
+
+```shell-session
+$ go get -v https://golang.org/x/tools/cmd/godoc
+```
+
+GoDoc puede dar formato especial a algún texto si tiene:
+
+* Formato de URL, será convertido en un enlace HTML.
+
+* Indentación, será convertido en un bloque de código.
+
+* El formato `IDENTIFICADOR(USUARIO): DESCRIPCIÓN.`, será agregado a la lista
+  de notas del paquete. `IDENTIFICADOR` puede ser cualquier combinación de más
+  de dos letras mayúsculas. El identificador `BUG` tiene el comportamiento
+  especial de crear una lista de fallas conocidas en la página del paquete.
 
 `arithmetic/go.mod`:
 
 ```
 module arithmetic
 
-go 1.13
+go 1.14
+```
+
+`arithmetic/arithmetic.go`:
+
+```go
+/*
+Package arithmetic provides arithmetic operations for any type.
+
+  import "arithmetic"
+
+See https://ntrrg.dev/ for more info.
+
+BUG: This may have a bug.
+*/
+package arithmetic
+```
+
+Se debe ejecutar dentro de la carpeta del módulo y luego abrir <http://localhost:6060/>
+con un navegador web
+
+```shell-session
+$ cd arithmetic
+$ godoc -http :6060
+```
+
+También es posible habilitar el Playground, lo que permite correr [Ejemplos](#ejemplos)
+directamente desde la interfaz web.
+
+```shell-session
+$ godoc -http :6060 -play
+```
+
+# Pruebas
+
+## Ejemplos
+
+{{% details summary="Enlaces de interes" %}}
+* <https://blog.golang.org/examples>
+{{% /details %}}
+
+Los ejemplos son pruebas especiales que permiten demostrar el uso del paquete y
+sus elementos desde la perspectiva de un usuario, por lo que son ideales para
+pruebas de integración.
+
+Al igual que las pruebas, su código vive dentro de archivos con el sufijo
+`_test`. Para crear un ejemplo del paquete se debe declarar una función con el
+nombre `Example`; por otro lado, si el objetivo del ejemplo es un elemento en
+específico, se debe agregar su nombre al de la función (`ExampleELEMENTO`); y
+si el objetivo es un método, se deben agregar además, un guión bajo y el nombre
+del método (`ExampleELEMENTO_MÉTODO`).
+
+Al final de cada función debe existir el comentario especial `// Output:`, que
+indica los valores esperados, estos valores deben ser escritos por la salida
+estándar.
+
+`arithmetic/go.mod`:
+
+```
+module arithmetic
+
+go 1.14
 ```
 
 `arithmetic/arithmetic.go`:
@@ -1648,34 +1704,7 @@ func ExampleSub() {
 }
 ```
 
-Para ver los ejemplos se debe iniciar el servidor HTTP de GoDoc e ir a la ruta
-<http://localhost:6060/pkg/arithmetic/> con un navegador.
-
-```shell-session
-$ godoc -http :6060 -play
-```
-
-Cada función de ejemplo deberá mostrar por la salida estándar los resultados,
-y al final de cada una deberá existir un comentario especial `// Output: VALOR`
-que indica los valores esperados. Si se necesitan múltiples líneas, simplemente
-se agregan como comentarios justo después del comentario especial.
-
-Si el resultado no tiene un orden específico se puede usar `// Unordered Output:`.
-
-```go
-func ExampleUnordered() {
-  fmt.Println(5)
-  fmt.Println(3)
-  fmt.Println(1)
-  // Unordered Output:
-  // 1
-  // 3
-  // 5
-}
-```
-
-Los ejemplos son verificados por `go test`, por lo que no solo tienen un uso
-informativo, sino que también ayudan a probar el código.
+Para verificar los ejemplos se usa el comando el comando `go test`.
 
 ```shell-session
 $ go test -v ./...
@@ -1689,9 +1718,24 @@ PASS
 ok  	arithmetic
 ```
 
-Para los casos en que se necesiten múltiples funciones de ejemplo de un mismo
-elemento, solo hace falta agregar un sufijo que inicie con un guión bajo y una
-letra.
+Si el orden del resultado no es estrictamente igual en cada ejecución, se puede
+usar el comentario especial `// Unordered Output:`.
+
+```go
+func ExampleUnordered() {
+  fmt.Println(5)
+  fmt.Println(3)
+  fmt.Println(1)
+  // Unordered Output:
+  // 1
+  // 3
+  // 5
+}
+```
+
+Para crear múltiples ejemplos de un mismo elemento, se deben agregar un guión
+bajo, una letra minúscula y cualquier otra cantidad de caracteres después de
+esta.
 
 `arithmetic/multiexample_test.go`:
 
@@ -1734,8 +1778,8 @@ ok  	arithmetic
 ```
 
 Como los ejemplos son representados por funciones, no es posible demostrar
-algunas características como la implementación de interfaces, por esta razón
-existen los ejemplos de archivo, que consisten en un archivo con una función de
+algunas características como la implementación de interfaces, los ejemplos de
+archivo existen con este propósito y consisten en un archivo con una función de
 ejemplo y todas las definiciones a nivel de paquete que sean necesarias.
 
 `arithmetic-interface/go.mod`:
@@ -1743,7 +1787,7 @@ ejemplo y todas las definiciones a nivel de paquete que sean necesarias.
 ```
 module arithmetic
 
-go 1.13
+go 1.14
 ```
 
 `arithmetic-interface/arithmetic.go`:
@@ -1800,7 +1844,18 @@ PASS
 ok  	arithmetic
 ```
 
+Además del comando `go test`, los ejemplos pueden ser visualizados y ejecutados
+directamente desde la interfaz web de [GoDoc](#godoc).
+
+```shell-session
+$ godoc -http :6060 -play
+```
+
 # Paquetes externos
+
+{{% details summary="Enlaces de interes" %}}
+* <https://blog.golang.org/using-go-modules>
+{{% /details %}}
 
 # Buenas prácticas
 

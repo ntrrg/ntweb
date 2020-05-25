@@ -20,11 +20,11 @@ La forma más rápida de instalarlo es descargando la versión binaria, si se
 quiere compilar desde el código fuente, en [esta sección](#desde-el-código-fuente)
 explico el procedimiento para hacerlo.
 
-{{< note >}}
+{{% note %}}
 Para instalar otra arquitectura, hay que cambiar el `amd64` por el código de la
 arquitectura que se necesite. Las sumas de comprobación de los archivos no
 serán iguales a las de este artículo.
-{{< /note >}}
+{{% /note %}}
 
 1\. Descargar el paquete con los binarios
 
@@ -60,7 +60,7 @@ go version go1.14.3 linux/amd64
 # ln -sf /usr/local/go/bin/* /usr/bin/
 ```
 
-{{< note >}}
+{{% note %}}
 Es posible instalar Go en una ruta personalizada e incluso sin permisos de
 super-usuario, los pasos serían muy parecidos a los anteriores, solo que hay
 que cambiar las rutas.
@@ -99,7 +99,7 @@ $ echo "export PATH=\"$HOME/.local/bin:\$PATH\"" >> ~/.profile
 ```shell-session
 $ echo "export PATH=\"$HOME/.local/bin:\$PATH\"" >> ~/.zshenv
 ```
-{{< /note >}}
+{{% /note %}}
 
 # Desde el código fuente
 
@@ -197,7 +197,7 @@ $ export GOROOT_BOOTSTRAP="$(go env GOROOT)"
 
 ### Con C
 
-{{< note >}}
+{{% note %}}
 Para esta opción se necesitan algunas dependencias que varían según la
 distribución.
 
@@ -212,7 +212,7 @@ distribución.
 ```shell-session
 # apt install gcc libc6-dev make pkg-config
 ```
-{{< /note >}}
+{{% /note %}}
 
 1\. Descargar el código fuente de la versión 1.4
 
@@ -278,10 +278,10 @@ $ export GOROOT_BOOTSTRAP="$PWD/gobootstrap"
 $ (cd go/src && ./all.bash)
 ```
 
-{{< note >}}
+{{% note %}}
 El script `all.bash` también ejecuta todas las pruebas (que es recomendable
 hacerlo). Para evitar esto y solo compilar, se puede usar el script `make.bash`.
-{{< /note >}}
+{{% /note %}}
 
 2\. Verificar que funciona correctamente
 
