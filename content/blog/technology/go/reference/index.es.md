@@ -1,6 +1,6 @@
 ---
 title: Go (Golang)
-date: 2020-05-24T10:30:00-04:00
+date: 2020-05-31T16:30:00-04:00
 image: images/go.png
 description: Es un lenguaje de código abierto, minimalista y de alto rendimiento. Esta es una referencia del lenguaje y sus herramientas.
 tags:
@@ -18,8 +18,9 @@ Es un lenguaje minimalista y de alto rendimiento.  Su fase de diseño inició en
 el año 2007 por parte de un equipo de ingenieros de Google, conformado en ese
 tiempo por Ken Thompson, Rob Pike y Robert Griesemer; luego de tener una base
 estable, se unieron los ingenieros Russ Cox e Ian Lance Taylor. Para inicios
-del 2012 se liberó la primera versión estable, de código abierto y ditribuida
-bajo una licencia [BSD-style][Go license].
+del 2012 se liberó la primera versión estable, de código abierto y distribuida
+bajo una licencia [BSD-style][Go license]. Actualmente el proyecto es mantenido
+por un equipo de Google y su gran comunidad.
 
 Algunas de sus características más resaltantes son:
 
@@ -157,8 +158,8 @@ que contenga `package NOMBRE`, donde `NOMBRE` es un valor arbitrario y es el
 identificador con el que otros desarrolladores podrán utilizarlo dentro de sus
 programas (ver [Paquetes externos](#paquetes-externos)).
 
-Todos los archivos de un paquete comparten el ambito global, por lo que al
-declarar un indentificador global en un archivo, este podrá ser utilizado en
+Todos los archivos de un paquete comparten el ámbito global, por lo que al
+declarar un identificador global en un archivo, este podrá ser utilizado en
 cualquier otro archivo (ver [Ámbito](#ámbito)).
 
 Dentro de un paquete pueden existir archivos de prueba, estos son ignorados al
@@ -178,15 +179,97 @@ cuando se ejecute que programa.
 
 Aunque los [Paquetes](#paquetes) son la unidad mínima con sentido para Go, los
 módulos son la unidad mínima de distribución, es decir, cuando se quiere
-publicar un paquete para que sea usado por otros proyectos, este deberá ser
+publicar un paquete para que sea usado por otros proyectos, este debe ser
 publicado dentro de un módulo.
 
-Un módulo es un conjunto de paquetes, su función es controlar el versionamiento
-y facilitar el manejo de dependencias, para ello se apoya en dos archivos:
+Un módulo es un conjunto de paquetes, su función es facilitar el manejo de
+dependencias y controlar las versiones, para ello se apoya en dos archivos:
 
-* `go.mod`: contiene todas las 
+* `go.mod`: contiene la ruta del módulo, que es la ruta con la que se deben
+  importar sus paquetes; la lista de dependencias con sus versiones; y otras
+  ordenes que permiten alterar el comportamiento de la compilación. Su sintaxis
+  está orientada a humanos.
 
-* `go.sum`
+* `go.sum`: contiene información detallada sobre las dependencias del módulo,
+  asegura el comportamiento del comando `go` en diferentes entornos al momento
+  de procesar las dependencias y mantiene la historia de las versiones de las
+  dependencias usadas por el módulo. Su sintaxis está orientada a máquinas y su
+  contenido es generado automáticamente.
+
+La raíz de un módulo es la carpeta donde se encuentra el archivo `go.mod`,
+desde este punto, todos los paquetes dentro de esta carpeta son parte del
+módulo, excluyendo las carpetas que contengan otro archivo `go.mod`. Por lo
+general la raíz del módulo es la raíz del repositorio de código, pero esto no
+es obligatorio.
+
+La primera línea del archivo `go.mod` es la ruta del módulo.
+
+```
+module github.com/ntrrg/arithmetic
+```
+
+Luego se especifica la versión del lenguaje, lo que permite alterar el
+comportamiento del comando `go`, por ejemplo, desde la versión 1.14, si existe
+una carpeta `vendor` y un archivo `vendor/module.txt` se usa la opción
+`-mod=vendor` de forma predeterminada.
+
+```
+go 1.14
+```
+
+Y después se declara la lista de dependencias de sus paquetes.
+
+```
+require (
+  github.com/ghodss/yaml v1.0.0
+)
+```
+
+En algunos casos, es necesario aplicar parches privados a ciertas bibliotecas
+para adaptarlas a las necesidades del proyecto, por esta razón (o cualquier
+otro caso de uso) existe `replace`, que le indica al comando `go` donde buscar
+el código fuente de la dependencia. **Esto solo funciona cuando el módulo es
+compilado directamente, los `replace` de las dependencias son ignorados.**
+
+```
+replace github.com/ghodss/yaml v1.0.0 => github.com/ntrrg/yaml v1.0.0-mod.1
+```
+
+Se pueden usar rutas del sistema de archivos para agilizar el desarrollo
+
+```
+replace github.com/ghodss/yaml v1.0.0 => ../yaml
+```
+
+En resumen, el archivo debe verse de la siguiente manera:
+
+`go.mod`:
+
+```
+module github.com/ntrrg/arithmetic
+
+go 1.14
+
+require (
+  github.com/ghodss/yaml v1.0.0
+)
+
+replace github.com/ghodss/yaml v1.0.0 => github.com/ntrrg/yaml v1.0.0-mod.1
+```
+
+A partir de la segunda versión, los módulos deben incluir el número de versión
+mayor en la ruta del módulo.
+
+```
+module github.com/ntrrg/arithmetic/v2
+module github.com/ntrrg/arithmetic/v3
+...
+module github.com/ntrrg/arithmetic/vX
+```
+
+Aunque es bastante sencillo crear y modificar el archivo `go.mod` manualmente,
+todas estas tareas pueden ser realizadas programáticamente con el comando [`go
+mod`](#módulos-go-mod).
 
 # Tipos de datos
 
@@ -202,7 +285,7 @@ habla de objetos, su valor cero sería *nada*; y así dependiendo del contexto.
 
 ## Booleanos
 
-{{% details summary="Enlaces de interes" %}}
+{{% details summary="Enlaces de interés" %}}
 * <https://golang.org/ref/spec#Boolean_types>
 {{% /details %}}
 
@@ -246,7 +329,7 @@ Existen tres grupos de datos numéricos:
 
 ### Enteros
 
-{{% details summary="Enlaces de interes" %}}
+{{% details summary="Enlaces de interés" %}}
 * <https://golang.org/ref/spec#Numeric_types>
 * <https://golang.org/ref/spec#Integer_literals>
 * <https://golang.org/pkg/math/#pkg-constants>
@@ -389,7 +472,7 @@ Ejemplos
 
 ### Punto flotante
 
-{{% details summary="Enlaces de interes" %}}
+{{% details summary="Enlaces de interés" %}}
 * <https://golang.org/ref/spec#Numeric_types>
 * <https://golang.org/ref/spec#Floating-point_literals>
 * <https://golang.org/pkg/math/#pkg-constants>
@@ -449,7 +532,7 @@ Ejemplos
 
 ### Complejos
 
-{{% details summary="Enlaces de interes" %}}
+{{% details summary="Enlaces de interés" %}}
 * <https://golang.org/ref/spec#Numeric_types>
 * <https://golang.org/ref/spec#Imaginary_literals>
 * <https://golang.org/ref/spec#Constant_expressions>
@@ -509,7 +592,7 @@ Ejemplos
 
 ## Cadenas
 
-{{% details summary="Enlaces de interes" %}}
+{{% details summary="Enlaces de interés" %}}
 * <https://golang.org/ref/spec#String_types>
 * <https://golang.org/ref/spec#String_literals>
 * <https://golang.org/ref/spec#Rune_literals>
@@ -719,7 +802,7 @@ multilineal`
 
 ## Arreglos
 
-{{% details summary="Enlaces de interes" %}}
+{{% details summary="Enlaces de interés" %}}
 * <https://tour.golang.org/moretypes/6>
 * <https://golang.org/ref/spec#Array_types>
 * <https://golang.org/ref/spec#Composite_literals>
@@ -859,7 +942,7 @@ Ejemplos
 
 ## Porciones
 
-{{% details summary="Enlaces de interes" %}}
+{{% details summary="Enlaces de interés" %}}
 * <https://tour.golang.org/moretypes/7>
 * <https://tour.golang.org/moretypes/8>
 * <https://tour.golang.org/moretypes/9>
@@ -1149,7 +1232,7 @@ nil
 
 ## Mapas
 
-{{% details summary="Enlaces de interes" %}}
+{{% details summary="Enlaces de interés" %}}
 * <https://tour.golang.org/moretypes/19>
 * <https://tour.golang.org/moretypes/20>
 * <https://tour.golang.org/moretypes/21>
@@ -1395,7 +1478,7 @@ x + y // (2+3i)
 
 # Comentarios
 
-{{% details summary="Enlaces de interes" %}}
+{{% details summary="Enlaces de interés" %}}
 * <https://golang.org/ref/spec#Comments>
 {{% /details %}}
 
@@ -1433,7 +1516,7 @@ fmt.Println("hola, mundo") // Esto muestra "hola, mundo"
 
 # Documentación
 
-{{% details summary="Enlaces de interes" %}}
+{{% details summary="Enlaces de interés" %}}
 * <https://blog.golang.org/godoc-documenting-go-code>
 {{% /details %}}
 
@@ -1621,7 +1704,7 @@ $ godoc -http :6060 -play
 
 ## Ejemplos
 
-{{% details summary="Enlaces de interes" %}}
+{{% details summary="Enlaces de interés" %}}
 * <https://blog.golang.org/examples>
 {{% /details %}}
 
@@ -1853,15 +1936,13 @@ $ godoc -http :6060 -play
 
 # Paquetes externos
 
-{{% details summary="Enlaces de interes" %}}
+{{% details summary="Enlaces de interés" %}}
 * <https://blog.golang.org/using-go-modules>
 {{% /details %}}
 
-# Buenas prácticas
+# Toolchain (`go`)
 
-# Toolchain
-
-{{% details summary="Enlaces de interes" %}}
+{{% details summary="Enlaces de interés" %}}
 * <https://golang.org/pkg/go/build/>
 {{% /details %}}
 
@@ -1891,9 +1972,328 @@ hola, mundo
 El comando `go run` hace esto mismo, solo que crea un archivo temporal y lo
 ejecuta automáticamente.
 
+## Módulos (`go mod`)
+
+{{% note %}}
+Esta sección no contiene información sobre qué son los módulos, ver
+[Módulos](#módulos) para obtener esta información.
+{{% /note %}}
+
+El comando `go mod` permite crear y modificar el archivo `go.mod`; obtener
+información del módulo y sus dependencias; y descargar el código fuente de las
+dependencias.
+
+{{% details "Ejemplo" %}}
+`main.go`
+
+```go
+package main
+
+import (
+  "fmt"
+  "io/ioutil"
+  "os"
+  "path/filepath"
+
+  "github.com/ghodss/yaml"
+  "go.ntrrg.dev/ntgo/reflect/arithmetic"
+)
+
+func main() {
+  cfgFile := os.Args[1]
+
+  data, err := ioutil.ReadFile(filepath.Clean(cfgFile))
+  if err != nil {
+    panic(err)
+  }
+
+  if err := yaml.Unmarshal(data, &cfg); err != nil {
+    panic(err)
+  }
+
+  var fn func(...interface{}) float64
+
+  switch cfg.Operation {
+  case "add":
+    fn = arithmetic.Add
+  case "sub":
+    fn = arithmetic.Sub
+  case "mul":
+    fn = arithmetic.Mul
+  case "div":
+    fn = arithmetic.Div
+  default:
+    panic(fmt.Errorf("Invalid operation: %s", cfg.Operation))
+  }
+
+  r := fn(cfg.Operands...)
+  fmt.Println(arithmetic.GetVal(r))
+}
+
+var (
+  cfg struct {
+    Operation string        `json="operation"`
+    Operands  []interface{} `json="operands"`
+  }
+)
+```
+
+`config.yaml`
+
+```yaml
+operation: add
+operands:
+  - 1
+  - 2
+  - 3
+```
+{{% /details %}}
+
+Para crear el archivo `go.mod` se usa el comando `go mod init`.
+
+```shell-session
+$ go mod init github.com/ntrrg/calc
+```
+
+`go.mod`:
+
+```
+module github.com/ntrrg/calc
+
+go 1.14
+```
+
+Para modificar la ruta del módulo se usa el comando `go mod edit`.
+
+```shell-session
+$ go mod edit -module github.com/ntrrg/calc
+```
+
+Para seleccionar una versión de Go diferente a la actual se usa el comando `go
+mod edit`.
+
+```shell-session
+$ go mod edit -go 1.14
+```
+
+Las dependencias son detectadas automáticamente cuando alguno de los comandos
+`go run`, `go build`, `go get`, `go install`, `go list`, `go test`, `go mod
+graph`, `go mod tidy` o `go mod why` es ejecutado.
+
+```shell-session
+$ go run main.go config.yaml
+go: finding module for package go.ntrrg.dev/ntgo/reflect/arithmetic
+go: finding module for package github.com/ghodss/yaml
+...
+```
+
+`go.mod`:
+
+```
+module github.com/ntrrg/calc
+
+go 1.14
+
+require (
+  github.com/ghodss/yaml v1.0.0 // indirect
+  go.ntrrg.dev/ntgo v0.6.0 // indirect
+  gopkg.in/yaml.v2 v2.3.0 // indirect
+)
+```
+
+Se usarán las últimas versiones estables de las dependencias al momento de
+ejecutar el comando, pero esto puede no ser conveniente pues alguna dependencia
+podría haber hecho cambios que rompen la compatibilidad con versiones
+anteriores y generar algún error.
+
+Para asegurar la versión apropiada de una dependencia se usa el comando `go mod
+edit`.
+
+```shell-session
+$ go mod edit -require go.ntrrg.dev/ntgo@v0.5.0
+```
+
+Pero este comando es de bajo nivel y su uso es recomendado solo para
+herramientas que se encarguen del manejo de las dependencias, por lo que es
+mejor usar el comando `go get`.
+
+```shell-session
+$ go get go.ntrrg.dev/ntgo@v0.5.0
+```
+
+`go.mod`:
+
+```
+module github.com/ntrrg/calc
+
+go 1.14
+
+require (
+  github.com/ghodss/yaml v1.0.0 // indirect
+  go.ntrrg.dev/ntgo v0.5.0 // indirect
+  gopkg.in/yaml.v2 v2.3.0 // indirect
+)
+```
+
+Suponiendo que el módulo tenga las versiones `v1.0.0`, `v1.0.1`, `v1.1.0`,
+`v1.2.0` y `v1.3.0-rc.1`; es posible especificar cual seleccionar de diferente
+maneras:
+
+* Con la versión completa (`vX.Y.Z`), que apunta a la versión especificada.
+
+* Con el prefijo de una versión (`vX`, `vX.Y`), que apunta a la versión más
+  reciente que tenga ese prefijo. Si se usa `v1.0` la versión apropiada es
+  `v1.0.1` y si se usa `v1` la versión apropiada es `v1.2.0`.
+
+* Con una comparación (`(< | <= | > | >=)vX.Y.X`), que apunta la versión más
+  reciente que cumpla la condición. Si se usa `<v1.1.0` la versión apropiada es
+  `v1.0.1`, si se usa `<=v1.1.0` la versión apropiada es `v1.1.0` y si se usa
+  `>=v1.1.0` la versión apropiada es `v1.2.0`
+
+* Con el nombre de una referencia de Git, puede ser una rama, una etiqueta, un
+  hash de confirmación, etc...
+
+* Con la palabra `latest`, que apunta a la versión estable más reciente. Si se
+  usa, la versión apropiada es `v1.2.0`
+
+* Con la palabra `upgrade`, que apunta a la versión estable más reciente si la
+  versión actual no es la más reciente, o a la versión de pruebas más reciente
+  si la versión actual es la más reciente. Si se usa y la versión actual es
+  `v1.1.0`, la versión apropiada es `v1.2.0`, pero si se usa y la versión
+  actual es `v1.2.0`, la versión apropiada es `v1.3.0-rc.1`.
+
+* Con la palabra `patch`, que apunta al parche más reciente de la versión
+  actual o a la versión estable más reciente si no se ha seleccionado una
+  ninguna versión anteriormente (como `latest`). Si se usa y la versión actual
+  es `v1.0.0`, la versión apropiada es `v1.0.1`.
+
+Para excluir versiones se usa el comando `go mod edit`. Esto hará que `go get`
+las ignore al momento de procesar las dependencias, por ejemplo, si se excluye
+la versión `v1.2.0` y se usa `go get` con `latest`, la versión apropiada es
+`v1.1.0`.
+
+```shell-session
+$ go mod edit -exclude 'go.ntrrg.dev/ntgo@v0.6.0'
+```
+
+`go.mod`:
+
+```
+module github.com/ntrrg/calc
+
+go 1.14
+
+require (
+  github.com/ghodss/yaml v1.0.0 // indirect
+  go.ntrrg.dev/ntgo v0.5.0 // indirect
+  gopkg.in/yaml.v2 v2.3.0 // indirect
+)
+
+exclude go.ntrrg.dev/ntgo v0.6.0
+```
+
+Para agregar `replace`s se usa el comando `go mod edit`.
+
+```shell-session
+$ go mod edit -replace github.com/ghodss/yaml=../yaml
+```
+
+`go.mod`:
+
+```
+module github.com/ntrrg/calc
+
+go 1.14
+
+require (
+  github.com/ghodss/yaml v1.0.0 // indirect
+  go.ntrrg.dev/ntgo v0.5.0 // indirect
+  gopkg.in/yaml.v2 v2.3.0 // indirect
+)
+
+exclude go.ntrrg.dev/ntgo v0.6.0
+
+replace github.com/ghodss/yaml => ../yaml
+```
+
+También es posible eliminar declaraciones con el comando `go mod edit`.
+
+```shell-session
+$ go mod edit -droprequire gopkg.in/yaml.v2
+$ go mod edit -dropexclude go.ntrrg.dev/ntgo@v0.6.0
+$ go mod edit -dropreplace github.com/ghodss/yaml
+```
+
+`go.mod`:
+
+```
+module github.com/ntrrg/calc
+
+go 1.14
+
+require (
+  github.com/ghodss/yaml v1.0.0 // indirect
+  go.ntrrg.dev/ntgo v0.5.0 // indirect
+)
+```
+
+Para descargar las dependencias se usa el comando `go mod download`.
+
+```shell-session
+$ go mod download
+```
+
+Y para verificar que el código fuente de las dependencias no se ha modificado
+localmente, se usa el comando `go mod verify`.
+
+```shell-session
+$ go mod verify
+all modules verified.
+```
+
+Para descargar las dependencias y guardarlas en la carpeta `vendor` se usa el
+comando `go mod vendor`
+
+```shell-session
+$ go mod vendor
+```
+
+Para agregar o eliminar dependencias respectivamente de manera automática
+cuando no existan en el archivo `go.mod` pero son usadas por algún paquete o
+cuando ya no son usadas por ningún paquete se usa el comando `go mod tidy`.
+
+```shell-session
+$ go mod tidy
+```
+
+`go.mod`:
+
+```
+module github.com/ntrrg/calc
+
+go 1.14
+
+require (
+  github.com/ghodss/yaml v1.0.0
+  go.ntrrg.dev/ntgo v0.5.0
+  gopkg.in/yaml.v2 v2.3.0 // indirect
+)
+```
+
+Para obtener la lista de dependencias recursivamente se usa el comando `go mod
+graph`.
+
+```shell-session
+$ go mod graph
+github.com/ntrrg/calc github.com/ghodss/yaml@v1.0.0
+github.com/ntrrg/calc go.ntrrg.dev/ntgo@v0.5.0
+github.com/ntrrg/calc gopkg.in/yaml.v2@v2.3.0
+gopkg.in/yaml.v2@v2.3.0 gopkg.in/check.v1@v0.0.0-20161208181325-20d25e280405
+```
+
 ## Condiciones de compilación
 
-{{% details summary="Enlaces de interes" %}}
+{{% details summary="Enlaces de interés" %}}
 * <https://golang.org/pkg/go/build/#hdr-Build_Constraints>
 * <https://www.youtube.com/watch?v=COCUqAwAbD0&t=0s&index=31&list=PL5MnW0XCND7IjWv810mg4H81BxYN8BPQh>
 {{% /details %}}
@@ -1902,9 +2302,11 @@ Permiten establecer condiciones para el compilador, como usar el archivo para
 ciertas arquitecturas o sistemas operativos, deben aparecer entre las primeras líneas, incluso antes de `package`. Para usarlas, solo hace falta un comentario
 como este `// +build CONDICION [...]`
 
+# Buenas prácticas
+
 # Funcionalidades excluidas
 
-{{% details summary="Enlaces de interes" %}}
+{{% details summary="Enlaces de interés" %}}
 * <https://golang.org/doc/faq#Design>
 * <https://www.youtube.com/watch?v=k9Zbuuo51go>
 {{% /details %}}
@@ -2018,7 +2420,7 @@ func Reduce(s []int, f func(int, int) int, a int) int {
 
 # Filosofía, proverbios y citas
 
-{{% details summary="Enlaces de interes" %}}
+{{% details summary="Enlaces de interés" %}}
 * <https://www.youtube.com/watch?v=PAAkCSZUG1c>
 {{% /details %}}
 

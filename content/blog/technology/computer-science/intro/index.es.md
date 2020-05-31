@@ -112,7 +112,7 @@ representa la unidad mínima de información, conocida como el bit.
 
 Aunque en teoría esto es cierto, las computadoras trabajan procesando
 secuencias de bits, pues un bit no contiene suficiente información para
-realizar tareas complejas. A estas secuencias se les llama bytes y de hecho es
+realizar tareas complejas. A estas secuencias se les llama bytes y de hecho son
 la unidad mínima de almacenamiento.
 
 El tamaño de un byte es arbitrario, pero por conveniencia se usan 8 bits, pues
