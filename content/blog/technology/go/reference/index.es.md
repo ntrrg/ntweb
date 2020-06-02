@@ -296,24 +296,24 @@ representan valores de verdad (verdadero o falso) que normalmente son usados
 para controlar el flujo de los programas.
 
 Aunque en teoría se pueden representar con 1 bit, su tamaño depende de la
-implementación del compilador y de la arquitectura donde trabaje. Generalmente
-ocupará 1 byte, que por ahora es la unidad mínima de almacenamiento y el
-estándar dice que son 8 bits.
+implementación del compilador y de la arquitectura donde trabaje, pero
+generalmente ocupa 1 byte, que es la unidad mínima de almacenamiento y por
+ahora el estándar dice que su tamaño es de 8 bits.
 
-### Representación sintáctica
+**Representación sintáctica:**
 
 ```go
 bool
 ```
 
-Ejemplos
+**Ejemplos:**
 
 ```go
 true
 false
 ```
 
-### Valor cero
+**Valor cero:**
 
 ```go
 false
@@ -1433,6 +1433,55 @@ nil
 <https://tour.golang.org/basics/13>
 
 <https://golang.org/ref/spec#Conversions>
+
+# Identificadores
+
+{{% details summary="Enlaces de interés" %}}
+* <https://golang.org/ref/spec#Identifiers>
+* <https://en.wikipedia.org/wiki/Template:General_Category_(Unicode)>
+* <https://www.compart.com/en/unicode/category>
+{{% /details %}}
+
+Son los nombres que se asignan a los elementos del programa, como por ejemplo
+los tipos, las constantes, las variables, las funciones, etc... Un
+identificador es un conjunto de letras (Unicode Lu, Ll, Lt, Lm y Lo), números
+(Unicode Nd) y guiones bajos (`_`), pero el primer caracter no puede ser un
+número.
+
+Cuando un paquete es importado, solo sus identificadores exportados serán
+accesibles por medio de un identificador calificado, que es un identificador
+creado por el nombre del paquete, un punto (`.`) y el identificador del
+elemento.
+
+```go
+import "fmt" // Paquete
+
+fmt.Println // Identificador calificado
+```
+
+Para exportar un identificador se debe usar una letra mayúscula (Unicode Lu)
+como primer caracter. Esto también afecta a los campos de las estructuras y los
+métodos de los tipos de datos.
+
+Los siguientes identificadores no deben ser utilizados pues tienen un
+significado especial para Go: `append`, `bool`, `break`, `byte`, `cap`, `case`,
+`chan`, `close`, `complex`, `complex64`, `complex128`, `const`, `continue`,
+`copy`, `default`, `defer`, `delete`, `else`, `error`, `fallthrough`, `false`,
+`float32`, `float64`, `for`, `func`, `go`, `goto`, `if`, `imag`, `import`,
+`int`, `int8`, `int16`, `int32`, `int64`, `interface`, `iota`, `len`, `make`,
+`map`, `new`, `nil`, `package`, `panic`, `print`, `println`, `range`, `real`,
+`recover`, `return`, `rune`, `select`, `string`, `struct`, `switch`, `true`,
+`type`, `uint`, `uint8`, `uint16`, `uint32`, `uint64`, `uintptr`, `var`.
+
+**Ejemplos:**
+
+```go
+a
+_x9
+español
+αβ
+Exportado
+```
 
 # Constantes
 
