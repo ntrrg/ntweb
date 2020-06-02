@@ -21,7 +21,7 @@ actions:
         value: monokai
   - id: cache-mode
     text: Cache
-    help: Populating cache will make the whole site available offline, this actions is done in background.
+    help: Populating cache will make the whole site available offline.
     options:
       - text: Enable
         value: enable

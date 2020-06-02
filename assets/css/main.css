@@ -327,6 +327,13 @@ figure.right figcaption {
   bottom: 1em;
 }
 
+@media (min-width: 1024px) {
+  .privacy-alert {
+    width: 80ex;
+    left: calc(50% - 40ex)
+  }
+}
+
 .privacy-alert::after {
   content: "X";
 

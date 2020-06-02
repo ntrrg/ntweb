@@ -21,7 +21,7 @@ actions:
         value: monokai
   - id: cache-mode
     text: Cache
-    help: Cargar el cache hará que todo el sitio web esté disponible sin conexión, esta acción es realizada en segundo plano.
+    help: Cargar el cache hará que todo el sitio web esté disponible sin conexión.
     options:
       - text: Activar
         value: enable
