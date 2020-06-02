@@ -53,10 +53,8 @@ async function setCache(mode) {
         for (let i = 0; i < max; ++i) {
           const url = urls[i]
           progress.innerText = `${parseInt((i + 1) * 100 / max)}% ${url}`
-          swPostMessage({action: 'add', value: url})
+          await fetch(url).catch(() => {})
         }
-
-        progress.innerText = ''
       }
 
       break
