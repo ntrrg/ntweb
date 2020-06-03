@@ -2,8 +2,9 @@
 {{ $code := .Get "code" }}
 {{ $font := .Get "font" }}
 {{ $theme := .Get "theme" }}
+{{ $class := .Get "class" }}
 
-<figure class="mermaid-chart">
+<figure class="mermaid-chart {{ with $class }}{{ . }}{{ end }}">
   <div class="mermaid-output"></div>
 
   {{ with $caption }}

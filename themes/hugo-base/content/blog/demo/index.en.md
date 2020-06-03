@@ -649,7 +649,7 @@ Displays the chart source code.
 {{% /param %}}
 
 {{% param name="class" %}}
-Details `class` HTML attribute.
+Figure `class` HTML attribute.
 {{% /param %}}
 
 {{% param name="SOURCE_CODE" %}}
