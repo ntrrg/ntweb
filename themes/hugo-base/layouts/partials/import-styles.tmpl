@@ -3,14 +3,14 @@
 
 {{ $force := .Scratch.Get "forceBundle" }}
 
-{{ if eq $bundle nil }}
+{{ if or (eq $bundle nil) (and (eq hugo.Environment "development") (ne $force true)) }}
   {{ range $sheets }}
-    <link rel="stylesheet" type="text/css" href="{{ . }}"/>
-  {{ end }}
-{{ else if and (eq hugo.Environment "development") (ne $force true) }}
-  {{ range $sheets }}
-    {{ $sheet := resources.Get . }}
-    <link rel="stylesheet" type="text/css" href="{{ $sheet.Permalink }}"/>
+    {{ if strings.HasPrefix . "http" }}
+      <link rel="stylesheet" type="text/css" href="{{ . }}"/>
+    {{ else }}
+      {{ $sheet := resources.Get . }}
+      <link rel="stylesheet" type="text/css" href="{{ $sheet.Permalink }}"/>
+    {{ end }}
   {{ end }}
 {{ else }}
   {{ if gt (len $sheets) 0 }}

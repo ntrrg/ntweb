@@ -17,10 +17,11 @@
 </figure>
 
 {{ if ne ($.Page.Scratch.Get "mermaid") true }}
-  {{ $src := resources.Get "vendor/mermaid-v8.4.6.js" | minify | fingerprint }}
-
-  <script defer src="{{ $src.Permalink }}"
-          integrity="{{ $src.Data.Integrity }}"></script>
+  {{ $scripts := slice }}
+  {{ $scripts = $scripts | append "vendor/mermaid-v8.4.6.js" }}
+  {{ .Scratch.Set "scripts" $scripts }}
+  {{ .Scratch.Set "mode" "defer" }}
+  {{ partial "import-scripts.tmpl" . }}
 
   <script>
     window.addEventListener('load', () => {

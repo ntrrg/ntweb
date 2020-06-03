@@ -25,6 +25,12 @@
 </div>
 
 {{ if ne ($.Page.Scratch.Get "go-playground") true }}
+  {{ $scripts := slice }}
+  {{ $scripts = $scripts | append "vendor/base64js-v1.3.1.min.js" }}
+  {{ .Scratch.Set "scripts" $scripts }}
+  {{ .Scratch.Set "mode" "defer" }}
+  {{ partial "import-scripts.tmpl" . }}
+
   <script>
     async function getGoPlaygroundLink(e) {
       const goPlaygroundURL = '{{ $.Page.Site.Params.goPlayground }}'
@@ -42,7 +48,7 @@
 
       const res = await fetch(goPlaygroundURL + '/share', {
         method: 'POST',
-        body: atob(code)
+        body: base64Decode(code)
       }).catch((err) => {
         link.title = err
         link.innerText = '{{ i18n "SHORTCODE_GO_PLAYGROUND_ERROR" }}'

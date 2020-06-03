@@ -1,13 +1,3 @@
-function base64Encode(str) {
-  const encoder = new TextEncoder()
-  return base64js.fromByteArray(encoder.encode(str))
-}
-
-function base64Decode(str) {
-  const decoder = new TextDecoder()
-  return decoder.decode(base64js.toByteArray(str));
-}
-
 async function buildSearchIndex() {
   const input = document.querySelector('#search-box input')
   input.setAttribute('disabled', '')

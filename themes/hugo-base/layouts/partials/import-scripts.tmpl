@@ -4,14 +4,15 @@
 
 {{ $force := .Scratch.Get "forceBundle" }}
 
-{{ if eq $bundle nil }}
+{{ if or (eq $bundle nil) (and (eq hugo.Environment "development") (ne $force true)) }}
   {{ range $scripts }}
-    <script {{ $mode | safeHTMLAttr }} src="{{ . }}"></script>
-  {{ end }}
-{{ else if and (eq hugo.Environment "development") (ne $force true) }}
-  {{ range $scripts }}
-    {{ $script := resources.Get . }}
-    <script {{ $mode | safeHTMLAttr }} src="{{ $script.Permalink }}"></script>
+    {{ if strings.HasPrefix . "http" }}
+      <script {{ $mode | safeHTMLAttr }} src="{{ . }}"></script>
+    {{ else }}
+      {{ $script := resources.Get . }}
+      <script {{ $mode | safeHTMLAttr }}
+              src="{{ $script.Permalink }}"></script>
+    {{ end }}
   {{ end }}
 {{ else }}
   {{ if gt (len $scripts) 0 }}
