@@ -295,29 +295,83 @@ Nombrados así en honor a [George Boole][], también son conocidos como lógicos
 representan valores de verdad (verdadero o falso) que normalmente son usados
 para controlar el flujo de los programas.
 
-Aunque en teoría se pueden representar con 1 bit, su tamaño depende de la
-implementación del compilador y de la arquitectura donde trabaje, pero
-generalmente ocupa 1 byte, que es la unidad mínima de almacenamiento y por
-ahora el estándar dice que su tamaño es de 8 bits.
-
 **Representación sintáctica:**
 
 ```go
 bool
 ```
 
-**Ejemplos:**
+**Representación literal:**
+
+No existen booleanos literales en Go, de hecho este tipo de dato se obtiene
+usando los operadores de comparación.
 
 ```go
-true
-false
+0 == 0 // Verdadero
+0 != 0 // Falso
 ```
+
+Existen dos constantes predefinidas que permiten usar estos valores sin tener
+que usar los operadores de comparación.
+
+```go
+true  // 0 == 0
+false // 0 != 0
+```
+
+Pero se debe tener cuidado de no reescribir estos identificadores.
+
+{{< go-playground >}}
+```go
+package main
+
+import (
+  "fmt"
+)
+
+const true = 0 != 0
+
+func main() {
+  fmt.Println(true)
+}
+```
+{{< /go-playground >}}
 
 **Valor cero:**
 
 ```go
 false
 ```
+
+**Implementación:**
+
+Aunque en teoría se pueden representar con 1 bit, su tamaño depende de la
+técnica usada por el compilador y de la arquitectura donde trabaje, pero
+generalmente ocupan 1 byte, que es la unidad mínima de almacenamiento y por
+ahora el estándar dice que su tamaño es de 8 bits.
+
+{{< go-playground >}}
+```go
+package main
+
+import (
+  "fmt"
+  "unsafe"
+)
+
+func main() {
+  x, y := true, false
+
+  fmt.Println("true")
+  fmt.Printf("  Tamaño: %v\n", unsafe.Sizeof(x))
+  fmt.Printf("  Bits: %08b\n", *(*byte)(unsafe.Pointer(&x)))
+
+  fmt.Println("false")
+  fmt.Printf("  Tamaño: %v\n", unsafe.Sizeof(y))
+  fmt.Printf("  Bits: %08b\n", *(*byte)(unsafe.Pointer(&y)))
+}
+```
+{{< /go-playground >}}
 
 ## Numéricos
 
@@ -1448,10 +1502,9 @@ identificador es un conjunto de letras (Unicode Lu, Ll, Lt, Lm y Lo), números
 (Unicode Nd) y guiones bajos (`_`), pero el primer caracter no puede ser un
 número.
 
-Cuando un paquete es importado, solo sus identificadores exportados serán
-accesibles por medio de un identificador calificado, que es un identificador
-creado por el nombre del paquete, un punto (`.`) y el identificador del
-elemento.
+Cuando un paquete es importado, solo sus identificadores exportados son
+accesibles por medio de un identificador calificado, que es la unión del nombre
+del paquete, un punto (`.`) y el identificador del elemento.
 
 ```go
 import "fmt" // Paquete
@@ -1463,24 +1516,43 @@ Para exportar un identificador se debe usar una letra mayúscula (Unicode Lu)
 como primer caracter. Esto también afecta a los campos de las estructuras y los
 métodos de los tipos de datos.
 
-Los siguientes identificadores no deben ser utilizados pues tienen un
-significado especial para Go: `append`, `bool`, `break`, `byte`, `cap`, `case`,
-`chan`, `close`, `complex`, `complex64`, `complex128`, `const`, `continue`,
-`copy`, `default`, `defer`, `delete`, `else`, `error`, `fallthrough`, `false`,
-`float32`, `float64`, `for`, `func`, `go`, `goto`, `if`, `imag`, `import`,
-`int`, `int8`, `int16`, `int32`, `int64`, `interface`, `iota`, `len`, `make`,
-`map`, `new`, `nil`, `package`, `panic`, `print`, `println`, `range`, `real`,
-`recover`, `return`, `rune`, `select`, `string`, `struct`, `switch`, `true`,
-`type`, `uint`, `uint8`, `uint16`, `uint32`, `uint64`, `uintptr`, `var`.
-
 **Ejemplos:**
 
 ```go
 a
 _x9
-español
+áéíóúñ
 αβ
 Exportado
+```
+
+Los siguientes identificadores no deben ser utilizados pues tienen un
+significado especial para Go:
+
+```go
+// Palabras reservadas
+break      case    chan     const        continue
+default    defer   else     fallthrough  for
+func       go      goto     if           import
+interface  map     package  range        return
+select     struct  switch   type         var
+
+// Tipos de datos
+bool     byte     complex64  complex128  error
+float32  float64  int        int8        int16
+int32    int64    rune       string      uint
+uint8    uint16   uint32     uint64      uintptr
+
+// Constantes
+true  false  iota
+
+// Valor cero
+nil
+
+// Funciones
+append   cap   close    complex  copy   delete
+imag     len   make     new      panic  print
+println  real  recover
 ```
 
 # Constantes
@@ -1501,6 +1573,17 @@ x + y // (2+3i)
 ```
 
 # Variables
+
+# Operadores
+
+```go
++    &     +=    &=     &&    ==    !=    (    )
+-    |     -=    |=     ||    <     <=    [    ]
+*    ^     *=    ^=     <-    >     >=    {    }
+/    <<    /=    <<=    ++    =     :=    ,    ;
+%    >>    %=    >>=    --    !     ...   .    :
+     &^          &^=
+```
 
 # Estructuras de repetición
 
