@@ -23,22 +23,8 @@
 
       <tbody>
         {{ partial "get-refs.tmpl" . }}
-        {{ $refs := .Scratch.Get "refs" }}
-        {{ $slug := .Scratch.Get "refsSlug" }}
 
-        {{ $pages := slice }}
-
-        {{ range $refs.Pages }}
-          {{ $weight := 999999 }}
-
-          {{ if isset .Params "relsweight" }}
-            {{ $weight = index .Params.relsweight $slug }}
-          {{ end }}
-
-          {{ $pages = $pages | append (dict "Page" . "Weight" $weight) }}
-        {{ end }}
-
-        {{ range $i, $x := sort $pages "Weight" }}
+        {{ range $i, $x := .Scratch.Get "refs" }}
           {{ $page := .Page }}
           {{ $active := "" }}
 
@@ -57,3 +43,4 @@
     {{ end }}
   {{ end }}
 </section>
+

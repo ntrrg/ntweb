@@ -1,7 +1,23 @@
 {{ $slug := .File.Dir | strings.TrimSuffix "/" | printf "/%s" }}
 {{ $slug = replace $slug "/" "." }}
-{{ $refs := .Site.GetPage (printf "/rels/%s" $slug) }}
+{{ $refs := slice }}
 
-{{ .Scratch.Set "refsSlug" $slug }}
+{{ $ref := .Site.GetPage (path.Join "/rels/" $slug) }}
+{{ $pages := slice }}
+
+{{ range $ref.Pages }}
+  {{ $weight := 999999 }}
+
+  {{ if isset .Params "relsweight" }}
+    {{ $weight = index .Params.relsweight $slug }}
+  {{ end }}
+
+  {{ $pages = $pages | append (dict "Page" . "Weight" $weight) }}
+{{ end }}
+
+{{ range sort $pages "Weight" }}
+  {{ $refs = $refs | append .Page }}
+{{ end }}
+
 {{ .Scratch.Set "refs" $refs }}
 

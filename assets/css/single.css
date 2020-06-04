@@ -58,10 +58,6 @@
 
   /* Series */
 
-.article-series {
-  text-align: center;
-}
-
 .article-series-serie {
   margin: 1em auto;
 }
@@ -78,6 +74,10 @@
 
 .article-series-serie td a {
   color: inherit;
+}
+
+.article-series-serie td {
+  font-size: 0.85em;
 }
 
 .article-series-serie td.is-active {

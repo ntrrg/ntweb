@@ -51,27 +51,18 @@
 
             "refs": [
               {{ partial "get-refs.tmpl" . }}
-              {{ $slug := .Scratch.Get "refsSlug" }}
 
-              {{ with .Scratch.Get "refs" }}
-                {{ $i := 0 }}
-                {{ range $i, $x := .Pages }}
-                  {{ if ne $i 0 }},{{ end }}
-                  {{ $weight := 999999 }}
+              {{ $i := 0 }}
+              {{ range $i, $x := .Scratch.Get "refs" }}
+                {{ if ne $i 0 }},{{ end }}
 
-                  {{ if isset .Params "relsweight" }}
-                    {{ $weight = index .Params.relsweight $slug }}
-                  {{ end }}
+                {
+                  "url": {{ jsonify .Permalink }},
+                  "type": {{ jsonify .Type }},
+                  "title": {{ jsonify .Title }}
+                }
 
-                  {
-                    "url": {{ jsonify .Permalink }},
-                    "type": {{ jsonify .Type }},
-                    "title": {{ jsonify .Title }},
-                    "weight": {{ jsonify $weight }}
-                  }
-
-                  {{ $i = add $i 1 }}
-                {{ end }}
+                {{ $i = add $i 1 }}
               {{ end }}
             ],
             "rels": [
