@@ -10,6 +10,7 @@ tags:
   - lenguajes-de-programación
   - go
 toc: true
+comments: false
 ---
 
 [Go license]: https://golang.org/LICENSE
@@ -283,6 +284,16 @@ sean literalmente 0, sino que los identifica como *vacío* en su contexto. En
 analogía, cuando se habla de personas, su valor cero sería *nadie*; cuando se
 habla de objetos, su valor cero sería *nada*; y así dependiendo del contexto.
 
+{{% note %}}
+Para explicar la implementación de los tipos de datos muestro cómo es tratada
+la información por el lenguaje y cómo es almacenada en memoria.
+
+Debido a que esto puede depender de la arquitectura donde se use el lenguaje,
+estos ejemplos probablemente no sean exactos e incluso incorrectos en otras
+arquitecturas, específicamente con tipos de datos que usan más de un byte de
+memoria (ver [Endianness](./../../computer-science/endianness/)).
+{{% /note %}}
+
 ## Booleanos
 
 {{% details summary="Enlaces de interés" %}}
@@ -399,77 +410,32 @@ espacio de memoria que se reserve, es decir, el programador tiene la capacidad
 de especificar si quiere un número entero que ocupe `N` bits de memoria, donde
 `N` puede ser 8, 16, 32 o 64 (1, 2, 4 y 8 bytes respectivamente).
 
-Existen dos tipos de números enteros, o mejor dicho, dos métodos de
-representación: el primero es la conversión binaria tradicional, pero solo
-puede ser usada para procesar números positivos; el segundo es llamado
-*Complemento a dos* y permite representar tanto números positivos como
-negativos de una manera bastante ingeniosa, pero la máxima cantidad
-representable se reduce a la mitad.
-
-```
-10101010 -> 170
-⬑ 8 bits -> 0 - 255
-
-⬐ Signo
-10101010 -> -86
- ⬑ Números, 7 bits -> -128 - 127
-
-1010101010101010 -> 43690
-⬑ 16 bits -> 0 - 65535
-
-⬐ Signo
-0101010101010101 -> 21845
- ⬑ Números, 15 bits -> -32768 - 32767
-
-10101010101010101010101010101010 -> 2863311530
-⬑ 32 bits -> 0 - 4294967295
-
-⬐ Signo
-10101010101010101010101010101010 -> -1431655766
- ⬑ Números, 31 bits -> -2147483648 - 2147483647
-
-1010101010101010101010101010101010101010101010101010101010101010 -> 12297829382473034410
-⬑ 64 bits -> 0 - 18446744073709551615
-
-⬐ Signo
-0101010101010101010101010101010101010101010101010101010101010101 -> 6148914691236517205
- ⬑ Números, 63 bits -> -9223372036854775808 - 9223372036854775807
-```
-
-Además de números decimales, es posible usar otras notaciones como binarios,
-octales y hexadecimales para expresar enteros literales. Se puede usar el guión
-bajo (`_`) para separar los números y mejorar su legibilidad.
-
-#### Representación sintáctica
+**Representación sintáctica:**
 
 ```go
-// Enteros sin signo
+// Sin signo
+uint8  uint16  uint32  uint64
 
-uint8
-uint16
-uint32
-uint64
-
-// Enteros con signo
-
-int8
-int16
-int32
-int64
+// Con signo
+int8  int16  int32  int64
 
 // Alias
+byte // -> uint8
+rune // -> uint32, ver Cadenas para más información
 
-byte // Equivale a uint8
-rune // Equivale a uint32, ver Cadenas para más detalles
-
-// Dependientes de la arquitectura del sistema operativo
-
-uint    // Equivale a uint32 o uint64
-int     // Equivale a int32 o int64
-uintptr // Permite almacenar direcciones de memoria
+// Dependientes de la arquitectura
+uint    // -> uint32 o uint64
+int     // -> int32 o int64
+uintptr // -> uint32 o uint64, para almacenar espacios de memoria
 ```
 
-Ejemplos
+**Representación literal:**
+
+Además de números decimales, es posible usar otras notaciones como binarios,
+octales y hexadecimales para expresar enteros literales.
+
+Se puede usar el guión bajo (`_`) para separar los números y mejorar su
+legibilidad.
 
 ```go
 5     // Decimal
@@ -518,10 +484,48 @@ Ejemplos
 0x_2001_0db8_0000_0000_0000_ff00_0042_8329 // Dirección IPv6
 ```
 
-#### Valor cero
+**Valor cero:**
 
 ```go
 0
+```
+
+**Implementación:**
+
+Existen dos métodos de representación: el primero es la conversión binaria
+tradicional, pero solo puede ser usada para procesar números positivos; el
+segundo es llamado *Complemento a dos* y permite representar tanto números
+positivos como negativos de una manera bastante ingeniosa, pero la máxima
+cantidad representable se reduce a la mitad.
+
+```
+10101010 -> 170
+⬑ 8 bits -> 0 - 255
+
+⬐ Signo
+10101010 -> -86
+ ⬑ Números, 7 bits -> -128 - 127
+
+1010101010101010 -> 43690
+⬑ 16 bits -> 0 - 65535
+
+⬐ Signo
+0101010101010101 -> 21845
+ ⬑ Números, 15 bits -> -32768 - 32767
+
+10101010101010101010101010101010 -> 2863311530
+⬑ 32 bits -> 0 - 4294967295
+
+⬐ Signo
+10101010101010101010101010101010 -> -1431655766
+ ⬑ Números, 31 bits -> -2147483648 - 2147483647
+
+1010101010101010101010101010101010101010101010101010101010101010 -> 12297829382473034410
+⬑ 64 bits -> 0 - 18446744073709551615
+
+⬐ Signo
+0101010101010101010101010101010101010101010101010101010101010101 -> 6148914691236517205
+ ⬑ Números, 63 bits -> -9223372036854775808 - 9223372036854775807
 ```
 
 ### Punto flotante

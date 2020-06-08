@@ -1,14 +1,15 @@
 ---
 title: Introducción a la Informática
 publishdate: 2020-03-17T11:00:00-04:00
-date: 2020-03-20T05:00:00-04:00
+date: 2020-06-05T15:20:00-04:00
 description: Fundamentos de la informática. Orientado a personas sin conocimiento previo, pero también puede ser interesante para los que ya están familiarizados con la tecnología.
 rels:
-  - .series.software-engineering
+  - .series.technology.software-engineering
 relsweight:
-  .series.software-engineering: 1
+  .series.technology.software-engineering: 1
 tags:
   - tecnología
+  - ciencia-de-la-computación
   - fundamentos
   - programación
   - hardware
@@ -88,39 +89,6 @@ Otros objetos que usualmente contienen computadoras son:
 * Electrodomésticos
 * Vehículos
 
-## Representación de la información
-
-Actualmente todos los autómatas programables son máquinas electrónicas, debido
-a esto todo el proceso de automatización está orientado a la representación de
-la información como electricidad o magnetismo. Hasta ahora, la forma más
-confiable para esta tarea es la digitalización, que consiste en transformar
-frecuencias y señales en ceros y unos.
-
-¿Pero cómo es posible escribir libros, capturar imágenes del mundo real, grabar
-sonidos, jugar videojuegos y tener todas las utilidades que se tienen en las
-computadoras con solo ceros y unos? Para lograr realizar todas estas
-actividades en una computadora, los profesionales de la electrónica y la
-informática han ido desarrollando métodos de representación que se
-establecieron como estándares de la industria, por lo que la mayoría de las
-computadoras son fabricadas respetando estos estándares.
-
-Las computadoras no usan literalmente los símbolos 0 y 1, en realidad es solo
-una abstracción que permite al humano entender con mayor facilidad su
-funcionamiento. Dentro de ellas hay millones de canales, cada canal puede (1) o
-no (0) tener un flujo de electricidad, y la interpretación de este estado
-representa la unidad mínima de información, conocida como el bit.
-
-Aunque en teoría esto es cierto, las computadoras trabajan procesando
-secuencias de bits, pues un bit no contiene suficiente información para
-realizar tareas complejas. A estas secuencias se les llama bytes y de hecho son
-la unidad mínima de almacenamiento.
-
-El tamaño de un byte es arbitrario, pero por conveniencia se usan 8 bits, pues
-las computadoras actuales son la evolución de las primeras máquinas que
-decidieron usar este valor para realizar sus cálculos. Cambiar el tamaño de un
-byte en estos tiempos, significa redefinir el proceso de representación de la
-información que se conoce hasta hoy.
-
 # Algoritmos (Software)
 
 La palabra algoritmo proviene de la latinización del nombre del matemático
@@ -192,6 +160,51 @@ hagan falta unos pasos extras donde se necesitará una escalera, por lo que el
 algoritmo deberá ser un poco diferente dependiendo de la estatura de la persona
 que lo ejecute.
 
+# Conclusiones
+
+En resumen, la informática consiste en sistematizar y automatizar procesos,
+pero con los grandes avances tecnológicos que se han logrado estos últimos años
+y lo complejas que se han vuelto sus aplicaciones, es imposible que un
+profesional de la informática pueda cumplir con todos los perfiles del mercado.
+
+Algunas de las actividades que desempeñan los profesionales de esta área son:
+
+* Desarrollo de Software
+  * Desarrollo de Firmware
+  * Desarrollo de Aplicaciones de escritorio
+  * Desarrollo de Videojuegos
+  * Desarrollo Web
+    * Desarrollo Frontend
+    * Desarrollo Backend
+    * Desarrollo Fullstack
+  * Desarrollo Móvil
+  * Desarrollo de Realidad Virtual/Realidad Aumentada
+  * Desarrollo de Aplicaciones distribuidas
+* Administración de Sistemas
+  * Servicio Técnico
+  * Administración de Servidores
+    * Administración de Bases de Datos
+  * Administración de Sistemas Cloud
+* Investigación
+  * Educación Universitaria
+  * Ciencia de la Computación
+    * Inteligencia Artificial
+    * Computación Distribuida
+* Análisis y Sistematización
+  * Sistematización de Procesos
+  * Arquitectura de Sistemas Computacionales
+  * Modelado de Bases de Datos
+  * Análisis de Información y Estadística
+* Gerencia y Gestión de proyectos
+* ...
+
+**Nota:** se debe resaltar que cada perfil se subdivide en los lenguajes de
+programación y herramientas que se usen.
+
+El nivel de complejidad de cada perfil sigue expandiéndose en cada área, por lo
+que es muy probable que en un futuro, cada uno de estos temas representen una
+carrera universitaria completa cada uno.
+
 # Atribuciones
 
 **HarvardX.** *CS50's Introduction to Computer Science.* <https://courses.edx.org/courses/course-v1:HarvardX+CS50+X/course/>
@@ -201,4 +214,13 @@ que lo ejecute.
 **Wikipedia.** *Informática.* <https://es.wikipedia.org/wiki/Inform%C3%A1tica>
 
 **Wikipedia.** *Algorithm.* <https://en.wikipedia.org/wiki/Algorithm>
+
+# Registro de cambios
+
+* **2020/06/04:** Decidí mover la explicación sobre cómo es representada la
+  información a su [propio artículo](./../data/) para dedicarle la suficiente
+  atención que se merece y disminuir la complejidad de este artículo.
+
+* **2020/06/05:** Agregué la sección de [Conclusiones](#conclusiones) para dar
+  ideas sobre que puede hacer un profesional de la informática.
 
