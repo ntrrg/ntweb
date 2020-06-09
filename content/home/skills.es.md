@@ -17,7 +17,7 @@ que busque productividad y eficiencia necesita. Programé con PHP, Python y
 JavaScript (Node.js) en el pasado. También terminé la 42 C Piscine en Silicon
 Valley, así que tengo conocimiento básico de C.
 
-# Habilidades:
+# Habilidades
 
 * **Lenguajes de programación:** Go, C, JavaScript, Python.
 
