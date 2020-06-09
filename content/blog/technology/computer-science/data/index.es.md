@@ -1,6 +1,7 @@
 ---
 title: Representación de la información
-date: 2020-06-08T16:00:00-04:00
+publishdate: 2020-06-08T16:00:00-04:00
+date: 2020-06-09T10:00:00-04:00
 description: De humanos a autómatas, un vistazo al proceso de transformar la información en algo que las computadoras puedan entender.
 rels:
   - .series.technology.software-engineering
@@ -65,7 +66,7 @@ ejemplo:
   frecuencia de las ondas.
 
 Para las computadoras estos 0s y 1s representan la unidad mínima de
-información, conocida como el bit, pero generalmente, ellas trabajan procesando
+información, conocida como el bit, pero generalmente ellas trabajan procesando
 secuencias de bits, pues un bit no contiene suficiente información para
 realizar tareas comunes. A esta secuencia se le llama byte y de hecho es la
 unidad mínima de almacenamiento.
@@ -73,7 +74,8 @@ unidad mínima de almacenamiento.
 ```
         ⬐ bit
  10101010
-└────────┘ ← byte
++--------+
+   byte
 ```
 
 El tamaño de un byte es arbitrario, pero por conveniencia se usan 8 bits, pues
@@ -96,8 +98,9 @@ hardware antiguo.
 ```
          ⬐ bit
   10101010  10101010  10101010  10101010
- └────────┘ ← byte
-└────────────────────────────────────────┘
+ +--------+
+    byte
++----------------------------------------+
            word (CPU de 32 bit)
 ```
 
@@ -132,8 +135,9 @@ puede significar diferente cosas:
 * Como un color, usando [colores de 8 bits](https://en.wikipedia.org/wiki/8-bit_color)
   el resultado es {{< img src="images/8bit-color.png" style="height: 1em" >}}.
 
-Obviamente para realizar cálculos y tareas más complejas se necesitarán más
-bytes, pero eso ya queda fuera del alcance de esta explicación.
+Y así sucesivamente se pueden ir usando una gran variedad de métodos. Para
+realizar cálculos y tareas más complejas se necesitarán más bytes, pero esto ya
+queda fuera del alcance de este artículo.
 
 # Atribuciones
 
@@ -142,4 +146,8 @@ bytes, pero eso ya queda fuera del alcance de esta explicación.
 **Khan Acedemy.** *Computer science.* <https://www.khanacademy.org/computing/computer-science>
 
 **Wikipedia.** *Digitization.* <https://en.wikipedia.org/wiki/Digitization>
+
+# Registro de cambios
+
+* **2020/06/09:** Arreglé algunos errores tipográficos y de redacción.
 
