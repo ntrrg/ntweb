@@ -1,9 +1,13 @@
 <a
   {{ if strings.HasPrefix .Destination "./" }}
-    {{ $slug := path.Join .Page.File.Dir .Destination }}
+    {{ $url := urls.Parse .Destination }}
+    {{ $slug := path.Join .Page.File.Dir $url.Path }}
 
     {{ with .Page.Site.GetPage $slug }}
-      href="{{ .Permalink | safeURL }}"
+      href="{{ .Permalink | safeURL }}
+            {{- with $url.RawQuery }}?{{ . | safeURL }}{{ end -}}
+            {{- with $url.Fragment }}#{{ . | safeURL }}{{ end -}}
+           "
       title="{{ .Title }}"
     {{ else }}
       {{ warnf "Invalid link reference '%s' in content/%s" .Destination .Page.File }}
