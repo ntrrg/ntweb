@@ -147,6 +147,8 @@ queda fuera del alcance de este artículo.
 
 **Wikipedia.** *Digitization.* <https://en.wikipedia.org/wiki/Digitization>
 
+**Wikipedia.** *Word.* <https://en.wikipedia.org/wiki/Word_(computer_architecture)>
+
 # Registro de cambios
 
 * **2020/06/09:** Arreglé algunos errores tipográficos y de redacción.
