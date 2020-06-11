@@ -8,7 +8,7 @@
             {{- with $url.RawQuery }}?{{ . | safeURL }}{{ end -}}
             {{- with $url.Fragment }}#{{ . | safeURL }}{{ end -}}
            "
-      title="{{ .Title }}"
+      title="{{ .Title }} - {{ .Description }}"
     {{ else }}
       {{ warnf "Invalid link reference '%s' in content/%s" .Destination .Page.File }}
       href="{{ .Destination | safeURL }}"
