@@ -195,9 +195,9 @@ menor.
              +---+---+---+
 ```
 
-¿Será posible ordenar los números sin tener que hacer estos cálculos? ¿Qué tal
-usando ese orden lexicográfico? Ya que suena raro y complicado probablemente
-resuelva todo.
+> ¿Será posible ordenar los números sin tener que hacer estos cálculos? ¿Qué
+> tal usando ese orden lexico..? Ya que suena raro y complicado
+> probablemente resuelva todo.
 
 Como expliqué arriba, consiste en comparar los elementos caracter a caracter
 (como lo hacemos con las palabras).
@@ -262,8 +262,8 @@ Orden decimal (ascendente): 0 1 2 3 4 5 6 7 8 9
              +---+---+---+
 ```
 
-Parece que algo no salió bien.. 😒 ese orden no es tan poderoso como su
-nombre..
+> Parece que algo no salió bien.. 😒 ese orden no es tan poderoso como su
+> nombre..
 
 Como dicen aquí en Venezuela, *«El problema no es la flecha, es el indio»* (que
 debería ser indígena, pero bueno..).
@@ -338,7 +338,7 @@ Bit 25: 0 < 1 ✔
              +---+---+---+
 ```
 
-Ahora sí están ordenados! Ya me gusta este orden lexicoalgo 😎.
+> Ahora sí están ordenados! Ya me gusta este orden lexicoalgo 😎
 
 En resumen, big-endian permite saber el resultado de una comparación sin tener
 que procesar todos los bits de las words y por la naturaleza de su ordenamiento
