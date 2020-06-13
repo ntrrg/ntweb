@@ -102,3 +102,9 @@ ntrrgx@gmail.com
 ntrrgx@gmail.com
 ```
 
+# Refer links
+
+## Google Cloud Platform
+
+<https://gcpsignup.page.link/dMVD>
+

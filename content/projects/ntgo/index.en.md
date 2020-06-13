@@ -1,6 +1,6 @@
 ---
 publishdate: 2018-07-08T21:29:39-04:00
-date: 2020-05-17T17:11:24-04:00
+date: 2020-05-30T06:53:21-04:00
 metadata:
   source-code: https://github.com/ntrrg/ntgo
   license: MIT

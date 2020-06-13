@@ -9,7 +9,7 @@
       {{ range $i, $x := . -}}
         {{- if gt $i 0 }}, {{ end -}}
 
-        <a href="{{ .Permalink | default "#" }}"
+        <a href="{{ .Permalink | default .Params.metadata.website }}"
            title="{{ .Params.metadata.name }}">
           {{ .Title }}</a>
       {{- end }}

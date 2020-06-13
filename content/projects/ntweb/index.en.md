@@ -1,7 +1,7 @@
 ---
 metadata:
   source-code: https://github.com/ntrrg/ntweb
-  license: MIT
+  license: CC BY 4.0 
 title: ntWeb
 description: A small site with great intentions.
 tags:
@@ -346,7 +346,7 @@ full offline experience.
 
 **Requirements:**
 
-* Hugo >= 0.69
+* Hugo >= 0.72
 
 Get the source code
 

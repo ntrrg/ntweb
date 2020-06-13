@@ -1,6 +1,6 @@
 ---
 publishdate: 2018-05-06T22:07:39-04:00
-date: 2020-05-17T14:11:17-04:00
+date: 2020-06-09T10:56:26-04:00
 metadata:
   source-code: https://github.com/ntrrg/docker-hugo
   license: MIT
@@ -24,9 +24,9 @@ comments: true
 
 | Tag | Dockerfile |
 | --: | :-- |
-| `latest`, `0.70.0` | [Dockerfile](https://github.com/ntrrg/docker-hugo/blob/0.70.0/Dockerfile) |
+| `latest`, `0.72.0` | [Dockerfile](https://github.com/ntrrg/docker-hugo/blob/0.72.0/Dockerfile) |
+| `0.70.0` | [Dockerfile](https://github.com/ntrrg/docker-hugo/blob/0.70.0/Dockerfile) |
 | `0.69.2` | [Dockerfile](https://github.com/ntrrg/docker-hugo/blob/0.69.2/Dockerfile) |
-| `0.68.3` | [Dockerfile](https://github.com/ntrrg/docker-hugo/blob/0.68.3/Dockerfile) |
 
 # Usage
 

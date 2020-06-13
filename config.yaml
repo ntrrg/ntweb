@@ -10,7 +10,7 @@ params:
     name: Miguel Angel Rivera Notararigo
     email: ntrrgx@gmail.com
     website: https://ntrrg.dev/
-  singleAuthor: true
+  singleAuthor: false
   image: /favicon-512x512.png
   ampImage: /icon-206x60.png
   articleTypes:
