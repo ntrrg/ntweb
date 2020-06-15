@@ -78,7 +78,7 @@ calcular.
 
 Algunas de las computadoras que se usan a diario son:
 
-* Relojes digitales
+* Relojes
 * Calculadoras
 * Teléfonos
 * Tabletas

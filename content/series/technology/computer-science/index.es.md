@@ -1,6 +1,6 @@
 ---
 title: Ciencia de la Computación
-date: 2020-01-30T09:00:00-04:00
+date: 2020-06-15T09:00:00-04:00
 description: Una compilación de artículos ordenados con la intención de hacer más sencillo familiarizarse con la informática, e incluso profundizar en diferentes temas, sin tener que pasar por esos momentos en los que no se tiene ni idea por donde comenzar o qué hacer después 😂.
 tags:
   - tecnología
@@ -14,11 +14,11 @@ comments: true
 draft: true
 ---
 
+https://roadmap.sh/
+
 http://catalog.mit.edu/subjects/6/
 
 https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/
-
-https://ocw.mit.edu/courses/mathematics/
 
 **Prakhar Srivastav.** *Awesome CS Courses.* <https://github.com/prakhar1989/awesome-courses>
 
@@ -27,6 +27,8 @@ https://ebookfoundation.github.io/free-programming-books/
 # Introducción
 
 {{< card "blog/technology/computer-science/intro" >}}
+
+{{< card "series/math/fundamentals" >}}
 
 https://introtcs.org/public/index.html
 
@@ -181,6 +183,9 @@ https://www.udacity.com/course/intro-to-algorithms--cs215
 
 https://www.geeksforgeeks.org/top-algorithms-and-data-structures-for-competitive-programming/
 
+* Version Control Systems and semantic versioning
+* Licensing
+
 # Sistemas Operativos
 
 http://www.linuxfromscratch.org/
@@ -264,6 +269,19 @@ Pins, [09.03.19 11:16]
 [Forwarded from Miguel Angel]
 Los PTY son una t'ecnica que permiten crear emuladores de terminales sin necesidad de usar la pantalla completa (o incluso sin usarla 😂), de esta manera es que podemos tener un terminal en herramientas de interfaz gr'afica o tener terminales remotos (como telnet, SSH, MOSH...). La t'ecnica consiste solicitar un terminal virtual al archivo /dev/ptmx, este crea dos nuevos archivos, uno (master) que recibe todo los datos para procesarlos (como un computador) y otro (slave) que env'ia y recibe datos (como un terminal), este 'ultimo se almacena en la carpeta /dev/pts/. Si se redireccionan datos a alguno de los archivos en /dev/pts/ se mostrar'an en la sesi'on activa en ese terminal virtual, por ejemplo:  echo "Muajaja" > /dev/pts/0 har'ia que se muestre Muajaja en la sesi'on activa del terminal virtual 0
 ```
+
+```
+alias, cat, cd, chmod, chown, df, diff, echo, exit, find, finger, free, grep,
+groups, gzip, head, history, kill, less, ls, man, mkdir, mv, passwd, ping, ps,
+pwd, shutdown, ssh, sudo, tail, tar, top, uname, w, whoami, dirs, pushd, popd,
+split, rehash 
+```
+
+http://blackskyresearch.net/shelltables.txt
+
+https://www.howtogeek.com/439199/15-special-characters-you-need-to-know-for-bash/
+
+https://medium.com/@indreklasn/here-are-11-console-commands-every-developer-should-know-54e348ef22fa?source=email-a31d0d6d29a8-1573722811021-digest.reader------0-58------------------89f6aa15_5232_4642_9aee_b741a5313d9e-1-----&sectionName=top
 
 # Redes
 

@@ -15,9 +15,11 @@ async function buildSearchIndex() {
     this.field('date')
     this.field('description')
     this.field('content')
+    this.field('tags')
 
     data.forEach(function (doc) {
       doc.content = base64Decode(doc.content)
+      doc.tags = doc.taxonomies.tags
       this.add(doc)
       window.idxData.set(doc.url, doc)
     }, this)
@@ -44,6 +46,7 @@ async function search(q) {
       <li>
         <a href="${page.url}"><strong>${page.title}</strong></a>
         <p>${page.description}</p>
+        <p class="small muted">${page.tags.map((s) => `#${s}`).join(' ')}</p>
       </li>
     `
   }
