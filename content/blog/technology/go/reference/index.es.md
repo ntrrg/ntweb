@@ -111,7 +111,7 @@ package main // -> Definición del paquete
 
 Después de una línea en blanco, se hace el llamado a los paquetes externos, por
 ejemplo, para escribir algo en la salida estándar se debe importar el paquete
-`fmt`.
+`fmt` (ver [Paquetes externos](#paquetes-externos)).
 
 ```go
 import "fmt" // -> Paquetes importados
@@ -159,16 +159,16 @@ que contenga `package NOMBRE`, donde `NOMBRE` es un valor arbitrario y es el
 identificador con el que otros desarrolladores podrán utilizarlo dentro de sus
 programas (ver [Paquetes externos](#paquetes-externos)).
 
-Todos los archivos de un paquete comparten el ámbito global, por lo que al
-declarar un identificador global en un archivo, este podrá ser utilizado en
-cualquier otro archivo (ver [Ámbito](#ámbito)).
-
 Dentro de un paquete pueden existir archivos de prueba, estos son ignorados al
 momento de compilar el paquete, pero serán procesados al usar el comando `go
 test`. Los archivos de prueba pueden usar el mismo nombre de paquete que los
 demás archivos, pero también es posible agregarle el sufijo `_test`, lo que
-permite probar el paquete desde la perspectiva de un usuario (Ver
-[Pruebas](#pruebas)).
+permite probar el paquete desde la perspectiva de un usuario (ver
+[Pruebas](#pruebas) y [Ejemplos](#ejemplos)).
+
+Todos los archivos de un paquete comparten el ámbito global, por lo que al
+declarar un identificador global en un archivo, este podrá ser utilizado en
+cualquier otro archivo (ver [Ámbito](#ámbito)).
 
 Cuando se pretende desarrollar un programa, se debe usar `main` como nombre del
 paquete. `main` es un valor especial que le dice al compilador que la intención
@@ -658,6 +658,11 @@ Ejemplos
 * <https://blog.golang.org/strings>
 * <https://research.swtch.com/godata>
 * [Codificación de texto](./../text-encoding.es.md)
+
+https://medium.com/@thatisuday/string-data-type-in-go-8af2b639478?source=email-a31d0d6d29a8-1564412060086-digest.reader------1-59------------------c532d469_6e32_4882_bdf2_3fef78b1b1dc-1&sectionName=top
+
+https://medium.com/@arindamroy/ultimate-golang-string-formatting-cheat-sheet-234ec92c97da?source=email-a31d0d6d29a8-1567861183904-digest.reader------1-72------------------1d7b57d8_9f84_4952_b6a4_98b369cd75b6-28-----&sectionName=quickReads
+
 {{% /details %}}
 
 Son un conjunto de bytes, cada uno de estos bytes puede representar o ser parte
@@ -868,6 +873,8 @@ multilineal`
 * <https://blog.golang.org/go-slices-usage-and-internals>
 * <https://blog.golang.org/slices>
 * <https://research.swtch.com/godata>
+
+https://medium.com/@thatisuday/the-anatomy-of-arrays-in-go-24429e4491b7?source=email-a31d0d6d29a8-1565621303043-digest.reader------0-59------------------48df5a24_2885_4bc2_9f7f_f6086c816d28-16&sectionName=recommended
 {{% /details %}}
 
 Son un conjunto de elementos de algún tipo de dato asignado arbitrariamente, la
@@ -1019,6 +1026,8 @@ Ejemplos
 * <https://blog.golang.org/slices>
 * <https://research.swtch.com/godata>
 * <https://github.com/golang/go/wiki/SliceTricks>
+
+https://medium.com/@thatisuday/the-anatomy-of-slices-in-go-6450e3bb2b94?source=email-a31d0d6d29a8-1565363247300-digest.reader------1-59------------------d8c67597_cf06_4a6f_a5b3_5fe1b055b8d0-1&sectionName=top
 {{% /details %}}
 
 Al igual que los arreglos, son un conjunto de elementos de un tipo de dato
@@ -1302,6 +1311,8 @@ nil
 * <https://golang.org/ref/spec#Making_slices_maps_and_channels>
 * <https://blog.golang.org/go-maps-in-action>
 * <https://golang.org/ref/spec#Comparison_operators>
+
+https://hackernoon.com/some-insights-on-maps-in-golang-rm5v3ywh
 {{% /details %}}
 
 **Nota:** cada vez que mencione a los arreglos, también hago referencia a los
@@ -1476,9 +1487,112 @@ nil
 <https://tour.golang.org/moretypes/4>
 <https://tour.golang.org/moretypes/5>
 
+https://medium.com/@tsriharsha/go-pointers-demystified-1f0710ec07eb?source=email-a31d0d6d29a8-1567949207790-digest.reader------1-72------------------8bc995d4_3097_48ed_9a8a_a5b3671db869-28-----&sectionName=quickReads
+
 ## Funciones
 
+https://medium.com/@thatisuday/variadic-function-in-go-5d9b23f4c01a?source=email-a31d0d6d29a8-1564151216975-digest.reader------1-59------------------b2899319_64bf_4d5b_85d8_d2f36e4fa32c-1&sectionName=top
+
+https://medium.com/@blanchon.vincent/go-how-does-defer-statement-work-1a9492689b6e?source=email-a31d0d6d29a8-1564584261942-digest.reader------2-59------------------3e0d9573_1bfe_429f_a97a_0cadc9847da0-16&sectionName=recommended
+
+https://medium.com/@lizrice/variables-and-functions-in-go-oh-my-18b71297657?source=email-a31d0d6d29a8-1567861183904-digest.reader------0-72------------------1d7b57d8_9f84_4952_b6a4_98b369cd75b6-28-----&sectionName=quickReads
+
+https://medium.com/rungo/anatomy-of-methods-in-go-f552aaa8ac4a
+
+```
+A estos bloques se les llaman funciones (por eso el `func` al inicio, que viene
+de *«function»*) y su principal utilidad es modularizar y reutilizar el
+código, muy parecidas a los paquetes, solo que a una escala menor; tienen
+cierta sintaxis específica, pero por ahora basta con saber que:
+
+* Se usa la palabra reservada `func` para iniciar la declaración.
+
+* Separado por un espacio en blanco se escribe el nombre de la función
+  (`main` en este caso) y unos paréntesis (`()`).
+
+* Se escribe el código a ejecutar dentro de llaves (`{}`).
+
+Funciones main() e init()
+
+.. Functions
+.. Recursion
+.. Closures
+.. Defer
+.. Recover
+
+.. 10. Funciones
+..     .1. Declaración
+..     .2. Uso
+..     .3. Funciones de orden superior
+..         .1. Funciones anónimas
+..         .2. Decoradores
+..     .4. Funciones predefinidas de Python
+..         .1. del
+..         .2. filter
+..         .3. globals
+..         .4. len
+..         .5. locals
+..         .6. map
+..         .7. max
+..         .8. min
+..         .9. next
+..         .10. range
+..         .11. zip
+
+https://tour.golang.org/basics/4
+https://tour.golang.org/basics/5
+https://tour.golang.org/basics/6
+https://tour.golang.org/basics/7
+https://tour.golang.org/flowcontrol/12
+https://tour.golang.org/flowcontrol/13
+https://blog.golang.org/defer-panic-and-recover
+https://tour.golang.org/moretypes/24
+https://tour.golang.org/moretypes/25
+https://tour.golang.org/methods/5
+
+https://golang.org/doc/codewalk/functions/
+
+Funciones predefinidas
+----------------------
+
+``make``
+
+Métodos
+=======
+
+https://tour.golang.org/methods/1
+https://tour.golang.org/methods/2
+https://tour.golang.org/methods/3
+https://tour.golang.org/methods/4
+https://tour.golang.org/methods/6
+https://tour.golang.org/methods/7
+https://tour.golang.org/methods/8
+
+```
+
 ## Interfaces
+
+https://medium.com/@blanchon.vincent/go-understand-the-empty-interface-2d9fc1e5ec72?source=email-a31d0d6d29a8-1566652227517-digest.reader------1-72------------------b9b80b28_9c12_4cde_a97e_10b142e29d6b-28-----&sectionName=quickReads
+
+```
+https://tour.golang.org/methods/9
+https://tour.golang.org/methods/10
+https://tour.golang.org/methods/11
+https://tour.golang.org/methods/12
+https://tour.golang.org/methods/13
+https://tour.golang.org/methods/14
+https://tour.golang.org/methods/15
+https://tour.golang.org/methods/16
+https://research.swtch.com/interfaces
+
+Interfaces predefinidas
+-----------------------
+
+``error``
+
+https://tour.golang.org/methods/19
+
+```
 
 ## Estructuras
 
@@ -1491,6 +1605,29 @@ nil
 <https://tour.golang.org/basics/13>
 
 <https://golang.org/ref/spec#Conversions>
+
+# Operadores
+
+```go
+Arithmetic
+Logical Operators
+Relational Operators
+
+4. Operadores
+    .1. Asignación
+    .2. Aritmeticos
+    .3. Asignación aumentada
+    .4. Compración
+    .5. Lógicos
+    .6. Binarios
+
++    &     +=    &=     &&    ==    !=    (    )
+-    |     -=    |=     ||    <     <=    [    ]
+*    ^     *=    ^=     <-    >     >=    {    }
+/    <<    /=    <<=    ++    =     :=    ,    ;
+%    >>    %=    >>=    --    !     ...   .    :
+     &^          &^=
+```
 
 # Identificadores
 
@@ -1557,15 +1694,24 @@ nil
 append   cap   close    complex  copy   delete
 imag     len   make     new      panic  print
 println  real  recover
+
+// Identificadores especiales
+init
 ```
 
 # Constantes
+
+https://tour.golang.org/basics/15
+
+https://tour.golang.org/basics/16
 
 * <https://golang.org/ref/spec#Constants>
 * <https://golang.org/ref/spec#Constant_expressions>
 * <https://golang.org/ref/spec#Complex_numbers>
 
 <https://blog.golang.org/constants>
+
+<https://husobee.github.io/golang/compile/time/variables/2015/12/03/compile-time-const.html>
 
 ```go
 const (
@@ -1578,28 +1724,52 @@ x + y // (2+3i)
 
 # Variables
 
-# Operadores
+.. 3. Variables
+..     .1. Declaración
+..     .2. Eliminación
 
-```go
-+    &     +=    &=     &&    ==    !=    (    )
--    |     -=    |=     ||    <     <=    [    ]
-*    ^     *=    ^=     <-    >     >=    {    }
-/    <<    /=    <<=    ++    =     :=    ,    ;
-%    >>    %=    >>=    --    !     ...   .    :
-     &^          &^=
-```
+https://blog.golang.org/gos-declaration-syntax
+https://tour.golang.org/basics/8
+https://tour.golang.org/basics/9
+https://tour.golang.org/basics/10
+https://tour.golang.org/basics/12
+https://tour.golang.org/basics/14
 
-# Estructuras de repetición
+# Ámbito
+
+# Estructuras de control
+
+If
+
+https://tour.golang.org/flowcontrol/5
+https://tour.golang.org/flowcontrol/6
+https://tour.golang.org/flowcontrol/7
+
+Switch
+
+https://tour.golang.org/flowcontrol/9
+https://tour.golang.org/flowcontrol/10
+https://tour.golang.org/flowcontrol/11
 
 ## `for`
 
-# Ámbito
+https://tour.golang.org/flowcontrol/1
+https://tour.golang.org/flowcontrol/2
+https://tour.golang.org/flowcontrol/3
+https://tour.golang.org/flowcontrol/4
+
+https://tour.golang.org/moretypes/16
+https://tour.golang.org/moretypes/17
+
+https://medium.com/@mlowicki/for-statement-and-its-all-faces-in-golang-abcbdc011f81?source=email-a31d0d6d29a8-1581146147068-digest.reader------1-1------------------01531b7f_6b93_450e_9394_af0ec95ae789-1-----&sectionName=top
 
 # Manejo de errores
 
 <https://golang.org/ref/spec#Handling_panics>
 
 <https://blog.golang.org/error-handling-and-go>
+
+https://medium.com/@boltmick1/golang-handling-errors-gracefully-8e27f1db729f?source=email-a31d0d6d29a8-1564241076435-digest.reader------3-59------------------c8286857_9b13_4aef_be99_348604a8e035-1&sectionName=top
 
 * Excepciones y afirmaciones (asserts). Usar estructuras de control (como
   `try {} catch {}`) para manejar los errores puede resultar en flujos
@@ -1610,7 +1780,78 @@ x + y // (2+3i)
   se manejan por medio del mecanismo de retorno múltiple en las funciones. Go
   cuenta con .
 
+https://github.com/upspin/upspin/blob/master/errors/errors.go
+
+https://medium.com/@arindamroy/simple-guide-to-panic-handling-and-recovery-in-golang-72d6181ae3e8?source=email-a31d0d6d29a8-1573458402958-digest.reader------0-59------------------1d028e49_51cc_44e0_bbfd_fd89caf50479-1-----&sectionName=top
+
 # Concurrencia
+
+<https://medium.com/rungo/achieving-concurrency-in-go-3f84cbf870ca>
+
+https://medium.com/@abhishek1987/using-synchronization-primitives-in-go-mutex-waitgroup-once-2e50359cb0a7?source=email-a31d0d6d29a8-1572700255263-digest.reader------0-58------------------6e3c59bc_ad51_4584_b5be_8a413b78a33d-1-----&sectionName=top
+
+https://medium.com/@kharekartik/why-goroutines-are-not-lightweight-threads-7c460c1f155f?source=email-a31d0d6d29a8-1564151216975-digest.reader------2-59------------------b2899319_64bf_4d5b_85d8_d2f36e4fa32c-1&sectionName=top
+
+https://medium.com/@blanchon.vincent/go-buffered-and-unbuffered-channels-29a107c00268?source=email-a31d0d6d29a8-1564755255546-digest.reader------1-38------------------1e51b133_30d1_48c1_b54e_76c82e8c2894-1&sectionName=top
+
+https://medium.com/@blanchon.vincent/go-understand-the-design-of-sync-pool-2dde3024e277?source=email-a31d0d6d29a8-1565363247300-digest.reader------2-59------------------d8c67597_cf06_4a6f_a5b3_5fe1b055b8d0-16&sectionName=recommended
+
+https://medium.com/@michal.bock/managing-groups-of-gorutines-in-go-ee7523e3eaca?source=email-a31d0d6d29a8-1572605532186-digest.reader------0-71------------------3944457b_fb4d_4b24_a987_c56dd8538aa4-27-----&sectionName=icymi
+
+https://medium.com/@rakyll/context-propagation-over-http-in-go-d4540996e9b0?source=email-a31d0d6d29a8-1564326246011-digest.reader------1-59------------------c7458ddf_dd98_4053_8efd_1978c60ba6bd-16&sectionName=recommended
+
+https://medium.com/@jayaganesh1997/concurrency-golang-c65f2dec91db?source=email-a31d0d6d29a8-1567255491972-digest.reader------0-72------------------e277e963_5de1_46b0_b416_cceb8501d0e6-28-----&sectionName=quickReads
+
+https://medium.com/@psinghal04/a-goroutines-gotcha-7d7441c7758f?source=email-a31d0d6d29a8-1567342921634-digest.reader------2-72------------------aaf557d7_0815_464c_8266_3d2bd812442c-28-----&sectionName=quickReads
+
+https://medium.com/@blanchon.vincent/go-concurrency-bugs-in-go-7d3677a1f2a2?source=email-a31d0d6d29a8-1568035050392-digest.reader------0-72------------------fffcbd55_d07d_4594_b621_6aedfb0601b4-28-----&sectionName=quickReads
+
+```
+https://tour.golang.org/concurrency/1
+https://tour.golang.org/concurrency/9
+
+https://vimeo.com/49718712
+https://talks.golang.org/2012/concurrency.slide
+https://www.youtube.com/watch?v=f6kdp27TYZs
+https://www.youtube.com/watch?v=QDDwwePbDtw
+
+https://www.ardanlabs.com/blog/2014/01/concurrency-goroutines-and-gomaxprocs.html
+http://morsmachine.dk/go-scheduler
+https://www.ardanlabs.com/blog/2015/02/scheduler-tracing-in-go.html
+https://www.ardanlabs.com/blog/2013/09/detecting-race-conditions-with-go.html
+
+Canales
+
+https://tour.golang.org/concurrency/2
+https://tour.golang.org/concurrency/3
+https://tour.golang.org/concurrency/4
+https://tour.golang.org/concurrency/5
+https://tour.golang.org/concurrency/6
+
+https://golang.org/doc/codewalk/sharemem/
+
+https://medium.com/@mayank.gupta.6.88/understanding-goroutine-go-channels-in-detail-9c5a28f08e0d?source=email-a31d0d6d29a8-1572869853494-digest.reader------0-58------------------3db022d1_5ef8_46fc_89df_af57f66bf2a7-1-----&sectionName=top
+
+Patrones
+--------
+
+Generator:
+
+Una función que retorna un canal.
+
+https://youtu.be/f6kdp27TYZs?t=14m28s
+
+Multiplexing o FanIn
+
+https://youtu.be/f6kdp27TYZs?t=16m58s
+
+Synced multiplexing
+
+https://youtu.be/f6kdp27TYZs?t=18m28s
+
+```
+
+https://blog.golang.org/context
 
 # Comentarios
 
@@ -2072,9 +2313,125 @@ $ godoc -http :6060 -play
 
 # Paquetes externos
 
+Para usar paquetes externos se usa la palabra reservada `import`, que recibe la
+ruta del módulo y la ruta de la carpeta que contiene al paquete.
+
+```go
+import "go.ntrrg.dev/ntgo/net/http"
+```
+
+Si se importan múltiples paquetes es más conveniente usar la versión compuesta
+de `import`.
+
+```go
+import (
+  "log"
+  "os"
+
+  "go.ntrrg.dev/ntgo/net/http"
+)
+```
+
+Se recomienda que los paquetes importados sean agrupados por su origen y
+ordenados lexicográficamente.
+
+```go
+import (
+  // Biblioteca estándar
+  "log"
+  "os"
+
+  // Paquetes externos
+  "go.ntrrg.dev/ntgo/net/http"
+
+  // Paquetes del mismo módulo
+  "arithmetic/operations"
+)
+```
+
+También es posible usar un nombre alternativo para el paquete externo, para
+esto solo hace falta definir un nuevo identificador justo después de la palabra
+reservada `import`.
+
+```go
+import nthttp "go.ntrrg.dev/ntgo/net/http"
+```
+
+```go
+import (
+  nthttp "go.ntrrg.dev/ntgo/net/http"
+  ntos "go.ntrrg.dev/ntgo/os"
+)
+```
+
+Si se usa `.` como nombre alternativo, todos los identificadores exportados del
+paquete formarán parte del ámbito del archivo.
+
+```go
+import . "go.ntrrg.dev/ntgo/os"
+
+func main() {
+  // os.Copy("b.txt", "a.txt")
+  Copy("b.txt", "a.txt")
+}
+```
+
+Si se usa `_` como nombre alternativo, solo se inicializarán los
+identificadores del paquete y se ejecutarán sus funciones `init`. Esto resulta
+útil para hacer configuraciones especializadas, como con bases de datos.
+
+```go
+import (
+  "database/sql"
+
+  _ "github.com/go-sql-driver/mysql" // Hace configuraciones para MySQL
+)
+```
+
+Aunque regularmente el nombre del paquete es el mismo que el de su carpeta, en
+algunos casos puede resultar útil que esto no sea así, pues por ejemplo, un
+repositorio que contenga APIs para múltiples lenguajes podría usar `mylib-go`
+para identificar que esta carpeta contiene la implementación escrita en Go.
+
+```go
+import "github.com/example/mylib/mylib-go"
+```
+
+Pero sus usuarios deben usar el identificador que se haya definido en la línea
+que contenga `package`, que probablemente sería algo como `mylib`.
+
+## Biblioteca estándar
+
 {{% details summary="Enlaces de interés" %}}
-* <https://blog.golang.org/using-go-modules>
 {{% /details %}}
+
+```
+https://vimeo.com/53221558
+https://golang.org/doc/articles/wiki/
+
+``fmt.Stringer``
+
+https://tour.golang.org/methods/17
+
+``io.Reader``
+
+https://tour.golang.org/methods/21
+
+```
+
+# Runtime
+
+https://medium.com/@blanchon.vincent/go-memory-management-and-allocation-a7396d430f44?source=email-a31d0d6d29a8-1573039798635-digest.reader------1-58------------------2369e6b2_ad91_4d92_8cec_7adad38256f2-1-----&sectionName=top
+
+https://medium.com/@blanchon.vincent/go-goroutine-os-thread-and-cpu-management-2f5a5eaf518a?source=email-a31d0d6d29a8-1574445753784-digest.reader------0-58------------------90e0a977_d54a_4db2_9fa2_74736dd26dbf-1-----&sectionName=top
+
+https://medium.com/@blanchon.vincent/go-work-stealing-in-go-scheduler-d439231be64d?source=email-a31d0d6d29a8-1575631391501-digest.reader------0-72------------------45a42352_c358_4c8e_b152_f3c2ae24207f-28-----&sectionName=quickReads
+
+https://www.ardanlabs.com/blog/2017/05/language-mechanics-on-stacks-and-pointers.html
+
+https://blog.golang.org/ismmkeynote
+
+https://blog.learngoprogramming.com/a-visual-guide-to-golang-memory-allocator-from-ground-up-e132258453ed
 
 # Toolchain (`go`)
 
@@ -2087,6 +2444,10 @@ GOPATH
 GOROOT
 
 GOTPMDIR
+
+<https://getstream.io/blog/how-a-go-program-compiles-down-to-machine-code/>
+
+https://medium.com/@blanchon.vincent/go-overview-of-the-compiler-4e5a153ca889?source=email-a31d0d6d29a8-1568035050392-digest.reader------1-59------------------fffcbd55_d07d_4594_b621_6aedfb0601b4-1-----&sectionName=top
 
 El compilador ofrece dos métodos para ejecutarlo: el primero y más sencillo es
 usando el comando `go run`.
@@ -2440,6 +2801,20 @@ como este `// +build CONDICION [...]`
 
 # Buenas prácticas
 
+1. Early return
+2. License
+3. Documenting
+4. Short names for local variables
+5. Split code in files
+6. Split code in reusable and main files (pkg, cmd)
+7. Use interfaces as parameters instead types
+8. Avoid concurrency for APIs
+9. Use channels to manage state (avoid abrupt stops)
+
+## Estructura de proyectos
+
+https://medium.com/@shaonshaonty/beautify-your-golang-project-f795b4b453aa?source=email-a31d0d6d29a8-1564497142241-digest.reader------2-59------------------773798d7_da5c_419e_9336_4ecd4313e2a4-16&sectionName=recommended
+
 # Funcionalidades excluidas
 
 {{% details summary="Enlaces de interés" %}}
@@ -2558,6 +2933,8 @@ func Reduce(s []int, f func(int, int) int, a int) int {
 
 {{% details summary="Enlaces de interés" %}}
 * <https://www.youtube.com/watch?v=PAAkCSZUG1c>
+
+https://go-proverbs.github.io/
 {{% /details %}}
 
 > Don't communicate by sharing memory, share memory by communicating.
@@ -2629,6 +3006,14 @@ func Reduce(s []int, f func(int, int) int, a int) int {
 <!-- -->
 
 > Documentation is for users.
+
+# Preguntas frecuentes
+
+## ¿Por qué los binarios son tan grandes en comparación a C?
+
+https://stackoverflow.com/questions/28576173/reason-for-huge-size-of-compiled-executable-of-go
+
+https://blog.filippo.io/shrink-your-go-binaries-with-this-one-weird-trick/
 
 # Atribuciones
 
