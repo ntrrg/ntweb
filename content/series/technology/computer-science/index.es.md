@@ -1,7 +1,7 @@
 ---
 title: Ciencia de la Computación
 date: 2020-06-15T09:00:00-04:00
-description: Una compilación de artículos ordenados con la intención de hacer más sencillo familiarizarse con la informática, e incluso profundizar en diferentes temas, sin tener que pasar por esos momentos en los que no se tiene ni idea por donde comenzar o qué hacer después 😂.
+description: Una compilación de artículos ordenados con la intención de hacer más sencillo familiarizarse con la informática, e incluso profundizar en diferentes temas, sin tener que pasar por esos momentos en los que no se tiene ni idea por donde empezar o qué hacer después, algo parecido a ir a la universidad.
 tags:
   - tecnología
   - aprendizaje

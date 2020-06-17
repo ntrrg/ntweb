@@ -21,7 +21,7 @@ tiempo por Ken Thompson, Rob Pike y Robert Griesemer; luego de tener una base
 estable, se unieron los ingenieros Russ Cox e Ian Lance Taylor. Para inicios
 del 2012 se liberó la primera versión estable, de código abierto y distribuida
 bajo una licencia [BSD-style][Go license]. Actualmente el proyecto es mantenido
-por un equipo de Google y su gran comunidad.
+por un equipo financiado por Google y su gran comunidad.
 
 Algunas de sus características más resaltantes son:
 
@@ -358,8 +358,7 @@ false
 
 Aunque en teoría se pueden representar con 1 bit, su tamaño depende de la
 técnica usada por el compilador y de la arquitectura donde trabaje, pero
-generalmente ocupan 1 byte, que es la unidad mínima de almacenamiento y por
-ahora el estándar dice que su tamaño es de 8 bits.
+generalmente ocupan 1 byte.
 
 {{< go-playground >}}
 ```go
@@ -395,17 +394,18 @@ Existen tres grupos de datos numéricos:
 ### Enteros
 
 {{% details summary="Enlaces de interés" %}}
-* <https://golang.org/ref/spec#Numeric_types>
 * <https://golang.org/ref/spec#Integer_literals>
+* <https://golang.org/ref/spec#Numeric_types>
 * <https://golang.org/pkg/math/#pkg-constants>
-* [Números binarios](./../binary-numbers/)
-* [Números octales](./../octal-numbers/)
-* [Números hexadecimales](./../hex-numbers/)
-* [Complemento a dos](./../twos-complement/)
+* [Números binarios](./../../../math/numeral-systems/binary-numbers/)
+* [Números octales](./../../../math/numeral-systems/octal-numbers/)
+* [Números decimales](./../../../math/numeral-systems/decimal-numbers/)
+* [Números hexadecimales](./../../../math/numeral-systems/hex-numbers/)
+* [Complemento a dos](./../../computer-science/twos-complement/)
 {{% /details %}}
 
 Representan los números del conjunto matemático con el mismo nombre, aunque
-claro, con una cantidad finita de elementos, que puede ser controlada por el
+claro, con una cantidad finita de elementos que puede ser controlada por el
 espacio de memoria que se reserve, es decir, el programador tiene la capacidad
 de especificar si quiere un número entero que ocupe `N` bits de memoria, donde
 `N` puede ser 8, 16, 32 o 64 (1, 2, 4 y 8 bytes respectivamente).
@@ -443,34 +443,30 @@ legibilidad.
 05    // Octal
 0x5   // Hexadecimal
 
-// Con signo
-+10
-+0b1010
-+012
-+0xa
--10
--0b1010
--012
--0xa
-
 // Binarios (`0b`,`0B`)
 0b101
 0b_101
 0B101
 0B_101
 
-// Octal (`0`, `0o`, `0O`)
+// Octales (`0`, `0o`, `0O`)
 05
 0o5
 0o_5
 0O5
 0O_5
 
-// Hexadecimal (`0x`, `0X`)
+// Hexadecimales (`0x`, `0X`)
 0x5
 0x_5
 0X5
 0X_5
+
+// Con signo.
+-10
+-0b1010
+-012
+-0xa
 
 // Con separadores (_)
 5_000_000           // Separador de miles
@@ -492,11 +488,9 @@ legibilidad.
 
 **Implementación:**
 
-Existen dos métodos de representación: el primero es la conversión binaria
-tradicional, pero solo puede ser usada para procesar números positivos; el
-segundo es llamado *Complemento a dos* y permite representar tanto números
-positivos como negativos de una manera bastante ingeniosa, pero la máxima
-cantidad representable se reduce a la mitad.
+Los enteros sin signo son almacenados directamente en su representación
+binaria. Por otro lado, los enteros con signo son representados usando el
+método *Complemento a dos*.
 
 ```
 10101010 -> 170
@@ -504,28 +498,28 @@ cantidad representable se reduce a la mitad.
 
 ⬐ Signo
 10101010 -> -86
- ⬑ Números, 7 bits -> -128 - 127
+ ⬑ 7 bits -> -128 - 127
 
-1010101010101010 -> 43690
+10101010 10101010 -> 43690
 ⬑ 16 bits -> 0 - 65535
 
 ⬐ Signo
-0101010101010101 -> 21845
- ⬑ Números, 15 bits -> -32768 - 32767
+01010101 01010101 -> 21845
+ ⬑ 15 bits -> -32768 - 32767
 
-10101010101010101010101010101010 -> 2863311530
+10101010 10101010 10101010 10101010 -> 2863311530
 ⬑ 32 bits -> 0 - 4294967295
 
 ⬐ Signo
-10101010101010101010101010101010 -> -1431655766
- ⬑ Números, 31 bits -> -2147483648 - 2147483647
+10101010 10101010 10101010 10101010 -> -1431655766
+ ⬑ 31 bits -> -2147483648 - 2147483647
 
-1010101010101010101010101010101010101010101010101010101010101010 -> 12297829382473034410
+10101010 10101010 10101010 10101010 10101010 10101010 10101010 10101010 -> 12297829382473034410
 ⬑ 64 bits -> 0 - 18446744073709551615
 
 ⬐ Signo
-0101010101010101010101010101010101010101010101010101010101010101 -> 6148914691236517205
- ⬑ Números, 63 bits -> -9223372036854775808 - 9223372036854775807
+01010101 01010101 01010101 01010101 01010101 01010101 01010101 01010101 -> 6148914691236517205
+ ⬑ 63 bits -> -9223372036854775808 - 9223372036854775807
 ```
 
 ### Punto flotante
@@ -534,58 +528,91 @@ cantidad representable se reduce a la mitad.
 * <https://golang.org/ref/spec#Numeric_types>
 * <https://golang.org/ref/spec#Floating-point_literals>
 * <https://golang.org/pkg/math/#pkg-constants>
-* <http://www.oxfordmathcenter.com/drupal7/node/43>
-* [Números binarios](./../binary-numbers/)
-* [Números hexadecimales](./../hex-numbers/)
-* [Representación de números de punto flotante](./../ieee-754/)
+* [Números decimales](./../../../math/numeral-systems/decimal-numbers/)
+* [Números hexadecimales](./../../../math/numeral-systems/hex-numbers/)
+* [Representación de números de Punto flotante](./../ieee-754/)
 {{% /details %}}
 
-Representan al conjunto matemático de los números fraccionarios, aunque
-claro, con una cantidad finita de elementos, que puede ser controlada por el
-espacio de memoria que se reserve, es decir, el programador tiene la capacidad
-de especificar si quiere un número entero que ocupe `N` bits de memoria, donde
-`N` puede ser `32` o `64` según el estándar IEEE 754, que también especifica su
-representación.
+Representan al conjunto matemático de los números reales, aunque claro, con una
+cantidad finita de elementos, que puede ser controlada por el espacio de
+memoria que se reserve, es decir, el programador tiene la capacidad de
+especificar si quiere un número de punto flotante que ocupe `N` bits de
+memoria, donde `N` puede ser `32` o `64` (4 y 8 bytes respectivamente).
 
-```
-⬐ Signo  ⬐ Fracción, 23 bits
-10101010101010101010101010101010
- ⬑ Exponente, 8 bits
-
-⬐ Signo     ⬐ Fracción, 52 bits
-1010101010101010101010101010101010101010101010101010101010101010
- ⬑ Exponente, 11 bits
-```
-
-Un número de punto flotante literal está compuesto por dos enteros separados
-por un punto (`.`), una letra `e`/`E` y otro entero; todos los enteros deben
-escribirse en base 10 y pueden tener signo (exceptuando el segundo).
-
-**TODO:** ¿Cómo son implementados?
-
-#### Representación sintáctica
+**Representación sintáctica:**
 
 ```go
-float32
-float64
+float32  float64
 ```
 
-Ejemplos
+**Representación literal:**
+
+Un número de punto flotante literal está compuesto por una parte entera, un
+punto (`.`), una parte fraccionaria y un exponente. Se pueden usar números
+decimales y hexadecimales para expresarlos (exceptuando el exponente que solo
+puede ser un número decimal). El símbolo para identificar el exponente es
+`e`/`E` con números decimales y `p`/`P` con números hexadecimales. Cuando se
+usan números hexadecimales el exponente es obligatorio.
+
+Se puede usar el guión bajo (`_`) para separar los números y mejorar su
+legibilidad.
+
+```
+Decimal:
+
+  ⬐ Parte entera
+  123.4567e8
+          ⬑ Exponente
+  
+          ⬐ Exponente
+  123.4567E8
+      ⬑ Fracción
+
+Hexadecimal:
+
+    ⬐ Parte entera
+  0xAB.CDp12
+         ⬑ Exponente
+  
+         ⬐ Exponente
+  0xAB.CDP12
+       ⬑ Fracción
+```
 
 ```go
-0.         // Nivel de bondad en nuestra raza
-3.14       // 14/03/1988
--9.8       // El mundo al reves
-59724.e20  // Madre tierra
-59724e20   // Madre tierra sin punto
-.91093e-30 // http://bit.ly/2Iv08BI
-111.09+e87 // Straight flush
+0.           // Nivel de bondad en nuestra raza
+3.14         // 14/03/1988
+-9.8         // El mundo al reves
+59724.e20    // Madre tierra
+59724e20     // Madre tierra sin punto
+.91093e-30   // Inside Out
+11312.11e+10 // Straight flush
+
+0x0.p0
+0xA.BCp13
+0x1Ap15
+0x.FEp-17
+0xADC.Bp+10
 ```
 
-#### Valor cero
+**Valor cero:**
 
 ```go
 0
+```
+
+**Implementación:**
+
+Son representados según el estándar *IEEE 754*.
+
+```
+⬐ Signo   ⬐ Fracción, 23 bits
+10101010 10101010 10101010 10101010
+ ⬑ Exponente, 8 bits -> -3.40282346638528859811704183484516925440e+38 - 3.40282346638528859811704183484516925440e+38
+
+⬐ Signo      ⬐ Fracción, 52 bits
+10101010 10101010 10101010 10101010 10101010 10101010 10101010 10101010
+ ⬑ Exponente, 11 bits -> -1.797693134862315708145274237317043567981e+308 - 1.797693134862315708145274237317043567981e+308
 ```
 
 ### Complejos
@@ -595,57 +622,61 @@ Ejemplos
 * <https://golang.org/ref/spec#Imaginary_literals>
 * <https://golang.org/ref/spec#Constant_expressions>
 * <https://golang.org/ref/spec#Complex_numbers>
+* [Números de Punto flotante](#punto-flotante)
 {{% /details %}}
 
 Representan los números del conjunto matemático con el mismo nombre, aunque
 claro, con una cantidad finita de elementos, que puede ser controlada por el
 espacio de memoria que se reserve, es decir, el programador tiene la capacidad
-de especificar si quiere un número entero que ocupe `N` bits de memoria, donde
-`N` puede ser `64` o `128` pues están conformados por un par de números de
-punto flotante, representando la parte real y la imaginaria cada uno.
+de especificar si quiere un número complejo que ocupe `N` bits de memoria,
+donde `N` puede ser `64` o `128` (8 y 16 bytes respectivamente).
 
-```
-⬐ Parte real, 32 bits           ⬐ Parte imaginaria, 32 bits
-1010101010101010101010101010101010101010101010101010101010101010
-
-⬐ Parte real, 64 bits                                           ⬐ Parte imaginaria, 64 bits
-10101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010
-```
-
-Un número complejo literal está compuesto por dos números reales (enteros o de
-punto flotante) separados por una cruz (`+`) o un guión (`-`), y el último
-número debe tener la letra `i` al final. Dentro de Go existe una función,
-[`complex`](#complex), que permite crear números complejos usando variables (no
-solo constantes como en el caso de los literales); y otras dos, [`real`](#real)
-e [`imag`](#imag), que hacen lo opuesto, pues permiten extraer la parte real e
-imaginaria de un número complejo respectivamente (por si no es obvio el orden
-😂).
-
-**TODO:** Agregar referencias de uso
-
-#### Representación sintáctica
+**Representación sintáctica:**
 
 ```go
-complex64
-complex128
+complex64  complex128
 ```
 
-Ejemplos
+**Representación literal:**
+
+Un número complejo literal está compuesto por dos números reales separados por
+los símbolos de suma (`+`) o resta (`-`), y el último número debe tener el
+símbolo `i` al final. La parte real puede ser omitida y su valor predeterminado
+es `0`.
+
+Ver las funciones [`complex`](#complex), [`real`](#real) e [`imag`](#imag).
+
+Se puede usar el guión bajo (`_`) para separar los números y mejorar su
+legibilidad.
 
 ```go
 1 + 2i
 3 - 4.5i
 7e8 + 9e-10i
 
-1i      // ┐
-2.3i    // │-> Parte imaginaria, `0 + IMAGINARIO`
-45.6e7i // ┘
+// Equivalentes a 0 + IMAGINARIO
+1i
+2.3i
+45.6e7i
 ```
 
-#### Valor cero
+**Valor cero:**
 
 ```go
 0
+```
+
+**Implementación:**
+
+Son representados en memoria por un par consecutivo de números de punto
+flotante.
+
+```
+⬐ Parte real, 32 bits               ⬐ Parte imaginaria, 32 bits
+10101010 10101010 10101010 10101010 10101010 10101010 10101010 10101010
+
+⬐ Parte real, 64 bits                                                   ⬐ Parte imaginaria, 64 bits
+10101010 10101010 10101010 10101010 10101010 10101010 10101010 10101010 10101010 10101010 10101010 10101010 10101010 10101010 10101010 10101010
 ```
 
 ## Cadenas
@@ -2311,6 +2342,21 @@ directamente desde la interfaz web de [GoDoc](#godoc).
 $ godoc -http :6060 -play
 ```
 
+# Funciones predefinidas
+
+## `complex`
+
+Permite crear números complejos, sus parámetros son dos números que representan
+su parte real e imaginaria respectivamente. Si los dos números son constantes,
+el valor retornado por esta función también es una constante.
+
+## `real`
+
+## `imag`
+
+que hacen lo opuesto, pues permiten extraer la parte real e imaginaria de un
+número complejo respectivamente.
+
 # Paquetes externos
 
 Para usar paquetes externos se usa la palabra reservada `import`, que recibe la
@@ -2400,7 +2446,7 @@ import "github.com/example/mylib/mylib-go"
 Pero sus usuarios deben usar el identificador que se haya definido en la línea
 que contenga `package`, que probablemente sería algo como `mylib`.
 
-## Biblioteca estándar
+# Biblioteca estándar
 
 {{% details summary="Enlaces de interés" %}}
 {{% /details %}}

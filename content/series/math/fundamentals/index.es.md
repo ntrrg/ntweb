@@ -1,7 +1,11 @@
 ---
 title: Fundamentos de la Matemática
 date: 2020-06-15T11:30:00-04:00
-description: Todos los temas que debe conocer cualquiera sobre la matemática, esto incluye lo que se aprende desde preescolar hasta la secundaria.
+description: Todos los temas que debe conocer cualquiera sobre la matemática, esto es similar a lo que se aprende desde preescolar hasta la secundaria.
+rels:
+  - .series.technology.computer-science
+relsweight:
+  .series.technology.computer-science: 2
 tags:
   - matemática
   - aprendizaje

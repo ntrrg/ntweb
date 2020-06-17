@@ -4,9 +4,9 @@ publishdate: 2020-03-17T11:00:00-04:00
 date: 2020-06-05T15:20:00-04:00
 description: Fundamentos de la informática. Orientado a personas sin conocimiento previo, pero también puede ser interesante para los que ya están familiarizados con la tecnología.
 rels:
-  - .series.technology.software-engineering
+  - .series.technology.computer-science
 relsweight:
-  .series.technology.software-engineering: 1
+  .series.technology.computer-science: 1
 tags:
   - tecnología
   - ciencia-de-la-computación
@@ -164,10 +164,11 @@ que lo ejecute.
 
 En resumen, la informática consiste en sistematizar y automatizar procesos,
 pero con los grandes avances tecnológicos que se han logrado estos últimos años
-y lo complejas que se han vuelto sus aplicaciones, es imposible que un
-profesional de la informática pueda cumplir con todos los perfiles del mercado.
+y lo complejas que se han vuelto sus aplicaciones, es imposible que una sola
+persona pueda cumplir con todos los perfiles del mercado.
 
-Algunas de las actividades que desempeñan los profesionales de esta área son:
+Algunas de las actividades que desempeñan los profesionales de la informática
+son:
 
 * Desarrollo de Software
   * Desarrollo de Firmware
