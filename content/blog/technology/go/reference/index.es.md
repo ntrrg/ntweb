@@ -421,7 +421,7 @@ int8  int16  int32  int64
 
 // Alias
 byte // -> uint8
-rune // -> uint32, ver Cadenas para más información
+rune // -> int32, ver Cadenas para más información
 
 // Dependientes de la arquitectura
 uint    // -> uint32 o uint64
@@ -530,7 +530,7 @@ método *Complemento a dos*.
 * <https://golang.org/pkg/math/#pkg-constants>
 * [Números decimales](./../../../math/numeral-systems/decimal-numbers/)
 * [Números hexadecimales](./../../../math/numeral-systems/hex-numbers/)
-* [Representación de números de Punto flotante](./../ieee-754/)
+* [Representación de números de Punto flotante](./../../computer-science/ieee-754/)
 {{% /details %}}
 
 Representan al conjunto matemático de los números reales, aunque claro, con una
@@ -582,7 +582,7 @@ Hexadecimal:
 ```go
 0.           // Nivel de bondad en nuestra raza
 3.14         // 14/03/1988
--9.8         // El mundo al reves
+-9.8         // El mundo al revés
 59724.e20    // Madre tierra
 59724e20     // Madre tierra sin punto
 .91093e-30   // Inside Out
@@ -685,29 +685,30 @@ flotante.
 * <https://golang.org/ref/spec#String_types>
 * <https://golang.org/ref/spec#String_literals>
 * <https://golang.org/ref/spec#Rune_literals>
-* <https://blog.golang.org/slices>
 * <https://blog.golang.org/strings>
 * <https://research.swtch.com/godata>
-* [Codificación de texto](./../text-encoding.es.md)
-
-https://medium.com/@thatisuday/string-data-type-in-go-8af2b639478?source=email-a31d0d6d29a8-1564412060086-digest.reader------1-59------------------c532d469_6e32_4882_bdf2_3fef78b1b1dc-1&sectionName=top
-
-https://medium.com/@arindamroy/ultimate-golang-string-formatting-cheat-sheet-234ec92c97da?source=email-a31d0d6d29a8-1567861183904-digest.reader------1-72------------------1d7b57d8_9f84_4952_b6a4_98b369cd75b6-28-----&sectionName=quickReads
-
+* [Porciones](#porciones)
+* [Codificación de texto](./../../computer-science/text-encoding.es.md)
 {{% /details %}}
 
-Son un conjunto de bytes, cada uno de estos bytes puede representar o ser parte
-de una runa (un punto de código Unicode codificado en UTF-8), que no es más
-que un caracter/símbolo para el ojo humano; aunque los bytes y las runas sean
-datos numéricos (`uint8` y `uint32` respectivamente), Go puede interpretarlos
-como texto, es decir, si se intenta representar el número `77` como una cadena,
-Go seleccionará el punto de código Unicode `U+004d` (`77` es `4d` en números
-hexadecimales), lo codificará con UTF-8 y obtendrá la letra `M`.
+Son secuencias de símbolos que representan el sistema de escritura humano. Por
+lo general a cada uno de estos símbolos se les llama caracter y de hecho, el
+nombre completo de este tipo de dato es *Cadena de caracteres*.
 
-Para la definición de cadenas literales interpretadas se usan las comillas
-(`"`) y para las cadenas sin formato los acentos graves (<code>\`</code>); a
-diferencia de otros lenguajes, el apóstrofo (`'`) se usa para representar runas
-literales, no cadenas.
+**Representación sintáctica:**
+
+```go
+string
+```
+
+**Representación literal:**
+
+Existen dos tipos de cadenas literales: las cadenas sin formato, que almacenan
+el texto justo como se ve en la pantalla; y las cadenas interpretadas, que
+permiten usar secuencias de escape para representar caracteres especiales.
+
+Para la definición de cadenas interpretadas se usan las comillas (`"`) y para
+las cadenas sin formato los acentos graves (<code>\`</code>).
 
 {{< go-playground id="M0lvf5r9D8p" >}}
 ```go
@@ -723,6 +724,35 @@ quien es mejor ahora 😒`
 //
 // Pero puedo tener varias líneas,
 // quien es mejor ahora 😒
+```
+{{< /go-playground >}}
+
+A diferencia de otros lenguajes de programación, el apóstrofo (`'`) se usa para
+representar runas literales, no cadenas. Las runas son caracteres individuales
+y representan valores numéricos, específicamente el valor UTF-8 del caracter.
+
+{{< go-playground >}}
+```
+"M" -> M
+'M' -> 77
+
+"😄" -> 😄
+'😄' -> 128516
+```
+
+--- PLAYGROUND ---
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+  fmt.Println("M")
+  fmt.Println('M')
+  fmt.Println("😄")
+  fmt.Println('😄')
+}
 ```
 {{< /go-playground >}}
 
@@ -751,40 +781,61 @@ invertida (`\`) que les permite alterar su comportamiento.
 '\'' // 39
 '\\' // 92
 
-// Unicode
-
-  // Versión corta (u y 4 dígitos)
-
+// Unicode - Versión corta (u y 4 dígitos)
 "\u004d" // "M"
 '\u004d' // 77
 
-  // Versión larga (U y 8 dígitos)
-
+// Unicode - Versión larga (U y 8 dígitos)
 "\U0000004d" // "M"
 '\U0000004d' // 77
 "\U00f1f064" // "😄"
 '\U00f1f064' // 128516
 
-// Bytes (UTF-8)
+// Bytes (UTF-8) - Octales (3 dígitos)
+"\115"             // "M"
+'\115'             // 77
+"\360\237\230\204" // "😄"
+'\360\237\230\204' // Error, las runas no soportan más de un byte escapado
 
-  // Octales (3 dígitos)
-
-"\115"                // "M"
-'\115'                // 77
-"\360\237\230\204"    // "😄"
-// '\360\237\230\204' // No soporta más de un byte escapado
-
-  // Hexadecimales (x y 2 dígitos)
-
-"\x4d"                // "M"
-'\x4d'                // 77
-"\xf0\x9f\x98\x84"    // "😄"
-// '\xf0\x9f\x98\x84' // No soporta más de un byte escapado
+// Bytes (UTF-8) - Hexadecimales (x y 2 dígitos)
+"\x4d"             // "M"
+'\x4d'             // 77
+"\xf0\x9f\x98\x84" // "😄"
+'\xf0\x9f\x98\x84' // Error, las runas no soportan más de un byte escapado
 ```
 
-Internamente, Go implementa las cadenas como porciones de bytes (`[]byte`), por
-lo que cuentan con casi todas las cualidades de las porciones, solo que son
-inmutables y por esta misma razón no tienen capacidad.
+**Valor cero:**
+
+```go
+""
+```
+
+**Implementación:**
+
+Las cadenas son estructuras de datos muy parecidas a las porciones, pero se
+diferencian en que son inmutables y no tienen capacidad, por lo que su tamaño
+es de 2 words. Su vector interno es del tipo `[...]byte`, por lo que puede
+intercambiarse entre porciones del tipo `[]byte` y `[]rune`.
+
+```
+"hola mundo"
+
+Cadena:
+
+  +-----+-----+
+  | 0x1 |  10 |
+  +-----+-----+
+    ptr   lon
+
+Vector interno:
+
+ 0x1
+  ↓
+  +---+---+---+---+---+---+---+---+---+---+
+  |104|111|108| 97| 44|109|117|110|100|111|
+  +---+---+---+---+---+---+---+---+---+---+
+    0   1   2   3   4   5   6   7   8   9
+```
 
 {{< go-playground id="yHrBgqgfqE9" >}}
 ```go
@@ -867,14 +918,6 @@ for i := 0; i < len(x); {
 ```
 {{< /go-playground >}}
 
-### Representación sintáctica
-
-```go
-string
-```
-
-Ejemplos
-
 ```go
 'M'  // 74 -> U+004d -> 1001101 (7 bits)
 '😄' // 128516 -> U+1f604 -> 11110000 10011111 10011000 10000100 (4 bytes)
@@ -886,12 +929,6 @@ Ejemplos
 de
 caracteres
 multilineal`
-```
-
-### Valor cero
-
-```go
-""
 ```
 
 ## Arreglos
@@ -1083,6 +1120,11 @@ x = │1│3│5│7│9│
      0 1 2 3 4
 
 y = x[:2]
+
+     +-----+---+---+    +-+-+ +-+-+-+ 
+y -> |&x[0]| 2 | 5 | -> |1|3| |5|7|9| 
+     +-----+---+---+    +-+-+ +-+-+-+ 
+       ptr  lon cap      0 1   2 3 4
 
      ┌─────┬───┬───┐    ┌─┬─┐ ┌─┬─┬─┐ 
 y -> │&x[0]│ 2 │ 5 │ -> │1│3│ │5│7│9│ 

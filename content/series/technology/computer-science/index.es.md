@@ -32,6 +32,8 @@ https://ebookfoundation.github.io/free-programming-books/
 
 https://introtcs.org/public/index.html
 
+https://www.coursera.org/learn/computational-thinking-problem-solving
+
 https://www.udacity.com/course/intro-to-theoretical-computer-science--cs313
 
 http://i.stanford.edu/~ullman/focs.html
