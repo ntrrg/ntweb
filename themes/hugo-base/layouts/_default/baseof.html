@@ -16,6 +16,10 @@
     {{ hugo.Generator }}
   {{ end }}
 
+  {{ with .Site.Params.interledger }}
+    <meta name="monetization" content="{{ . }}">
+  {{ end }}
+
   <title>
     {{ block "head-title" . }}
       {{ if not .IsHome }}
