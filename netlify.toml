@@ -3,7 +3,7 @@
   publish = "public"
 
 [build.environment]
-  HUGO_VERSION = "0.72.0"
+  HUGO_VERSION = "0.73.0"
 
 [context.deploy-preview]
   command = "hugo -DEF --baseURL=/"
@@ -25,7 +25,8 @@
 [headers.values]
   X-Frame-Options = "SAMEORIGIN"
   X-Content-Type-Options = "nosniff"
-  Referrer-Policy = "origin-when-cross-origin"
+  X-XSS-Protection = "1; mode=block"
+  Referrer-Policy = "strict-origin-when-cross-origin"
 
 [[headers]]
   for = "/favicon.ico"

@@ -3,6 +3,7 @@ let ENABLED = true
 const BASEURL = new Request('/').url
 const BUCKET = 'v1'
 const DEFAULT_EXT = 'html'
+const DEFAULT_TLL = 60 * 60 * 24
 
 const TTL = {
   html: 60 * 60,
@@ -79,7 +80,7 @@ async function getResponse(req) {
     const age = parseInt((new Date().getTime() - date.getTime()) / 1000)
     const ttl = getTTL(req.url)
 
-    if (ttl === 0 || age <= ttl)
+    if (age <= ttl)
       return res
   }
 
@@ -115,7 +116,7 @@ async function getResponse(req) {
 function getTTL(url) {
   const ext = getFileExt(url)
 
-  return TTL[ext] || 0
+  return TTL[ext] || DEFAULT_TLL
 }
 
 /**

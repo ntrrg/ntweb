@@ -849,7 +849,7 @@ función o en una asignación se hará una copia completa del mismo.
 * <https://research.swtch.com/godata>
 * <https://github.com/golang/go/wiki/SliceTricks>
 
-https://medium.com/@thatisuday/the-anatomy-of-slices-in-go-6450e3bb2b94?source=email-a31d0d6d29a8-1565363247300-digest.reader------1-59------------------d8c67597_cf06_4a6f_a5b3_5fe1b055b8d0-1&sectionName=top
+https://medium.com/@thatisuday/the-anatomy-of-slices-in-go-6450e3bb2b94
 {{% /details %}}
 
 Son un conjunto de elementos de un tipo de dato asignado arbitrariamente como

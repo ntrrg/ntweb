@@ -71,8 +71,8 @@ Resource URL.
 {{% /param %}}
 
 {{% param name="kind" %}}
-Resource type. It may be one of `home`, `section`, `taxonomyTerm`, `taxonomy`
-or `page`.
+Resource type. It may be one of `home`, `section`, `taxonomy`, `term` or
+`page`.
 {{% /param %}}
 
 {{% param name="type" %}}
@@ -346,7 +346,7 @@ full offline experience.
 
 **Requirements:**
 
-* Hugo >= 0.72
+* Hugo >= 0.73
 
 Get the source code
 

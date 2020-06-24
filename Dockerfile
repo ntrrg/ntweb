@@ -1,4 +1,4 @@
-FROM ntrrg/hugo:0.72.0 as hugo
+FROM ntrrg/hugo:0.73.0 as hugo
 COPY . .
 RUN hugo --baseUrl / -d /public
 

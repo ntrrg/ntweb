@@ -2,7 +2,7 @@
   <section class="article-pages">
     {{ $pages := slice }}
 
-    {{ if eq .Kind "taxonomyTerm" }}
+    {{ if eq .Kind "taxonomy" }}
       {{ $pages = sort .Pages "Title" }}
     {{ else if and (eq .Params.paginate true) (ne .Paginator nil) }}
       {{ $pages = .Paginator.Pages }}

@@ -104,11 +104,23 @@ outputs:
     - HTML
     - RSS
     - JSON
-  taxonomyTerm:
+  term:
     - HTML
     - RSS
     - JSON
   page:
     - HTML
     - JSON
+server:
+  headers:
+    - for: /**
+      values:
+        Content-Security-Policy: script-src localhost:1313
+        X-Frame-Options: SAMEORIGIN
+        X-Content-Type-Options: nosniff
+        X-XSS-Protection: 1; mode=block
+        Referrer-Policy: strict-origin-when-cross-origin
+    - for: /*.webmanifest
+      values:
+        Content-Type: application/manifest+json; charset=utf-8
 

@@ -71,8 +71,7 @@ URL del recurso.
 {{% /param %}}
 
 {{% param name="kind" type="Cadena" %}}
-Tipo de recurso. Puede ser `home`, `section`, `taxonomyTerm`, `taxonomy` o
-`page`.
+Tipo de recurso. Puede ser `home`, `section`, `taxonomy`, `term` o `page`.
 {{% /param %}}
 
 {{% param name="type" type="Cadena" %}}
@@ -352,7 +351,7 @@ todos los recursos.
 
 **Requerimientos:**
 
-* Hugo >= 0.72
+* Hugo >= 0.73
 
 Descargar el código fuente
 
