@@ -1,8 +1,8 @@
 ---
 title: Go (Golang)
-date: 2020-05-31T16:30:00-04:00
+date: 2020-06-22T15:30:00-04:00
 image: images/go.png
-description: Es un lenguaje de código abierto, minimalista y de alto rendimiento. Esta es una referencia del lenguaje y sus herramientas.
+description: Es un lenguaje de código abierto, minimalista y de alto rendimiento. Más que un artículo, esta es una referencia del lenguaje y sus herramientas.
 tags:
   - tecnología
   - referencias
@@ -679,313 +679,114 @@ flotante.
 10101010 10101010 10101010 10101010 10101010 10101010 10101010 10101010 10101010 10101010 10101010 10101010 10101010 10101010 10101010 10101010
 ```
 
-## Cadenas
+## Vectores
 
 {{% details summary="Enlaces de interés" %}}
-* <https://golang.org/ref/spec#String_types>
-* <https://golang.org/ref/spec#String_literals>
-* <https://golang.org/ref/spec#Rune_literals>
-* <https://blog.golang.org/strings>
+* <https://golang.org/ref/spec#Array_types>
+* <https://golang.org/ref/spec#Composite_literals>
+* <https://golang.org/ref/spec#Length_and_capacity>
+* <https://blog.golang.org/slices-intro>
+* <https://blog.golang.org/slices>
 * <https://research.swtch.com/godata>
-* [Porciones](#porciones)
-* [Codificación de texto](./../../computer-science/text-encoding.es.md)
 {{% /details %}}
 
-Son secuencias de símbolos que representan el sistema de escritura humano. Por
-lo general a cada uno de estos símbolos se les llama caracter y de hecho, el
-nombre completo de este tipo de dato es *Cadena de caracteres*.
+Son un conjunto de elementos de un mismo tipo de dato asignado arbitrariamente,
+la cantidad de elementos debe ser constante y se le llama *Longitud del
+vector*, esta longitud no puede cambiar después de la creación del vector.
+
+Todos los elementos están enumerados iniciando desde 0, a estas posiciones se
+les llama *índices* y se usa la notación `x[i]` para acceder a ellos, donde `x`
+es un vector e `i` el índice.
+
+```
+    +-+-+-+-+-+
+x = |1|3|5|7|9|
+    +-+-+-+-+-+
+     0 1 2 3 4
+
+x[0] -> 1
+x[2] -> 5
+x[4] -> 9
+
+x[0] = 0
+x[4] = 0
+
+     +-+-+-+-+-+
+x -> |0|3|5|7|0|
+     +-+-+-+-+-+
+      0 1 2 3 4
+```
 
 **Representación sintáctica:**
 
-```go
-string
+```
+[LONGITUD]TIPO
 ```
 
 **Representación literal:**
 
-Existen dos tipos de cadenas literales: las cadenas sin formato, que almacenan
-el texto justo como se ve en la pantalla; y las cadenas interpretadas, que
-permiten usar secuencias de escape para representar caracteres especiales.
-
-Para la definición de cadenas interpretadas se usan las comillas (`"`) y para
-las cadenas sin formato los acentos graves (<code>\`</code>).
-
-{{< go-playground id="M0lvf5r9D8p" >}}
 ```go
-"Soy una cadena interpretada\ny puedo procesar secuencias de escape 😎"
-// Soy una cadena interpretada
-// y puedo procesar secuencias de escape 😎
+[5]byte{1, 2, 3, 4, 5}
+// [1 2 3 4 5]
 
-`Soy una cadena sin formato\ny no puedo procesar secuencias de escape 😔
+[...]byte{1, 2, 3, 4, 5}
+// Igual que el anterior, solo que obtiene la longitud automáticamente
+// [1 2 3 4 5]
 
-Pero puedo tener varias líneas,
-quien es mejor ahora 😒`
-// Soy una cadena sin formato\ny no puedo procesar secuencias de escape 😔
-//
-// Pero puedo tener varias líneas,
-// quien es mejor ahora 😒
-```
-{{< /go-playground >}}
+[3]bool{true}
+// Se pueden definir solo los primero valores y los demás serán
+// inicializados con su valor 0.
+// [true false false]
 
-A diferencia de otros lenguajes de programación, el apóstrofo (`'`) se usa para
-representar runas literales, no cadenas. Las runas son caracteres individuales
-y representan valores numéricos, específicamente el valor UTF-8 del caracter.
+[3]bool{}
+// Inicializa todos los elementos con su valor 0
+// [false false false]
 
-{{< go-playground >}}
-```
-"M" -> M
-'M' -> 77
+[5]byte{2: 'M'}
+// Se pueden asignar valores a índices específicos, los demás serán
+// inicializados con su valor 0
+// [0 0 77 0 0]
 
-"😄" -> 😄
-'😄' -> 128516
-```
+[...]byte{2: 'M', 'A', 4: 'R', 'N'}
+// Si se especifica un índice, los siguientes elementos sin índice
+// sumarán uno al valor anterior
+// [0 0 77 64 0 82 78]
 
---- PLAYGROUND ---
-
-```go
-package main
-
-import "fmt"
-
-func main() {
-  fmt.Println("M")
-  fmt.Println('M')
-  fmt.Println("😄")
-  fmt.Println('😄')
+[...]string{
+  "Miguel",
+  "Angel",
+  "Rivera",
+  "Notararigo",
 }
-```
-{{< /go-playground >}}
+// Se pueden usar varias líneas para mejorar la legibilidad, pero
+// incluso el último elemento debe tener una coma
+// ["Miguel" "Angel" "Rivera" "Notararigo"]
 
-Las cadenas interpretadas y las runas tienen la capacidad de procesar
-secuencias de escape, estas secuencias son caracteres precedidos por una barra
-invertida (`\`) que les permite alterar su comportamiento.
-
-```go
-"\a" // Bell character
-"\b" // Backspace
-"\t" // Horizontal tab
-"\n" // Line feed
-"\v" // Vertical tab
-"\f" // Form feed
-"\r" // Carriage return
-"\"" // Quotation mark
-"\\" // Backslash
-
-'\a' // 7
-'\b' // 8
-'\t' // 9
-'\n' // 10
-'\v' // 11
-'\f' // 12
-'\r' // 13
-'\'' // 39
-'\\' // 92
-
-// Unicode - Versión corta (u y 4 dígitos)
-"\u004d" // "M"
-'\u004d' // 77
-
-// Unicode - Versión larga (U y 8 dígitos)
-"\U0000004d" // "M"
-'\U0000004d' // 77
-"\U00f1f064" // "😄"
-'\U00f1f064' // 128516
-
-// Bytes (UTF-8) - Octales (3 dígitos)
-"\115"             // "M"
-'\115'             // 77
-"\360\237\230\204" // "😄"
-'\360\237\230\204' // Error, las runas no soportan más de un byte escapado
-
-// Bytes (UTF-8) - Hexadecimales (x y 2 dígitos)
-"\x4d"             // "M"
-'\x4d'             // 77
-"\xf0\x9f\x98\x84" // "😄"
-'\xf0\x9f\x98\x84' // Error, las runas no soportan más de un byte escapado
+[...]struct{ X, Y float64 }{
+  {5, 10},
+  {15, 30},
+}
+// Se puede omitir el tipo de dato en los elementos en datos complejos
+// [{5 10} {15 30}]
 ```
 
 **Valor cero:**
 
 ```go
-""
+[LONGITUD]TIPO{VALOR_CERO_0 ... VALOR_CERO_N}
 ```
 
 **Implementación:**
 
-Las cadenas son estructuras de datos muy parecidas a las porciones, pero se
-diferencian en que son inmutables y no tienen capacidad, por lo que su tamaño
-es de 2 words. Su vector interno es del tipo `[...]byte`, por lo que puede
-intercambiarse entre porciones del tipo `[]byte` y `[]rune`.
+Son implementados como un bloque de memoria que contiene todos sus elementos
+consecutivamente, es decir, si se crea un vector de bytes con los cuatro
+primeros números pares, el espacio de memoria ocupado por el vector sera 4
+bytes (16 bits) y sus elementos se ubicarán en estos bytes según sus indices.
 
 ```
-"hola mundo"
-
-Cadena:
-
-  +-----+-----+
-  | 0x1 |  10 |
-  +-----+-----+
-    ptr   lon
-
-Vector interno:
-
- 0x1
-  ↓
-  +---+---+---+---+---+---+---+---+---+---+
-  |104|111|108| 97| 44|109|117|110|100|111|
-  +---+---+---+---+---+---+---+---+---+---+
-    0   1   2   3   4   5   6   7   8   9
-```
-
-{{< go-playground id="yHrBgqgfqE9" >}}
-```go
-x := "Hola"
-
-x[2] = 'L' // Error
-cap(x)     // Error
-```
-{{< /go-playground >}}
-
-Como su unidad es el byte y no la runa, es posible que cadenas como `Hola` y
-`😂` tengan la misma longitud.
-
-{{< go-playground id="oCaft33c5jj" >}}
-```go
-len("Hola") // 4
-// "Hola" es una cadena compuesta por cuatro bytes, cada uno
-// representa una runa.
-// 'H' ->  72 -> U+0048 -> 1001000
-// 'o' -> 111 -> U+006f -> 1101111
-// 'l' -> 108 -> U+006c -> 1101100
-// 'a' ->  92 -> U+0061 -> 1100001
-
-len("😂") // 4
-// "😂" es una cadena compuesta por cuatro bytes, todos
-// representan una runa
-// '😂' -> 128514 -> U+1f602 -> 11110000 10011111 10011000 10000010
-```
-{{< /go-playground >}}
-
-Por lo que al iterar sobre ellas no se obtendrán caracteres/símbolos sino su
-representación en UTF-8.
-
-{{< go-playground id="y0O2H_Y91Tc" >}}
-```go
-x := "😂"
-
-for i := 0; i < len(x); i++ {
-  fmt.Println(x[i])
-}
-
-// 240 -> 11110000
-// 159 -> 10011111
-// 152 -> 10011000
-// 130 -> 10000010
-```
-{{< /go-playground >}}
-
-Para evitar este comportamiento se puede usar `range`, que extrae runa a runa.
-
-{{< go-playground id="CcnClPYtrEn" >}}
-```go
-for _,  v := range "😂" {
-  fmt.Println(v)
-}
-
-// 128514
-```
-{{< /go-playground >}}
-
-O [`unicode/utf8.DecodeRuneInString`](https://golang.org/pkg/unicode/utf8/#DecodeRuneInString)
-en los casos que no se quiera iterar sobre la cadena.
-
-{{< go-playground id="cStYBcRb9ZX" >}}
-```go
-x := "😂"
-
-// Sin iteración, extrae solo la primera runa y retorna la cantidad de
-// bytes que se leyeron.
-utf8.DecodeRuneInString(x) // 128514 4
-
-// Equivale a usar range
-for i := 0; i < len(x); {
-  v, w := utf8.DecodeRuneInString(x[i:])
-  fmt.Println(v)
-  i += w
-}
-
-// 128514
-```
-{{< /go-playground >}}
-
-```go
-'M'  // 74 -> U+004d -> 1001101 (7 bits)
-'😄' // 128516 -> U+1f604 -> 11110000 10011111 10011000 10000100 (4 bytes)
-
-"C"
-"Cadena de caracteres"
-
-`Cadena
-de
-caracteres
-multilineal`
-```
-
-## Arreglos
-
-{{% details summary="Enlaces de interés" %}}
-* <https://tour.golang.org/moretypes/6>
-* <https://golang.org/ref/spec#Array_types>
-* <https://golang.org/ref/spec#Composite_literals>
-* <https://golang.org/ref/spec#Length_and_capacity>
-* <https://blog.golang.org/go-slices-usage-and-internals>
-* <https://blog.golang.org/slices>
-* <https://research.swtch.com/godata>
-
-https://medium.com/@thatisuday/the-anatomy-of-arrays-in-go-24429e4491b7?source=email-a31d0d6d29a8-1565621303043-digest.reader------0-59------------------48df5a24_2885_4bc2_9f7f_f6086c816d28-16&sectionName=recommended
-{{% /details %}}
-
-Son un conjunto de elementos de algún tipo de dato asignado arbitrariamente, la
-cantidad debe ser una constante y no puede cambiar después de su creación.
-
-Todos los elementos están enumerados e inician en la posición `0`, a estas
-posiciones se les llama *índices* y se usa la notación `x[i]` para acceder a
-sus elementos, donde `x` es un arreglo e `i` el índice. También soportan
-operaciones de porciones, que consisten en tomar un subconjunto de elementos
-del arreglo, para esto se usa una notación parecida, `x[i:j]`, donde `x` es un
-arreglo, `i` el índice inicial inclusivo y `j` el índice final exclusivo, pero
-en este caso el tipo de dato obtenido no es un arreglo, sino una porción.
-
-```
-    ┌─┬─┬─┬─┬─┐
-x = │1│3│5│7│9│
-    └─┴─┴─┴─┴─┘
-     0 1 2 3 4
-
-x[0]   -> 1
-x[2]   -> 5
-x[4]   -> 9
-x[0:2] -> [1 3]
-x[3:5] -> [7 9]
-x[:3]  -> [1 3 5]
-x[2:]  -> [5 7 9]
-x[:]   -> [1 3 5 7 9]
-
-x[0] = 0
-x[4] = 0
-x[:] -> [0 3 5 7 0]
-```
-
-Internamente, no son más que un bloque de memoria reservado que tiene a todos
-sus elementos uno después de otro, es decir, si se crea un arreglo de bytes con
-los cuatro primeros números pares, el espacio de memoria ocupado por el arreglo
-sera 4 bytes (16 bits normalmente) y sus elementos se ubicarán en estos bytes
-según sus indices.
-
-```
-    ┌─┬─┬─┬─┐
-x = │2│4│6│8│ -> 1 byte x 4 elementos -> 4 bytes
-    └─┴─┴─┴─┘
+    +-+-+-+-+
+x = |2|4|6|8| -> 1 byte x 4 elementos -> 4 bytes
+    +-+-+-+-+
      0 1 2 3
 
 Ubicación en la memoria: 0x10313020
@@ -1000,9 +801,9 @@ Del mismo modo pasa con los primeros cuatro números pares después del límite 
 un byte, la única diferencia es que ocuparán el doble de memoria.
 
 ```
-    ┌───┬───┬───┬───┐
-x = │256│258│260│262│ -> 2 bytes (uint16) x 4 elementos -> 8 bytes
-    └───┴───┴───┴───┘
+    +---+---+---+---+
+x = |256|258|260|262| -> 2 bytes (uint16) x 4 elementos -> 8 bytes
+    +---+---+---+---+
       0   1   2   3
 
 Ubicación en la memoria: 0x10313020
@@ -1013,8 +814,9 @@ x[2] -> 2 * 2 bytes -> 0x10313020 + 4 -> 0x10313024 -> 0000000100000100 -> 260
 x[3] -> 3 * 2 bytes -> 0x10313020 + 6 -> 0x10313026 -> 0000000100000110 -> 262
 ```
 
-Para obtener la cantidad de elementos de un arreglo se debe usar la función
-`len(ARREGLO)` que retorna un número entero del tipo `int`.
+Por lo general no hace falta obtener la longitud de un vector, pues es un valor
+constante, pero si es necesario, se puede usar la función `len(VECTOR)`, que
+retorna este valor como un número entero del tipo `int`.
 
 {{< go-playground id="vpsI0bAQlYS" >}}
 ```go
@@ -1024,73 +826,25 @@ len(x)) // 3
 ```
 {{< /go-playground >}}
 
-### Representación sintáctica
+La longitud de un vector se obtiene directamente desde su tipo de dato y no
+contando sus elementos, esto quiere decir que `[5]byte` y `[10]byte` son dos
+tipos de datos completamente diferentes.
 
-```
-[CANTIDAD]TIPO
-```
-
-Ejemplos
-
-```go
-[5]byte{1, 2, 3, 4, 5}   // [1 2 3 4 5]
-[...]byte{1, 2, 3, 4, 5} // Igual que el de arriba, solo que obtiene
-                         // la cantidad de elementos automáticamente
-
-[3]bool{} // [false false false]
-          // Inicializa todos los elementos con su valor 0
-
-[3]bool{true} // [true false false]
-              // Se pueden indicar solo los primero valores y los
-              // demás serán inicializados con valor 0.
-
-[5]byte{2: 'M'} // [0 0 77 0 0]
-                // Se pueden asignar valores a índices específicos,
-                // los demás serán inicializados con su valor 0
-
-[...]byte{2: 'M', 'A', 4: 'R', 'N'} // [0 0 77 64 0 82 78]
-                                    // Si se especifica un índice, los
-                                    // siguientes elementos sin índice
-                                    // sumarán uno al valor anterior
-
-[...]string{    // Se pueden usar varias líneas para mejorar la
-  "Miguel",     // legibilidad
-  "Angel",
-  "Rivera",
-  "Notararigo", // Pero incluso el último elemento debe tener una coma
-}
-
-[...]struct{ X, Y float64 }{
-  struct{ X, Y float64 }{5, 10},
-
-  {15, 30}, // Se puede omitir el tipo de dato en los elementos
-}
-```
-
-### Valor cero
-
-```go
-[VALOR_CERO_0 ... VALOR_CERO_N]
-```
+A diferencia de otros lenguajes, un vector en Go no es un puntero al primero de
+sus elementos, sino que representa el bloque de memoria completo, por lo que se
+obtiene la ventaja de poder usar los operadores `==` y `!=`. Esto también puede
+ser una desventaja pues al momento de usar un vector como argumento de una
+función o en una asignación se hará una copia completa del mismo.
 
 ## Porciones
 
 {{% details summary="Enlaces de interés" %}}
-* <https://tour.golang.org/moretypes/7>
-* <https://tour.golang.org/moretypes/8>
-* <https://tour.golang.org/moretypes/9>
-* <https://tour.golang.org/moretypes/10>
-* <https://tour.golang.org/moretypes/11>
-* <https://tour.golang.org/moretypes/12>
-* <https://tour.golang.org/moretypes/13>
-* <https://tour.golang.org/moretypes/14>
-* <https://tour.golang.org/moretypes/15>
 * <https://golang.org/ref/spec#Slice_types>
 * <https://golang.org/ref/spec#Composite_literals>
 * <https://golang.org/ref/spec#Length_and_capacity>
 * <https://golang.org/ref/spec#Making_slices_maps_and_channels>
 * <https://golang.org/ref/spec#Appending_and_copying_slices>
-* <https://blog.golang.org/go-slices-usage-and-internals>
+* <https://blog.golang.org/slices-intro>
 * <https://blog.golang.org/slices>
 * <https://research.swtch.com/godata>
 * <https://github.com/golang/go/wiki/SliceTricks>
@@ -1098,20 +852,16 @@ Ejemplos
 https://medium.com/@thatisuday/the-anatomy-of-slices-in-go-6450e3bb2b94?source=email-a31d0d6d29a8-1565363247300-digest.reader------1-59------------------d8c67597_cf06_4a6f_a5b3_5fe1b055b8d0-1&sectionName=top
 {{% /details %}}
 
-Al igual que los arreglos, son un conjunto de elementos de un tipo de dato
-asignado arbitrariamente, pero con algunas diferencias importantes, entre las
-cuales destaca la posibilidad de alterar su tamaño después de crearse, por lo
-que generalmente son más comunes en el código fuente. Sus elementos también
-están enumerados como los arreglos y soportan operaciones de porciones (ya se
-que por algo se llaman porciones, pero es bueno aclararlo 😅).
+Son un conjunto de elementos de un tipo de dato asignado arbitrariamente como
+los vectores, pero con algunas diferencias importantes, entre las cuales
+destaca la posibilidad de alterar su tamaño después de crearse, por lo que
+es más común ver su uso.
 
-Otra diferencia con los arreglos, es la forma en la que son implementadas
-internamente por el lenguaje, pues en lugar de representar bloques de memoria,
-son estructuras de datos que contienen un puntero a un elemento de un arreglo;
-una longitud, que determina la cantidad de elementos que pertenecen a la
-porción después del referenciado por el puntero; y una capacidad, que es la
-máxima longitud que puede tener la porción, calculada por la cantidad de
-elementos desde el referenciado por el puntero hasta el final del arreglo.
+También soportan operaciones de porciones, que consisten en tomar un
+subconjunto de sus elementos y para esto se usa una notación parecida,
+`x[i:j]`, donde `x` es un vector, `i` el índice inicial inclusivo y `j` el
+índice final exclusivo, pero en este caso el tipo de dato obtenido no es un
+vector, sino una porción.
 
 ```
     ┌─┬─┬─┬─┬─┐
@@ -1369,6 +1119,283 @@ Ejemplos
 ```go
 nil
 ```
+
+**Implementación:**
+
+Otra diferencia con los arreglos, es la forma en la que son implementadas
+internamente por el lenguaje, pues en lugar de representar bloques de memoria,
+son estructuras de datos que contienen un puntero a un elemento de un arreglo;
+una longitud, que determina la cantidad de elementos que pertenecen a la
+porción después del referenciado por el puntero; y una capacidad, que es la
+máxima longitud que puede tener la porción, calculada por la cantidad de
+elementos desde el referenciado por el puntero hasta el final del arreglo.
+
+## Cadenas
+
+{{% details summary="Enlaces de interés" %}}
+* <https://golang.org/ref/spec#String_types>
+* <https://golang.org/ref/spec#String_literals>
+* <https://golang.org/ref/spec#Rune_literals>
+* <https://blog.golang.org/strings>
+* <https://research.swtch.com/godata>
+* [Porciones](#porciones)
+* [Codificación de texto](./../../computer-science/text-encoding.es.md)
+{{% /details %}}
+
+Son secuencias de símbolos que representan el sistema de escritura humano. Por
+lo general a cada uno de estos símbolos se les llama caracter y de hecho, el
+nombre completo de este tipo de dato es *Cadena de caracteres*.
+
+**Representación sintáctica:**
+
+```go
+string
+```
+
+**Representación literal:**
+
+Existen dos tipos de cadenas literales: las cadenas sin formato, que almacenan
+el texto justo como se ve en la pantalla; y las cadenas interpretadas, que
+permiten usar secuencias de escape para representar caracteres especiales.
+
+Para la definición de cadenas interpretadas se usan las comillas (`"`) y para
+las cadenas sin formato los acentos graves (<code>\`</code>).
+
+{{< go-playground id="M0lvf5r9D8p" >}}
+```go
+"Soy una cadena interpretada\ny puedo procesar secuencias de escape 😎"
+// Soy una cadena interpretada
+// y puedo procesar secuencias de escape 😎
+
+`Soy una cadena sin formato\ny no puedo procesar secuencias de escape 😔
+
+Pero puedo tener varias líneas,
+quien es mejor ahora 😒`
+// Soy una cadena sin formato\ny no puedo procesar secuencias de escape 😔
+//
+// Pero puedo tener varias líneas,
+// quien es mejor ahora 😒
+```
+{{< /go-playground >}}
+
+A diferencia de otros lenguajes de programación, el apóstrofo (`'`) se usa para
+representar runas literales, no cadenas. Las runas son caracteres individuales
+y representan valores numéricos, específicamente el valor UTF-8 del caracter.
+
+{{< go-playground >}}
+```
+"M" -> M
+'M' -> 77
+
+"😄" -> 😄
+'😄' -> 128516
+```
+
+--- PLAYGROUND ---
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+  fmt.Println("M")
+  fmt.Println('M')
+  fmt.Println("😄")
+  fmt.Println('😄')
+}
+```
+{{< /go-playground >}}
+
+Las cadenas interpretadas y las runas tienen la capacidad de procesar
+secuencias de escape, estas secuencias son caracteres precedidos por una barra
+invertida (`\`) que les permite alterar su comportamiento.
+
+```go
+"\a" // Bell character
+"\b" // Backspace
+"\t" // Horizontal tab
+"\n" // Line feed
+"\v" // Vertical tab
+"\f" // Form feed
+"\r" // Carriage return
+"\"" // Quotation mark
+"\\" // Backslash
+
+'\a' // 7
+'\b' // 8
+'\t' // 9
+'\n' // 10
+'\v' // 11
+'\f' // 12
+'\r' // 13
+'\'' // 39
+'\\' // 92
+
+// Unicode - Versión corta (u y 4 dígitos)
+"\u004d" // "M"
+'\u004d' // 77
+
+// Unicode - Versión larga (U y 8 dígitos)
+"\U0000004D" // "M"
+'\U0000004D' // 77
+"\U00F1F064" // "😄"
+'\U00F1F064' // 128516
+
+// Bytes (UTF-8) - Octales (3 dígitos)
+"\115"             // "M"
+'\115'             // 77
+"\360\237\230\204" // "😄"
+'\360\237\230\204' // Error, las runas no soportan más de un byte escapado
+
+// Bytes (UTF-8) - Hexadecimales (x y 2 dígitos)
+"\x4D"             // "M"
+'\x4D'             // 77
+"\xF0\x9F\x98\x84" // "😄"
+'\xF0\x9F\x98\x84' // Error, las runas no soportan más de un byte escapado
+```
+
+**Valor cero:**
+
+```go
+""
+```
+
+**Implementación:**
+
+Las cadenas son estructuras de datos muy parecidas a las porciones, pero se
+diferencian en que son inmutables y no tienen capacidad, por lo que su tamaño
+es de 2 words. Su vector interno es de tipo `[...]byte`, por lo que puede
+intercambiarse entre porciones de tipo `[]byte` y `[]rune`.
+
+```
+"hola mundo"
+
+Cadena:
+
+  +-----+-----+
+  | 0x1 |  10 |
+  +-----+-----+
+    ptr   lon
+
+Vector interno:
+
+ 0x1
+  ↓
+  +---+---+---+---+---+---+---+---+---+---+
+  |104|111|108| 97| 44|109|117|110|100|111|
+  +---+---+---+---+---+---+---+---+---+---+
+    0   1   2   3   4   5   6   7   8   9
+```
+
+{{< go-playground id="yHrBgqgfqE9" >}}
+```go
+x := "Hola"
+
+x[2] = 'L' // Error
+cap(x)     // Error
+```
+{{< /go-playground >}}
+
+Como su unidad mínima es el byte y no la runa, es posible que cadenas como
+`Hola` y `😂` tengan la misma longitud.
+
+{{< go-playground id="oCaft33c5jj" >}}
+```go
+len("Hola") // 4
+// "Hola" es una cadena compuesta por cuatro bytes, cada uno
+// representa una runa.
+// 'H' ->  72 -> U+0048 -> 01001000
+// 'o' -> 111 -> U+006F -> 01101111
+// 'l' -> 108 -> U+006C -> 01101100
+// 'a' ->  92 -> U+0061 -> 01100001
+
+len("😂") // 4
+// "😂" es una cadena compuesta por cuatro bytes, todos
+// representan una runa
+// '😂' -> 128514 -> U+1F602 -> 11110000 10011111 10011000 10000010
+```
+{{< /go-playground >}}
+
+Realizar operaciones de índices sobre las cadenas puede resultar en un
+comportamiento inesperado, pues cada índice contiene un byte y no una runa.
+
+{{< go-playground id="y0O2H_Y91Tc" >}}
+```go
+x := "😂"
+
+for i := 0; i < len(x); i++ {
+  fmt.Println(x[i])
+}
+
+// 240 -> 11110000
+// 159 -> 10011111
+// 152 -> 10011000
+// 130 -> 10000010
+```
+{{< /go-playground >}}
+
+Para evitar esto se puede usar `range`, que extrae runa a runa.
+
+{{< go-playground id="CcnClPYtrEn" >}}
+```go
+for _,  v := range "😂" {
+  fmt.Println(v)
+}
+
+// 128514
+```
+{{< /go-playground >}}
+
+También se puede usar [`utf8.DecodeRuneInString`](https://golang.org/pkg/unicode/utf8/#DecodeRuneInString)
+en los casos que no se quiera iterar sobre la cadena o se necesite más control.
+
+{{< go-playground id="cStYBcRb9ZX" >}}
+```go
+x := "😂"
+
+// Sin iteración, retorna la primera runa y la cantidad de bytes que la
+// componen.
+utf8.DecodeRuneInString(x) // 128514 4
+
+// Equivale a usar range
+for i := 0; i < len(x); {
+  v, w := utf8.DecodeRuneInString(x[i:])
+  fmt.Println(v)
+  i += w
+}
+
+// 128514
+```
+{{< /go-playground >}}
+
+Solo es posible obtener la dirección de memoria de la cadena completa, no de
+sus caracteres individualmente.
+
+{{< go-playground >}}
+```go
+x := "hola, mundo"
+y := &x
+z := &x[0] // Error
+```
+
+--- PLAYGROUND ---
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+  x := "hola, mundo"
+  y := &x
+  z := &x[0]
+
+  fmt.Println(y)
+  fmt.Println(z)
+}
+```
+{{< /go-playground >}}
 
 ## Mapas
 
@@ -3102,6 +3129,10 @@ https://go-proverbs.github.io/
 https://stackoverflow.com/questions/28576173/reason-for-huge-size-of-compiled-executable-of-go
 
 https://blog.filippo.io/shrink-your-go-binaries-with-this-one-weird-trick/
+
+# Recursos académicos
+
+* [A Tour of Go](https://tour.golang.org/)
 
 # Atribuciones
 
