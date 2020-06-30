@@ -1,6 +1,6 @@
 ---
 title: Go (Golang)
-date: 2020-06-22T15:30:00-04:00
+date: 2020-06-24T15:30:00-04:00
 image: images/go.png
 description: Es un lenguaje de código abierto, minimalista y de alto rendimiento. Más que un artículo, esta es una referencia del lenguaje y sus herramientas.
 tags:
@@ -683,8 +683,8 @@ flotante.
 
 {{% details summary="Enlaces de interés" %}}
 * <https://golang.org/ref/spec#Array_types>
-* <https://golang.org/ref/spec#Composite_literals>
 * <https://golang.org/ref/spec#Length_and_capacity>
+* <https://golang.org/ref/spec#Composite_literals>
 * <https://blog.golang.org/slices-intro>
 * <https://blog.golang.org/slices>
 * <https://research.swtch.com/godata>
@@ -699,10 +699,10 @@ les llama *índices* y se usa la notación `x[i]` para acceder a ellos, donde `x
 es un vector e `i` el índice.
 
 ```
-    +-+-+-+-+-+
-x = |1|3|5|7|9|
-    +-+-+-+-+-+
-     0 1 2 3 4
+    +---+---+---+---+---+
+x = | 1 | 3 | 5 | 7 | 9 |
+    +---+---+---+---+---+
+      0   1   2   3   4
 
 x[0] -> 1
 x[2] -> 5
@@ -711,11 +711,33 @@ x[4] -> 9
 x[0] = 0
 x[4] = 0
 
-     +-+-+-+-+-+
-x -> |0|3|5|7|0|
-     +-+-+-+-+-+
-      0 1 2 3 4
+     +---+---+---+---+---+
+x -> | 0 | 3 | 5 | 7 | 0 |
+     +---+---+---+---+---+
+       0   1   2   3   4
 ```
+
+La longitud de un vector se obtiene directamente desde su tipo de dato y no
+contando sus elementos, esto quiere decir que `[5]byte` y `[10]byte` son dos
+tipos de datos diferentes.
+
+Por lo general no hace falta obtener la longitud de un vector, pues es un valor
+constante, pero si es necesario, se puede usar la función `len(VECTOR)`, que
+retorna este valor como un número entero del tipo `int`.
+
+{{< go-playground id="vpsI0bAQlYS" >}}
+```go
+x := [3]int{1, 2, 3}
+
+len(x)) // 3
+```
+{{< /go-playground >}}
+
+A diferencia de otros lenguajes, un vector en Go no es un puntero al primero de
+sus elementos, sino que representa el bloque de memoria completo, por lo que se
+obtiene la ventaja de poder usar los operadores `==` y `!=`. Esto también puede
+ser una desventaja pues al momento de usar un vector como argumento de una
+función o en una asignación se hará una copia completa del mismo.
 
 **Representación sintáctica:**
 
@@ -784,10 +806,10 @@ primeros números pares, el espacio de memoria ocupado por el vector sera 4
 bytes (16 bits) y sus elementos se ubicarán en estos bytes según sus indices.
 
 ```
-    +-+-+-+-+
-x = |2|4|6|8| -> 1 byte x 4 elementos -> 4 bytes
-    +-+-+-+-+
-     0 1 2 3
+    +---+---+---+---+
+x = | 2 | 4 | 6 | 8 | -> 1 byte x 4 elementos -> 4 bytes
+    +---+---+---+---+
+      0   1   2   3
 
 Ubicación en la memoria: 0x10313020
 
@@ -808,42 +830,21 @@ x = |256|258|260|262| -> 2 bytes (uint16) x 4 elementos -> 8 bytes
 
 Ubicación en la memoria: 0x10313020
 
-x[0] -> 0 * 2 bytes -> 0x10313020 + 0 -> 0x10313020 -> 0000000100000000 -> 256
-x[1] -> 1 * 2 bytes -> 0x10313020 + 2 -> 0x10313022 -> 0000000100000010 -> 258
-x[2] -> 2 * 2 bytes -> 0x10313020 + 4 -> 0x10313024 -> 0000000100000100 -> 260
-x[3] -> 3 * 2 bytes -> 0x10313020 + 6 -> 0x10313026 -> 0000000100000110 -> 262
+x[0] -> 0 * 2 bytes -> 0x10313020 + 0 -> 0x10313020 -> 00000001 00000000 -> 256
+x[1] -> 1 * 2 bytes -> 0x10313020 + 2 -> 0x10313022 -> 00000001 00000010 -> 258
+x[2] -> 2 * 2 bytes -> 0x10313020 + 4 -> 0x10313024 -> 00000001 00000100 -> 260
+x[3] -> 3 * 2 bytes -> 0x10313020 + 6 -> 0x10313026 -> 00000001 00000110 -> 262
 ```
-
-Por lo general no hace falta obtener la longitud de un vector, pues es un valor
-constante, pero si es necesario, se puede usar la función `len(VECTOR)`, que
-retorna este valor como un número entero del tipo `int`.
-
-{{< go-playground id="vpsI0bAQlYS" >}}
-```go
-x := [3]int{1, 2, 3}
-
-len(x)) // 3
-```
-{{< /go-playground >}}
-
-La longitud de un vector se obtiene directamente desde su tipo de dato y no
-contando sus elementos, esto quiere decir que `[5]byte` y `[10]byte` son dos
-tipos de datos completamente diferentes.
-
-A diferencia de otros lenguajes, un vector en Go no es un puntero al primero de
-sus elementos, sino que representa el bloque de memoria completo, por lo que se
-obtiene la ventaja de poder usar los operadores `==` y `!=`. Esto también puede
-ser una desventaja pues al momento de usar un vector como argumento de una
-función o en una asignación se hará una copia completa del mismo.
 
 ## Porciones
 
 {{% details summary="Enlaces de interés" %}}
 * <https://golang.org/ref/spec#Slice_types>
-* <https://golang.org/ref/spec#Composite_literals>
-* <https://golang.org/ref/spec#Length_and_capacity>
 * <https://golang.org/ref/spec#Making_slices_maps_and_channels>
+* <https://golang.org/ref/spec#Slice_expressions>
+* <https://golang.org/ref/spec#Length_and_capacity>
 * <https://golang.org/ref/spec#Appending_and_copying_slices>
+* <https://golang.org/ref/spec#Composite_literals>
 * <https://blog.golang.org/slices-intro>
 * <https://blog.golang.org/slices>
 * <https://research.swtch.com/godata>
@@ -854,63 +855,165 @@ https://medium.com/@thatisuday/the-anatomy-of-slices-in-go-6450e3bb2b94
 
 Son un conjunto de elementos de un tipo de dato asignado arbitrariamente como
 los vectores, pero con algunas diferencias importantes, entre las cuales
-destaca la posibilidad de alterar su tamaño después de crearse, por lo que
-es más común ver su uso.
+destaca la posibilidad de alterar su tamaño después de crearse, por lo que son
+muchos más flexibles y esto hace que sea más común ver su uso.
 
-También soportan operaciones de porciones, que consisten en tomar un
-subconjunto de sus elementos y para esto se usa una notación parecida,
-`x[i:j]`, donde `x` es un vector, `i` el índice inicial inclusivo y `j` el
-índice final exclusivo, pero en este caso el tipo de dato obtenido no es un
-vector, sino una porción.
+Es posible obtener porciones de varias maneras, una de ellas es aplicando
+*operaciones de porciones* sobre vectores u otras porciones. Estas operaciones
+permiten obtener subconjuntos de los elementos a los que se apliquen (de aquí
+su nombre), para esto se usa la notación `x[i:j]`, donde `x` es el elemento a
+porcionar, `i` es el índice inicial inclusivo y `j` el índice final exclusivo.
 
 ```
-    ┌─┬─┬─┬─┬─┐
-x = │1│3│5│7│9│
-    └─┴─┴─┴─┴─┘
-     0 1 2 3 4
+    +---+---+---+---+---+
+x = | 1 | 3 | 5 | 7 | 9 |
+    +---+---+---+---+---+
+      0   1   2   3   4
 
-y = x[:2]
+          +---+---+---+
+x[1:4] -> | 3 | 5 | 7 |
+          +---+---+---+
+            0   1   2
 
-     +-----+---+---+    +-+-+ +-+-+-+ 
-y -> |&x[0]| 2 | 5 | -> |1|3| |5|7|9| 
-     +-----+---+---+    +-+-+ +-+-+-+ 
-       ptr  lon cap      0 1   2 3 4
+Si se omite i, equivale a 0
 
-     ┌─────┬───┬───┐    ┌─┬─┐ ┌─┬─┬─┐ 
-y -> │&x[0]│ 2 │ 5 │ -> │1│3│ │5│7│9│ 
-     └─────┴───┴───┘    └─┴─┘ └─┴─┴─┘ 
-       ptr  lon cap      0 1   2 3 4
+           +---+---+---+
+  x[:3] -> | 1 | 3 | 5 |
+           +---+---+---+
+             0   1   2
 
-y[:]  -> [1 3]
-y[:2] -> [1 3]
-y[:5] -> [1 3 5 7 9]
-y[:6] -> Error, sobrepasa la capacidad
-y[2]  -> Error, sobrepasa la longitud
+Si se omite j, equivale a la longitud (5 en este caso)
 
-z = x[1:4]
+           +---+---+---+
+  x[2:] -> | 5 | 7 | 9 |
+           +---+---+---+
+             0   1   2
 
-     ┌─────┬───┬───┐    ┌─┬─┬─┐ ┌─┐
-z -> │&x[1]│ 3 │ 4 │ -> │3│5│7│ │9│
-     └─────┴───┴───┘    └─┴─┴─┘ └─┘
-       ptr  lon cap      0 1 2   3
+Si se omiten ambos se obtienen todos los elementos
 
-z[:]  -> [3 5 7]
-z[:2] -> [3 5]
-z[:4] -> [3 5 7 9]
-z[:5] -> Error, sobrepasa la capacidad
-y[3]  -> Error, sobrepasa la longitud
+          +---+---+---+---+---+
+  x[:] -> | 1 | 3 | 5 | 7 | 9 |
+          +---+---+---+---+---+
+            0   1   2   3   4
+```
 
-a = x[3:]
+Las porciones no contienen valores directamente, sino que en su lugar hacen
+referencia a vectores donde están almacenados estos valores, a estos vectores
+se les llaman *vectores internos*. Debido a esto su longitud no indica
+realmente cuanta memoria ocupan.
 
-     ┌─────┬───┬───┐    ┌─┬─┐
-a -> │&x[3]│ 2 │ 2 │ -> │7│9│
-     └─────┴───┴───┘    └─┴─┘
-       ptr  lon cap      0 1
+Cuando se aplican operaciones de porciones sobre otras porciones, todas
+compartirán el mismo vector interno, por lo que al modificar los valores en una
+de ellas, estos cambios se reflejarán en todas las demás.
 
-a[:]  -> [7 9]
-a[:2] -> [7 9]
-a[:3] -> Error, sobrepasa la capacidad
-a[2]  -> Error, sobrepasa la longitud
+También tienen otro atributo llamado *capacidad*, que indica la cantidad de
+elementos que hay desde el inicio de la porción hasta el final del vector
+interno.
+
+```
+    +---+---+---+---+---+
+x = | 1 | 3 | 5 | 7 | 9 |
+    +---+---+---+---+---+
+      0   1   2   3   4
+
+          +---+---+---+  +---+
+x[1:4] -> | 3 | 5 | 7 |  | 9 |
+          +---+---+---+  +---+
+            0   1   2      3
+
+Longitud: 3
+Capacidad: 4
+
+---
+
+         +---+---+---+  +---+---+
+x[:3] -> | 1 | 3 | 5 |  | 7 | 9 |
+         +---+---+---+  +---+---+
+           0   1   2      3   4
+
+Longitud: 3
+Capacidad: 5
+
+---
+
+         +---+---+---+
+x[2:] -> | 5 | 7 | 9 |
+         +---+---+---+
+           0   1   2
+
+Longitud: 3
+Capacidad: 3
+
+---
+
+        +---+---+---+---+---+
+x[:] -> | 1 | 3 | 5 | 7 | 9 |
+        +---+---+---+---+---+
+          0   1   2   3   4
+
+Longitud: 5
+Capacidad: 5
+```
+
+Este valor es útil para determinar si existe más memoria disponible
+después de los elementos de una porción.
+
+En caso de no contar con más memoria, se reservará un bloque más
+grande y se copiarán los valores.
+
+Si una porción tiene una capacidad mayor a su longitud, es posible aplicar
+operaciones de porciones sobrepasando su longitud 
+
+```
+    +---+---+---+---+---+
+x = | 1 | 3 | 5 | 7 | 9 |
+    +---+---+---+---+---+
+      0   1   2   3   4
+
+          +---+---+---+  +---+
+x[1:4] -> | 3 | 5 | 7 |  | 9 |
+          +---+---+---+  +---+
+            0   1   2      3
+
+Longitud: 3
+Capacidad: 4
+
+Se puede agregar un elemento sin tener que reservar memoria
+
+---
+
+         +---+---+---+  +---+---+
+x[:3] -> | 1 | 3 | 5 |  | 7 | 9 |
+         +---+---+---+  +---+---+
+           0   1   2      3   4
+
+Longitud: 3
+Capacidad: 5
+
+Se pueden agregar dos elemento sin tener que reservar memoria
+
+---
+
+         +---+---+---+
+x[2:] -> | 5 | 7 | 9 |
+         +---+---+---+
+           0   1   2
+
+Longitud: 3
+Capacidad: 3
+
+No se pueden agregar más elemenots, hace falta reservar un nuevo
+bloque de memoria y copiar los 3 valores iniciales
+
+---
+
+        +---+---+---+---+---+
+x[:] -> | 1 | 3 | 5 | 7 | 9 |
+        +---+---+---+---+---+
+          0   1   2   3   4
+
+Longitud: 5
+Capacidad: 5
 ```
 
 Es posible limitar su capacidad agregando un tercer índice a la sintaxis de
@@ -928,43 +1031,6 @@ b[:]  -> [1 3 5]
 b[:2] -> [1 3]
 b[:4] -> [1 3 5 7]
 b[:5] -> Error, sobrepasa la capacidad
-```
-
-Ya que las porciones solo tienen una referencia a un arreglo, pasarlas como
-argumentos es una operación muy ligera, pero esto quiere decir que cualquier
-modificación que se haga a los valores de una porción, afectará a las demás con
-el mismo arreglo.
-
-```
-    ┌─┬─┬─┬─┐
-x = │2│4│6│8│
-    └─┴─┴─┴─┘
-     0 1 2 3
-
-y = [:3]
-z = [1:]
-
-x -> [2 4 6 8]
-y -> [2 4 6]
-z -> [4 6 8]
-
-x[1] = 3
-
-x -> [2 3 6 8]
-y -> [2 3 6]
-z -> [3 6 8]
-
-y[0] = 1
-
-x -> [1 3 6 8]
-y -> [1 3 6]
-z -> [3 6 8]
-
-z[2] = 9
-
-x -> [1 3 6 9]
-y -> [1 3 6]
-z -> [3 6 9]
 ```
 
 Para obtener la longitud y la capacidad de una porción se deben usar las
@@ -1071,22 +1137,56 @@ fmt.Println(n)  // [true false true false true]
 ```
 {{< /go-playground >}}
 
-Ya que las porciones hacen referencia a arreglos, aunque una porción solo tenga
-algunos elementos, mantendrá completo en memoria su arreglo referenciado, es
-decir, aunque exista una porción con solo dos elementos, si el arreglo
-referenciado tiene mil elementos, estos mil elementos se mantendrán en memoria
-hasta que todas sus porciones sean liberadas, por esto, cuando se pretende
-tener una porción que pase por gran parte del programa y no importe el
-contenido completo de su arreglo, es recomendable copiar los elementos de la
-porción a una nueva con un arreglo propio.
+Ya que las porciones solo tienen una referencia a un arreglo, pasarlas como
+argumentos es una operación muy ligera, pero esto quiere decir que cualquier
+modificación que se haga a los valores de una porción, afectará a las demás con
+el mismo arreglo.
 
-### Representación sintáctica
+```
+    ┌─┬─┬─┬─┐
+x = │2│4│6│8│
+    └─┴─┴─┴─┘
+     0 1 2 3
+
+y = [:3]
+z = [1:]
+
+x -> [2 4 6 8]
+y -> [2 4 6]
+z -> [4 6 8]
+
+x[1] = 3
+
+x -> [2 3 6 8]
+y -> [2 3 6]
+z -> [3 6 8]
+
+y[0] = 1
+
+x -> [1 3 6 8]
+y -> [1 3 6]
+z -> [3 6 8]
+
+z[2] = 9
+
+x -> [1 3 6 9]
+y -> [1 3 6]
+z -> [3 6 9]
+```
+
+El vector interno de las porciones solo es liberado cuando ya no existen más
+porciones que hacen referencia a él. Esto quiere decir que aunque solo exista
+una porción con un elemento de un vector con mil elementos, todos estos mil
+elementos se mantendrán en memoria, por lo que en algunos casos puede resultar
+conveniente solo copiar los valores que se necesiten.
+
+**Representación sintáctica:**
 
 ```
 []TIPO
 ```
 
-Ejemplos
+**Representación literal:**
 
 ```go
 []byte{1, 2, 3, 4, 5} // [1 2 3 4 5]
@@ -1114,7 +1214,7 @@ Ejemplos
 }
 ```
 
-### Valor cero
+**Valor cero:**
 
 ```go
 nil
@@ -1129,6 +1229,56 @@ una longitud, que determina la cantidad de elementos que pertenecen a la
 porción después del referenciado por el puntero; y una capacidad, que es la
 máxima longitud que puede tener la porción, calculada por la cantidad de
 elementos desde el referenciado por el puntero hasta el final del arreglo.
+
+```
+    +---+---+---+---+---+
+x = | 1 | 3 | 5 | 7 | 9 |
+    +---+---+---+---+---+
+      0   1   2   3   4
+
+y = x[:2]
+
+     +-----+---+---+    +-+-+ +-+-+-+ 
+y -> |&x[0]| 2 | 5 | -> |1|3| |5|7|9| 
+     +-----+---+---+    +-+-+ +-+-+-+ 
+       ptr  lon cap      0 1   2 3 4
+
+     ┌─────┬───┬───┐    ┌─┬─┐ ┌─┬─┬─┐ 
+y -> │&x[0]│ 2 │ 5 │ -> │1│3│ │5│7│9│ 
+     └─────┴───┴───┘    └─┴─┘ └─┴─┴─┘ 
+       ptr  lon cap      0 1   2 3 4
+
+y[:]  -> [1 3]
+y[:2] -> [1 3]
+y[:5] -> [1 3 5 7 9]
+y[:6] -> Error, sobrepasa la capacidad
+y[2]  -> Error, sobrepasa la longitud
+
+z = x[1:4]
+
+     ┌─────┬───┬───┐    ┌─┬─┬─┐ ┌─┐
+z -> │&x[1]│ 3 │ 4 │ -> │3│5│7│ │9│
+     └─────┴───┴───┘    └─┴─┴─┘ └─┘
+       ptr  lon cap      0 1 2   3
+
+z[:]  -> [3 5 7]
+z[:2] -> [3 5]
+z[:4] -> [3 5 7 9]
+z[:5] -> Error, sobrepasa la capacidad
+y[3]  -> Error, sobrepasa la longitud
+
+a = x[3:]
+
+     ┌─────┬───┬───┐    ┌─┬─┐
+a -> │&x[3]│ 2 │ 2 │ -> │7│9│
+     └─────┴───┴───┘    └─┴─┘
+       ptr  lon cap      0 1
+
+a[:]  -> [7 9]
+a[:2] -> [7 9]
+a[:3] -> Error, sobrepasa la capacidad
+a[2]  -> Error, sobrepasa la longitud
+```
 
 ## Cadenas
 
