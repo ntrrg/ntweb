@@ -903,7 +903,7 @@ se les llaman *vectores internos*. Debido a esto su longitud no indica
 realmente cuanta memoria ocupan.
 
 Cuando se aplican operaciones de porciones sobre otras porciones, todas
-compartirán el mismo vector interno, por lo que al modificar los valores en una
+comparten el mismo vector interno, por lo que al modificar los valores en una
 de ellas, estos cambios se reflejarán en todas las demás.
 
 También tienen otro atributo llamado *capacidad*, que indica la cantidad de
@@ -955,14 +955,9 @@ Longitud: 5
 Capacidad: 5
 ```
 
-Este valor es útil para determinar si existe más memoria disponible
-después de los elementos de una porción.
-
-En caso de no contar con más memoria, se reservará un bloque más
-grande y se copiarán los valores.
-
 Si una porción tiene una capacidad mayor a su longitud, es posible aplicar
-operaciones de porciones sobrepasando su longitud 
+operaciones de porciones que sobrepasen su longitud, de esta manera se pueden
+obtener los elementos que no se incluyeron en ella originalmente.
 
 ```
     +---+---+---+---+---+
@@ -970,50 +965,23 @@ x = | 1 | 3 | 5 | 7 | 9 |
     +---+---+---+---+---+
       0   1   2   3   4
 
-          +---+---+---+  +---+
-x[1:4] -> | 3 | 5 | 7 |  | 9 |
-          +---+---+---+  +---+
-            0   1   2      3
+y = x[:3]
 
-Longitud: 3
-Capacidad: 4
-
-Se puede agregar un elemento sin tener que reservar memoria
-
----
-
-         +---+---+---+  +---+---+
-x[:3] -> | 1 | 3 | 5 |  | 7 | 9 |
-         +---+---+---+  +---+---+
-           0   1   2      3   4
+     +---+---+---+  +---+---+
+y -> | 1 | 3 | 5 |  | 7 | 9 |
+     +---+---+---+  +---+---+
+       0   1   2      3   4
 
 Longitud: 3
 Capacidad: 5
 
-Se pueden agregar dos elemento sin tener que reservar memoria
+         +---+---+---+---+---+
+y[:5] -> | 1 | 3 | 5 | 7 | 9 |
+         +---+---+---+---+---+
+           0   1   2   3   4
 
----
-
-         +---+---+---+
-x[2:] -> | 5 | 7 | 9 |
-         +---+---+---+
-           0   1   2
-
-Longitud: 3
-Capacidad: 3
-
-No se pueden agregar más elemenots, hace falta reservar un nuevo
-bloque de memoria y copiar los 3 valores iniciales
-
----
-
-        +---+---+---+---+---+
-x[:] -> | 1 | 3 | 5 | 7 | 9 |
-        +---+---+---+---+---+
-          0   1   2   3   4
-
-Longitud: 5
-Capacidad: 5
+y[3]  // Error, sobrepasa la longitud
+y[:6] // Error, sobrepasa la capacidad
 ```
 
 Es posible limitar su capacidad agregando un tercer índice a la sintaxis de
