@@ -71,6 +71,7 @@
 }
 
 .markdown a {
+  word-break: break-word;
   text-decoration: underline;
 }
 
