@@ -875,26 +875,26 @@ x[1:4] -> | 3 | 5 | 7 |
           +---+---+---+
             0   1   2
 
+         +---+---+---+
+x[:3] -> | 1 | 3 | 5 |
+         +---+---+---+
+           0   1   2
+
 Si se omite i, equivale a 0
 
-           +---+---+---+
-  x[:3] -> | 1 | 3 | 5 |
-           +---+---+---+
-             0   1   2
+         +---+---+---+
+x[2:] -> | 5 | 7 | 9 |
+         +---+---+---+
+           0   1   2
 
 Si se omite j, equivale a la longitud (5 en este caso)
 
-           +---+---+---+
-  x[2:] -> | 5 | 7 | 9 |
-           +---+---+---+
-             0   1   2
+        +---+---+---+---+---+
+x[:] -> | 1 | 3 | 5 | 7 | 9 |
+        +---+---+---+---+---+
+          0   1   2   3   4
 
 Si se omiten ambos se obtienen todos los elementos
-
-          +---+---+---+---+---+
-  x[:] -> | 1 | 3 | 5 | 7 | 9 |
-          +---+---+---+---+---+
-            0   1   2   3   4
 ```
 
 Las porciones no contienen valores directamente, sino que en su lugar hacen
@@ -984,11 +984,12 @@ y[3]  // Error, sobrepasa la longitud
 y[:6] // Error, sobrepasa la capacidad
 ```
 
-Es posible limitar su capacidad agregando un tercer índice a la sintaxis de
-porciones (`x[i:j:k]`), y al igual que el segundo índice, es exclusivo.
+Si se agrega un tercer índice a la sintaxis de porciones, este determina hasta
+qué índice exclusivo llega su capacidad, su sintaxis es `x[i:j:k]`, `k` debe
+ser mayor o igual que `j`. Cuando se usa este modo, solo `i` es opcional.
 
 ```
-b = x[:3:4] -> Solo el primer índice es opcional con esta sintaxis
+b = x[:3:4]
 
      ┌─────┬───┬───┐    ┌─┬─┬─┐ ┌─┐
 b -> │&x[0]│ 3 │ 4 │ -> │1│3│5│ │7│
