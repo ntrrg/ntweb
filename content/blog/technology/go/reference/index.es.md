@@ -904,7 +904,7 @@ realmente cuanta memoria ocupan.
 
 Cuando se aplican operaciones de porciones sobre otras porciones, todas
 comparten el mismo vector interno, por lo que al modificar los valores en una
-de ellas, estos cambios se reflejarán en todas las demás.
+de ellas, estos cambios se reflejan en todas las demás.
 
 También tienen otro atributo llamado *capacidad*, que indica la cantidad de
 elementos que hay desde el inicio de la porción hasta el final del vector
@@ -986,59 +986,72 @@ y[:6] // Error, sobrepasa la capacidad
 
 Si se agrega un tercer índice a la sintaxis de porciones, este determina hasta
 qué índice exclusivo llega su capacidad, su sintaxis es `x[i:j:k]`, `k` debe
-ser mayor o igual que `j`. Cuando se usa este modo, solo `i` es opcional.
+ser mayor o igual que `j` y no puede ser mayor a la capacidad de `x`. Cuando se
+usa esta sintaxis, solo `i` es opcional.
 
 ```
-b = x[:3:4]
+    +---+---+---+---+---+
+x = | 1 | 3 | 5 | 7 | 9 |
+    +---+---+---+---+---+
+      0   1   2   3   4
 
-     ┌─────┬───┬───┐    ┌─┬─┬─┐ ┌─┐
-b -> │&x[0]│ 3 │ 4 │ -> │1│3│5│ │7│
-     └─────┴───┴───┘    └─┴─┴─┘ └─┘
-       ptr  lon cap      0 1 2   3
+           +---+---+---+  +---+
+x[:3:4] -> | 1 | 3 | 5 |  | 7 |
+           +---+---+---+  +---+
+             0   1   2      3
 
-b[:]  -> [1 3 5]
-b[:2] -> [1 3]
-b[:4] -> [1 3 5 7]
-b[:5] -> Error, sobrepasa la capacidad
+Longitud: 3
+Capacidad: 4
 ```
 
-Para obtener la longitud y la capacidad de una porción se deben usar las
-funciones `len(PORCIÓN)` y `cap(PORCIÓN)`, ambas retornan un número entero del
-tipo `int`.
+Otra forma de obtener porciones es usando la función `make`, que recibe tres
+argumentos: el tipo de porción, su longitud y opcionalmente su capacidad. La
+porción obtenida apunta al primer elemento de un nuevo vector con todos sus
+elementos inicializados en su valor cero.
 
-{{< go-playground id="l9D0hIL8Mpl" >}}
-```go
-x := [5]int{1, 2, 3, 4, 5}
-y := x[1:4]
-
-len(y) // 3
-cap(y) // 4
-```
-{{< /go-playground >}}
-
-Es posible inicializar una porción sin valores literales, para esto se puede
-usar la función `make`, que recibe tres argumentos: el tipo de porción, la
-longitud y opcionalmente la capacidad.
-
-{{< go-playground id="QqtBDs72WGQ" >}}
+{{< go-playground >}}
 ```go
 x := make([]bool, 3)
-// [false false false]
+// x -> [false false false]
+// Vector interno -> [false false false]
 
 y := make([]byte, 3, 5)
-// [0 0 0]
+// y -> [0 0 0]
+// Vector interno -> [0 0 0 0 0]
 
-z := y[:cap(y)]
-// [0 0 0 0 0]
+z := make([]byte, 0, 5)
+// z -> []
+// Vector interno -> [0 0 0 0 0]
+```
+
+--- PLAYGROUND ---
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+  x := make([]bool, 3)
+  fmt.Println(x)
+
+  y := make([]byte, 3, 5)
+  fmt.Println(y)
+
+  z := make([]byte, 0, 5)
+  fmt.Println(z)
+}
 ```
 {{< /go-playground >}}
 
-Existen dos funciones que ayudan con el trabajo cotidiano de las porciones, la
-primera es `append`, que permite agregar elementos al final de una porción,
-recibe como argumentos una porción de un tipo específico y una lista de
-datos del mismo tipo, retorna una nueva porción que dependiendo de la
-capacidad, reutilizará el arreglo referenciado por la porción pasada como
-argumento o creará uno nuevo que pueda almacenar los elementos.
+Para agregar elementos a una porción se usa la función `append`, que recibe
+como argumentos la porción inicial y todos los elementos que se quieren agregar
+a ella; el valor retornado por esta función es una nueva porción que contiene
+todos los elementos de la porción inicial más los nuevos elementos al final.
+
+Si la capacidad de la porción inicial es lo suficientemente grande como para
+almacenar los nuevos valores, se usa su vector interno, en caso contrario otro
+espacio de memoria es reservado y se copian todos los valores.
 
 {{< go-playground id="gaW_r9YvadO" >}}
 ```go
@@ -1106,48 +1119,33 @@ fmt.Println(n)  // [true false true false true]
 ```
 {{< /go-playground >}}
 
-Ya que las porciones solo tienen una referencia a un arreglo, pasarlas como
-argumentos es una operación muy ligera, pero esto quiere decir que cualquier
-modificación que se haga a los valores de una porción, afectará a las demás con
-el mismo arreglo.
+Para obtener la longitud y la capacidad de una porción se deben usar las
+funciones `len(PORCIÓN)` y `cap(PORCIÓN)`, ambas retornan un número entero del
+tipo `int`.
 
+{{< go-playground id="l9D0hIL8Mpl" >}}
+```go
+x := [5]int{1, 2, 3, 4, 5}
+y := x[1:4]
+
+len(y) // 3
+cap(y) // 4
 ```
-    ┌─┬─┬─┬─┐
-x = │2│4│6│8│
-    └─┴─┴─┴─┘
-     0 1 2 3
-
-y = [:3]
-z = [1:]
-
-x -> [2 4 6 8]
-y -> [2 4 6]
-z -> [4 6 8]
-
-x[1] = 3
-
-x -> [2 3 6 8]
-y -> [2 3 6]
-z -> [3 6 8]
-
-y[0] = 1
-
-x -> [1 3 6 8]
-y -> [1 3 6]
-z -> [3 6 8]
-
-z[2] = 9
-
-x -> [1 3 6 9]
-y -> [1 3 6]
-z -> [3 6 9]
-```
+{{< /go-playground >}}
 
 El vector interno de las porciones solo es liberado cuando ya no existen más
 porciones que hacen referencia a él. Esto quiere decir que aunque solo exista
 una porción con un elemento de un vector con mil elementos, todos estos mil
 elementos se mantendrán en memoria, por lo que en algunos casos puede resultar
 conveniente solo copiar los valores que se necesiten.
+
+Las porciones se comportan más como los vectores en otros lenguajes, pues no
+son realmente un bloque de memoria con sus elementos, sino que apuntan solo al
+primero de ellos. De esta manera los operadores `==` y `!=` no se comportan
+como lo harían con los vectores y de hecho solo pueden ser usados para comparar
+porciones con `nil`. Una ventaja de esto es que usar una porción como argumento
+de una función o en una asignación es una tarea sencilla y no consume muchos
+recursos.
 
 **Representación sintáctica:**
 
