@@ -1005,7 +1005,7 @@ Capacidad: 4
 ```
 
 Otra forma de obtener porciones es usando la función `make`, que recibe tres
-argumentos: el tipo de porción, su longitud y opcionalmente su capacidad. La
+argumentos, el tipo de porción, su longitud y opcionalmente su capacidad. La
 porción obtenida apunta al primer elemento de un nuevo vector con todos sus
 elementos inicializados en su valor cero.
 
@@ -1053,42 +1053,155 @@ Si la capacidad de la porción inicial es lo suficientemente grande como para
 almacenar los nuevos valores, se usa su vector interno, en caso contrario otro
 espacio de memoria es reservado y se copian todos los valores.
 
-{{< go-playground id="gaW_r9YvadO" >}}
+{{< go-playground >}}
 ```go
 a := []byte{1, 2, 3, 4, 5}
-b := a[:3]
-c := a[2:]
+// a -> [1 2 3 4 5]
 
-// [1 2 3 4 5]
-// [1 2 3] 3 5
-// [3 4 5] 3 3
+b := a[:3]
+// b -> [1 2 3]
+
+c := a[2:]
+// c -> [3 4 5]
 
 x := append(b, 6)
-
+// x -> [1 2 3 6]
 // La capacidad de b es 5 y su longitud 3, esto quiere decir que
-// todavía quedan 2 (5-3) índices reusables en el arreglo referenciado,
-// por lo que se agregará el nuevo valor en el índice después de la
-// porción (3)
+// todavía quedan 2 (5 - 3) índices reusables en el vector interno,
+// por lo que append agrega el nuevo valor en el índice 3.
 
-// [1 2 3 6 5]
-// [1 2 3] 3 5
-// [3 6 5] 3 3
-// [1 2 3 6] 4 5
+// a -> [1 2 3 6 5]
+// b -> [1 2 3]
+// c -> [3 6 5]
 
 y := append(c, 7, 8)
+// y -> [3 4 5 7 8]
+// La capacidad de c es 3 y su longitud 3, esto quiere decir que no
+// quedan índices reusables en el vector interno, por lo que se
+// reserva uno nuevo con suficiente espacio, se copian los valores de
+// c y se agregan los nuevos elementos.
+//
+// La capacidad de la nueva porción es difícil de predecir pues por
+// ahora no hay un comportamiento definido en la especificación del
+// lenguaje y puede variar entre implementaciones.
 
-// La capacidad de c es 3 y su longitud 3, esto quiere decir que
-// no quedan índices reusables en el arreglo referenciado, por lo que
-// se creará uno nuevo que logre almacenar los valores, pero con una
-// capacidad un poco difícil de predecir pues por ahora no hay un
-// comportamiento definido en la especificación del lenguaje y puede
-// variar entre sus implementaciones
+y[0] = 9
+// Solo el vector interno de y será modificado.
 
-// [1 2 3 6 5]
-// [1 2 3] 3 5
-// [3 6 5] 3 3
-// [1 2 3 6] 4 5
-// [3 6 5 7 8] 5
+// a -> [1 2 3 6 5]
+// b -> [1 2 3]
+// c -> [3 6 5]
+// x -> [1 2 3 6]
+// y -> [9 4 5 7 8]
+```
+
+--- PLAYGROUND ---
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+  a := []byte{1, 2, 3, 4, 5}
+  fmt.Println(a)
+
+  b := a[:3]
+  fmt.Println(b)
+
+  c := a[2:]
+  fmt.Println(c)
+
+  x := append(b, 6)
+  fmt.Println(x)
+
+  fmt.Println(a)
+  fmt.Println(b)
+  fmt.Println(c)
+
+  y := append(c, 7, 8)
+  fmt.Println(y)
+
+  y[0] = 9
+
+  fmt.Println(a)
+  fmt.Println(b)
+  fmt.Println(c)
+  fmt.Println(x)
+  fmt.Println(y)
+}
+```
+{{< /go-playground >}}
+
+Para obtener la longitud y la capacidad de una porción se deben usar las
+funciones `len` y `cap`, ambas retornan un número entero del tipo `int`.
+
+{{< go-playground id="l9D0hIL8Mpl" >}}
+```go
+x := [5]int{1, 2, 3, 4, 5}
+y := x[1:4]
+
+len(y) // 3
+cap(y) // 4
+```
+{{< /go-playground >}}
+
+El vector interno de las porciones solo es liberado cuando ya no existen más
+porciones que hacen referencia a él. Esto quiere decir que aunque solo exista
+una porción con un elemento de un vector con mil elementos, todos estos mil
+elementos se mantendrán en memoria, por lo que en algunos casos puede resultar
+conveniente solo copiar los valores que se necesiten.
+
+Las porciones se comportan más como los vectores en otros lenguajes, pues no
+son realmente un bloque de memoria con sus elementos, sino que apuntan solo al
+primero de ellos. De esta manera los operadores `==` y `!=` no se comportan
+como lo harían con los vectores y de hecho solo pueden ser usados para comparar
+porciones con `nil`. Una ventaja de esto es que usar una porción como argumento
+de una función o en una asignación es una tarea sencilla y no consume muchos
+recursos.
+
+Existen múltiples métodos para copiar elementos de una porción a otra, que van
+desde una simple asignación hasta reservar un nuevo espacio de memoria, algunos
+de ellos son equivalentes, otros resultan útiles en circunstancias específicas:
+
+```go
+x := []byte{0, 1, 2}
+y := []byte{3, 4, 5, 6, 7}
+z := []byte{8, 9}
+```
+
+* Hacer que dos porciones sean iguales
+
+{{< go-playground >}}
+```go
+x = y
+// Asignación directa, se hace una copia de la porción, pero tienen
+// el mismo vector interno.
+
+// x -> [3 4 5 6 7]
+// y -> [3 4 5 6 7]
+// z -> [8 9]
+
+z = y[:]
+// Operaciones de porciones, tiene el mismo resultado que la
+// asignación directa.
+
+// x -> [3 4 5 6 7]
+// y -> [3 4 5 6 7]
+// z -> [3 4 5 6 7]
+
+z[0] = 0
+
+// x -> [0 4 5 6 7]
+// y -> [0 4 5 6 7]
+// z -> [0 4 5 6 7]
+
+z = append([]byte{}, z...)
+z[1] = 1
+
+// x -> [0 4 5 6 7]
+// y -> [0 4 5 6 7]
+// z -> [0 1 5 6 7]
 ```
 {{< /go-playground >}}
 
@@ -1118,34 +1231,6 @@ copy(n[1:3], m) // 2
 fmt.Println(n)  // [true false true false true]
 ```
 {{< /go-playground >}}
-
-Para obtener la longitud y la capacidad de una porción se deben usar las
-funciones `len(PORCIÓN)` y `cap(PORCIÓN)`, ambas retornan un número entero del
-tipo `int`.
-
-{{< go-playground id="l9D0hIL8Mpl" >}}
-```go
-x := [5]int{1, 2, 3, 4, 5}
-y := x[1:4]
-
-len(y) // 3
-cap(y) // 4
-```
-{{< /go-playground >}}
-
-El vector interno de las porciones solo es liberado cuando ya no existen más
-porciones que hacen referencia a él. Esto quiere decir que aunque solo exista
-una porción con un elemento de un vector con mil elementos, todos estos mil
-elementos se mantendrán en memoria, por lo que en algunos casos puede resultar
-conveniente solo copiar los valores que se necesiten.
-
-Las porciones se comportan más como los vectores en otros lenguajes, pues no
-son realmente un bloque de memoria con sus elementos, sino que apuntan solo al
-primero de ellos. De esta manera los operadores `==` y `!=` no se comportan
-como lo harían con los vectores y de hecho solo pueden ser usados para comparar
-porciones con `nil`. Una ventaja de esto es que usar una porción como argumento
-de una función o en una asignación es una tarea sencilla y no consume muchos
-recursos.
 
 **Representación sintáctica:**
 
