@@ -1044,6 +1044,19 @@ func main() {
 ```
 {{< /go-playground >}}
 
+Para obtener la longitud y la capacidad de una porción se deben usar las
+funciones `len` y `cap`, ambas retornan un número entero del tipo `int`.
+
+{{< go-playground id="l9D0hIL8Mpl" >}}
+```go
+x := [5]int{1, 2, 3, 4, 5}
+y := x[1:4]
+
+len(y) // 3
+cap(y) // 4
+```
+{{< /go-playground >}}
+
 Para agregar elementos a una porción se usa la función `append`, que recibe
 como argumentos la porción inicial y todos los elementos que se quieren agregar
 a ella; el valor retornado por esta función es una nueva porción que contiene
@@ -1133,16 +1146,67 @@ func main() {
 ```
 {{< /go-playground >}}
 
-Para obtener la longitud y la capacidad de una porción se deben usar las
-funciones `len` y `cap`, ambas retornan un número entero del tipo `int`.
+La función `copy` permite copiar los elementos de una porción a otra, recibe
+como argumentos la porción donde se quieren copiar los elementos y la porción
+de donde se obtendrán los valores; retorna la cantidad de elemento que se
+copiaron como un `int`.
 
-{{< go-playground id="l9D0hIL8Mpl" >}}
+La cantidad de elementos a copiar puede ser calculada determinando la longitud
+menor entre ambas porciones. Esto quiere decir que:
+
+* Si B (destino) tiene la misma longitud que A (origen), entonces B tendrá los
+  mismos valores que A.
+
+* Si B tiene una menor longitud que A, entonces B tendrá solo los valores que
+  pueda almacenar de A.
+
+* Si B tiene una mayor longitud que A, entonces B tendrá todos los valores de A
+  y mantendrá los valores que estaban en índices que sobrepasaban la longitud
+  de A.
+
+{{< go-playground >}}
 ```go
-x := [5]int{1, 2, 3, 4, 5}
-y := x[1:4]
+x := []byte{0, 1, 2}
+y := []byte{3, 4, 5}
+z := []byte{6, 7, 8, 9}
 
-len(y) // 3
-cap(y) // 4
+copy(x, y)
+// x -> [3, 4, 5]
+// y -> [3, 4, 5]
+
+copy(y, z)
+// y -> [6, 7, 8]
+// z -> [6, 7, 8, 9]
+
+copy(z, x)
+// z -> [3, 4, 5, 9]
+// x -> [3, 4, 5]
+
+// x -> [3, 4, 5]
+// y -> [6, 7, 8]
+// z -> [3, 4, 5, 9]
+```
+
+--- PLAYGROUND ---
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+  x := []byte{0, 1, 2}
+  y := []byte{3, 4, 5}
+  z := []byte{6, 7, 8, 9}
+
+  copy(x, y)
+  copy(y, z)
+  copy(z, x)
+
+  fmt.Println(x)
+  fmt.Println(y)
+  fmt.Println(z)
+}
 ```
 {{< /go-playground >}}
 
@@ -1160,78 +1224,6 @@ porciones con `nil`. Una ventaja de esto es que usar una porción como argumento
 de una función o en una asignación es una tarea sencilla y no consume muchos
 recursos.
 
-Existen múltiples métodos para copiar elementos de una porción a otra, que van
-desde una simple asignación hasta reservar un nuevo espacio de memoria, algunos
-de ellos son equivalentes, otros resultan útiles en circunstancias específicas:
-
-```go
-x := []byte{0, 1, 2}
-y := []byte{3, 4, 5, 6, 7}
-z := []byte{8, 9}
-```
-
-* Hacer que dos porciones sean iguales
-
-{{< go-playground >}}
-```go
-x = y
-// Asignación directa, se hace una copia de la porción, pero tienen
-// el mismo vector interno.
-
-// x -> [3 4 5 6 7]
-// y -> [3 4 5 6 7]
-// z -> [8 9]
-
-z = y[:]
-// Operaciones de porciones, tiene el mismo resultado que la
-// asignación directa.
-
-// x -> [3 4 5 6 7]
-// y -> [3 4 5 6 7]
-// z -> [3 4 5 6 7]
-
-z[0] = 0
-
-// x -> [0 4 5 6 7]
-// y -> [0 4 5 6 7]
-// z -> [0 4 5 6 7]
-
-z = append([]byte{}, z...)
-z[1] = 1
-
-// x -> [0 4 5 6 7]
-// y -> [0 4 5 6 7]
-// z -> [0 1 5 6 7]
-```
-{{< /go-playground >}}
-
-La segunda función es `copy`, se encarga de copiar elementos de una porción a
-otra, recibe dos porciones del mismo tipo como argumento y la primera es a la
-que se copiarán los elementos, al finalizar retorna la cantidad de elementos
-copiados, que es determinada por la mínima longitud entre ambas porciones.
-
-{{< go-playground id="zmWI34jS_Pv" >}}
-```go
-x := make([]int, 2)
-y := []int{1, 2, 3, 4}
-
-copy(x, y)     // 2
-fmt.Println(x) // [1 2]
-
-a := []byte{'a', 'b', 'c', 'o', 'u'}
-b := "aei"
-
-copy(a, b)     // 3
-fmt.Println(a) // "aeiou"
-
-n := []bool{true, true, false, false, true}
-m := []bool{false, true}
-
-copy(n[1:3], m) // 2
-fmt.Println(n)  // [true false true false true]
-```
-{{< /go-playground >}}
-
 **Representación sintáctica:**
 
 ```
@@ -1241,29 +1233,34 @@ fmt.Println(n)  // [true false true false true]
 **Representación literal:**
 
 ```go
-[]byte{1, 2, 3, 4, 5} // [1 2 3 4 5]
+[]byte{1, 2, 3, 4, 5}
+// [1 2 3 4 5]
 
-[]byte{2: 'M'} // [0 0 77]
-               // Se pueden asignar valores a índices específicos,
-               // los demás serán inicializados con su valor 0
+[]byte{2: 'M'}
+// [0 0 77]
+// Se pueden asignar valores a índices específicos, los demás serán
+// inicializados con su valor cero
 
-[]byte{2: 'M', 'A', 4: 'R', 'N'} // [0 0 77 64 0 82 78]
-                                 // Si se especifíca un índice, los
-                                 // siguientes elementos sin índice
-                                 // sumarán uno al valor anterior
+[]byte{2: 'M', 'A', 4: 'R', 'N'}
+// [0 0 77 64 0 82 78]
+// Si se especifica un índice, los siguientes elementos sin índice
+// sumarán uno al valor anterior
 
-[]string{       // Se pueden usar varias líneas para mejorar la
-  "Miguel",     // legibilidad
+[]string{
+  "Miguel",
   "Angel",
   "Rivera",
-  "Notararigo", // Pero incluso el último elemento debe tener una coma
+  "Notararigo",
 }
+// Se pueden usar varias líneas para mejorar la legibilidad, pero
+// incluso el último elemento debe tener una coma
 
 []struct{ X, Y float64 }{
   struct{ X, Y float64 }{5, 10},
 
-  {15, 30}, // Se puede omitir el tipo de dato en los elementos
+  {15, 30},
 }
+// Se puede omitir el tipo de dato en los elementos
 ```
 
 **Valor cero:**
@@ -1274,13 +1271,8 @@ nil
 
 **Implementación:**
 
-Otra diferencia con los arreglos, es la forma en la que son implementadas
-internamente por el lenguaje, pues en lugar de representar bloques de memoria,
-son estructuras de datos que contienen un puntero a un elemento de un arreglo;
-una longitud, que determina la cantidad de elementos que pertenecen a la
-porción después del referenciado por el puntero; y una capacidad, que es la
-máxima longitud que puede tener la porción, calculada por la cantidad de
-elementos desde el referenciado por el puntero hasta el final del arreglo.
+Son implementadas como estructuras de datos que contienen un puntero a un
+elemento de un vector, su longitud y su capacidad (3 words de memoria).
 
 ```
     +---+---+---+---+---+
@@ -1290,46 +1282,33 @@ x = | 1 | 3 | 5 | 7 | 9 |
 
 y = x[:2]
 
-     +-----+---+---+    +-+-+ +-+-+-+ 
-y -> |&x[0]| 2 | 5 | -> |1|3| |5|7|9| 
-     +-----+---+---+    +-+-+ +-+-+-+ 
-       ptr  lon cap      0 1   2 3 4
+     +-----+---+---+    +---+---+  +---+---+---+
+y -> |&x[0]| 2 | 5 | -> | 1 | 3 |  | 5 | 7 | 9 |
+     +-----+---+---+    +---+---+  +---+---+---+
+       ptr  lon cap       0   1      2   3   4
 
-     ┌─────┬───┬───┐    ┌─┬─┐ ┌─┬─┬─┐ 
-y -> │&x[0]│ 2 │ 5 │ -> │1│3│ │5│7│9│ 
-     └─────┴───┴───┘    └─┴─┘ └─┴─┴─┘ 
-       ptr  lon cap      0 1   2 3 4
+z = x[1:4:4]
 
-y[:]  -> [1 3]
-y[:2] -> [1 3]
-y[:5] -> [1 3 5 7 9]
-y[:6] -> Error, sobrepasa la capacidad
-y[2]  -> Error, sobrepasa la longitud
-
-z = x[1:4]
-
-     ┌─────┬───┬───┐    ┌─┬─┬─┐ ┌─┐
-z -> │&x[1]│ 3 │ 4 │ -> │3│5│7│ │9│
-     └─────┴───┴───┘    └─┴─┴─┘ └─┘
-       ptr  lon cap      0 1 2   3
-
-z[:]  -> [3 5 7]
-z[:2] -> [3 5]
-z[:4] -> [3 5 7 9]
-z[:5] -> Error, sobrepasa la capacidad
-y[3]  -> Error, sobrepasa la longitud
+     +-----+---+---+    +---+---+---+
+z -> |&x[1]| 3 | 3 | -> | 3 | 5 | 7 |
+     +-----+---+---+    +---+---+---+
+       ptr  lon cap       0   1   2
 
 a = x[3:]
 
-     ┌─────┬───┬───┐    ┌─┬─┐
-a -> │&x[3]│ 2 │ 2 │ -> │7│9│
-     └─────┴───┴───┘    └─┴─┘
-       ptr  lon cap      0 1
+     +-----+---+---+    +---+---+
+a -> |&x[3]| 2 | 2 | -> | 7 | 9 |
+     +-----+---+---+    +---+---+
+       ptr  lon cap       0   1
+```
 
-a[:]  -> [7 9]
-a[:2] -> [7 9]
-a[:3] -> Error, sobrepasa la capacidad
-a[2]  -> Error, sobrepasa la longitud
+Estas estructuras pueden representarse sintácticamente como:
+
+```go
+struct{
+  ptr uintptr,
+  len, cap int,
+}
 ```
 
 ## Cadenas
@@ -3186,7 +3165,7 @@ func main() {
 * La familia de funciones favoritas de los programadores funcionales. Por la
   falta de tipos genéricos aumentaría la complejidad de la sintaxis del
   lenguaje, pero además, ¿por qué llamar 100 funciones para sumar los elementos
-  de un arreglo si puede usarse una estructura de repetición muy sencilla?, si
+  de un vector si puede usarse una estructura de repetición muy sencilla?, si
   la reacción a esto es *«No me importa el rendimiento, quiero mis funciones
   😒»*, no hay problema, es muy fácil implementarlas.
 
