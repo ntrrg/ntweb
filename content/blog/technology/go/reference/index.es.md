@@ -10,7 +10,7 @@ tags:
   - lenguajes-de-programación
   - go
 toc: true
-comments: false
+comments: true
 ---
 
 [Go license]: https://golang.org/LICENSE
@@ -840,17 +840,14 @@ x[3] -> 3 * 2 bytes -> 0x10313020 + 6 -> 0x10313026 -> 00000001 00000110 -> 262
 
 {{% details summary="Enlaces de interés" %}}
 * <https://golang.org/ref/spec#Slice_types>
-* <https://golang.org/ref/spec#Making_slices_maps_and_channels>
+* <https://golang.org/ref/spec#Composite_literals>
 * <https://golang.org/ref/spec#Slice_expressions>
 * <https://golang.org/ref/spec#Length_and_capacity>
+* <https://golang.org/ref/spec#Making_slices_maps_and_channels>
 * <https://golang.org/ref/spec#Appending_and_copying_slices>
-* <https://golang.org/ref/spec#Composite_literals>
 * <https://blog.golang.org/slices-intro>
 * <https://blog.golang.org/slices>
 * <https://research.swtch.com/godata>
-* <https://github.com/golang/go/wiki/SliceTricks>
-
-https://medium.com/@thatisuday/the-anatomy-of-slices-in-go-6450e3bb2b94
 {{% /details %}}
 
 Son un conjunto de elementos de un tipo de dato asignado arbitrariamente como
@@ -1271,8 +1268,8 @@ nil
 
 **Implementación:**
 
-Son implementadas como estructuras de datos que contienen un puntero a un
-elemento de un vector, su longitud y su capacidad (3 words de memoria).
+Son implementadas como estructuras de datos que contienen un puntero al primero
+de sus elementos, su longitud y su capacidad (3 words de memoria).
 
 ```
     +---+---+---+---+---+
@@ -1300,15 +1297,6 @@ a = x[3:]
 a -> |&x[3]| 2 | 2 | -> | 7 | 9 |
      +-----+---+---+    +---+---+
        ptr  lon cap       0   1
-```
-
-Estas estructuras pueden representarse sintácticamente como:
-
-```go
-struct{
-  ptr uintptr,
-  len, cap int,
-}
 ```
 
 ## Cadenas
@@ -2599,6 +2587,13 @@ $ godoc -http :6060 -play
 Permite crear números complejos, sus parámetros son dos números que representan
 su parte real e imaginaria respectivamente. Si los dos números son constantes,
 el valor retornado por esta función también es una constante.
+
+## `copy`
+
+```
+copy(dst, src []T) int
+copy(dst []byte, src string) int
+```
 
 ## `real`
 
