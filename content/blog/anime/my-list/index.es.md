@@ -24,6 +24,7 @@ que hay que tener cuidado si se va a ver alguno con niños o personas sensibles
 😂.
 
 * [x] **91 Days** - acción, drama, crimen, adultos.
+
 * [ ] Afro Samurai
 * [ ] Akame Ga Kiru!
 * [ ] Akatsuki no Yona
@@ -38,9 +39,12 @@ que hay que tener cuidado si se va a ver alguno con niños o personas sensibles
 * [ ] Berserk
 * [ ] Black Butler
 * [ ] Black Clover
+* [ ] Black Lagoon
 * [ ] Blade Runner
 * [ ] Bladedance of Elementalers
+
 * [x] **Bleach** - acción, aventura, fantasía, comedia, adolecentes.
+
 * [ ] Blood+
 * [ ] Blood-C
 * [ ] Blood: The Last Vampire
@@ -64,10 +68,15 @@ que hay que tener cuidado si se va a ver alguno con niños o personas sensibles
   adolecentes, inconcluso.
 
 * [ ] Death March to the Parallel World Rhapsody
+
 * [x] **Death Note** - acción, drama, crimen, fantasía, adolecentes.
+
 * [ ] Denpa teki na Kanojo
+
 * [x] **Dragon Ball** - acción, aventura, fantasía, comedia, adolecentes.
+
 * [x] **Dragon Ball Z** - acción, aventura, fantasía, comedia, adolecentes.
+
 * [ ] Dragon Ball Super
 * [ ] Dramatical Murder
 * [ ] Elfen Lied
@@ -76,7 +85,9 @@ que hay que tener cuidado si se va a ver alguno con niños o personas sensibles
 * [ ] Evil or Live
 * [ ] FLCL
 * [ ] Fairy Tail
+
 * [x] **Fate/stay night** - acción, aventura, fantasía, adolecentes.
+
 * [x] **Fate/Zero** - acción, aventura, fantasía, adolecentes.
 
 * [x] **Fullmetal Alchemist: Brotherhood** - acción, aventura, fantasía,
@@ -95,16 +106,18 @@ que hay que tener cuidado si se va a ver alguno con niños o personas sensibles
 * [ ] Hakata Tonkotsu Ramens
 * [ ] Hakuōki
 * [ ] Hataraku Maō-sama!
+
 * [x] **Hellsing** - acción, fantasía, sangriento, adultos.
 
 * [x] **Highschool of the Death** - acción, fantasía, comedia, sangriento,
-  adultos.
+  ecchi, adultos.
 
 * [ ] Higurashi no Naku Koro ni
 * [ ] Hotaru no Haka
 * [ ] Hunter x Hunter
 * [ ] Hyakka Ryōran Samurai Girls
 * [ ] Hyōka
+
 * [x] **InuYasha** - acción, aventura, fantasía, comedia, adolecentes.
 
 * [x] **InuYasha: Kanketsu-Hen** - acción, aventura, fantasía, comedia,
@@ -117,10 +130,15 @@ que hay que tener cuidado si se va a ver alguno con niños o personas sensibles
 * [ ] Kage Shadow
 * [ ] Kill la Kill
 * [ ] Kimetsu no Yaiba
+
 * [x] **Kimi no Na wa** - drama, romance, fantasía, adolecentes, película.
+
 * [ ] Kino's Journey
 * [ ] Kite
 * [ ] Knights of Sidonia
+
+* [x] **Koe no Katachi** - drama, romance, adolecentes, película.
+
 * [ ] Konosuba
 * [ ] Lady Death
 * [ ] Last Exile
@@ -133,8 +151,11 @@ que hay que tener cuidado si se va a ver alguno con niños o personas sensibles
 * [ ] Monthly Girls' Nozaki-kun
 * [ ] Mushishi
 * [ ] Nanatsu no Taizai
+
 * [x] **Naruto** - acción, aventura, fantasía, comedia, adolecentes.
-* [ ] Naruto Shippuden
+
+* [x] Naruto Shippuden - acción, aventura, fantasía, comedia, adolecentes.
+
 * [ ] Natsume Yūjin-Chō
 * [ ] Nichijou
 * [ ] Nodame Cantabile
@@ -145,14 +166,19 @@ que hay que tener cuidado si se va a ver alguno con niños o personas sensibles
 * [ ] Owari no Seraph
 * [ ] Parasyte
 * [ ] Planetes
-* [x] **Psycho-Pass** - acción, crimen, fantasía, adolecentes.
-* [x] **Psycho-Pass 2** - acción, crimen, fantasía, adolecentes.
+
+* [x] **Psycho-Pass** - acción, crimen, fantasía, sangriento, adultos.
+
+* [x] **Psycho-Pass 2** - acción, crimen, fantasía, sangriento, adultos.
+
 * [ ] Psycho-Pass 3
 * [ ] Ranma
 * [ ] Rakudai Kishi no Cavalry
 * [ ] Re:zero
 * [ ] Rokka no Yusha
+
 * [x] **Rurouni Kenshin** - acción, aventura, fantasía, comedia, adolecentes.
+
 * [ ] Saikano
 * [ ] Saint Seiya
 * [ ] Saiyuuki
@@ -187,7 +213,9 @@ que hay que tener cuidado si se va a ver alguno con niños o personas sensibles
 * [ ] Tokyo Ghoul
 * [ ] Toradora!
 * [ ] Triage X
+
 * [x] **Trigun** - acción, aventura, fantasía, comedia, adolecentes.
+
 * [ ] Twin Star Exorcists
 * [ ] Umineko no Naku Koro ni
 * [ ] Yu-Gi-Oh!

@@ -1303,8 +1303,8 @@ a -> |&x[3]| 2 | 2 | -> | 7 | 9 |
 
 {{% details summary="Enlaces de interés" %}}
 * <https://golang.org/ref/spec#String_types>
-* <https://golang.org/ref/spec#String_literals>
 * <https://golang.org/ref/spec#Rune_literals>
+* <https://golang.org/ref/spec#String_literals>
 * <https://blog.golang.org/strings>
 * <https://research.swtch.com/godata>
 * [Porciones](#porciones)
@@ -1314,6 +1314,148 @@ a -> |&x[3]| 2 | 2 | -> | 7 | 9 |
 Son secuencias de símbolos que representan el sistema de escritura humano. Por
 lo general a cada uno de estos símbolos se les llama caracter y de hecho, el
 nombre completo de este tipo de dato es *Cadena de caracteres*.
+
+Son estructuras de datos muy parecidas a las porciones, pero se diferencian en
+que son inmutables y no tienen capacidad.
+
+{{< go-playground id="yHrBgqgfqE9" >}}
+```go
+x := "Hola"
+
+x[2] = 'L' // Error, las cadenas son inmutables
+cap(x)     // Error, las cadenas no tienen capacidad
+```
+{{< /go-playground >}}
+
+Su vector interno es de tipo `[...]byte`, por lo que puede intercambiarse entre
+porciones de tipo `[]byte` y `[]rune`.
+
+{{< go-playground >}}
+```go
+x := "hola, mundo! 😄"
+```
+
+--- PLAYGROUND ---
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+  x := []byte{0, 1, 2}
+  y := []byte{3, 4, 5}
+  z := []byte{6, 7, 8, 9}
+
+  copy(x, y)
+  copy(y, z)
+  copy(z, x)
+
+  fmt.Println(x)
+  fmt.Println(y)
+  fmt.Println(z)
+}
+```
+{{< /go-playground >}}
+Como su unidad mínima es el byte y no la runa, es posible que cadenas como
+`Hola` y `😂` tengan la misma longitud.
+
+{{< go-playground id="oCaft33c5jj" >}}
+```go
+len("Hola") // 4
+// "Hola" es una cadena compuesta por cuatro bytes, cada uno
+// representa una runa.
+// 'H' ->  72 -> U+0048 -> 01001000
+// 'o' -> 111 -> U+006F -> 01101111
+// 'l' -> 108 -> U+006C -> 01101100
+// 'a' ->  92 -> U+0061 -> 01100001
+
+len("😂") // 4
+// "😂" es una cadena compuesta por cuatro bytes, todos
+// representan una runa
+// '😂' -> 128514 -> U+1F602 -> 11110000 10011111 10011000 10000010
+```
+{{< /go-playground >}}
+
+Realizar operaciones de índices sobre las cadenas puede resultar en un
+comportamiento inesperado, pues cada índice contiene un byte y no una runa.
+
+{{< go-playground id="y0O2H_Y91Tc" >}}
+```go
+x := "😂"
+
+for i := 0; i < len(x); i++ {
+  fmt.Println(x[i])
+}
+
+// 240 -> 11110000
+// 159 -> 10011111
+// 152 -> 10011000
+// 130 -> 10000010
+```
+{{< /go-playground >}}
+
+Para evitar esto se puede usar `range`, que extrae runa a runa.
+
+{{< go-playground id="CcnClPYtrEn" >}}
+```go
+for _,  v := range "😂" {
+  fmt.Println(v)
+}
+
+// 128514
+```
+{{< /go-playground >}}
+
+También se puede usar [`utf8.DecodeRuneInString`](https://golang.org/pkg/unicode/utf8/#DecodeRuneInString)
+en los casos que no se quiera iterar sobre la cadena o se necesite más control.
+
+{{< go-playground id="cStYBcRb9ZX" >}}
+```go
+x := "😂"
+
+// Sin iteración, retorna la primera runa y la cantidad de bytes que la
+// componen.
+utf8.DecodeRuneInString(x) // 128514 4
+
+// Equivale a usar range
+for i := 0; i < len(x); {
+  v, w := utf8.DecodeRuneInString(x[i:])
+  fmt.Println(v)
+  i += w
+}
+
+// 128514
+```
+{{< /go-playground >}}
+
+Solo es posible obtener la dirección de memoria de la cadena completa, no de
+sus caracteres individualmente.
+
+{{< go-playground >}}
+```go
+x := "hola, mundo"
+y := &x
+z := &x[0] // Error
+```
+
+--- PLAYGROUND ---
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+  x := "hola, mundo"
+  y := &x
+  z := &x[0]
+
+  fmt.Println(y)
+  fmt.Println(z)
+}
+```
+{{< /go-playground >}}
 
 **Representación sintáctica:**
 
@@ -1432,10 +1574,9 @@ invertida (`\`) que les permite alterar su comportamiento.
 
 **Implementación:**
 
-Las cadenas son estructuras de datos muy parecidas a las porciones, pero se
-diferencian en que son inmutables y no tienen capacidad, por lo que su tamaño
-es de 2 words. Su vector interno es de tipo `[...]byte`, por lo que puede
-intercambiarse entre porciones de tipo `[]byte` y `[]rune`.
+Son implementadas como estructuras de datos que contienen un puntero al primero
+de sus caracteres (almacenados en un vector del tipo `[...]byte`) y su
+capacidad (2 words de memoria).
 
 ```
 "hola mundo"
@@ -1456,115 +1597,6 @@ Vector interno:
   +---+---+---+---+---+---+---+---+---+---+
     0   1   2   3   4   5   6   7   8   9
 ```
-
-{{< go-playground id="yHrBgqgfqE9" >}}
-```go
-x := "Hola"
-
-x[2] = 'L' // Error
-cap(x)     // Error
-```
-{{< /go-playground >}}
-
-Como su unidad mínima es el byte y no la runa, es posible que cadenas como
-`Hola` y `😂` tengan la misma longitud.
-
-{{< go-playground id="oCaft33c5jj" >}}
-```go
-len("Hola") // 4
-// "Hola" es una cadena compuesta por cuatro bytes, cada uno
-// representa una runa.
-// 'H' ->  72 -> U+0048 -> 01001000
-// 'o' -> 111 -> U+006F -> 01101111
-// 'l' -> 108 -> U+006C -> 01101100
-// 'a' ->  92 -> U+0061 -> 01100001
-
-len("😂") // 4
-// "😂" es una cadena compuesta por cuatro bytes, todos
-// representan una runa
-// '😂' -> 128514 -> U+1F602 -> 11110000 10011111 10011000 10000010
-```
-{{< /go-playground >}}
-
-Realizar operaciones de índices sobre las cadenas puede resultar en un
-comportamiento inesperado, pues cada índice contiene un byte y no una runa.
-
-{{< go-playground id="y0O2H_Y91Tc" >}}
-```go
-x := "😂"
-
-for i := 0; i < len(x); i++ {
-  fmt.Println(x[i])
-}
-
-// 240 -> 11110000
-// 159 -> 10011111
-// 152 -> 10011000
-// 130 -> 10000010
-```
-{{< /go-playground >}}
-
-Para evitar esto se puede usar `range`, que extrae runa a runa.
-
-{{< go-playground id="CcnClPYtrEn" >}}
-```go
-for _,  v := range "😂" {
-  fmt.Println(v)
-}
-
-// 128514
-```
-{{< /go-playground >}}
-
-También se puede usar [`utf8.DecodeRuneInString`](https://golang.org/pkg/unicode/utf8/#DecodeRuneInString)
-en los casos que no se quiera iterar sobre la cadena o se necesite más control.
-
-{{< go-playground id="cStYBcRb9ZX" >}}
-```go
-x := "😂"
-
-// Sin iteración, retorna la primera runa y la cantidad de bytes que la
-// componen.
-utf8.DecodeRuneInString(x) // 128514 4
-
-// Equivale a usar range
-for i := 0; i < len(x); {
-  v, w := utf8.DecodeRuneInString(x[i:])
-  fmt.Println(v)
-  i += w
-}
-
-// 128514
-```
-{{< /go-playground >}}
-
-Solo es posible obtener la dirección de memoria de la cadena completa, no de
-sus caracteres individualmente.
-
-{{< go-playground >}}
-```go
-x := "hola, mundo"
-y := &x
-z := &x[0] // Error
-```
-
---- PLAYGROUND ---
-
-```go
-package main
-
-import "fmt"
-
-func main() {
-  x := "hola, mundo"
-  y := &x
-  z := &x[0]
-
-  fmt.Println(y)
-  fmt.Println(z)
-}
-```
-{{< /go-playground >}}
 
 ## Mapas
 
