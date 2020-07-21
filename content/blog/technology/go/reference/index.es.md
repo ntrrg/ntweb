@@ -1,6 +1,6 @@
 ---
 title: Go (Golang)
-date: 2020-06-24T15:30:00-04:00
+date: 2020-07-21T15:30:00-04:00
 image: images/go.png
 description: Es un lenguaje de código abierto, minimalista y de alto rendimiento. Más que un artículo, esta es una referencia del lenguaje y sus herramientas.
 tags:
@@ -1308,7 +1308,7 @@ a -> |&x[3]| 2 | 2 | -> | 7 | 9 |
 * <https://blog.golang.org/strings>
 * <https://research.swtch.com/godata>
 * [Porciones](#porciones)
-* [Codificación de texto](./../../computer-science/text-encoding.es.md)
+* [Codificación de texto](./../../computer-science/text-encoding/)
 {{% /details %}}
 
 Son secuencias de símbolos que representan el sistema de escritura humano. Por
@@ -1327,44 +1327,15 @@ cap(x)     // Error, las cadenas no tienen capacidad
 ```
 {{< /go-playground >}}
 
-Su vector interno es de tipo `[...]byte`, por lo que puede intercambiarse entre
-porciones de tipo `[]byte` y `[]rune`.
-
-{{< go-playground >}}
-```go
-x := "hola, mundo! 😄"
-```
-
---- PLAYGROUND ---
-
-```go
-package main
-
-import "fmt"
-
-func main() {
-  x := []byte{0, 1, 2}
-  y := []byte{3, 4, 5}
-  z := []byte{6, 7, 8, 9}
-
-  copy(x, y)
-  copy(y, z)
-  copy(z, x)
-
-  fmt.Println(x)
-  fmt.Println(y)
-  fmt.Println(z)
-}
-```
-{{< /go-playground >}}
-Como su unidad mínima es el byte y no la runa, es posible que cadenas como
-`Hola` y `😂` tengan la misma longitud.
+Es posible que cadenas como `Hola` y `😂` tengan la misma longitud, pues el el
+texto que contienen está codificado en *UTF-8*, por lo que su vector interno es
+del tipo `[...]byte`.
 
 {{< go-playground id="oCaft33c5jj" >}}
 ```go
 len("Hola") // 4
 // "Hola" es una cadena compuesta por cuatro bytes, cada uno
-// representa una runa.
+// representa un caracter.
 // 'H' ->  72 -> U+0048 -> 01001000
 // 'o' -> 111 -> U+006F -> 01101111
 // 'l' -> 108 -> U+006C -> 01101100
@@ -1372,13 +1343,13 @@ len("Hola") // 4
 
 len("😂") // 4
 // "😂" es una cadena compuesta por cuatro bytes, todos
-// representan una runa
+// representan un solo caracter
 // '😂' -> 128514 -> U+1F602 -> 11110000 10011111 10011000 10000010
 ```
 {{< /go-playground >}}
 
-Realizar operaciones de índices sobre las cadenas puede resultar en un
-comportamiento inesperado, pues cada índice contiene un byte y no una runa.
+Usar el operador de índices sobre cadenas puede resultar en un comportamiento
+inesperado, pues cada índice contiene un byte y no un caracter estrictamente.
 
 {{< go-playground id="y0O2H_Y91Tc" >}}
 ```go
@@ -1395,7 +1366,8 @@ for i := 0; i < len(x); i++ {
 ```
 {{< /go-playground >}}
 
-Para evitar esto se puede usar `range`, que extrae runa a runa.
+Para evitar esto se puede usar `range`, que extrae caracter a caracter (o runa,
+que es el nombre del tipo de dato que usa Go para referirse a ellos).
 
 {{< go-playground id="CcnClPYtrEn" >}}
 ```go
@@ -1414,17 +1386,18 @@ en los casos que no se quiera iterar sobre la cadena o se necesite más control.
 ```go
 x := "😂"
 
+utf8.DecodeRuneInString(x)
 // Sin iteración, retorna la primera runa y la cantidad de bytes que la
 // componen.
-utf8.DecodeRuneInString(x) // 128514 4
+// 128514 4
 
-// Equivale a usar range
 for i := 0; i < len(x); {
   v, w := utf8.DecodeRuneInString(x[i:])
   fmt.Println(v)
   i += w
 }
 
+// Equivale a usar range
 // 128514
 ```
 {{< /go-playground >}}
@@ -1436,7 +1409,7 @@ sus caracteres individualmente.
 ```go
 x := "hola, mundo"
 y := &x
-z := &x[0] // Error
+z := &x[0] // Error, no se puede obtener la dirección de memoria
 ```
 
 --- PLAYGROUND ---
@@ -1490,8 +1463,7 @@ quien es mejor ahora 😒`
 {{< /go-playground >}}
 
 A diferencia de otros lenguajes de programación, el apóstrofo (`'`) se usa para
-representar runas literales, no cadenas. Las runas son caracteres individuales
-y representan valores numéricos, específicamente el valor UTF-8 del caracter.
+representar runas literales, no cadenas.
 
 {{< go-playground >}}
 ```
@@ -1575,8 +1547,8 @@ invertida (`\`) que les permite alterar su comportamiento.
 **Implementación:**
 
 Son implementadas como estructuras de datos que contienen un puntero al primero
-de sus caracteres (almacenados en un vector del tipo `[...]byte`) y su
-capacidad (2 words de memoria).
+de sus caracteres (almacenados en un vector del tipo `[...]byte`) y su longitud
+(2 words de memoria).
 
 ```
 "hola mundo"
@@ -1790,87 +1762,6 @@ nil
 
 https://medium.com/@tsriharsha/go-pointers-demystified-1f0710ec07eb?source=email-a31d0d6d29a8-1567949207790-digest.reader------1-72------------------8bc995d4_3097_48ed_9a8a_a5b3671db869-28-----&sectionName=quickReads
 
-## Funciones
-
-https://medium.com/@thatisuday/variadic-function-in-go-5d9b23f4c01a?source=email-a31d0d6d29a8-1564151216975-digest.reader------1-59------------------b2899319_64bf_4d5b_85d8_d2f36e4fa32c-1&sectionName=top
-
-https://medium.com/@blanchon.vincent/go-how-does-defer-statement-work-1a9492689b6e?source=email-a31d0d6d29a8-1564584261942-digest.reader------2-59------------------3e0d9573_1bfe_429f_a97a_0cadc9847da0-16&sectionName=recommended
-
-https://medium.com/@lizrice/variables-and-functions-in-go-oh-my-18b71297657?source=email-a31d0d6d29a8-1567861183904-digest.reader------0-72------------------1d7b57d8_9f84_4952_b6a4_98b369cd75b6-28-----&sectionName=quickReads
-
-https://medium.com/rungo/anatomy-of-methods-in-go-f552aaa8ac4a
-
-```
-A estos bloques se les llaman funciones (por eso el `func` al inicio, que viene
-de *«function»*) y su principal utilidad es modularizar y reutilizar el
-código, muy parecidas a los paquetes, solo que a una escala menor; tienen
-cierta sintaxis específica, pero por ahora basta con saber que:
-
-* Se usa la palabra reservada `func` para iniciar la declaración.
-
-* Separado por un espacio en blanco se escribe el nombre de la función
-  (`main` en este caso) y unos paréntesis (`()`).
-
-* Se escribe el código a ejecutar dentro de llaves (`{}`).
-
-Funciones main() e init()
-
-.. Functions
-.. Recursion
-.. Closures
-.. Defer
-.. Recover
-
-.. 10. Funciones
-..     .1. Declaración
-..     .2. Uso
-..     .3. Funciones de orden superior
-..         .1. Funciones anónimas
-..         .2. Decoradores
-..     .4. Funciones predefinidas de Python
-..         .1. del
-..         .2. filter
-..         .3. globals
-..         .4. len
-..         .5. locals
-..         .6. map
-..         .7. max
-..         .8. min
-..         .9. next
-..         .10. range
-..         .11. zip
-
-https://tour.golang.org/basics/4
-https://tour.golang.org/basics/5
-https://tour.golang.org/basics/6
-https://tour.golang.org/basics/7
-https://tour.golang.org/flowcontrol/12
-https://tour.golang.org/flowcontrol/13
-https://blog.golang.org/defer-panic-and-recover
-https://tour.golang.org/moretypes/24
-https://tour.golang.org/moretypes/25
-https://tour.golang.org/methods/5
-
-https://golang.org/doc/codewalk/functions/
-
-Funciones predefinidas
-----------------------
-
-``make``
-
-Métodos
-=======
-
-https://tour.golang.org/methods/1
-https://tour.golang.org/methods/2
-https://tour.golang.org/methods/3
-https://tour.golang.org/methods/4
-https://tour.golang.org/methods/6
-https://tour.golang.org/methods/7
-https://tour.golang.org/methods/8
-
-```
-
 ## Interfaces
 
 https://medium.com/@blanchon.vincent/go-understand-the-empty-interface-2d9fc1e5ec72?source=email-a31d0d6d29a8-1566652227517-digest.reader------1-72------------------b9b80b28_9c12_4cde_a97e_10b142e29d6b-28-----&sectionName=quickReads
@@ -1906,6 +1797,46 @@ https://tour.golang.org/methods/19
 <https://tour.golang.org/basics/13>
 
 <https://golang.org/ref/spec#Conversions>
+
+El texto que almacenan está codificado en *UTF-8*, y ya que este método está
+basado en el procesamiento de bytes, el vector interno de una cadena es del
+tipo `[...]byte`, esto permite intercambiar cadenas entre porciones de tipo
+`[]byte` y `[]rune`.
+
+{{< go-playground >}}
+```go
+x := "hola, mundo! 😄"
+// x -> "hola, mundo! 😄"
+
+y := []rune(x)
+// y -> [104 111 108 97 44 32 109 117 110 100 111 33 32 128516]
+
+z := []byte(x)
+// z -> [104 111 108 97 44 32 109 117 110 100 111 33 32 240 159 152 132]
+```
+
+--- PLAYGROUND ---
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+  x := []byte{0, 1, 2}
+  y := []byte{3, 4, 5}
+  z := []byte{6, 7, 8, 9}
+
+  copy(x, y)
+  copy(y, z)
+  copy(z, x)
+
+  fmt.Println(x)
+  fmt.Println(y)
+  fmt.Println(z)
+}
+```
+{{< /go-playground >}}
 
 # Operadores
 
@@ -2084,6 +2015,87 @@ https://medium.com/@boltmick1/golang-handling-errors-gracefully-8e27f1db729f?sou
 https://github.com/upspin/upspin/blob/master/errors/errors.go
 
 https://medium.com/@arindamroy/simple-guide-to-panic-handling-and-recovery-in-golang-72d6181ae3e8?source=email-a31d0d6d29a8-1573458402958-digest.reader------0-59------------------1d028e49_51cc_44e0_bbfd_fd89caf50479-1-----&sectionName=top
+
+# Funciones
+
+https://medium.com/@thatisuday/variadic-function-in-go-5d9b23f4c01a?source=email-a31d0d6d29a8-1564151216975-digest.reader------1-59------------------b2899319_64bf_4d5b_85d8_d2f36e4fa32c-1&sectionName=top
+
+https://medium.com/@blanchon.vincent/go-how-does-defer-statement-work-1a9492689b6e?source=email-a31d0d6d29a8-1564584261942-digest.reader------2-59------------------3e0d9573_1bfe_429f_a97a_0cadc9847da0-16&sectionName=recommended
+
+https://medium.com/@lizrice/variables-and-functions-in-go-oh-my-18b71297657?source=email-a31d0d6d29a8-1567861183904-digest.reader------0-72------------------1d7b57d8_9f84_4952_b6a4_98b369cd75b6-28-----&sectionName=quickReads
+
+https://medium.com/rungo/anatomy-of-methods-in-go-f552aaa8ac4a
+
+```
+A estos bloques se les llaman funciones (por eso el `func` al inicio, que viene
+de *«function»*) y su principal utilidad es modularizar y reutilizar el
+código, muy parecidas a los paquetes, solo que a una escala menor; tienen
+cierta sintaxis específica, pero por ahora basta con saber que:
+
+* Se usa la palabra reservada `func` para iniciar la declaración.
+
+* Separado por un espacio en blanco se escribe el nombre de la función
+  (`main` en este caso) y unos paréntesis (`()`).
+
+* Se escribe el código a ejecutar dentro de llaves (`{}`).
+
+Funciones main() e init()
+
+.. Functions
+.. Recursion
+.. Closures
+.. Defer
+.. Recover
+
+.. 10. Funciones
+..     .1. Declaración
+..     .2. Uso
+..     .3. Funciones de orden superior
+..         .1. Funciones anónimas
+..         .2. Decoradores
+..     .4. Funciones predefinidas de Python
+..         .1. del
+..         .2. filter
+..         .3. globals
+..         .4. len
+..         .5. locals
+..         .6. map
+..         .7. max
+..         .8. min
+..         .9. next
+..         .10. range
+..         .11. zip
+
+https://tour.golang.org/basics/4
+https://tour.golang.org/basics/5
+https://tour.golang.org/basics/6
+https://tour.golang.org/basics/7
+https://tour.golang.org/flowcontrol/12
+https://tour.golang.org/flowcontrol/13
+https://blog.golang.org/defer-panic-and-recover
+https://tour.golang.org/moretypes/24
+https://tour.golang.org/moretypes/25
+https://tour.golang.org/methods/5
+
+https://golang.org/doc/codewalk/functions/
+
+Funciones predefinidas
+----------------------
+
+``make``
+
+Métodos
+=======
+
+https://tour.golang.org/methods/1
+https://tour.golang.org/methods/2
+https://tour.golang.org/methods/3
+https://tour.golang.org/methods/4
+https://tour.golang.org/methods/6
+https://tour.golang.org/methods/7
+https://tour.golang.org/methods/8
+
+```
 
 # Concurrencia
 
