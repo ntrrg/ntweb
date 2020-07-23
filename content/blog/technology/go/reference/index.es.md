@@ -1307,8 +1307,8 @@ a -> |&x[3]| 2 | 2 | -> | 7 | 9 |
 * <https://golang.org/ref/spec#String_literals>
 * <https://blog.golang.org/strings>
 * <https://research.swtch.com/godata>
-* [Porciones](#porciones)
 * [Codificación de texto](./../../computer-science/text-encoding/)
+* [Porciones](#porciones)
 {{% /details %}}
 
 Son secuencias de símbolos que representan el sistema de escritura humano. Por
@@ -1327,7 +1327,7 @@ cap(x)     // Error, las cadenas no tienen capacidad
 ```
 {{< /go-playground >}}
 
-Es posible que cadenas como `Hola` y `😂` tengan la misma longitud, pues el el
+Es posible que cadenas como `Hola` y `😂` tengan la misma longitud, pues el
 texto que contienen está codificado en *UTF-8*, por lo que su vector interno es
 del tipo `[...]byte`.
 
@@ -1573,10 +1573,6 @@ Vector interno:
 ## Mapas
 
 {{% details summary="Enlaces de interés" %}}
-* <https://tour.golang.org/moretypes/19>
-* <https://tour.golang.org/moretypes/20>
-* <https://tour.golang.org/moretypes/21>
-* <https://tour.golang.org/moretypes/22>
 * <https://golang.org/ref/spec#Map_types>
 * <https://golang.org/ref/spec#Composite_literals>
 * <https://golang.org/ref/spec#Length_and_capacity>
@@ -1587,9 +1583,6 @@ Vector interno:
 
 https://hackernoon.com/some-insights-on-maps-in-golang-rm5v3ywh
 {{% /details %}}
-
-**Nota:** cada vez que mencione a los arreglos, también hago referencia a los
-demás tipos que derivan de ellos, como las porciones y las cadenas.
 
 Son una estructura de datos que permite acceder a valores por medio de índices
 del tipo especificado (que no sea función, porción o mapa, pues no son valores
@@ -1724,13 +1717,13 @@ delete(x, 1<<30)
 ```
 {{< /go-playground >}}
 
-### Representación sintáctica
+**Representación sintáctica:**
 
 ```go
 map[TIPO_CLAVE]TIPO_VALOR
 ```
 
-Ejemplos
+**Representación literal:**
 
 ```go
 map[string]int{
@@ -1748,11 +1741,13 @@ map[string]struct{ X, Y float64 }{
 }
 ```
 
-### Valor cero
+**Valor cero:**
 
 ```go
 nil
 ```
+
+**Implementación:**
 
 ## Punteros
 
@@ -2744,15 +2739,15 @@ que contenga `package`, que probablemente sería algo como `mylib`.
 https://vimeo.com/53221558
 https://golang.org/doc/articles/wiki/
 
-``fmt.Stringer``
-
-https://tour.golang.org/methods/17
-
-``io.Reader``
+`io.Reader`
 
 https://tour.golang.org/methods/21
 
 ```
+
+## `fmt`: Entrada/Salida con formato
+
+https://tour.golang.org/methods/17
 
 # Runtime
 
