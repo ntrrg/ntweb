@@ -149,7 +149,7 @@ alfabeto incluye símbolos propios de la matemática y la informática) a nivel 
 bits.
 
 Por ejemplo, cuando se intenta ordenar una lista de números es necesario
-determinar el valor aritmético de cada elemento para sabe cual es mayor o
+determinar el valor aritmético de cada elemento para saber cual es mayor o
 menor.
 
 ```

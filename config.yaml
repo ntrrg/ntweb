@@ -26,8 +26,8 @@ params:
       - url: "/blog/"
       - url: "/projects/"
       - url: "/challenges/"
-      - text: "Gallery"
-        url: "https://www.instagram.com/ntrrg/"
+      - url: "https://www.instagram.com/ntrrg/"
+        text: "Gallery"
     beforeEach: "| "
   secundaryMenu:
     items:
@@ -61,8 +61,8 @@ languages:
         items:
           - url: "/blog/"
           - url: "/projects/"
-          - text: "Galería"
-            url: "https://www.instagram.com/ntrrg/"
+          - url: "https://www.instagram.com/ntrrg/"
+            text: "Galería"
         beforeEach: "| "
 taxonomies:
   rel: rels
