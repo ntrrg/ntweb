@@ -1,5 +1,5 @@
 ---
-title: Anime
+title: Mi lista de Anime
 publishdate: 2019-05-31T11:30:00-07:00
 date: 2020-01-07T15:00:00-04:00
 image: images/mugiwara.jpg
@@ -32,6 +32,13 @@ que hay que tener cuidado si se va a ver alguno con niños o personas sensibles
 * [ ] Angel Beats!
 * [ ] AnoHana
 * [ ] Another
+
+* [x] **Appleseed** - acción, fantasía, postapocalíptico, adolecentes,
+  película.
+
+* [ ] Appleseed Ex Machina
+* [ ] Appleseed XIII
+* [ ] Appleseed Alpha
 * [ ] Azuka
 * [ ] Baccano!
 * [ ] Baka and Test
@@ -64,8 +71,8 @@ que hay que tener cuidado si se va a ver alguno con niños o personas sensibles
 * [ ] Cowboy Bebop
 * [ ] Darker than Black
 
-* [x] **Deadman Wonderland** - acción, drama, fantasía, sangriento,
-  adolecentes, inconcluso.
+* [x] **Deadman Wonderland** - acción, drama, fantasía, sangriento, adultos,
+  inconcluso.
 
 * [ ] Death March to the Parallel World Rhapsody
 
@@ -90,6 +97,8 @@ que hay que tener cuidado si se va a ver alguno con niños o personas sensibles
 
 * [x] **Fate/Zero** - acción, aventura, fantasía, adolecentes.
 
+* [x] **Flavors of Youth** - drama, adolecentes, donghua, antología, película.
+
 * [x] **Fullmetal Alchemist: Brotherhood** - acción, aventura, fantasía,
   comedia, adolecentes.
 
@@ -110,7 +119,7 @@ que hay que tener cuidado si se va a ver alguno con niños o personas sensibles
 * [x] **Hellsing** - acción, fantasía, sangriento, adultos.
 
 * [x] **Highschool of the Death** - acción, fantasía, comedia, sangriento,
-  ecchi, adultos.
+  postapocalíptico, ecchi, adultos.
 
 * [ ] Higurashi no Naku Koro ni
 * [ ] Hotaru no Haka
@@ -154,7 +163,7 @@ que hay que tener cuidado si se va a ver alguno con niños o personas sensibles
 
 * [x] **Naruto** - acción, aventura, fantasía, comedia, adolecentes.
 
-* [x] Naruto Shippuden - acción, aventura, fantasía, comedia, adolecentes.
+* [x] **Naruto Shippuden** - acción, aventura, fantasía, comedia, adolecentes.
 
 * [ ] Natsume Yūjin-Chō
 * [ ] Nichijou
