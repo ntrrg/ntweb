@@ -9,5 +9,6 @@ tags:
   - aritmética
   - ciencia-de-la-computación
   - números-binarios
+draft: true
 ---
 

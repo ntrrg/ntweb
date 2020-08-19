@@ -8,5 +8,6 @@ tags:
   - aritmética
   - ciencia-de-la-computación
   - números-hexadecimales
+draft: true
 ---
 

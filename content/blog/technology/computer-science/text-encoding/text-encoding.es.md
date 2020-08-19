@@ -8,6 +8,7 @@ tags:
   - ciencia-de-la-computación
   - procesamiento-de-texto
   - programación
+draft: true
 ---
 
 # Atribuciones

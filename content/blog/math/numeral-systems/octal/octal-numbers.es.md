@@ -8,5 +8,6 @@ tags:
   - aritmética
   - ciencia-de-la-computación
   - números-octales
+draft: true
 ---
 
