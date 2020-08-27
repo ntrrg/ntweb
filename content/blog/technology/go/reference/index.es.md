@@ -1,6 +1,6 @@
 ---
 title: Go (Golang)
-date: 2020-07-21T15:30:00-04:00
+date: 2020-08-20T15:40:00-04:00
 image: images/go.png
 description: Es un lenguaje de código abierto, minimalista y de alto rendimiento. Más que un artículo, esta es una referencia del lenguaje y sus herramientas.
 tags:
@@ -53,6 +53,120 @@ Algunas de sus características más resaltantes son:
 
 * Minimalista, la mayoría de las utilidades que faltan en el lenguaje fueron
   [excluidas intencionalmente](#funcionalidades-excluidas).
+
+# Funcionalidades excluidas
+
+{{% details summary="Enlaces de interés" %}}
+* <https://golang.org/doc/faq#Design>
+* <https://www.youtube.com/watch?v=k9Zbuuo51go>
+{{% /details %}}
+
+* Genéricos. Aunque es posible que en alguna futura versión se agregue, por
+  ahora no se ha logrado obtener una solución que compense su complejidad con
+  su utilidad. En su lugar pueden usarse las [interfaces](#interfaces), que
+  ofrecen abstracción de una manera muy elegante.
+
+* Conjuntos. Por ahora no se cuenta con esta estructura de datos, pero pueden
+  implementarse usando otras estructuras como los mapas.
+
+{{< go-playground >}}
+```go
+x := make(map[int]struct{})
+
+x[1] = struct{}{}
+x[2] = struct{}{}
+x[1] = struct{}{}
+
+len(x) // 2
+```
+
+--- PLAYGROUND ---
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+  x := make(map[int]struct{})
+
+  x[1] = struct{}{}
+  x[2] = struct{}{}
+  x[1] = struct{}{}
+
+  fmt.Println(len(x))
+}
+```
+{{< /go-playground >}}
+
+* `while` y `do-while`. Solo hay una estructura de repetición (`for`) y aunque
+  parezca limitado, es una ventaja para los programadores no tener que pensar
+  en cuál usar. Tal vez suene a exagerar, pero en Internet es muy fácil
+  encontrar discusiones largas de otros lenguajes sobre cuál de todas es la más
+  rápida, que por cierto se repiten en cada nueva versión del lenguaje.
+
+* La familia de funciones favoritas de los programadores funcionales. Por la
+  falta de tipos genéricos aumentaría la complejidad de la sintaxis del
+  lenguaje, pero además, ¿por qué llamar 100 funciones para sumar los elementos
+  de un vector si puede usarse una estructura de repetición muy sencilla?, si
+  la reacción a esto es *«No me importa el rendimiento, quiero mis funciones
+  😒»*, no hay problema, es muy fácil implementarlas.
+
+{{< go-playground id="oNGlnMctzXv" >}}
+```go
+func ForEach(s []int, f func(int, int, []int)) {
+  for i, v := range s {
+    f(v, i, s)
+  }
+}
+
+func Map(s []int, f func(int) int) (ns []int) {
+  for _, v := range s {
+    ns = append(ns, f(v))
+  }
+
+  return ns
+}
+
+func Filter(s []int, f func(int) bool) (ns []int) {
+  for _, v := range s {
+    if f(v) {
+      ns = append(ns, v)
+    }
+  }
+
+  return ns
+}
+
+func Reduce(s []int, f func(int, int) int, a int) int {
+  for _, v := range s {
+    a = f(a, v)
+  }
+
+  return a
+}
+```
+{{< /go-playground >}}
+
+* Aritmética de punteros. Es una funcionalidad muy poderosa, pero puede causar
+  errores inesperados si no sabe manejar, además que es un comportamiento muy
+  confuso para los programadores con menos experiencia.
+
+* Hilos de procesos (threads), una de las tareas que suele agregar muchísima
+  complejidad al código fuente es la programación multithreading, aunque claro,
+  si se pretende programar una aplicación que se usará en computadoras potentes
+  (como servidores o computadores personales con procesadores de múltiples
+  núcleos) y se hará toda la computación en un solo hilo, sería un descaro
+  decir que Go es un lenguaje de alto rendimiento. La verdad es que no hacen
+  falta, ya se que suena a locura y probablemente se pueda pensar *«Claaaro, un
+  programa con gran demanda de cómputo que corre en un hilo puede ser tan
+  rápido como uno que corre en múltiples hilos.. 😒»*, pensamiento sarcástico
+  que sería muy merecido, pero el hecho es que Go cuenta con goroutines, que
+  son funciones que se ejecutan independientemente del hilo principal y son
+  automáticamente distribuidas entre más hilos para evitar el bloqueo de las
+  operaciones, esto genera una abstracción de más alto nivel para este tipo de
+  tareas, por lo que el programador no debe lidiar directamente con hilos (ver
+  la sección de [Concurrencia](#concurrencia)).
 
 # Herramientas necesarias
 
@@ -271,6 +385,152 @@ module github.com/ntrrg/arithmetic/vX
 Aunque es bastante sencillo crear y modificar el archivo `go.mod` manualmente,
 todas estas tareas pueden ser realizadas programáticamente con el comando [`go
 mod`](#módulos-go-mod).
+
+# Comentarios
+
+{{% details summary="Enlaces de interés" %}}
+* <https://golang.org/ref/spec#Comments>
+{{% /details %}}
+
+Los comentarios son texto ignorado por el compilador, su función principal es
+documentar ciertas secciones de código que sean un poco difíciles de entender
+a simple vista, pero en muchas ocasiones también son usados para ocultar
+código de los ojos del compilador y ver como se comporta el programa. Existen
+dos tipos de comentarios:
+
+* De línea
+
+{{< go-playground id="4g5BEqD0RGU" >}}
+```go
+fmt.Println("hola, mundo") // Esto muestra "hola, mundo"
+
+// Las sentencias comentadas no son procesadas por el compilador
+// fmt.Println("chao, mundo")
+```
+{{< /go-playground >}}
+
+* Generales
+
+{{< go-playground id="4HyigTWqiZ8" >}}
+```go
+/*
+  Así se escribe un comentario general
+
+  fmt.Println("hola, mundo")
+  fmt.Println("chao, mundo")
+
+  Este programa no hace nada..
+*/
+```
+{{< /go-playground >}}
+
+# Identificadores
+
+{{% details summary="Enlaces de interés" %}}
+* <https://golang.org/ref/spec#Identifiers>
+* <https://en.wikipedia.org/wiki/Template:General_Category_(Unicode)>
+* <https://www.compart.com/en/unicode/category>
+{{% /details %}}
+
+Son los nombres que se asignan a los elementos del programa, como por ejemplo
+los tipos, las constantes, las variables, las funciones, etc... Un
+identificador es un conjunto de letras (Unicode Lu, Ll, Lt, Lm y Lo), números
+(Unicode Nd) y guiones bajos (`_`), pero el primer caracter no puede ser un
+número.
+
+Cuando un paquete es importado, solo sus identificadores exportados son
+accesibles por medio de un identificador calificado, que es la unión del nombre
+del paquete, un punto (`.`) y el identificador del elemento.
+
+```go
+import "fmt" // Paquete
+
+fmt.Println // Identificador calificado
+```
+
+Para exportar un identificador se debe usar una letra mayúscula (Unicode Lu)
+como primer caracter. Esto también afecta a los campos de las estructuras y los
+métodos de los tipos de datos.
+
+**Ejemplos:**
+
+```go
+a
+_x9
+áéíóúñ
+αβ
+Exportado
+```
+
+Los siguientes identificadores no deben ser utilizados pues tienen un
+significado especial para Go:
+
+```go
+// Palabras reservadas
+break      case    chan     const        continue
+default    defer   else     fallthrough  for
+func       go      goto     if           import
+interface  map     package  range        return
+select     struct  switch   type         var
+
+// Tipos de datos
+bool     byte     complex64  complex128  error
+float32  float64  int        int8        int16
+int32    int64    rune       string      uint
+uint8    uint16   uint32     uint64      uintptr
+
+// Constantes
+true  false  iota
+
+// Valor cero
+nil
+
+// Funciones
+append   cap   close    complex  copy   delete
+imag     len   make     new      panic  print
+println  real  recover
+
+// Identificadores especiales
+init
+```
+
+## Constantes
+
+https://tour.golang.org/basics/15
+
+https://tour.golang.org/basics/16
+
+* <https://golang.org/ref/spec#Constants>
+* <https://golang.org/ref/spec#Constant_expressions>
+* <https://golang.org/ref/spec#Complex_numbers>
+
+<https://blog.golang.org/constants>
+
+<https://husobee.github.io/golang/compile/time/variables/2015/12/03/compile-time-const.html>
+
+```go
+const (
+  x = 2
+  y = 3i
+)
+
+x + y // (2+3i)
+```
+
+## Variables
+
+.. 3. Variables
+..     .1. Declaración
+..     .2. Eliminación
+
+https://blog.golang.org/gos-declaration-syntax
+https://tour.golang.org/basics/8
+https://tour.golang.org/basics/9
+https://tour.golang.org/basics/10
+https://tour.golang.org/basics/12
+https://tour.golang.org/basics/14
+
+## Ámbito
 
 # Tipos de datos
 
@@ -1584,7 +1844,13 @@ Vector interno:
 https://hackernoon.com/some-insights-on-maps-in-golang-rm5v3ywh
 {{% /details %}}
 
-Son una estructura de datos que permite acceder a valores por medio de índices
+Son un conjunto de elementos de un tipo de dato asignado arbitrariamente como
+las porciones, pero a diferencia de estas, sus índices pueden ser [valores
+comparables](#comparabilidad) y no solo numéricos, además de que no son
+asignados automáticamente.
+
+Son estructuras de datos que permiten almacenar valores e identificarlos por
+medio de índices
 del tipo especificado (que no sea función, porción o mapa, pues no son valores
 comparables) durante su definición, a estos índices se les llaman claves, y a
 diferencia de los arreglos, el orden de sus elementos es irrelevante.
@@ -1787,7 +2053,11 @@ https://tour.golang.org/methods/19
 <https://tour.golang.org/moretypes/3>
 * <https://research.swtch.com/godata>
 
-## Cambios de tipos
+## Alias
+
+## Personalizados
+
+# Cambios de tipos de datos
 
 <https://tour.golang.org/basics/13>
 
@@ -1833,6 +2103,12 @@ func main() {
 ```
 {{< /go-playground >}}
 
+# Propiedades de los datos
+
+## Asignabilidad
+
+## Comparabilidad
+
 # Operadores
 
 ```go
@@ -1856,123 +2132,15 @@ Relational Operators
      &^          &^=
 ```
 
-# Identificadores
-
-{{% details summary="Enlaces de interés" %}}
-* <https://golang.org/ref/spec#Identifiers>
-* <https://en.wikipedia.org/wiki/Template:General_Category_(Unicode)>
-* <https://www.compart.com/en/unicode/category>
-{{% /details %}}
-
-Son los nombres que se asignan a los elementos del programa, como por ejemplo
-los tipos, las constantes, las variables, las funciones, etc... Un
-identificador es un conjunto de letras (Unicode Lu, Ll, Lt, Lm y Lo), números
-(Unicode Nd) y guiones bajos (`_`), pero el primer caracter no puede ser un
-número.
-
-Cuando un paquete es importado, solo sus identificadores exportados son
-accesibles por medio de un identificador calificado, que es la unión del nombre
-del paquete, un punto (`.`) y el identificador del elemento.
-
-```go
-import "fmt" // Paquete
-
-fmt.Println // Identificador calificado
-```
-
-Para exportar un identificador se debe usar una letra mayúscula (Unicode Lu)
-como primer caracter. Esto también afecta a los campos de las estructuras y los
-métodos de los tipos de datos.
-
-**Ejemplos:**
-
-```go
-a
-_x9
-áéíóúñ
-αβ
-Exportado
-```
-
-Los siguientes identificadores no deben ser utilizados pues tienen un
-significado especial para Go:
-
-```go
-// Palabras reservadas
-break      case    chan     const        continue
-default    defer   else     fallthrough  for
-func       go      goto     if           import
-interface  map     package  range        return
-select     struct  switch   type         var
-
-// Tipos de datos
-bool     byte     complex64  complex128  error
-float32  float64  int        int8        int16
-int32    int64    rune       string      uint
-uint8    uint16   uint32     uint64      uintptr
-
-// Constantes
-true  false  iota
-
-// Valor cero
-nil
-
-// Funciones
-append   cap   close    complex  copy   delete
-imag     len   make     new      panic  print
-println  real  recover
-
-// Identificadores especiales
-init
-```
-
-# Constantes
-
-https://tour.golang.org/basics/15
-
-https://tour.golang.org/basics/16
-
-* <https://golang.org/ref/spec#Constants>
-* <https://golang.org/ref/spec#Constant_expressions>
-* <https://golang.org/ref/spec#Complex_numbers>
-
-<https://blog.golang.org/constants>
-
-<https://husobee.github.io/golang/compile/time/variables/2015/12/03/compile-time-const.html>
-
-```go
-const (
-  x = 2
-  y = 3i
-)
-
-x + y // (2+3i)
-```
-
-# Variables
-
-.. 3. Variables
-..     .1. Declaración
-..     .2. Eliminación
-
-https://blog.golang.org/gos-declaration-syntax
-https://tour.golang.org/basics/8
-https://tour.golang.org/basics/9
-https://tour.golang.org/basics/10
-https://tour.golang.org/basics/12
-https://tour.golang.org/basics/14
-
-# Ámbito
-
 # Estructuras de control
 
-If
+## `if`
 
 https://tour.golang.org/flowcontrol/5
 https://tour.golang.org/flowcontrol/6
 https://tour.golang.org/flowcontrol/7
 
-Switch
+## `switch`
 
 https://tour.golang.org/flowcontrol/9
 https://tour.golang.org/flowcontrol/10
@@ -1989,27 +2157,6 @@ https://tour.golang.org/moretypes/16
 https://tour.golang.org/moretypes/17
 
 https://medium.com/@mlowicki/for-statement-and-its-all-faces-in-golang-abcbdc011f81?source=email-a31d0d6d29a8-1581146147068-digest.reader------1-1------------------01531b7f_6b93_450e_9394_af0ec95ae789-1-----&sectionName=top
-
-# Manejo de errores
-
-<https://golang.org/ref/spec#Handling_panics>
-
-<https://blog.golang.org/error-handling-and-go>
-
-https://medium.com/@boltmick1/golang-handling-errors-gracefully-8e27f1db729f?source=email-a31d0d6d29a8-1564241076435-digest.reader------3-59------------------c8286857_9b13_4aef_be99_348604a8e035-1&sectionName=top
-
-* Excepciones y afirmaciones (asserts). Usar estructuras de control (como
-  `try {} catch {}`) para manejar los errores puede resultar en flujos
-  complejos que dificultan el seguimiento y mantenimiento del código. Es
-  innegable que estas estructuras pueden ser de gran ayuda, pero en algunos
-  casos suelen usarse para manejar los errores de manera perezosa, lo que puede
-  generar interrupciones inesperadas de los servicios. En su lugar los errores
-  se manejan por medio del mecanismo de retorno múltiple en las funciones. Go
-  cuenta con .
-
-https://github.com/upspin/upspin/blob/master/errors/errors.go
-
-https://medium.com/@arindamroy/simple-guide-to-panic-handling-and-recovery-in-golang-72d6181ae3e8?source=email-a31d0d6d29a8-1573458402958-digest.reader------0-59------------------1d028e49_51cc_44e0_bbfd_fd89caf50479-1-----&sectionName=top
 
 # Funciones
 
@@ -2092,6 +2239,28 @@ https://tour.golang.org/methods/8
 
 ```
 
+# Utilidades predefinidas
+
+## `complex`
+
+Permite crear números complejos, sus parámetros son dos números que representan
+su parte real e imaginaria respectivamente. Si los dos números son constantes,
+el valor retornado por esta función también es una constante.
+
+## `copy`
+
+```
+copy(dst, src []T) int
+copy(dst []byte, src string) int
+```
+
+## `real`
+
+## `imag`
+
+que hacen lo opuesto, pues permiten extraer la parte real e imaginaria de un
+número complejo respectivamente.
+
 # Concurrencia
 
 <https://medium.com/rungo/achieving-concurrency-in-go-3f84cbf870ca>
@@ -2160,44 +2329,6 @@ https://youtu.be/f6kdp27TYZs?t=18m28s
 ```
 
 https://blog.golang.org/context
-
-# Comentarios
-
-{{% details summary="Enlaces de interés" %}}
-* <https://golang.org/ref/spec#Comments>
-{{% /details %}}
-
-Los comentarios son texto ignorado por el compilador, su función principal es
-documentar ciertas secciones de código que sean un poco difíciles de entender
-a simple vista, pero en muchas ocasiones también son usados para ocultar
-código de los ojos del compilador y ver como se comporta el programa. Existen
-dos tipos de comentarios:
-
-* De línea
-
-{{< go-playground id="4g5BEqD0RGU" >}}
-```go
-fmt.Println("hola, mundo") // Esto muestra "hola, mundo"
-
-// Las sentencias comentadas no son procesadas por el compilador
-// fmt.Println("chao, mundo")
-```
-{{< /go-playground >}}
-
-* Generales
-
-{{< go-playground id="4HyigTWqiZ8" >}}
-```go
-/*
-  Así se escribe un comentario general
-
-  fmt.Println("hola, mundo")
-  fmt.Println("chao, mundo")
-
-  Este programa no hace nada..
-*/
-```
-{{< /go-playground >}}
 
 # Documentación
 
@@ -2618,28 +2749,6 @@ directamente desde la interfaz web de [GoDoc](#godoc).
 ```shell-session
 $ godoc -http :6060 -play
 ```
-
-# Funciones predefinidas
-
-## `complex`
-
-Permite crear números complejos, sus parámetros son dos números que representan
-su parte real e imaginaria respectivamente. Si los dos números son constantes,
-el valor retornado por esta función también es una constante.
-
-## `copy`
-
-```
-copy(dst, src []T) int
-copy(dst []byte, src string) int
-```
-
-## `real`
-
-## `imag`
-
-que hacen lo opuesto, pues permiten extraer la parte real e imaginaria de un
-número complejo respectivamente.
 
 # Paquetes externos
 
@@ -3145,119 +3254,17 @@ como este `// +build CONDICION [...]`
 
 https://medium.com/@shaonshaonty/beautify-your-golang-project-f795b4b453aa?source=email-a31d0d6d29a8-1564497142241-digest.reader------2-59------------------773798d7_da5c_419e_9336_4ecd4313e2a4-16&sectionName=recommended
 
-# Funcionalidades excluidas
+## Manejo de errores
 
-{{% details summary="Enlaces de interés" %}}
-* <https://golang.org/doc/faq#Design>
-* <https://www.youtube.com/watch?v=k9Zbuuo51go>
-{{% /details %}}
+<https://golang.org/ref/spec#Handling_panics>
 
-* Genéricos. Aunque es posible que en alguna futura versión se agregue, por
-  ahora no se ha logrado obtener una solución que compense su complejidad con
-  su utilidad. En su lugar pueden usarse las [interfaces](#interfaces), que
-  ofrecen abstracción de una manera muy elegante.
+<https://blog.golang.org/error-handling-and-go>
 
-* Conjuntos. Por ahora no se cuenta con esta estructura de datos, pero pueden
-  implementarse usando otras estructuras como los mapas.
+https://medium.com/@boltmick1/golang-handling-errors-gracefully-8e27f1db729f?source=email-a31d0d6d29a8-1564241076435-digest.reader------3-59------------------c8286857_9b13_4aef_be99_348604a8e035-1&sectionName=top
 
-{{< go-playground >}}
-```go
-x := make(map[int]struct{})
+https://github.com/upspin/upspin/blob/master/errors/errors.go
 
-x[1] = struct{}{}
-x[2] = struct{}{}
-x[1] = struct{}{}
-
-len(x) // 2
-```
-
---- PLAYGROUND ---
-
-```go
-package main
-
-import "fmt"
-
-func main() {
-  x := make(map[int]struct{})
-
-  x[1] = struct{}{}
-  x[2] = struct{}{}
-  x[1] = struct{}{}
-
-  fmt.Println(len(x))
-}
-```
-{{< /go-playground >}}
-
-* `while` y `do-while`. Solo hay una estructura de repetición (`for`) y aunque
-  parezca limitado, es una ventaja para los programadores no tener que pensar
-  en cuál usar. Tal vez suene a exagerar, pero en Internet es muy fácil
-  encontrar discusiones largas de otros lenguajes sobre cuál de todas es la más
-  rápida, que por cierto se repiten en cada nueva versión del lenguaje.
-
-* La familia de funciones favoritas de los programadores funcionales. Por la
-  falta de tipos genéricos aumentaría la complejidad de la sintaxis del
-  lenguaje, pero además, ¿por qué llamar 100 funciones para sumar los elementos
-  de un vector si puede usarse una estructura de repetición muy sencilla?, si
-  la reacción a esto es *«No me importa el rendimiento, quiero mis funciones
-  😒»*, no hay problema, es muy fácil implementarlas.
-
-{{< go-playground id="oNGlnMctzXv" >}}
-```go
-func ForEach(s []int, f func(int, int, []int)) {
-  for i, v := range s {
-    f(v, i, s)
-  }
-}
-
-func Map(s []int, f func(int) int) (ns []int) {
-  for _, v := range s {
-    ns = append(ns, f(v))
-  }
-
-  return ns
-}
-
-func Filter(s []int, f func(int) bool) (ns []int) {
-  for _, v := range s {
-    if f(v) {
-      ns = append(ns, v)
-    }
-  }
-
-  return ns
-}
-
-func Reduce(s []int, f func(int, int) int, a int) int {
-  for _, v := range s {
-    a = f(a, v)
-  }
-
-  return a
-}
-```
-{{< /go-playground >}}
-
-* Aritmética de punteros. Es una funcionalidad muy poderosa, pero puede causar
-  errores inesperados si no sabe manejar, además que es un comportamiento muy
-  confuso para los programadores con menos experiencia.
-
-* Hilos de procesos (threads), una de las tareas que suele agregar muchísima
-  complejidad al código fuente es la programación multithreading, aunque claro,
-  si se pretende programar una aplicación que se usará en computadoras potentes
-  (como servidores o computadores personales con procesadores de múltiples
-  núcleos) y se hará toda la computación en un solo hilo, sería un descaro
-  decir que Go es un lenguaje de alto rendimiento. La verdad es que no hacen
-  falta, ya se que suena a locura y probablemente se pueda pensar *«Claaaro, un
-  programa con gran demanda de cómputo que corre en un hilo puede ser tan
-  rápido como uno que corre en múltiples hilos.. 😒»*, pensamiento sarcástico
-  que sería muy merecido, pero el hecho es que Go cuenta con goroutines, que
-  son funciones que se ejecutan independientemente del hilo principal y son
-  automáticamente distribuidas entre más hilos para evitar el bloqueo de las
-  operaciones, esto genera una abstracción de más alto nivel para este tipo de
-  tareas, por lo que el programador no debe lidiar directamente con hilos (ver
-  la sección de [Concurrencia](#concurrencia)).
+https://medium.com/@arindamroy/simple-guide-to-panic-handling-and-recovery-in-golang-72d6181ae3e8?source=email-a31d0d6d29a8-1573458402958-digest.reader------0-59------------------1d028e49_51cc_44e0_bbfd_fd89caf50479-1-----&sectionName=top
 
 # Filosofía, proverbios y citas
 
@@ -3337,6 +3344,10 @@ https://go-proverbs.github.io/
 
 > Documentation is for users.
 
+# Recursos académicos
+
+* [A Tour of Go](https://tour.golang.org/)
+
 # Preguntas frecuentes
 
 ## ¿Por qué los binarios son tan grandes en comparación a C?
@@ -3344,10 +3355,6 @@ https://go-proverbs.github.io/
 https://stackoverflow.com/questions/28576173/reason-for-huge-size-of-compiled-executable-of-go
 
 https://blog.filippo.io/shrink-your-go-binaries-with-this-one-weird-trick/
-
-# Recursos académicos
-
-* [A Tour of Go](https://tour.golang.org/)
 
 # Atribuciones
 

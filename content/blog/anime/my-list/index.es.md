@@ -23,10 +23,13 @@ La lista tiene un montón de anime del que no tengo ni idea de que trata, así
 que hay que tener cuidado si se va a ver alguno con niños o personas sensibles
 😂.
 
-* [x] **91 Days** - acción, drama, crimen, adultos.
+* [x] **91 Days** - acción, drama, crimen, mafia, adultos.
 
 * [ ] Afro Samurai
-* [ ] Akame Ga Kiru!
+
+* [x] **Akame ga Kill!** - acción, aventura, fantasía, comedia, ecchi,
+  sangriento, adultos.
+
 * [ ] Akatsuki no Yona
 * [ ] Aldnoah Zero
 * [ ] Angel Beats!

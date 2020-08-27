@@ -17,9 +17,12 @@ que busque productividad y eficiencia necesita. Programé con PHP, Python y
 JavaScript (Node.js) en el pasado. También terminé la 42 C Piscine en Silicon
 Valley, así que tengo conocimiento básico de C.
 
+Dele un vistazo a mi [CV](https://docs.google.com/document/d/1bpNTpgJaeQeQHOCwvgACP91DUgfQ1NUo-ZhFe8EMH3U/edit?usp=sharing) ([PDF](/es/cv.pdf))
+o [mis proyectos](./../projects).
+
 # Habilidades
 
-* **Lenguajes de programación:** Go, C, JavaScript, Python.
+* **Lenguajes de programación:** Go, ~~C, JavaScript, Python~~.
 
 * **Interfaces de usuario:** Web (HTML, CSS, JavaScript).
 
@@ -36,8 +39,6 @@ Valley, así que tengo conocimiento básico de C.
 
 * **Cloud:** GitHub Pages, Netlify, ZEIT Now, Heroku, Google Cloud Platform.
 
-* **Frameworks y bibliotecas:** Bleve, Hugo.
-
-Dele un vistazo a mi [CV](https://docs.google.com/document/d/1bpNTpgJaeQeQHOCwvgACP91DUgfQ1NUo-ZhFe8EMH3U/edit?usp=sharing) ([PDF](/es/cv.pdf))
-o [mis proyectos](./../projects).
+* **Frameworks y bibliotecas:** [Bleve](https://www.blevesearch.com/),
+  [Hugo](https://gohugo.io/).
 

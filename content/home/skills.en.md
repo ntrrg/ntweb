@@ -16,9 +16,12 @@ productivity and efficiency needs. I coded with PHP, Python and JavaScript
 (Node.js) in the past. I also finished the 42 C Piscine in Silicon Valley, so I
 have basic knowledge of C.
 
+Take a look at my [CV](https://docs.google.com/document/d/1dbXk7CYAAG_MefJ4i5bddwkH6z9esE-y-NjpB1_PGdQ/edit?usp=sharing) ([PDF](/en/cv.pdf))
+or [my projects](./../projects).
+
 # Skills
 
-* **Programming languages:** Go, C, JavaScript, Python.
+* **Programming languages:** Go, ~~C, JavaScript, Python~~.
 
 * **User interfaces:** Web (HTML, CSS, JavaScript).
 
@@ -35,8 +38,6 @@ have basic knowledge of C.
 
 * **Cloud:** GitHub Pages, Netlify, ZEIT Now, Heroku, Google Cloud Platform.
 
-* **Frameworks and libs:** Bleve, Hugo.
-
-Take a look at my [CV](https://docs.google.com/document/d/1dbXk7CYAAG_MefJ4i5bddwkH6z9esE-y-NjpB1_PGdQ/edit?usp=sharing) ([PDF](/en/cv.pdf))
-or [my projects](./../projects).
+* **Frameworks and libs:** [Bleve](https://www.blevesearch.com/),
+  [Hugo](https://gohugo.io/).
 
