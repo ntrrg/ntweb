@@ -67,7 +67,7 @@ Algunas de sus características más resaltantes son:
   ofrecen abstracción de una manera muy elegante.
 
 * Conjuntos. Por ahora no se cuenta con esta estructura de datos, pero pueden
-  implementarse usando otras estructuras como los mapas.
+  implementarse usando otras estructuras como los [mapas](#mapas).
 
 {{< go-playground >}}
 ```go
@@ -174,7 +174,7 @@ Para empezar a programar solo se necesitan dos cosas:
 
 * Un compilador de código fuente Go.
 
-{{< card "blog/technology/go/install/1-14" >}}
+{{< card "blog/technology/go/install/1-15" >}}
 
 * Un editor de texto.
 
@@ -2239,7 +2239,7 @@ https://tour.golang.org/methods/8
 
 ```
 
-# Utilidades predefinidas
+# Funciones predefinidas
 
 ## `complex`
 
@@ -3238,34 +3238,6 @@ Permiten establecer condiciones para el compilador, como usar el archivo para
 ciertas arquitecturas o sistemas operativos, deben aparecer entre las primeras líneas, incluso antes de `package`. Para usarlas, solo hace falta un comentario
 como este `// +build CONDICION [...]`
 
-# Buenas prácticas
-
-1. Early return
-2. License
-3. Documenting
-4. Short names for local variables
-5. Split code in files
-6. Split code in reusable and main files (pkg, cmd)
-7. Use interfaces as parameters instead types
-8. Avoid concurrency for APIs
-9. Use channels to manage state (avoid abrupt stops)
-
-## Estructura de proyectos
-
-https://medium.com/@shaonshaonty/beautify-your-golang-project-f795b4b453aa?source=email-a31d0d6d29a8-1564497142241-digest.reader------2-59------------------773798d7_da5c_419e_9336_4ecd4313e2a4-16&sectionName=recommended
-
-## Manejo de errores
-
-<https://golang.org/ref/spec#Handling_panics>
-
-<https://blog.golang.org/error-handling-and-go>
-
-https://medium.com/@boltmick1/golang-handling-errors-gracefully-8e27f1db729f?source=email-a31d0d6d29a8-1564241076435-digest.reader------3-59------------------c8286857_9b13_4aef_be99_348604a8e035-1&sectionName=top
-
-https://github.com/upspin/upspin/blob/master/errors/errors.go
-
-https://medium.com/@arindamroy/simple-guide-to-panic-handling-and-recovery-in-golang-72d6181ae3e8?source=email-a31d0d6d29a8-1573458402958-digest.reader------0-59------------------1d028e49_51cc_44e0_bbfd_fd89caf50479-1-----&sectionName=top
-
 # Filosofía, proverbios y citas
 
 {{% details summary="Enlaces de interés" %}}
@@ -3347,6 +3319,34 @@ https://go-proverbs.github.io/
 # Recursos académicos
 
 * [A Tour of Go](https://tour.golang.org/)
+
+# Buenas prácticas
+
+1. Early return
+2. License
+3. Documenting
+4. Short names for local variables
+5. Split code in files
+6. Split code in reusable and main files (pkg, cmd)
+7. Use interfaces as parameters instead types
+8. Avoid concurrency for APIs
+9. Use channels to manage state (avoid abrupt stops)
+
+## Estructura de proyectos
+
+https://medium.com/@shaonshaonty/beautify-your-golang-project-f795b4b453aa?source=email-a31d0d6d29a8-1564497142241-digest.reader------2-59------------------773798d7_da5c_419e_9336_4ecd4313e2a4-16&sectionName=recommended
+
+## Manejo de errores
+
+<https://golang.org/ref/spec#Handling_panics>
+
+<https://blog.golang.org/error-handling-and-go>
+
+https://medium.com/@boltmick1/golang-handling-errors-gracefully-8e27f1db729f?source=email-a31d0d6d29a8-1564241076435-digest.reader------3-59------------------c8286857_9b13_4aef_be99_348604a8e035-1&sectionName=top
+
+https://github.com/upspin/upspin/blob/master/errors/errors.go
+
+https://medium.com/@arindamroy/simple-guide-to-panic-handling-and-recovery-in-golang-72d6181ae3e8?source=email-a31d0d6d29a8-1573458402958-digest.reader------0-59------------------1d028e49_51cc_44e0_bbfd_fd89caf50479-1-----&sectionName=top
 
 # Preguntas frecuentes
 

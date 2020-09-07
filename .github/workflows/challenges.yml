@@ -24,7 +24,7 @@ jobs:
 
       - name: Set up tools
         run: |
-          wget -qO "/tmp/mage.tar.gz" 'https://github.com/magefile/mage/releases/download/v1.9.0/mage_1.9.0_Linux-64bit.tar.gz'
+          wget -qO "/tmp/mage.tar.gz" 'https://github.com/magefile/mage/releases/download/v1.10.0/mage_1.10.0_Linux-64bit.tar.gz'
           tar -xf "/tmp/mage.tar.gz" -C "/tmp/"
           sudo cp "/tmp/mage" "/usr/bin/"
 
