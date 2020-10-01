@@ -17,12 +17,9 @@
   </div>
 </figure>
 
-{{ if ne ($.Page.Scratch.Get "mermaid") true }}
-  {{ $scripts := slice }}
-  {{ $scripts = $scripts | append "vendor/mermaid-v8.4.6.js" }}
-  {{ .Scratch.Set "scripts" $scripts }}
-  {{ .Scratch.Set "mode" "defer" }}
-  {{ partial "import-scripts.tmpl" . }}
+{{ if ne ($.Page.Scratch.Get "sc-mermaid") true }}
+  {{ .Scratch.Set "jsScripts" (slice "vendor/mermaid-v8.8.0.js") }}
+  {{ partial "import-js.tmpl" . }}
 
   <script>
     window.addEventListener('load', () => {
@@ -62,6 +59,6 @@
     })
   </script>
 
-  {{ $.Page.Scratch.Set "mermaid" true }}
+  {{ $.Page.Scratch.Set "sc-mermaid" true }}
 {{ end }}
 

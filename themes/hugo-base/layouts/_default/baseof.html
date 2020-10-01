@@ -1,6 +1,16 @@
 <!doctype html>
 <html lang="{{ .Site.Language | default "en" }}">
 <head>
+  {{ if ne hugo.Environment "development" }}
+    {{ with .Site.Params.googleTagManager }}
+      <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','{{ . }}');</script>
+    {{ end }}
+  {{ end }}
+
   <meta charset="utf-8"/>
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
@@ -11,8 +21,8 @@
   {{ end }}
 
   {{ block "head-metadata" . }}
-    {{ partial "page/head-metadata.tmpl" . }}
-    {{ partial "page/head-app.tmpl" . }}
+    {{ partial "head/metadata.tmpl" . }}
+    {{ partial "head/app.tmpl" . }}
     {{ hugo.Generator }}
   {{ end }}
 
@@ -20,64 +30,143 @@
     <meta name="monetization" content="{{ . }}">
   {{ end }}
 
+  {{ block "head-tags" . }}{{ end }}
+
   <title>
     {{ block "head-title" . }}
       {{ if not .IsHome }}
         {{ .Title }} {{ .Site.Params.titleSeparator }}
       {{ end }}
 
-      {{ .Site.Params.title }}
+      {{ .Site.Params.name }}
     {{ end }}
   </title>
 
-  {{ block "styles" . }}{{ partial "site/styles.tmpl" . }}{{ end }}
-  {{ block "scripts" . }}{{ partial "site/scripts.tmpl" . }}{{ end }}
+  {{ block "styles" . }}
+    {{ .Scratch.Set "cssSrc" "sass/main.scss" }}
+    {{ .Scratch.Set "cssOutput" "css/main.css" }}
+    {{ $sheet := partial "build-css.tmpl" . }}
+    <link rel="stylesheet" type="text/css" href="{{ $sheet.Permalink }}"/>
+  {{ end }}
+
+  {{ block "head-scripts" . }}{{ end }}
 </head>
-<body>
+
+{{ $bodyClass := printf "kind-%s type-%s" .Kind .Type }}
+
+{{ if ne .Pages nil }}
+  {{ $bodyClass = printf "%s has-pages" $bodyClass }}
+{{ end }}
+
+{{ if eq .Params.aside true }}
+  {{ $bodyClass = printf "%s has-aside" $bodyClass }}
+{{ end }}
+
+{{ if eq .Params.toc true }}
+  {{ $bodyClass = printf "%s has-toc" $bodyClass }}
+{{ end }}
+
+{{ if eq .Params.comments true }}
+  {{ $bodyClass = printf "%s has-comments" $bodyClass }}
+{{ end }}
+
+{{ if eq .Params.paginate true }}
+  {{ $bodyClass = printf "%s has-pagination" $bodyClass }}
+{{ end }}
+
+{{ if eq .Type "custom" }}
+  {{ $suffix := replace (index (split .File ".") 0) "/" "-" }}
+  {{ $bodyClass = printf "%s custom-%s" $bodyClass $suffix }}
+{{ end }}
+
+<body class="{{ $bodyClass }}">
   {{ if ne hugo.Environment "development" }}
     {{ with .Site.Params.googleTagManager }}
-      {{ partial "google-tag-manager.tmpl" . }}
+      <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id={{ . }}"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe>
+      </noscript>
     {{ end }}
   {{ end }}
 
   {{ block "body" . }}
-    <div class="body">
-      {{ block "header" . }}
-        <header role="banner">
-          {{ partial "site/header.tmpl" . }}
-        </header>
-      {{ end }}
+    {{ block "header" . }}
+      <header role="banner">
+        {{ partial "page/header.tmpl" . }}
+      </header>
+    {{ end }}
 
-      {{ block "main" . }}
-        <main>
-          <article>
-            {{ block "article-header" . }}
-              <section class="article-header">
-                {{ partial "page/card.tmpl" . }}
-              </section>
-            {{ end }}
+    {{ block "main" . }}
+      <main role="main" id="main">
+        {{ block "aside" . }}{{ end }}
 
-            {{ block "article-content-before" . }}{{ end }}
+        {{ $articleClass := "" }}
 
-            {{ block "article-content" . }}
-              <section class="article-content markdown">
-                {{ .Content }}
-              </section>
-            {{ end }}
+        {{ if isset .Params "image" }}
+          {{ $articleClass = printf "%s has-image" $articleClass }}
+        {{ end }}
 
-            {{ block "article-content-after" . }}{{ end }}
-          </article>
-        </main>
-      {{ end }}
+        <article class="article {{ $articleClass }}">
+          {{ block "article/header" . }}
+            <header>
+              {{ if isset .Params "image" }}
+                <img class="article-image" alt="{{ .Title }}"
+                     src="{{ .Params.image }}"/>
+              {{ end }}
 
-      {{ block "footer" . }}
-        <footer>
-          {{ partial "site/footer.tmpl" . }}
-        </footer>
-      {{ end }}
+              <h1 class="article-title">{{ .Title }}</h1>
 
-      {{ block "pop-up" . }}{{ partial "site/popup.tmpl" . }}{{ end }}
-    </div>
+              <p class="article-description">
+                {{ with .Description }}
+                  {{ $sectDesc := ($.Site.GetPage $.Section).Description }}
+                  {{ if or ($.IsSection) (ne . $sectDesc) }}{{ . }}{{ end }}
+                {{ end }}
+              </p>
+
+              <div class="article-metadata">
+                {{ partial "page/metadata.tmpl" . }}
+              </div>
+            </header>
+          {{ end }}
+
+          {{ block "article/content/before" . }}{{ end }}
+
+          {{ block "article/content" . }}
+            <section class="article-content markdown">
+              {{ .Content }}
+            </section>
+          {{ end }}
+
+          {{ block "article/content/after" . }}{{ end }}
+
+          {{ block "article/footer" . }}
+            <footer></footer>
+          {{ end }}
+
+          {{ block "article/comments" . }}
+            <section class="article-comments">
+              {{ if eq .Params.comments true }}
+                {{ partial "page/comments.tmpl" . }}
+              {{ end }}
+            </section>
+          {{ end }}
+        </article>
+      </main>
+    {{ end }}
+
+    {{ block "footer" . }}
+      <footer>
+        {{ partial "page/footer.tmpl" . }}
+      </footer>
+    {{ end }}
+  {{ end }}
+
+  {{ block "pop-up" . }}{{ partial "popup.tmpl" . }}{{ end }}
+
+  {{ block "scripts" . }}
+    {{ .Scratch.Set "jsSrc" "js/main.js" }}
+    {{ $script := partial "build-js.tmpl" . }}
+    <script defer src="{{ $script.Permalink }}"></script>
   {{ end }}
 </body>
 </html>

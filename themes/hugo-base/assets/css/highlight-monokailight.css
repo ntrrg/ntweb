@@ -1,0 +1,196 @@
+[data-code-theme="monokailight"] {
+  /* Background */
+  --code-background: #eee;
+  --code-color: #272822;
+
+  /* Error */
+  --code-err-background: #960050;
+  --code-err-color: #1e0010;
+
+  /* LineHighlight */
+  --code-hl-background: #ffffcc;
+
+  /* Keyword */
+  --code-k-color: #00a8c8;
+
+  /* KeywordConstant */
+  --code-kc-color: #00a8c8;
+
+  /* KeywordDeclaration */
+  --code-kd-color: #00a8c8;
+
+  /* KeywordNamespace */
+  --code-kn-color: #f92672;
+
+  /* KeywordPseudo */
+  --code-kp-color: #00a8c8;
+
+  /* KeywordReserved */
+  --code-kr-color: #00a8c8;
+
+  /* KeywordType */
+  --code-kt-color: #00a8c8;
+
+  /* Name */
+  --code-n-color: #75af00;
+
+  /* NameAttribute */
+  --code-na-color: #75af00;
+
+  /* NameBuiltin */
+  --code-nb-color: #75af00;
+
+  /* NameBuiltinPseudo */
+  --code-bp-color: #75af00;
+
+  /* NameClass */
+  --code-nc-color: #75af00;
+
+  /* NameConstant */
+  --code-no-color: #00a8c8;
+
+  /* NameDecorator */
+  --code-nd-color: #75af00;
+
+  /* NameEntity */
+  --code-ni-color: #75af00;
+
+  /* NameException */
+  --code-ne-color: #75af00;
+
+  /* NameFunction */
+  --code-nf-color: #75af00;
+
+  /* NameFunctionMagic */
+  --code-fm-color: #75af00;
+
+  /* NameLabel */
+  --code-nl-color: #75af00;
+
+  /* NameNamespace */
+  --code-nn-color: #75af00;
+
+  /* NameOther */
+  --code-nx-color: #75af00;
+
+  /* NameProperty */
+  --code-py-color: #75af00;
+
+  /* NameTag */
+  --code-nt-color: #f92672;
+
+  /* NameVariable */
+  --code-nv-color: #75af00;
+
+  /* NameVariableClass */
+  --code-vc-color: #75af00;
+
+  /* NameVariableGlobal */
+  --code-vg-color: #75af00;
+
+  /* NameVariableInstance */
+  --code-vi-color: #75af00;
+
+  /* NameVariableMagic */
+  --code-vm-color: #75af00;
+
+  /* Literal */
+  --code-l-color: #ae81ff;
+
+  /* LiteralDate */
+  --code-ld-color: #d88200;
+
+  /* LiteralString */
+  --code-s-color: #d88200;
+
+  /* LiteralStringAffix */
+  --code-sa-color: #d88200;
+
+  /* LiteralStringBacktick */
+  --code-sb-color: #d88200;
+
+  /* LiteralStringChar */
+  --code-sc-color: #d88200;
+
+  /* LiteralStringDelimiter */
+  --code-dl-color: #d88200;
+
+  /* LiteralStringDoc */
+  --code-sd-color: #d88200;
+
+  /* LiteralStringDouble */
+  --code-s2-color: #d88200;
+
+  /* LiteralStringEscape */
+  --code-se-color: #8045ff;
+
+  /* LiteralStringHeredoc */
+  --code-sh-color: #d88200;
+
+  /* LiteralStringInterpol */
+  --code-si-color: #d88200;
+
+  /* LiteralStringOther */
+  --code-sx-color: #d88200;
+
+  /* LiteralStringRegex */
+  --code-sr-color: #d88200;
+
+  /* LiteralStringSingle */
+  --code-s1-color: #d88200;
+
+  /* LiteralStringSymbol */
+  --code-ss-color: #d88200;
+
+  /* LiteralNumber */
+  --code-m-color: #ae81ff;
+
+  /* LiteralNumberBin */
+  --code-mb-color: #ae81ff;
+
+  /* LiteralNumberFloat */
+  --code-mf-color: #ae81ff;
+
+  /* LiteralNumberHex */
+  --code-mh-color: #ae81ff;
+
+  /* LiteralNumberInteger */
+  --code-mi-color: #ae81ff;
+
+  /* LiteralNumberIntegerLong */
+  --code-il-color: #ae81ff;
+
+  /* LiteralNumberOct */
+  --code-mo-color: #ae81ff;
+
+  /* Operator */
+  --code-o-color: #f92672;
+
+  /* OperatorWord */
+  --code-ow-color: #f92672;
+
+  /* Punctuation */
+  --code-p-color: #272822;
+
+  /* Comment */
+  --code-c-color: #75715e;
+
+  /* CommentHashbang */
+  --code-ch-color: #75715e;
+
+  /* CommentMultiline */
+  --code-cm-color: #75715e;
+
+  /* CommentSingle */
+  --code-c1-color: #75715e;
+
+  /* CommentSpecial */
+  --code-cs-color: #75715e;
+
+  /* CommentPreproc */
+  --code-cp-color: #75715e;
+
+  /* CommentPreprocFile */
+  --code-cpf-color: #75715e;
+}
+

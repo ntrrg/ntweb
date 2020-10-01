@@ -15,12 +15,13 @@
 /* Separators */
 
 .markdown hr {
-  width: 80%;
+  width: 90%;
+
+  margin: 1em auto;
 }
 
 /* Heading */
 
-.markdown h1,
 .markdown h2,
 .markdown h3,
 .markdown h4,
@@ -31,28 +32,24 @@
   margin: 0.5em 0em;
 }
 
-.markdown h1 {
+.markdown h2 {
   font-size: 2em;
 }
 
-.markdown h2 {
+.markdown h3 {
   font-size: 1.8em;
 }
 
-.markdown h3 {
+.markdown h4 {
   font-size: 1.6em;
 }
 
-.markdown h4 {
+.markdown h5 {
   font-size: 1.4em;
 }
 
-.markdown h5 {
-  font-size: 1.2em;
-}
-
 .markdown h6 {
-  font-size: 1.1em;
+  font-size: 1.2em;
 }
 
 .markdown .heading-anchor {
@@ -62,11 +59,11 @@
 
 /* Text decoration */
 
-.markdown b, .mkardown strong {
+.markdown b, .markdown strong {
   font-weight: bolder;
 }
 
-.markdown i, .mkardown em {
+.markdown i, .markdown em {
   font-style: italic;
 }
 
@@ -93,18 +90,12 @@
   padding-left: 0em;
 }
 
+.markdown ul {
+  list-style: initial;
+}
+
 .markdown dt {
   font-weight: bold;
-}
-
-.markdown .task-list {
-  list-style: none;
-
-  margin: 0.5em;
-}
-
-.markdown ul li input[type="checkbox"] {
-  margin-right: 0.5em;
 }
 
 /* Quotes */
@@ -158,6 +149,7 @@
 .markdown pre > code,
 .markdown pre code,
 .markdown .chroma {
+  background: #ddd;
   font-family: monospace;
 }
 
@@ -185,6 +177,7 @@
 
 .markdown .highlight table td:first-child {
   padding-right: 0.5em;
+  padding-left: 1em;
 }
 
 .markdown .highlight table td:last-child {

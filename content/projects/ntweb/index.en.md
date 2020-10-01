@@ -96,15 +96,14 @@ Resource frontmatter parameters. This may be different from page types.
 {{% /param %}}
 
 {{% param name="content" %}}
-Resource rendered Markdown content (HTML). Notice that this contains a Base64
-encoded UTF-8 string and JavaScript strings are UTF-16.
+Resource raw Markdown content. Notice that this contains a Base64 encoded UTF-8
+string and JavaScript strings are UTF-16.
 {{% /param %}}
 
 {{% param name="data" type="Object" %}}
 Resource specific data. For the main page, this contains all the sections,
 taxonomies and top-level pages; for collections this contains its elements and
-pagination information; and for single elements this is contains the related
-resource references.
+pagination information; and for single elements this is an empty object.
 {{% /param %}}
 
 {{% param name="altLang" type="Array of Object" %}}
@@ -152,9 +151,7 @@ $ wget -qO - https://ntrrg.dev/en/projects/ntweb/index.json | jq
     "toc": true
   },
   "content": "...",
-  "data": {
-    "pages": []
-  },
+  "data": {},
   "altLang": [
     {
       "lang": "es",
@@ -263,22 +260,6 @@ element title.
 Retrieves a single element. See [API](#api) for more details about common
 properties.
 
-**Properties:**
-
-{{< params >}}
-
-{{% param name="data.rels" type="Array of Object" %}}
-List of related elements, like the authors or the series which this element is
-part of. Every object has the `url`, `type` and `title` properties.
-{{% /param %}}
-
-{{% param name="data.refs" type="Array of Object" %}}
-List of elements referencing this element as a related. Every object has the
-`url`, `type`, `title` and `weight` properties.
-{{% /param %}}
-
-{{< /params >}}
-
 ### Search index
 
 <https://ntrrg.dev/en/search-index/index.json>
@@ -346,7 +327,7 @@ full offline experience.
 
 **Requirements:**
 
-* Hugo >= 0.74
+* Hugo >= 0.75
 
 Get the source code
 

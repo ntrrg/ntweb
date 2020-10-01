@@ -1,0 +1,44 @@
+<nav role="navigation" class="primary-menu" aria-label="primary-menu">
+  <strong>
+    <a href="{{ .Site.Home.Permalink }}">{{ .Site.Params.name }}</a>
+  </strong>
+
+  {{ .Scratch.Set "menuItems" "menu" }}
+  {{ partial "page/menu-items.tmpl" . }}
+</nav>
+
+<nav role="navigation" class="secundary-menu" aria-label="secundary-menu">
+  {{ with $.Site.GetPage "/search" }}
+    <form class="navbar-search" method="GET" action="{{ .Permalink }}">
+      [
+        {{- "" -}}
+
+        <input name="q" type="search" placeholder="{{ .Title }}..."/>
+
+        {{- "" -}}
+
+        <button type="submit">
+          <span class="icon">
+            {{ readFile "/static/images/fa/search.svg" | safeHTML }}
+          </span>
+        </button>
+
+        {{- "" -}}
+      ]
+    </form>
+  {{ end }}
+
+  {{ .Scratch.Set "menuItems" "secundaryMenu" }}
+  {{ partial "page/menu-items.tmpl" . }}
+</nav>
+
+{{ if .IsTranslated }}
+  <nav role="navigation" class="translations" aria-label="translation-menu">
+    {{ range .Translations }}
+      <span>
+        [<a href="{{ .Permalink }}">{{ .Language.LanguageName }}</a>]
+      </span>
+    {{ end }}
+  </nav>
+{{ end }}
+

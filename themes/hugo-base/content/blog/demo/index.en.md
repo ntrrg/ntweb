@@ -4,16 +4,14 @@ publishdate: 2028-07-05T18:35:00-04:00
 date: 2028-07-05T19:35:00-04:00
 description: This is a demo page to see the Markdown styles.
 image: images/ntrrg.png
-rels:
-  - .authors.john
-  - .series.demo
-relsweight:
-  .series.demo: 1
+authors:
+  - john
+series:
+  - demo
 tags:
   - tag1
   - tag2
   - tag3
-math: true
 comments: true
 toc: true
 draft: true
@@ -39,8 +37,6 @@ You need a blank line for a new paragraph.
 #### Heading (h4)
 
 ##### Heading (h5)
-
-###### Heading (h6)
 
 # Text decoration
 
@@ -87,9 +83,6 @@ Miguel Angel (<mark>ntrrg</mark>) Rivera Notararigo.
 2. an ordered
 3. list
 
-* [ ] This is
-* [x] a task list
-
 This
 : is a definition list.
 
@@ -134,15 +127,6 @@ This paragraph has a footnote[^1].
 # Images
 
 ![Alternative text](images/ntrrg.png "This is the title")
-
-# Math formulas
-
-This is a smart fraction 1/2, this is text with inline math
-\\(\sum\_{n=1}^{\infty} 2^{-n} = 1\\) and this is a math block:
-
-$$
-\sum\_{n=1}^{\infty} 2^{-n} = 1
-$$
 
 # Code
 
@@ -210,11 +194,7 @@ Opens the TOC block by default.
                 <ul>
                   <li><a href="#heading-h4">Heading (h4)</a>
                     <ul>
-                      <li><a href="#heading-h5">Heading (h5)</a>
-                        <ul>
-                          <li><a href="#heading-h6">Heading (h6)</a></li>
-                        </ul>
-                      </li>
+                      <li><a href="#heading-h5">Heading (h5)</a></li>
                     </ul>
                   </li>
                 </ul>
@@ -228,18 +208,16 @@ Opens the TOC block by default.
       <li><a href="#quotes">Quotes</a></li>
       <li><a href="#tables">Tables</a></li>
       <li><a href="#images">Images</a></li>
-      <li><a href="#math-formulas">Math formulas</a></li>
       <li><a href="#code">Code</a></li>
       <li><a href="#shortcodes">Shortcodes</a>
         <ul>
           <li><a href="#toc">TOC</a></li>
-          <li><a href="#images-1">Images</a>
-            <ul>
-              <li><a href="#figures">Figures</a></li>
-            </ul>
-          </li>
+          <li><a href="#taks-list">Task List</a></li>
+          <li><a href="#images-1">Images</a></li>
+          <li><a href="#figures">Figures</a></li>
           <li><a href="#notes">Notes</a></li>
           <li><a href="#details">Details</a></li>
+          <li><a href="#math-formulas">Math formulas</a></li>
           <li><a href="#charts">Charts</a></li>
           <li><a href="#imports">Imports</a></li>
           <li><a href="#cards">Cards</a></li>
@@ -252,6 +230,32 @@ Opens the TOC block by default.
   </nav>
 </details>
 ```
+
+## Task List
+
+```
+< task-list >
+CONTENT
+< /task-list >
+```
+
+**Parameters:**
+
+{{< params >}}
+
+{{% param name="CONTENT" %}}
+Unordered list prefixed by `* [ ]` for unchecked elements and `* [x]` for
+checked elements.
+{{% /param %}}
+
+{{< /params >}}
+
+**Examples:**
+
+{{< task-list >}}
+* [ ] This is
+* [x] a task list
+{{< /task-list >}}
 
 ## Images
 
@@ -311,7 +315,7 @@ Inline image with {{< img src="images/hugo.png" style="height: 1em" >}}
 <img data-src="images/ntrrg.png" alt="ntrrg" class="logo lazy-load">
 ```
 
-### Figures
+## Figures
 
 ```
 < figure src=URL [alt=ALTERNATIVE_TEXT] [lazy=true|false] \
@@ -613,6 +617,36 @@ This is a **Markdown** text.
 </div>
 ```
 
+## Math formulas
+
+```
+< math >
+CONTENT
+< /math >
+```
+
+**Parameters:**
+
+{{< params >}}
+
+{{% param name="CONTENT" %}}
+Math syntax. See http://docs.mathjax.org/en/latest/basic/mathematics.html for
+more information about the syntax.
+{{% /param %}}
+
+{{< /params >}}
+
+**Examples:**
+
+This is text with inline math {{< math >}}\\(\sum\_{n=1}^{\infty} 2^{-n} = 1\\){{< /math >}}
+and this is a math block:
+
+{{< math >}}
+$$
+\sum\_{n=1}^{\infty} 2^{-n} = 1
+$$
+{{< /math >}}
+
 ## Charts
 
 ```
@@ -741,56 +775,56 @@ Relative page path from the `content` directory.
 {{< card "/blog/demo/" >}}
 
 ```html
-<div class="page-card has-image">
-  <div class="page-card-image">
-    <a href="/en/blog/demo-page/">
-      <img alt="Demo page" src="/en/blog/demo-page/images/ntrrg.png">
-    </a>
-  </div>
+<article class="page-card has-image">
+  <a href="/en/blog/demo-page/">
+    <img class="page-card-image" alt="Demo page" src="/en/blog/demo-page/images/ntrrg.png"/>
+  </a>
 
-  <div class="page-card-body">
-    <div class="page-card-title">
+  <header>
+    <strong class="page-card-title">
       <a href="/en/blog/demo-page/">Demo page</a>
-    </div>
+    </strong>
 
     <p class="page-card-description">
-      This is a demo page to see the Markdown styles.
+        This is a demo page to see the Markdown styles.
     </p>
+  </header>
 
-    <div class="page-card-metadata">
-      <div>
-        <strong>Authors:</strong>
-        <a href="/en/authors/john/" title="John Doe">john</a>
-      </div>
+  <section class="page-card-metadata">
+    <div>
+      <strong>Published:</strong>
 
-      <div>
-        <strong>Published:</strong>
-        <span>2028/07/05 18:35:00 -04:00</span>
-      </div>
-
-      <div>
-        <strong>Modified:</strong>
-        <span>2028/07/05 19:35:00 -04:00</span>
-      </div>
-
-      <div>
-        <strong>Series:</strong>
-
-        <a href="/en/series/demo/" title="This is a demo serie.">
-            Demo serie</a>
-      </div>
-
-      <div>
-        <strong>Tags:</strong>
-        <a href="/en/tags/tag1">#tag1</a>
-        <a href="/en/tags/tag2">#tag2</a>
-        <a href="/en/tags/tag3">#tag3</a>
-        <a href="/en/tags/tag4">#tag4</a>
-        <a href="/en/tags/tag5">#tag5</a>
-      </div>
+      <time datetime="2028/07/05 18:35:00 -04:00">
+        2028/07/05 18:35:00 -04:00
+      </time>
     </div>
-  </div>
-</div>
+
+    <div>
+      <strong>Modified:</strong>
+
+      <time datetime="2028/07/05 19:35:00 -04:00">
+        2028/07/05 19:35:00 -04:00
+      </time>
+    </div>
+
+    <div>
+      <strong>Authors:</strong>
+      <a href="/en/authors/john/">John Doe</a>
+    </div>
+
+    <div>
+      <strong>Series:</strong>
+      <a href="/en/series/demo/">Demo serie</a>
+    </div>
+
+    <div>
+      <strong>Tags:</strong>
+      <a href="/en/tags/tag1/">#tag1</a>
+      <a href="/en/tags/tag2/">#tag2</a>
+      <a href="/en/tags/tag3/">#tag3</a>
+    </div>
+  </section>
+</article>
 ```
 
 ## Snippets

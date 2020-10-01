@@ -3,9 +3,9 @@
     "pages": [
       {{ $pages := slice }}
 
-      {{ if eq .Kind "taxonomy" }}
-        {{ $pages = sort .Pages "Title" }}
-      {{ else if and (eq .Params.paginate true) (ne .Paginator nil) }}
+      {{ if in (slice "taxonomy" "term") .Kind }}
+        {{ $pages = sort .Pages (.Params.sortBy | default "Title") }}
+      {{ else if eq .Params.paginate true }}
         {{ $pages = .Paginator.Pages }}
       {{ else }}
         {{ $pages = .Pages }}
@@ -49,42 +49,9 @@
               "description": "",
             {{ end }}
 
-            "refs": [
-              {{ partial "get-refs.tmpl" . }}
-
-              {{ $i := 0 }}
-              {{ range $i, $x := .Scratch.Get "refs" }}
-                {{ if ne $i 0 }},{{ end }}
-
-                {
-                  "url": {{ jsonify .Permalink }},
-                  "type": {{ jsonify .Type }},
-                  "title": {{ jsonify .Title }}
-                }
-
-                {{ $i = add $i 1 }}
-              {{ end }}
-            ],
-            "rels": [
-              {{ .Scratch.Set "relsPrefix" "." }}
-              {{ partial "get-rels.tmpl" . }}
-
-              {{ $i := 0 }}
-              {{ range $i, $rel := (.Scratch.Get "rels") }}
-                {{ if ne $i 0 }},{{ end }}
-
-                {
-                  "url": {{ jsonify .Permalink }},
-                  "type": {{ jsonify .Type }},
-                  "title": {{ jsonify .Title }}
-                }
-
-                {{ $i = add $i 1 }}
-              {{ end }}
-            ],
             "taxonomies": {
               {{ $i := 0 }}
-              {{ range $name, $terms := $.Site.Taxonomies }}
+              {{ range $name, $_ := $.Site.Taxonomies }}
                 {{ if ne $i 0 }},{{ end }}
                 "{{ $name }}": {{ index $page.Params $name | default slice | jsonify }}
                 {{ $i = add $i 1 }}
@@ -94,7 +61,8 @@
         {{ end }}
       {{ end }}
     ]
-    {{ if and (eq .Params.paginate true) (ne .Paginator nil) }}
+
+    {{ if eq .Params.paginate true }}
       ,
       {{ $prefix := printf "%spage/" .Permalink }}
 

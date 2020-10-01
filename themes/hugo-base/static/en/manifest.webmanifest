@@ -6,7 +6,7 @@
   "description": "This is a short description for the website.",
   "start_url": "/en/index.html",
   "background_color": "#fff",
-  "theme_color": "#000",
+  "theme_color": "#fff",
   "icons": [
     {
       "sizes": "512x512",

@@ -1,7 +1,7 @@
-{{ define "article-content-before" }}
+{{ define "article/content/before" }}
   <section class="site-settings">
     {{ range .Params.actions }}
-      <div class="action">
+      <div class="site-settings-action">
         <strong>{{ .text }}:</strong>
 
         <select id="{{ .id }}">

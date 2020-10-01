@@ -3,8 +3,8 @@ title: Representación de la información
 publishdate: 2020-06-08T16:00:00-04:00
 date: 2020-06-09T10:00:00-04:00
 description: De humanos a autómatas, un vistazo al proceso de transformar la información en algo que las computadoras puedan entender.
-rels:
-  - .series.technology.software-engineering
+series:
+  - computer-science
 tags:
   - tecnología
   - ciencia-de-la-computación

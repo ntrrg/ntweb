@@ -24,14 +24,21 @@
   </a>
 </div>
 
-{{ if ne ($.Page.Scratch.Get "go-playground") true }}
-  {{ $scripts := slice }}
-  {{ $scripts = $scripts | append "vendor/base64js-v1.3.1.min.js" }}
-  {{ .Scratch.Set "scripts" $scripts }}
-  {{ .Scratch.Set "mode" "defer" }}
-  {{ partial "import-scripts.tmpl" . }}
+{{ if ne ($.Page.Scratch.Get "sc-go-playground") true }}
+  {{ .Scratch.Set "jsScripts" (slice "vendor/base64js-v1.3.1.min.js") }}
+  {{ partial "import-js.tmpl" . }}
 
   <script>
+    function base64Encode(str) {
+      const encoder = new TextEncoder()
+      return base64js.fromByteArray(encoder.encode(str))
+    }
+
+    function base64Decode(str) {
+      const decoder = new TextDecoder()
+      return decoder.decode(base64js.toByteArray(str));
+    }
+
     async function getGoPlaygroundLink(e) {
       const goPlaygroundURL = '{{ $.Page.Site.Params.goPlayground }}'
       const link = e.target
@@ -73,6 +80,6 @@
     })
   </script>
 
-  {{ $.Page.Scratch.Set "go-playground" true }}
+  {{ $.Page.Scratch.Set "sc-go-playground" true }}
 {{ end }}
 

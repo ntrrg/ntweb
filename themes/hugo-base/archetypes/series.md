@@ -4,14 +4,9 @@ publishdate: {{ .Date }}
 date: {{ .Date }}
 description: Short description.
 image: https://via.placeholder.com/350x350
-rels:
-  - .authors.john
-tags:
-  - tag1
-  - tag2
-  - tag3
+sortBy: PublishDate
 toc: true
-math: false
+aside: true
 comments: true
 draft: true
 ---

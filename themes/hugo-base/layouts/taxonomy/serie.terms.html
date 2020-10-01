@@ -1,0 +1,12 @@
+{{ define "article/content/after" }}
+  <section class="page-list">
+    {{ $pages := sort .Pages (.Params.sortBy | default "Title") }}
+
+    <ul>
+      {{ range $pages }}
+        <li>{{ partial "page/card.tmpl" . }}</li>
+      {{ end }}
+    </ul>
+  </section>
+{{ end }}
+

@@ -1,0 +1,20 @@
+{{ $.Page.RenderString .Inner }}
+
+{{ if ne ($.Page.Scratch.Get "sc-task-list") true }}
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      let selector = '.markdown ul li input[type="checkbox"]'
+      const inputs = document.querySelectorAll(selector)
+
+      for (const input of inputs) {
+        const list = input.parentNode.parentNode
+        list.style.listStyle = 'none'
+        list.style.paddingLeft = '1em'
+        list.style.marginLeft = '0em'
+      }
+    })
+  </script>
+
+  {{ $.Page.Scratch.Set "sc-task-list" true }}
+{{ end }}
+

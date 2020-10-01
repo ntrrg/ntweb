@@ -1,16 +1,8 @@
-{{ define "article-content-before" }}
+{{ define "aside" }}
   <aside class="article-sidebar">
-    <div>
-      {{ if ne .Params.aside false }}
-        {{ partial "page/aside.tmpl" . }}
-      {{ end }}
-    </div>
+    {{ if eq .Params.aside true }}
+      {{ partial "page/aside.tmpl" . }}
+    {{ end }}
   </aside>
-{{ end }}
-
-{{ define "article-content-after" }}
-  <section class="article-comments">
-    {{ partial "page/comments.tmpl" . }}
-  </section>
 {{ end }}
 

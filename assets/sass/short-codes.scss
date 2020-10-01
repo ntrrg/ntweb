@@ -1,0 +1,118 @@
+/* Table of contents */
+
+.toc {
+  padding: 1em;
+  padding-bottom: 0em;
+}
+
+/* Notes */
+
+.note {
+  border: 0.1em solid;
+  margin: 2em 0em;
+  padding: 1em 2em;
+}
+
+.note .note-header {
+  border-bottom: 0.1em solid;
+  font-weight: bold;
+  margin-top: 0.5em;
+  margin-bottom: 1em;
+  padding-bottom: 0.5em;
+}
+
+/* Details */
+
+.details:not(.no-border) {
+  border: 0.1em solid;
+  margin: 2em 0em;
+  padding: 1em 2em;
+}
+
+/* Mermaid */
+
+.mermaid-output svg {
+  background: #fff;
+}
+
+/* Cards */
+
+.page-card {
+  max-width: 100%;
+
+  border: 0.1em dashed;
+  box-sizing: border-box;
+  margin: 0.5em;
+
+  position: relative;
+}
+
+.page-card-image {
+  width: 100%;
+  max-height: 20em;
+
+  object-fit: contain;
+  object-position: center;
+}
+
+.page-card header {
+  padding: 1em 1.5em;
+}
+
+.page-card-title {
+  font-size: 1.5em;
+}
+
+.page-card-description {
+  font-size: 0.85em;
+
+  margin: 0em;
+}
+
+.page-card-metadata {
+  font-size: 0.85em;
+  opacity: 0.8;
+}
+
+@media print, screen and (min-width: 768px) {
+  .page-card.has-image {
+    display: flex;
+  }
+
+  .page-card.has-image .page-card-image-link {
+    min-width: 15em;
+    max-width: 15em;
+
+    display: flex;
+  }
+
+  .page-card-image {
+    float: left;
+    position: relative;
+  }
+}
+
+/* Params */
+
+.params {
+  border: 0.1em solid;
+}
+
+.param {
+  border-bottom: 0.1em dashed;
+
+  padding: 1em 2em;
+}
+
+.param:last-child {
+  border-bottom: none;
+}
+
+.param-header {
+  font-weight: bold;
+}
+
+.param-body p:first-child {
+  margin-top: 0em;
+}
+

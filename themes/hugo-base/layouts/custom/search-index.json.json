@@ -1,19 +1,3 @@
-{
-  "documents": [
-    {{ $i := 0 }}
-
-    {{ range $.Site.Sections }}
-      {{ if in $.Site.Params.searchIndexTypes .Type }}
-        {{ range .Pages }}
-          {{ if ne $i 0 }},{{ end }}
-          {{ template "document" . }}
-          {{ $i = add $i 1 }}
-        {{ end }}
-      {{ end }}
-    {{ end }}
-  ]
-}
-
 {{ define "document" }}
   {
     "url": {{ jsonify .Permalink }},
@@ -37,7 +21,7 @@
 
     "taxonomies": {
       {{ $i := 0 }}
-      {{ range $name, $terms := $.Site.Taxonomies }}
+      {{ range $name, $_ := $.Site.Taxonomies }}
         {{ if ne $i 0 }},{{ end }}
         "{{ $name }}": {{ index $.Params $name | default slice | jsonify }}
         {{ $i = add $i 1 }}
@@ -45,4 +29,19 @@
     }
   }
 {{ end }}
+
+{
+  "documents": [
+    {{ $pages := $.Site.Pages }}
+    {{ $pages = where $pages "Type" "in" $.Site.Params.searchIndexTypes }}
+    {{ $pages = where $pages "Kind" "in" (slice "page" "term") }}
+
+    {{ $i := 0 }}
+    {{ range $pages }}
+      {{ if ne $i 0 }},{{ end }}
+      {{ template "document" . }}
+      {{ $i = add $i 1 }}
+    {{ end }}
+  ]
+}
 

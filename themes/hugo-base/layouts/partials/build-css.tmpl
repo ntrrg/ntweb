@@ -1,0 +1,19 @@
+{{ $src := .Scratch.Get "cssSrc" }}
+{{ $output := .Scratch.Get "cssOutput" | default $src }}
+{{ $opts := .Scratch.Get "cssOptions" | default dict }}
+
+{{ $cssOpts := dict "targetPath" $output }}
+
+{{ if ne hugo.Environment "development" }}
+  {{ $cssOpts = merge $cssOpts (dict "outputStyle" "compressed") }}
+  {{ $cssOpts = merge $cssOpts (dict "enableSourceMap" true) }}
+{{ end }}
+
+{{ $cssOpts = merge $cssOpts $opts }}
+
+{{ .Scratch.Delete "cssSrc" }}
+{{ .Scratch.Delete "cssOutput" }}
+{{ .Scratch.Delete "cssOptions" }}
+
+{{ return (resources.Get $src | resources.ToCSS $cssOpts) }}
+

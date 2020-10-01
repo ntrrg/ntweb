@@ -15,7 +15,7 @@ comments: true
 
 [Go license]: https://golang.org/LICENSE
 
-Es un lenguaje minimalista y de alto rendimiento.  Su fase de diseño inició en
+Es un lenguaje minimalista y de alto rendimiento. Su fase de diseño inició en
 el año 2007 por parte de un equipo de ingenieros de Google, conformado en ese
 tiempo por Ken Thompson, Rob Pike y Robert Griesemer; luego de tener una base
 estable, se unieron los ingenieros Russ Cox e Ian Lance Taylor. Para inicios

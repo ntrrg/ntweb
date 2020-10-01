@@ -8,39 +8,33 @@
   {{ partial "page/share.tmpl" . }}
 </section>
 
-{{ .Scratch.Set "relsPrefix" ".series." }}
-{{ partial "get-rels.tmpl" . }}
-
 <section class="article-series">
-  {{ with .Scratch.Get "rels" }}
-    {{ range sort . "Title" }}
-      <table class="article-series-serie">
-      <thead>
-        <tr><th>
-          <a href="{{ .Permalink | default "#" }}">{{ .Title }}</a>
-        </th></tr>
-      </thead>
+  {{ $series := .GetTerms "series" }}
 
-      <tbody>
-        {{ partial "get-refs.tmpl" . }}
+  {{ range sort $series "Title" }}
+    <table class="article-series-serie">
+    <thead>
+      <tr><th>
+        <a href="{{ .Permalink | default "#" }}">{{ .Title }}</a>
+      </th></tr>
+    </thead>
 
-        {{ range $i, $x := .Scratch.Get "refs" }}
-          {{ $page := .Page }}
-          {{ $active := "" }}
+    <tbody>
+      {{ range $i, $_ := .Pages }}
+        {{ $active := "" }}
 
-          {{ if eq $.Permalink $page.Permalink }}
-            {{ $active = "is-active" }}
-          {{ end }}
-
-          <tr><td class="{{ $active }}">
-            <a href="{{ $page.Permalink }}">
-              {{ add $i 1 }}. {{ $page.Title }}
-            </a>
-          </td></td>
+        {{ if eq $.Permalink .Permalink }}
+          {{ $active = "is-active" }}
         {{ end }}
-      </tbody>
-      </table>
-    {{ end }}
+
+        <tr><td class="{{ $active }}">
+          <a href="{{ .Permalink }}">
+            {{ add $i 1 }}. {{ .Title }}
+          </a>
+        </td></td>
+      {{ end }}
+    </tbody>
+    </table>
   {{ end }}
 </section>
 

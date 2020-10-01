@@ -1,0 +1,10 @@
+{{ define "aside" }}
+  <aside class="article-sidebar">
+    <div>
+      {{ if eq .Params.aside true }}
+        {{ partial "page/aside.tmpl" . }}
+      {{ end }}
+    </div>
+  </aside>
+{{ end }}
+

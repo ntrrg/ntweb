@@ -96,16 +96,15 @@ contenido.
 {{% /param %}}
 
 {{% param name="content" type="Cadena" %}}
-Contenido Markdown procesado (HTML) del recurso. Se debe tener en cuenta que
-esta propiedad contiene una cadena UTF-8 y las cadenas de JavaScript son
-UTF-16.
+Contenido Markdown sin procesar del recurso. Se debe tener en cuenta que esta
+propiedad contiene una cadena UTF-8 y las cadenas de JavaScript son UTF-16.
 {{% /param %}}
 
 {{% param name="data" type="Objeto" %}}
 Datos específicos del recurso. Para la página principal, contiene todos los
 elementos de primer nivel; para colecciones, contiene los elementos que la
-componen e información sobre la paginación; y para recursos individuales,
-contiene las referencias de los elementos relacionados.
+componen e información sobre la paginación; y para recursos individuales, es un
+objeto vacío.
 {{% /param %}}
 
 {{% param name="altLang" type="Vector de Objeto" %}}
@@ -153,9 +152,7 @@ $ wget -qO - https://ntrrg.dev/es/projects/ntweb/index.json | jq
     "toc": true
   },
   "content": "...",
-  "data": {
-    "pages": []
-  },
+  "data": {},
   "altLang": [
     {
       "lang": "en",
@@ -265,23 +262,6 @@ que pertenece y su título codificado para URLs.
 Obtiene un elemento. Ver [API](#api) para mas información sobre las propiedades
 en común.
 
-**Propiedades:**
-
-{{< params >}}
-
-{{% param name="data.rels" type="Vector de Objeto" %}}
-Lista de elementos relacionados, por ejemplo los autores o las series de las
-que forma parte este elemento. Cada objeto tiene las propiedades `url`, `type`
-y `title`.
-{{% /param %}}
-
-{{% param name="data.refs" type="Vector de Objeto" %}}
-Lista de elementos referenciando este elemento como relacionado. Cada objeto
-tiene las propiedades `url`, `type`, `title` y `weight`.
-{{% /param %}}
-
-{{< /params >}}
-
 ### Índice de búsqueda
 
 <https://ntrrg.dev/es/search-index/index.json>
@@ -351,7 +331,7 @@ todos los recursos.
 
 **Requerimientos:**
 
-* Hugo >= 0.74
+* Hugo >= 0.75
 
 Descargar el código fuente
 

@@ -1,4 +1,4 @@
-{{ if and (eq .Params.comments true) (ne hugo.Environment "development") }}
+{{ if ne hugo.Environment "development" }}
   {{ if isset .Site.Params "disqus" }}
     <!-- <link rel="preconnect" href="https://disqus.com"> -->
 

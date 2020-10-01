@@ -10,7 +10,6 @@ params:
     name: Miguel Angel Rivera Notararigo
     email: ntrrgx@gmail.com
     website: https://ntrrg.dev/
-  singleAuthor: false
   image: /favicon-512x512.png
   ampImage: /icon-206x60.png
   articleTypes:
@@ -21,24 +20,6 @@ params:
     - challenges
     - projects
     - series
-  menu:
-    items:
-      - url: "/blog/"
-      - url: "/projects/"
-      - url: "/challenges/"
-      - url: "https://www.instagram.com/ntrrg/"
-        text: "Gallery"
-    beforeEach: "| "
-  secundaryMenu:
-    items:
-      - url: "/settings/"
-    beforeEach: "["
-    afterEach: "]"
-  footerMenu:
-    items:
-      - url: "/pay/"
-    beforeEach: "["
-    afterEach: "] "
   # googleTagManager: GTM-NZ2R3W7
   disqus: ntweb
   interledger: "$ilp.uphold.com/YM4XLxrdPh44"
@@ -53,6 +34,24 @@ languages:
     languageName: English
     params:
       description: I am Miguel Angel, just another developer working hard to not be just another developer.
+      menu:
+        items:
+          - url: "/blog/"
+          - url: "/projects/"
+          - url: "/challenges/"
+          - url: "https://www.instagram.com/ntrrg/"
+            text: "Gallery"
+        beforeEach: "| "
+      secundaryMenu:
+        items:
+          - url: "/settings/"
+        beforeEach: "["
+        afterEach: "]"
+      footerMenu:
+        items:
+          - url: "/pay/"
+        beforeEach: "["
+        afterEach: "] "
   es:
     languageName: Español
     params:
@@ -64,13 +63,23 @@ languages:
           - url: "https://www.instagram.com/ntrrg/"
             text: "Galería"
         beforeEach: "| "
+      secundaryMenu:
+        items:
+          - url: "/settings/"
+        beforeEach: "["
+        afterEach: "]"
+      footerMenu:
+        items:
+          - url: "/pay/"
+        beforeEach: "["
+        afterEach: "] "
 taxonomies:
-  rel: rels
   tag: tags
+  author: authors
+  serie: series
 permalinks:
   blog: /:sections/:slug/
   projects: /:sections/:slug/
-  series: /:sections/:slug/
 theme:
   - hugo-base
 Paginate: 10

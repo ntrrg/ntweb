@@ -1,4 +1,4 @@
-<div class="page-card {{ with .Params.image }}has-image{{ end }}">
+<article class="page-card {{ with .Params.image }}has-image{{ end }}">
   {{ if isset .Params "image" }}
     {{ $image := .Params.image }}
 
@@ -8,19 +8,17 @@
       {{ $image = path.Join .RelPermalink $image | absURL }}
     {{ end }}
 
-    <div class="page-card-image">
-      <a href="{{ .Permalink }}">
-        <img alt="{{ .Title }}" src="{{ $image }}"/>
-      </a>
-    </div>
+    <a class="page-card-image-link" href="{{ .Permalink }}">
+      <img class="page-card-image" alt="{{ .Title }}" src="{{ $image }}"/>
+    </a>
   {{ end }}
 
-  <div class="page-card-body">
-    <h1 class="page-card-title">
+  <header>
+    <strong class="page-card-title">
       <a href="{{ .Permalink }}">
         {{ .Title }}{{ with .Pages }}<sup>({{ len . }})</sup>{{ end }}
       </a>
-    </h1>
+    </strong>
 
     <p class="page-card-description">
       {{ with .Description }}
@@ -32,5 +30,5 @@
     <div class="page-card-metadata">
       {{ partial "page/metadata.tmpl" . }}
     </div>
-  </div>
-</div>
+  </header>
+</article>

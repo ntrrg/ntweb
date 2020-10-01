@@ -1,17 +1,17 @@
-{{ define "article-content-after" }}
-  <section class="article-pages">
+{{ define "article/content/after" }}
+  <section class="page-list">
     {{ $pages := slice }}
 
-    {{ if eq .Kind "taxonomy" }}
-      {{ $pages = sort .Pages "Title" }}
-    {{ else if and (eq .Params.paginate true) (ne .Paginator nil) }}
+    {{ if in (slice "taxonomy" "term") .Kind }}
+      {{ $pages = sort .Pages (.Params.sortBy | default "Title") }}
+    {{ else if eq .Params.paginate true }}
       {{ $pages = .Paginator.Pages }}
     {{ else }}
       {{ $pages = .Pages }}
     {{ end }}
 
     {{ if gt (len $pages) 0 }}
-      {{ if and (eq .Params.paginate true) (ne .Paginator nil) }}
+      {{ if eq .Params.paginate true }}
         {{ partial "page/pagination.tmpl" . }}
       {{ end }}
 
@@ -21,7 +21,7 @@
         {{ end }}
       </ul>
 
-      {{ if and (eq .Params.paginate true) (ne .Paginator nil) }}
+      {{ if eq .Params.paginate true }}
         {{ partial "page/pagination.tmpl" . }}
       {{ end }}
     {{ else }}

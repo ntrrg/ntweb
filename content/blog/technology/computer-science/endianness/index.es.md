@@ -2,8 +2,8 @@
 title: Endianness, ordenamiento de bytes
 date: 2020-06-11T12:10:00-04:00
 description: ¿¡ENDIA QUÉ!? Con simplemente conocer como se puede representar la información en lenguaje máquina no es suficiente, también es necesario entender como es almacenada esta representación en las computadoras.
-rels:
-  - .series.technology.software-engineering
+series:
+  - computer-science
 tags:
   - tecnología
   - ciencia-de-la-computación

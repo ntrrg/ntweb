@@ -1,7 +1,7 @@
 {{ define "data" }}
   {
     "sections": [
-      {{ range $i, $val := .Sections }}
+      {{ range $i, $_ := .Sections }}
         {{ if ne $i 0 }},{{ end }}
         {
           "url": {{ jsonify .Permalink }},
@@ -23,7 +23,7 @@
       {{ end }}
     ],
     "pages": [
-      {{ range $i, $val := .RegularPages }}
+      {{ range $i, $_ := .RegularPages }}
         {{ if ne $i 0 }},{{ end }}
         {
           "url": {{ jsonify .Permalink }},

@@ -6,7 +6,7 @@
   "description": "Un pequeño sitio web con grandes intenciones.",
   "start_url": "/es/index.html",
   "background_color": "#fff",
-  "theme_color": "#000",
+  "theme_color": "#fff",
   "icons": [
     {
       "sizes": "512x512",

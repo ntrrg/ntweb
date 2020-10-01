@@ -9,18 +9,17 @@ publishdate: {{ .Date }}
 date: {{ .Date }}
 description: Short description.
 image: https://via.placeholder.com/350x350
-rels:
-  - .authors.john
-  - .series.demo
-relsweight:
-  .series.demo: 1
+authors:
+  - john
+series:
+  - demo
 tags:
   - tag1
   - tag2
   - tag3
-toc: false
-math: false
-comments: false
+toc: true
+aside: true
+comments: true
 draft: true
 ---
 

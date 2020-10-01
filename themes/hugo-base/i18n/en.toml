@@ -4,8 +4,14 @@ other = "Modified"
 [METADATA_DATE_PUBLISHED]
 other = "Published"
 
-[METADATA_TAGS]
-other = "Tags"
+[METADATA_EMAIL]
+other = "Email"
+
+[METADATA_NAME]
+other = "Name"
+
+[METADATA_TYPE]
+other = "Type"
 
 [PAGE_COMMENTS_SHOW]
 other = "Show comments"

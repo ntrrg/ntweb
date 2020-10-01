@@ -1,15 +1,13 @@
-{{ define "scripts" }}
+{{ define "head-scripts" }}
   {{ $scripts := slice }}
   {{ $scripts = $scripts | append "vendor/base64js-v1.3.1.min.js" }}
   {{ $scripts = $scripts | append "vendor/lunr-v2.3.8.js" }}
-  {{ .Scratch.Set "scripts" $scripts }}
-  {{ .Scratch.Set "mode" "defer" }}
-  {{ partial "import-scripts.tmpl" . }}
-
-  {{ partial "site/scripts.tmpl" . }}
+  {{ .Scratch.Set "jsScripts" $scripts }}
+  {{ .Scratch.Set "jsMode" "" }}
+  {{ partial "import-js.tmpl" . }}
 {{ end }}
 
-{{ define "article-content-before" }}
+{{ define "article/content/before" }}
   <section class="search-form">
     <form id="search-box">
       <input type="search" name="q" placeholder="{{ .Title }}..." required=""/>
@@ -18,7 +16,7 @@
   </section>
 {{ end }}
 
-{{ define "article-content-after" }}
+{{ define "article/content/after" }}
   <section class="search-results">
     <ul id="search-results"></ul>
   </section>

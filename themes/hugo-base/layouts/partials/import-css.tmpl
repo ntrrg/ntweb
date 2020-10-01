@@ -1,0 +1,28 @@
+{{ $sheets := .Scratch.Get "cssSheets" }}
+{{ $bundle := .Scratch.Get "cssBundle" }}
+
+{{ if or (eq $bundle nil) (eq hugo.Environment "development") }}
+  {{ range $sheets }}
+    {{ if strings.HasPrefix . "http" }}
+      <link rel="stylesheet" type="text/css" href="{{ . }}"/>
+    {{ else }}
+      {{ $sheet := resources.Get . }}
+      <link rel="stylesheet" type="text/css" href="{{ $sheet.Permalink }}"/>
+    {{ end }}
+  {{ end }}
+{{ else }}
+  {{ if gt (len $sheets) 0 }}
+    {{ $res := slice }}
+
+    {{ range $sheets }}
+      {{ $res = $res | append (resources.Get .) }}
+    {{ end }}
+
+    {{ $sheet := resources.Concat $bundle $res | minify }}
+    <link rel="stylesheet" type="text/css" href="{{ $sheet.Permalink }}"/>
+  {{ end }}
+{{ end }}
+
+{{ .Scratch.Delete "cssSheets" }}
+{{ .Scratch.Delete "cssBundle" }}
+

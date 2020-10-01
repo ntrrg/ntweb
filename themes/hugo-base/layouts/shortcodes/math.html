@@ -1,0 +1,9 @@
+{{ $.Page.RenderString .Inner }}
+
+{{ if ne ($.Page.Scratch.Get "sc-math") true }}
+  {{ .Scratch.Set "jsScripts" (slice "vendor/mathjax-v3.0.0.min.js") }}
+  {{ .Scratch.Set "jsMode" "async" }}
+  {{ partial "import-js.tmpl" . }}
+  {{ $.Page.Scratch.Set "sc-math" true }}
+{{ end }}
+

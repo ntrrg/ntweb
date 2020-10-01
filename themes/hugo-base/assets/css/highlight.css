@@ -1,4 +1,9 @@
 /* Background */
+.markdown code,
+.markdown pre,
+.markdown pre > code,
+.markdown pre code,
+.markdown .chroma,
 .chroma {
   background-color: var(--code-background);
   color: var(--code-color);

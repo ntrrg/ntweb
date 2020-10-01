@@ -1,32 +1,15 @@
-{{ if ne .Site.Params.singleAuthor true }}
-  {{ .Scratch.Set "relsPrefix" ".authors." }}
-  {{ partial "get-rels.tmpl" . }}
-
-  {{ with .Scratch.Get "rels" }}
-    <div>
-      <strong>{{ ($.Site.GetPage "/authors").Title }}:</strong>
-
-      {{ range $i, $x := . -}}
-        {{- if gt $i 0 }}, {{ end -}}
-
-        <a href="{{ .Permalink | default .Params.metadata.website }}"
-           title="{{ .Params.metadata.name }}">
-          {{ .Title }}</a>
-      {{- end }}
-    </div>
-  {{ end }}
-{{ end }}
-
 {{ if isset .Params "date" }}
   <div>
     <strong>{{ i18n "METADATA_DATE_PUBLISHED" }}:</strong>
-    <span>{{ .PublishDate.Format "2006/01/02 15:04:05 -07:00" }}</span>
+    {{ $publishDate := .PublishDate.Format "2006/01/02 15:04:05 -07:00" }}
+    <time datetime="{{ $publishDate }}">{{ $publishDate }}</time>
   </div>
 
   {{ if ne .Params.date .Params.publishdate }}
     <div>
       <strong>{{ i18n "METADATA_DATE_MODIFIED" }}:</strong>
-      <span>{{ .Date.Format "2006/01/02 15:04:05 -07:00" }}</span>
+      {{ $date := .Date.Format "2006/01/02 15:04:05 -07:00" }}
+      <time datetime="{{ $date }}">{{ $date }}</time>
     </div>
   {{ end }}
 {{ end }}
@@ -35,7 +18,7 @@
   {{ range $key, $value := .Params.metadata }}
     <div>
       <strong>
-        {{ replace $key "-" "_" | printf "METADATA_%s" | upper | i18n }}:
+        {{ replace $key "-" "_" | upper | printf "METADATA_%s" | i18n }}:
       </strong>
 
       <span>{{ $.RenderString $value }}</span>
@@ -43,29 +26,22 @@
   {{ end }}
 {{ end }}
 
-{{ .Scratch.Set "relsPrefix" ".series." }}
-{{ partial "get-rels.tmpl" . }}
+{{ range $name, $_ := .Site.Taxonomies }}
+  {{ if isset $.Params $name }}
+    {{ $tax := $.Site.GetPage $name }}
 
-{{ with .Scratch.Get "rels" }}
-  <div>
-    <strong>{{ ($.Site.GetPage "/series").Title }}:</strong>
+    <div>
+      <strong>{{ $tax.Title | default $name }}:</strong>
 
-    {{ range $i, $x := . -}}
-      {{- if gt $i 0 }}, {{ end -}}
-      <a href="{{ .Permalink | default "#" }}" title="{{ .Description }}">
-        {{ .Title }}</a>
-    {{- end }}
-  </div>
-{{ end }}
-
-{{ if isset .Params "tags" }}
-  <div>
-    <strong>{{ i18n "METADATA_TAGS" }}:</strong>
-
-    {{ range $i, $x := .Params.tags -}}
-      {{- if gt $i 0 }} {{ end -}}
-      <a href="{{ absLangURL "tags" }}/{{ . | urlize }}">#{{ . }}</a>
-    {{- end }}
-  </div>
+      {{ range $i, $x := $.GetTerms $name -}}
+        {{- if gt $i 0 }}{{ $tax.Params.separator | default " " }}{{ end -}}
+        <a href="{{ .Permalink }}">
+          {{- $tax.Params.prefix -}}
+          {{- .Title -}}
+          {{- $tax.Params.suffix -}}
+        </a>
+      {{- end }}
+    </div>
+  {{ end }}
 {{ end }}
 
