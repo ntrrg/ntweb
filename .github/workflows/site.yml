@@ -28,13 +28,9 @@ jobs:
           tar -xf "/tmp/mage.tar.gz" -C "/tmp/"
           sudo cp "/tmp/mage" "/usr/bin/"
           #
-          wget -qO "/tmp/hugo.tar.gz" 'https://github.com/gohugoio/hugo/releases/download/v0.74.3/hugo_0.74.3_Linux-64bit.tar.gz'
+          wget -qO "/tmp/hugo.tar.gz" 'https://github.com/gohugoio/hugo/releases/download/v0.75.1/hugo_extended_0.75.1_Linux-64bit.tar.gz'
           tar -xf "/tmp/hugo.tar.gz" -C "/tmp/"
           sudo cp "/tmp/hugo" "/usr/bin/"
-          #
-          wget -qO "/tmp/minify.tar.gz" 'https://github.com/tdewolff/minify/releases/download/v2.7.4/minify_2.7.4_linux_amd64.tar.gz'
-          tar -xf "/tmp/minify.tar.gz" -C "/tmp/"
-          sudo cp "/tmp/minify" "/usr/bin/"
 
       - name: Get source code
         uses: actions/checkout@v2

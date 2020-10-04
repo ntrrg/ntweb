@@ -17,7 +17,7 @@ import (
 var (
 	Default = Build
 
-	hugoVersion = "0.74.3"
+	hugoVersion = "0.75.1"
 	hugoPort    = "1313"
 	hugoConfig  = "config.yaml"
 
@@ -33,11 +33,7 @@ func Build() error {
 func BuildAll() error {
 	mg.Deps(buildDeps...)
 
-	if err := Build(); err != nil {
-		return err
-	}
-
-	return Minify()
+	return Build()
 }
 
 type BumpVersion mg.Namespace
@@ -91,6 +87,7 @@ func (BumpVersion) Hugo() error {
 	fmt.Println("CONTRIBUTING.md")
 	fmt.Println("content/projects/ntweb/index.es.md")
 	fmt.Println("content/projects/ntweb/index.es.md")
+	fmt.Println("---")
 
 	return filepath.Walk(".", fn)
 }
@@ -121,13 +118,6 @@ func Lint() error {
 	args = append(args, files...)
 
 	return sh.RunV("gofmt", args...)
-}
-
-func Minify() error {
-	return sh.RunV("minify",
-		"--recursive", "--match", "index.(json|html)$",
-		"--output", "public", "public",
-	)
 }
 
 func Run() error {

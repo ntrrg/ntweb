@@ -120,6 +120,7 @@ outputs:
   page:
     - HTML
     - JSON
+minify: true
 server:
   headers:
     - for: /**
