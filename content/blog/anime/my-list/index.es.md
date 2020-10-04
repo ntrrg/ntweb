@@ -23,6 +23,8 @@ La lista tiene un montón de anime del que no tengo ni idea de que trata, así
 que hay que tener cuidado si se va a ver alguno con niños o personas sensibles
 😂.
 
+{{< task-list >}}
+
 * [x] **91 Days** - acción, drama, crimen, mafia, adultos.
 
 * [ ] Afro Samurai
@@ -233,4 +235,6 @@ que hay que tener cuidado si se va a ver alguno con niños o personas sensibles
 * [ ] Yu-Gi-Oh!
 * [ ] Yu Yu Hakusho
 * [ ] Zatch Bell
+
+{{< /task-list >}}
 

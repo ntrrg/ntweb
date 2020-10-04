@@ -1,3 +1,5 @@
+'use strict'
+
 function checkThemes() {
   const theme = localStorage.getItem('general-theme')
 

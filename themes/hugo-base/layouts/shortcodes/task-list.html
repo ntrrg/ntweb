@@ -7,7 +7,7 @@
       const inputs = document.querySelectorAll(selector)
 
       for (const input of inputs) {
-        const list = input.parentNode.parentNode
+        const list = input.closest('ul')
         list.style.listStyle = 'none'
         list.style.paddingLeft = '1em'
         list.style.marginLeft = '0em'

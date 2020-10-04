@@ -17,7 +17,7 @@
 
   "image": {{ jsonify $image }},
   "params": {{ block "params" . }}{{ jsonify .Params }}{{ end }},
-  "content": {{ base64Encode .RawContent | jsonify }},
+  "content": {{ base64Encode .Content | jsonify }},
   "data": {{ block "data" . }}{}{{ end }},
   "altLang": [
     {{ range $i, $val := .Translations }}

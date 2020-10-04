@@ -90,14 +90,14 @@
   {{ end }}
 
   {{ block "body" . }}
-    {{ block "header" . }}
-      <header role="banner">
+    <header role="banner">
+      {{ block "header" . }}
         {{ partial "page/header.tmpl" . }}
-      </header>
-    {{ end }}
+      {{ end }}
+    </header>
 
-    {{ block "main" . }}
-      <main role="main" id="main">
+    <main role="main" id="main">
+      {{ block "main" . }}
         {{ block "aside" . }}{{ end }}
 
         {{ $articleClass := "" }}
@@ -107,8 +107,8 @@
         {{ end }}
 
         <article class="article {{ $articleClass }}">
-          {{ block "article/header" . }}
-            <header>
+          <header class="article-header">
+            {{ block "article/header" . }}
               {{ if isset .Params "image" }}
                 <img class="article-image" alt="{{ .Title }}"
                      src="{{ .Params.image }}"/>
@@ -126,21 +126,25 @@
               <div class="article-metadata">
                 {{ partial "page/metadata.tmpl" . }}
               </div>
-            </header>
-          {{ end }}
+            {{ end }}
+          </header>
 
-          {{ block "article/content/before" . }}{{ end }}
+          <section class="article-before-content">
+            {{ block "article/content/before" . }}{{ end }}
+          </section>
 
-          {{ block "article/content" . }}
-            <section class="article-content markdown">
-              {{ .Content }}
-            </section>
-          {{ end }}
+          <section class="article-content">
+            {{ block "article/content" . }}
+              <div class="markdown">{{ .Content }}<div>
+            {{ end }}
+          </section>
 
-          {{ block "article/content/after" . }}{{ end }}
+          <section class="article-after-content">
+            {{ block "article/content/after" . }}{{ end }}
+          </section>
 
           {{ block "article/footer" . }}
-            <footer></footer>
+            <footer class="article-footer"></footer>
           {{ end }}
 
           {{ block "article/comments" . }}
@@ -151,14 +155,14 @@
             </section>
           {{ end }}
         </article>
-      </main>
-    {{ end }}
+      {{ end }}
+    </main>
 
-    {{ block "footer" . }}
-      <footer>
+    <footer>
+      {{ block "footer" . }}
         {{ partial "page/footer.tmpl" . }}
-      </footer>
-    {{ end }}
+      {{ end }}
+    </footer>
   {{ end }}
 
   {{ block "pop-up" . }}{{ partial "popup.tmpl" . }}{{ end }}

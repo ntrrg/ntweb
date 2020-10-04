@@ -13,10 +13,21 @@ const TTL = {
 }
 
 const PREFETCH = [
+  '/',
+  '/css/main.css',
+  '/en/',
+  '/en/offline/',
+  '/es/',
+  '/es/offline/',
+  '/favicon.ico',
+  '/js/main.js',
 ]
 
 const IGNORELIST = [
   (url) => !url.startsWith(`${BASEURL}/`),
+  (url) => url === `${BASEURL}/cache.json`,
+  (url) => url === `${BASEURL}/en/build-info/index.json`,
+  (url) => url === `${BASEURL}/es/build-info/index.json`,
 ]
 
 self.addEventListener('install', (event) => {

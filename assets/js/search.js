@@ -1,45 +1,52 @@
+'use strict'
+
+import lunr from 'lunr'
+
 import {base64Decode, base64Encode} from './base64'
+import {startLoader, stopLoader} from './loader'
 
-const input = document.querySelector('#search-box input')
-input.setAttribute('disabled', '')
-startLoader('#search-box .loader')
+const formEl = document.querySelector('#search-box')
+const inputEl = formEl.querySelector('input')
 
-window.addEventListener('load', () => {
-  const params = new URLSearchParams(window.location.search)
-  const q = params.get('q')
+var idx, idxData
 
-  if (q) {
-    document.querySelector('#search-box input').value = q
-    await search(q)
-    input.removeAttribute('disabled')
-    stopLoader('#search-box .loader')
-  }
+window.addEventListener('load', async () => {
+  formEl.addEventListener('submit', async (e) => {
+    const q = inputEl.value
 
-  document.querySelector('#search-box input').addEventListener('keyup', (e) => {
-    const q = e.target.value
-
-    if (q) {
-      search(q)
-    }
-  })
-
-  document.querySelector('#search-box').addEventListener('submit', (e) => {
-    const q = e.target.querySelector('input').value
-
-    if (q) {
-      search(q)
-    }
+    if (q !== '')
+      await doSearch(q)
 
     e.preventDefault()
   })
+
+  inputEl.addEventListener('keyup', async (e) => {
+    const q = inputEl.value
+
+    if (q !== '')
+      await doSearch(q)
+  })
+
+  // Search from URL query
+
+  const params = new URLSearchParams(window.location.search)
+  const q = params.get('q')
+
+  if (q !== '') {
+    inputEl.value = q
+    await doSearch(q)
+  }
 })
 
 async function buildSearchIndex() {
-  const res = await fetch('../search-index/index.json')
-  const data = (await res.json()).documents
-  window.idxData = new Map()
+  if (idx !== undefined)
+    return
 
-  window.idx = lunr(function () {
+  const res = await fetch('../search-index/index.json')
+  const data = await res.json()
+  idxData = new Map()
+
+  idx = lunr(function () {
     this.ref('url')
     this.field('type')
     this.field('title')
@@ -47,35 +54,39 @@ async function buildSearchIndex() {
     this.field('date')
     this.field('description')
     this.field('content')
-    this.field('authos')
+    this.field('authors')
     this.field('series')
     this.field('tags')
 
-    data.forEach(function (doc) {
+    for (const doc of data.documents) {
       doc.content = base64Decode(doc.content)
       doc.authors = doc.taxonomies.authors
       doc.tags = doc.taxonomies.tags
       doc.series = doc.taxonomies.series
       this.add(doc)
-      window.idxData.set(doc.url, doc)
-    }, this)
+      idxData.set(doc.url, doc)
+    }
   })
 }
 
-async function search(q) {
-  if (window.idx === undefined) {
-    await buildSearchIndex()
-  }
+async function doSearch(q) {
+  startLoader('#search-box .loader')
+  await search(q)
+  stopLoader('#search-box .loader')
+}
 
-  const resultsEl = document.querySelector('#search-results')
+async function search(q) {
+  await buildSearchIndex()
+
+  const el = document.querySelector('#search-results')
   const results = idx.search(q)
 
-  resultsEl.innerHTML = ''
+  el.innerHTML = ''
 
   for (const result of results) {
-    const page = window.idxData.get(result.ref)
+    const page = idxData.get(result.ref)
 
-    resultsEl.innerHTML += `
+    el.innerHTML += `
       <li>
         <a href="${page.url}"><strong>${page.title}</strong></a>
         <p>${page.description}</p>
@@ -83,9 +94,5 @@ async function search(q) {
       </li>
     `
   }
-}
-
-export {
-  search,
 }
 

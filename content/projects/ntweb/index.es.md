@@ -1,7 +1,7 @@
 ---
 metadata:
   source-code: https://github.com/ntrrg/ntweb
-  license: CC BY 4.0
+  license: CC-BY-4.0
 title: ntWeb
 description: Un pequeño sitio web con grandes intenciones.
 tags:
@@ -96,8 +96,9 @@ contenido.
 {{% /param %}}
 
 {{% param name="content" type="Cadena" %}}
-Contenido Markdown sin procesar del recurso. Se debe tener en cuenta que esta
-propiedad contiene una cadena UTF-8 y las cadenas de JavaScript son UTF-16.
+Contenido Markdown procesado del recurso (HTML). Se debe tener en cuenta que
+esta propiedad contiene una cadena UTF-8 y las cadenas de JavaScript son
+UTF-16.
 {{% /param %}}
 
 {{% param name="data" type="Objeto" %}}

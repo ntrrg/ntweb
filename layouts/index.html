@@ -1,55 +1,53 @@
 {{ define "main" }}
-  <main role="main" id="main">
-    {{ with .Site.GetPage "/home/intro" }}
-      <section class="site-intro">
-        <div class="site-image">
-          {{ readFile .Params.image | safeHTML }}
+  {{ with .Site.GetPage "/home/intro" }}
+    <section class="site-intro">
+      <div class="site-image">
+        {{ readFile .Params.image | safeHTML }}
 
-          <pre class="site-tui-image"><code>
-    ▗██▖  ▗██▖
-    █▐▌█  █▐▌█         ▐▌
-    ▝██▘▙ ▝██▘   ▐▙██▖▐███ ▐▙██▖▐▙██▖▗██▟▌
-     ▐▌▝█▙ ▐▌    ▐▛ ▐▌ ▐▌  ▐▛   ▐▛   ▐▛ ▐▌
-    ▗██▖▝█▗██▖   ▐▌ ▐▌ ▐▌  ▐▌   ▐▌   ▐▌ ▐▌
-    █▐▌█  █▐▌█   ▐▌ ▐▌ ▐▙▄ ▐▌   ▐▌   ▐▙▄▟▌ █  █
-    ▝██▘  ▝██▘   ▝▘ ▝▘  ▀▀ ▝▘   ▝▘    ▀▀▐▌ ▀  ▀
-                                     ▐▄▄▟▌
-                                      ▀▀▀ </code></pre>
-        </div>
+        <pre class="site-tui-image"><code>
+  ▗██▖  ▗██▖
+  █▐▌█  █▐▌█         ▐▌
+  ▝██▘▙ ▝██▘   ▐▙██▖▐███ ▐▙██▖▐▙██▖▗██▟▌
+   ▐▌▝█▙ ▐▌    ▐▛ ▐▌ ▐▌  ▐▛   ▐▛   ▐▛ ▐▌
+  ▗██▖▝█▗██▖   ▐▌ ▐▌ ▐▌  ▐▌   ▐▌   ▐▌ ▐▌
+  █▐▌█  █▐▌█   ▐▌ ▐▌ ▐▙▄ ▐▌   ▐▌   ▐▙▄▟▌ █  █
+  ▝██▘  ▝██▘   ▝▘ ▝▘  ▀▀ ▝▘   ▝▘    ▀▀▐▌ ▀  ▀
+                                   ▐▄▄▟▌
+                                    ▀▀▀ </code></pre>
+      </div>
 
-        <div class="section-content markdown">{{ .Content }}</div>
-      </section>
-    {{ end }}
+      <div class="section-content markdown">{{ .Content }}</div>
+    </section>
+  {{ end }}
 
-    {{ with .Site.GetPage "/home/skills" }}
-      <section class="site-skills markdown">
-        <h1 class="section-title">{{ .Title }}</h1>
-        <div class="section-content markdown">{{ .Content }}</div>
-      </section>
-    {{ end }}
+  {{ with .Site.GetPage "/home/skills" }}
+    <section class="site-skills markdown">
+      <h1 class="section-title">{{ .Title }}</h1>
+      <div class="section-content markdown">{{ .Content }}</div>
+    </section>
+  {{ end }}
 
-    {{ with .Site.GetPage "/home/social" }}
-      <section class="site-social markdown">
-        <h1 class="section-title">{{ .Title }}</h1>
+  {{ with .Site.GetPage "/home/social" }}
+    <section class="site-social markdown">
+      <h1 class="section-title">{{ .Title }}</h1>
 
-        <div class="section-content">
-          <ul class="contact-list">
-            {{ range sort .Params.social "weight" }}
-              {{ if gt .weight 0 }}
-                <li class="contact-item" title="{{ .label }}">
-                  <span class="contact-item-icon icon">
-                    {{ readFile .icon | safeHTML }}
-                  </span>
+      <div class="section-content">
+        <ul class="contact-list">
+          {{ range sort .Params.social "weight" }}
+            {{ if gt .weight 0 }}
+              <li class="contact-item" title="{{ .label }}">
+                <span class="contact-item-icon icon">
+                  {{ readFile .icon | safeHTML }}
+                </span>
 
-                  <a href="{{ .url | safeURL }}"
-                     target="_blank" rel="noopener noreferrer">{{ .text }}</a>
-                </li>
-              {{ end }}
+                <a href="{{ .url | safeURL }}"
+                   target="_blank" rel="noopener noreferrer">{{ .text }}</a>
+              </li>
             {{ end }}
-          </ul>
-        </div>
-      </section>
-    {{ end }}
-  </main>
+          {{ end }}
+        </ul>
+      </div>
+    </section>
+  {{ end }}
 {{ end }}
 

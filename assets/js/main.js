@@ -1,6 +1,7 @@
-import {startLoader, stopLoader} from './loader'
-import {checkThemes, setTheme, setCodeTheme} from './theme'
-import {setCache} from './sw'
+'use strict'
+
+import {checkThemes} from './theme'
+import {postMessage as postMessageSW, register as registerSW} from './sw'
 
 // Privacy Alert
 
@@ -26,53 +27,10 @@ window.addEventListener('DOMContentLoaded', () => {
 // Service Worker
 
 window.addEventListener('DOMContentLoaded', () => {
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/sw.js', {scope: '/'}).then((reg) => {
-      console.log(`Registration succeeded. Scope is ${reg.scope}`)
-    }).catch((error) => {
-      console.log(`Registration failed with: ${error}`)
-    })
-  }
+  registerSW()
 })
 
-// Settings
+// Themes
 
 window.addEventListener('DOMContentLoaded', checkThemes)
-
-if (document.body.classList.contains('custom-settings')) {
-  // Theme
-
-  window.addEventListener('DOMContentLoaded', () => {
-    const el = document.querySelector('#theme-selector')
-
-    el.addEventListener('change', () => {
-      if (el.value)
-        setTheme(el.value)
-    })
-  })
-
-  window.addEventListener('DOMContentLoaded', () => {
-    const el = document.querySelector('#code-theme-selector')
-
-    el.addEventListener('change', () => {
-      if (el.value)
-        setCodeTheme(el.value)
-    })
-  })
-
-  // Cache
-
-  window.addEventListener('DOMContentLoaded', () => {
-    const el = document.querySelector('#cache-mode')
-
-    el.addEventListener('change', async () => {
-      startLoader('#cache-mode ~ .loader')
-
-      if (el.value)
-        await setCache(el.value)
-
-      stopLoader('#cache-mode ~ .loader')
-    })
-  })
-}
 

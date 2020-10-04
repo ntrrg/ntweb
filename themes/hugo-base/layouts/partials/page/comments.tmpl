@@ -7,24 +7,22 @@
     </div>
 
     <script>
-      function showComments() {
-        var disqus_config = function () {
-          this.page.url = '{{ absURL .Permalink }}';
-          this.page.identifier = '{{ .Permalink }}';
-        };
+      var disqus_config = function () {
+        const url = new URL(new Request('.').url)
 
-        (function() {
-          var d = document, s = d.createElement('script');
-          s.src = 'https://{{ .Site.Params.disqus }}.disqus.com/embed.js';
-          s.setAttribute('data-timestamp', +new Date());
-          (d.head || d.body).appendChild(s);
-        })();
+        this.page.url = url.href
+        this.page.identifier = url.pathname
       }
 
       const commentsToggler = document.querySelector('#comments-toggler')
 
       commentsToggler.addEventListener('click', (e) => {
-        showComments()
+        const s = document.createElement('script')
+
+        s.src = 'https://{{ .Site.Params.disqus }}.disqus.com/embed.js'
+        s.setAttribute('data-timestamp', new Date().getTime())
+        (document.head || document.body).appendChild(s)
+
         e.preventDefault()
       })
     </script>

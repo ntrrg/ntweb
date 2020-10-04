@@ -1,7 +1,7 @@
 ---
 metadata:
   source-code: https://github.com/ntrrg/ntweb
-  license: CC BY 4.0 
+  license: CC-BY-4.0
 title: ntWeb
 description: A small site with great intentions.
 tags:
@@ -96,8 +96,8 @@ Resource frontmatter parameters. This may be different from page types.
 {{% /param %}}
 
 {{% param name="content" %}}
-Resource raw Markdown content. Notice that this contains a Base64 encoded UTF-8
-string and JavaScript strings are UTF-16.
+Resource rendered Markdown content (HTML). Notice that this contains a Base64
+encoded UTF-8 string and JavaScript strings are UTF-16.
 {{% /param %}}
 
 {{% param name="data" type="Object" %}}

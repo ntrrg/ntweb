@@ -1,3 +1,5 @@
+'use strict'
+
 function startLoader(selector, interval = 100) {
   const el = document.querySelector(selector)
 

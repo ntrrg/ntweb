@@ -55,6 +55,11 @@ select {
   cursor: not-allowed;
 }
 
+li ul,
+li ol {
+  padding-left: 1em;
+}
+
 table {
   border-collapse: separate;
   border-spacing: 0.15em;

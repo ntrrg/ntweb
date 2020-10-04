@@ -1,7 +1,19 @@
+'use strict'
+
 function postMessage(msg) {
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.ready.then(() => {
       navigator.serviceWorker.controller.postMessage(msg)
+    })
+  }
+}
+
+function register(path = '/sw.js', opts = {scope: '/'}) {
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register(path, opts).then((reg) => {
+      console.log(`Registration succeeded. Scope is ${reg.scope}`)
+    }).catch((error) => {
+      console.log(`Registration failed with: ${error}`)
     })
   }
 }
@@ -38,6 +50,7 @@ async function setCache(mode) {
 
 export {
   postMessage,
+  register,
   setCache,
 }
 

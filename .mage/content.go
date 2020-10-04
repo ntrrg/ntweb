@@ -67,12 +67,6 @@ func (Gen) Cache() error {
 		path = strings.TrimPrefix(path, cacheDir)
 		files = append(files, path)
 
-		if filepath.Base(path) == "index.html" {
-			path = filepath.Dir(path)
-			files = append(files, path)
-			files = append(files, path+"/")
-		}
-
 		return nil
 	}
 

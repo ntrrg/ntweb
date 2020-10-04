@@ -8,6 +8,7 @@ aliases:
   - /es/donar
   - /es/donations
   - /es/donaciones
+aside: true
 toc: true
 ---
 
@@ -117,4 +118,8 @@ ntrrgx@gmail.com
 ## Google Cloud Platform
 
 <https://gcpsignup.page.link/dMVD>
+
+## MEGA
+
+<https://mega.nz/aff=IkiSGALw5Tw>
 

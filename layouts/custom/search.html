@@ -1,10 +1,7 @@
 {{ define "head-scripts" }}
-  {{ $scripts := slice }}
-  {{ $scripts = $scripts | append "vendor/base64js-v1.3.1.min.js" }}
-  {{ $scripts = $scripts | append "vendor/lunr-v2.3.8.js" }}
-  {{ .Scratch.Set "jsScripts" $scripts }}
-  {{ .Scratch.Set "jsMode" "" }}
-  {{ partial "import-js.tmpl" . }}
+  {{ .Scratch.Set "jsSrc" "js/search.js" }}
+  {{ $script := partial "build-js.tmpl" . }}
+  <script defer src="{{ $script.Permalink }}"></script>
 {{ end }}
 
 {{ define "article/content/before" }}
