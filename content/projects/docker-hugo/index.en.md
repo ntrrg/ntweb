@@ -1,6 +1,6 @@
 ---
 publishdate: 2018-05-06T22:07:39-04:00
-date: 2020-09-28T10:14:56-04:00
+date: 2020-10-04T17:27:06-04:00
 metadata:
   source-code: https://github.com/ntrrg/docker-hugo
   license: MIT
@@ -12,8 +12,6 @@ tags:
   - cli
   - docker
   - hugo
-toc: true
-comments: true
 ---
 
 [![Docker Build Status](https://img.shields.io/docker/build/ntrrg/hugo.svg)](https://hub.docker.com/r/ntrrg/hugo)
