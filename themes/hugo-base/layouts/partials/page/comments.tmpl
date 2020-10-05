@@ -1,4 +1,4 @@
-{{ if ne hugo.Environment "development" }}
+{{ if and (eq .Params.comments true) (ne hugo.Environment "development") }}
   {{ if isset .Site.Params "disqus" }}
     <!-- <link rel="preconnect" href="https://disqus.com"> -->
 
@@ -7,22 +7,25 @@
     </div>
 
     <script>
-      var disqus_config = function () {
-        const url = new URL(new Request('.').url)
+      function showComments() {
+        var disqus_config = function () {
+          const url = new Request('.').url
+          this.page.url = url.href;
+          this.page.identifier = url.pathname;
+        };
 
-        this.page.url = url.href
-        this.page.identifier = url.pathname
+        (function() {
+          var d = document, s = d.createElement('script');
+          s.src = 'https://{{ .Site.Params.disqus }}.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
       }
 
       const commentsToggler = document.querySelector('#comments-toggler')
 
       commentsToggler.addEventListener('click', (e) => {
-        const s = document.createElement('script')
-
-        s.src = 'https://{{ .Site.Params.disqus }}.disqus.com/embed.js'
-        s.setAttribute('data-timestamp', new Date().getTime())
-        (document.head || document.body).appendChild(s)
-
+        showComments()
         e.preventDefault()
       })
     </script>
