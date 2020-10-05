@@ -1,52 +1,45 @@
 {{ define "data" }}
   {
     "pages": [
-      {{ $pages := slice }}
-
-      {{ if in (slice "taxonomy" "term") .Kind }}
-        {{ $pages = sort .Pages (.Params.sortBy | default "Title") }}
-      {{ else if eq .Params.paginate true }}
-        {{ $pages = .Paginator.Pages }}
-      {{ else }}
-        {{ $pages = .Pages }}
-      {{ end }}
+      {{ $pages := partial "get-pages.tmpl" . }}
 
       {{ range $i, $page := $pages }}
+        {{ $desc := "" }}
+        {{ $sectDesc := $.Description }}
+
+        {{ if ne .Description $sectDesc }}
+          {{ $desc = .Description }}
+        {{ end }}
+
+        {{ $image := .Params.image | default "" }}
+
+        {{ if ne $image "" }}
+          {{ if hasPrefix $image "/" }}
+            {{ $image = absURL $image }}
+          {{ else if not (strings.HasPrefix .Params.image "http") }}
+            {{ $image = path.Join .RelPermalink $image | absURL }}
+          {{ end }}
+        {{ end }}
+
         {{ if ne $i 0 }},{{ end }}
-        {{ if gt (len .Pages) 0 }}
+        {{ if ne .Pages nil }}
           {
             "url": {{ jsonify .Permalink }},
             "title": {{ jsonify .Title }},
+            "description": {{ jsonify $desc }},
+            "image": {{ jsonify $image }},
             "pages": {{ len .Pages }}
           }
         {{ else }}
           {
             "url": {{ jsonify .Permalink }},
             "title": {{ jsonify .Title }},
-
-            {{ $image := .Params.image | default "" }}
-
-            {{ if ne $image "" }}
-              {{ if hasPrefix $image "/" }}
-                {{ $image = absURL $image }}
-              {{ else if not (strings.HasPrefix .Params.image "http") }}
-                {{ $image = path.Join .RelPermalink $image | absURL }}
-              {{ end }}
-            {{ end }}
-
+            "description": {{ jsonify $desc }},
             "image": {{ jsonify $image }},
 
             {{ if isset .Params "date" }}
               "publishdate": {{ jsonify .PublishDate }},
               "date": {{ jsonify .Date }},
-            {{ end }}
-
-            {{ $sectDesc := $.Description }}
-
-            {{ if ne .Description $sectDesc }}
-              "description": {{ jsonify .Description }},
-            {{ else }}
-              "description": "",
             {{ end }}
 
             "taxonomies": {

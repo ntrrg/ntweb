@@ -1,0 +1,26 @@
+{{ $pages := slice }}
+
+{{ $sortBy := "" }}
+{{ $sortMode := "asc" }}
+
+{{ if isset .Params "sortby" }}
+  {{ if hasPrefix .Params.sortBy "-" }}
+    {{ $sortBy = slicestr .Params.sortBy 1 }}
+    {{ $sortMode = "desc" }}
+  {{ else }}
+    {{ $sortBy = .Params.sortBy }}
+  {{ end }}
+{{ end }}
+
+{{ if eq .Params.paginate true }}
+  {{ $pages = .Paginator.Pages }}
+{{ else if eq .Kind "term" }}
+  {{ $pages = sort .Pages ($sortBy | default "PublishDate") $sortMode }}
+{{ else if eq .Kind "taxonomy" }}
+  {{ $pages = sort .Pages ($sortBy | default "Title") $sortMode }}
+{{ else }}
+  {{ $pages = .Pages }}
+{{ end }}
+
+{{ return $pages }}
+

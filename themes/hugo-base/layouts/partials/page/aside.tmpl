@@ -20,7 +20,9 @@
     </thead>
 
     <tbody>
-      {{ range $i, $_ := .Pages }}
+      {{ $pages := partial "get-pages.tmpl" . }}
+
+      {{ range $i, $_ := $pages }}
         {{ $active := "" }}
 
         {{ if eq $.Permalink .Permalink }}

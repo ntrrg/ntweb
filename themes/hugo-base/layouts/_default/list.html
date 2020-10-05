@@ -1,14 +1,6 @@
 {{ define "article/content/after" }}
   <section class="page-list">
-    {{ $pages := slice }}
-
-    {{ if in (slice "taxonomy" "term") .Kind }}
-      {{ $pages = sort .Pages (.Params.sortBy | default "Title") }}
-    {{ else if eq .Params.paginate true }}
-      {{ $pages = .Paginator.Pages }}
-    {{ else }}
-      {{ $pages = .Pages }}
-    {{ end }}
+    {{ $pages := partial "get-pages.tmpl" . }}
 
     {{ if gt (len $pages) 0 }}
       {{ if eq .Params.paginate true }}

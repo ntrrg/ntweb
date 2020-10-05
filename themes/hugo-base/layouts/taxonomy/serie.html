@@ -8,7 +8,7 @@
 
 {{ define "article/content/after" }}
   <section class="page-list">
-    {{ $pages := sort .Pages (.Params.sortBy | default "Title") }}
+    {{ $pages := partial "get-pages.tmpl" . }}
 
     <ul>
       {{ range $pages }}
