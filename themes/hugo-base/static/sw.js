@@ -107,17 +107,21 @@ async function getResponse(req) {
   const offlineURL = `/${lang}/offline/`
   const notFoundURL = `/${lang}/404/`
 
+  let offline = false
+
   res = await fetch(req).catch(() => {
-    if (!req.url.endsWith(offlineURL))
+    offline = true
+
+    if (getFileExt(req.url) === 'html' && !req.url.endsWith(offlineURL))
       return getResponse(new Request(offlineURL))
 
     return null
   })
 
-  if (!res)
+  if (!res || offline)
     return res
 
-  if (res.status === 404)
+  if (getFileExt(req.url) === 'html' && res.status === 404)
     if (!req.url.endsWith(notFoundURL))
       return await getResponse(new Request(notFoundURL))
 
