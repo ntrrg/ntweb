@@ -90,7 +90,7 @@ function getFileExt(url) {
  * @returns {Response}
  */
 async function getResponse(req) {
-  if (isIgnored(req.url))
+  if (!ENABLED || isIgnored(req.url))
     return await fetch(req).catch(() => {})
 
   const cache = await caches.open(BUCKET)
@@ -182,9 +182,6 @@ function getTTL(url) {
  * @returns {Boolean}
  */
 function isIgnored(url) {
-  if (!ENABLED)
-    return true
-
   for (const fn of IGNORELIST)
     if (fn(url))
       return true

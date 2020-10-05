@@ -26,7 +26,7 @@ actions:
       - text: Activar
         value: enable
       - text: Desactivar
-        value: enable
+        value: disable
       - text: Cargar
         value: populate
       - text: Limpiar
