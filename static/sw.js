@@ -25,9 +25,9 @@ const PREFETCH = [
 
 const IGNORELIST = [
   (url) => !url.startsWith(`${BASEURL}/`),
-  (url) => url === `${BASEURL}/cache.json`,
   (url) => url === `${BASEURL}/en/build-info/index.json`,
   (url) => url === `${BASEURL}/es/build-info/index.json`,
+  (url) => url === `${BASEURL}/cache.json`,
 ]
 
 self.addEventListener('install', (event) => {
@@ -116,25 +116,32 @@ async function getResponse(req) {
 
   const lang = req.url.split('/')[3] || 'en'
   const offlineURL = `/${lang}/offline/`
-  const notFoundURL = `/${lang}/404/`
 
   let offline = false
 
   res = await fetch(req).catch(() => {
     offline = true
 
-    if (getFileExt(req.url) === 'html' && !req.url.endsWith(offlineURL))
-      return getResponse(new Request(offlineURL))
+    // Reuse old response (if exists), even if it is outdated.
+    if (res)
+      return res.clone()
+
+    if (getFileExt(req.url) === 'html')
+      if (!req.url.endsWith(offlineURL))
+        return getResponse(new Request(offlineURL))
 
     return null
   })
 
-  if (!res || offline)
+  if (offline || !res)
     return res
 
-  if (getFileExt(req.url) === 'html' && res.status === 404)
-    if (!req.url.endsWith(notFoundURL))
-      return await getResponse(new Request(notFoundURL))
+  const notFoundURL = `/${lang}/404/`
+
+  if (res.status === 404)
+    if (getFileExt(req.url) === 'html')
+      if (!req.url.endsWith(notFoundURL))
+        return await getResponse(new Request(notFoundURL))
 
   if (res.status === 200 || res.status === 304) {
     cache.put(req, res.clone())
