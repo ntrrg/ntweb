@@ -269,7 +269,7 @@ en común.
 
 Obtiene todos los elementos que pueden ser procesados por motores de búsqueda.
 Este recurso no tiene las propiedades comunes. Para invalidación de índices de
-búsqueda ver [Información de construcción](#información-de-construcción)
+búsqueda ver [Información de compilación](#información-de-compilación)
 
 **Propiedades:**
 
@@ -292,30 +292,30 @@ cadena UTF-8 y las cadenas de JavaScript son UTF-16.
 Obtiene los URLs de cada objeto generado, útil para descargar previamente
 contenido, por ejemplo con Service Workers.
 
-### Información de construcción
+### Información de compilación
 
 <https://ntrrg.dev/es/build-info/index.json>
 
-Obtiene información acerca de la construcción del proyecto.
+Obtiene información acerca de la compilación del proyecto.
 
 **Propiedades:**
 
 {{< params >}}
 
 {{% param name="environment" type="Cadena" %}}
-Entorno de construcción.
+Entorno de compilación.
 {{% /param %}}
 
 {{% param name="hash" type="Cadena" %}}
-Hash de la última confimación de Git usada para construir el sitio.
+Hash de la última confimación de Git usada para compilar el sitio.
 {{% /param %}}
 
 {{% param name="date" type="Cadena" %}}
-Fecha de construcción.
+Fecha de compilación.
 {{% /param %}}
 
 {{% param name="hugoVersion" type="Cadena" %}}
-Versión de Hugo usada para construir el sitio.
+Versión de Hugo usada para compilar el sitio.
 {{% /param %}}
 
 {{< /params >}}

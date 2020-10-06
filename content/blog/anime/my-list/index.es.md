@@ -20,8 +20,8 @@ probablemente algunos de la lista que ya están marcados no se puedan ver en
 esas plataformas).
 
 La lista tiene un montón de anime del que no tengo ni idea de que trata, así
-que hay que tener cuidado si se va a ver alguno con niños o personas sensibles
-😂.
+que hay que tener cuidado si se va a ver alguno con niños o alguna persona
+sensible 😂.
 
 {{< task-list >}}
 
@@ -32,7 +32,8 @@ que hay que tener cuidado si se va a ver alguno con niños o personas sensibles
 * [x] **Akame ga Kill!** - acción, aventura, fantasía, comedia, ecchi,
   sangriento, adultos.
 
-* [ ] Akatsuki no Yona
+* [x] **Akatsuki no Yona** - acción, aventura, fantasía, comedia, adolecentes.
+
 * [ ] Aldnoah Zero
 * [ ] Angel Beats!
 * [ ] AnoHana
@@ -64,6 +65,7 @@ que hay que tener cuidado si se va a ver alguno con niños o personas sensibles
 * [ ] Bokusatsu Tenshi Dokuro-chan
 * [ ] Brave 10
 * [ ] Bungo Strike Dogs
+* [ ] Burn the Witch
 * [ ] Busō Renkin
 * [ ] Cell at Work
 * [ ] CLANNAD
