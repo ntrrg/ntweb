@@ -18,8 +18,8 @@
 /* Elements */
 
 body {
-  background: #000;
-  color: #ccc;
+  background: #fff;
+  color: #24292e;
 
   background: var(--background);
   color: var(--font-color);
@@ -90,8 +90,8 @@ code,
 pre,
 pre > code,
 pre code {
-  background: #272822;
-  color: #ccc;
+  background: #eee;
+  color: #24292e;
 
   background: var(--code-background);
   color: var(--code-color);
