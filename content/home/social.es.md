@@ -50,6 +50,7 @@ social:
     icon: /static/images/fa/phone-square.svg
     weight: 7
 _build:
+  render: false
   list: false
 ---
 

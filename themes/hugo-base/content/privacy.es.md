@@ -2,6 +2,7 @@
 title: Políticas de privacidad
 aside: false
 _build:
+  render: false
   list: false
 ---
 

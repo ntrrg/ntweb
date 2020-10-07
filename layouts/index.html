@@ -22,14 +22,14 @@
 
   {{ with .Site.GetPage "/home/skills" }}
     <section class="site-skills markdown">
-      <h1 class="section-title">{{ .Title }}</h1>
+      <div class="section-title">{{ .Title }}</div>
       <div class="section-content markdown">{{ .Content }}</div>
     </section>
   {{ end }}
 
   {{ with .Site.GetPage "/home/social" }}
     <section class="site-social markdown">
-      <h1 class="section-title">{{ .Title }}</h1>
+      <div class="section-title">{{ .Title }}</div>
 
       <div class="section-content">
         <ul class="contact-list">
