@@ -8,7 +8,7 @@ Any contribution to this project means implicitly that you accept the
 [Hugo]: https://gohugo.io/
 [Git]: https://git-scm.com/
 
-* [Hugo][] >= 0.75
+* [Hugo][] >= 0.76
 
 * [Git][] (or use the GitHub web interface)
 
