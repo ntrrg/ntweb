@@ -1,3 +1,4 @@
 .mage/go.sum binary
 .mage/vendor/**/* binary
 assets/vendor/**/* binary
+resources/**/* binary

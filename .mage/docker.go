@@ -41,7 +41,13 @@ func (Docker) Shell() error {
 }
 
 func runHugoDocker(args ...string) error {
-	opts := append(dockerOpts, "ntrrg/hugo:"+hugoVersion)
+	image := "ntrrg/hugo:"+hugoVersion
+
+	if hugoExtended {
+		image += "-extended"
+	}
+
+	opts := append(dockerOpts, image)
 
 	return sh.RunV("docker", append(opts, args...)...)
 }

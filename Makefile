@@ -1,4 +1,4 @@
-hugo_version := 0.76.2
+hugo_version := 0.76.2-extended
 hugo_port := 1313
 
 .PHONY: all
@@ -10,7 +10,7 @@ build:
 
 .PHONY: clean
 clean:
-	rm -rf public resources
+	rm -rf public
 
 .PHONY: run
 run:

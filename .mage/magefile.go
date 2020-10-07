@@ -17,9 +17,10 @@ import (
 var (
 	Default = Build
 
-	hugoVersion = "0.76.2"
-	hugoPort    = "1313"
-	hugoConfig  = "config.yaml"
+	hugoVersion  = "0.76.2"
+	hugoExtended = true
+	hugoPort     = "1313"
+	hugoConfig   = "config.yaml"
 
 	buildDeps []interface{}
 	cleanDeps []interface{}
@@ -95,7 +96,7 @@ func (BumpVersion) Hugo() error {
 func Clean() error {
 	mg.Deps(cleanDeps...)
 
-	targets := []string{".mage/output", "public", "resources"}
+	targets := []string{".mage/output", "public"}
 
 	for _, target := range targets {
 		if err := sh.Rm(filepath.Clean(target)); err != nil {
