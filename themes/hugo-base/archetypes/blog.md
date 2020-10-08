@@ -17,9 +17,9 @@ tags:
   - tag1
   - tag2
   - tag3
-toc: true
-aside: true
-comments: true
+toc: false
+aside: false
+comments: false
 draft: true
 ---
 

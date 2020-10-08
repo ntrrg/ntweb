@@ -14,9 +14,9 @@ tags:
   - tag1
   - tag2
   - tag3
-toc: true
-math: false
-comments: true
+toc: false
+aside: false
+comments: false
 draft: true
 ---
 

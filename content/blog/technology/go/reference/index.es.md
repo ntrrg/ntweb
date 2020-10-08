@@ -1,6 +1,6 @@
 ---
 title: Go (Golang)
-date: 2020-08-20T15:40:00-04:00
+date: 2020-10-08T17:40:00-04:00
 image: images/go.png
 description: Es un lenguaje de código abierto, minimalista y de alto rendimiento. Más que un artículo, esta es una referencia del lenguaje y sus herramientas.
 tags:
@@ -9,8 +9,6 @@ tags:
   - programación
   - lenguajes-de-programación
   - go
-toc: true
-comments: true
 ---
 
 [Go license]: https://golang.org/LICENSE

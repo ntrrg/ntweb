@@ -15,8 +15,6 @@ tags:
   - mage
   - docker
   - netlify
-toc: true
-comments: true
 ---
 
 [![GitHub Actions](https://github.com/ntrrg/ntweb/workflows/Site/badge.svg)](https://github.com/ntrrg/ntweb/actions?query=workflow:Site)

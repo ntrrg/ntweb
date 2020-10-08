@@ -12,8 +12,6 @@ tags:
   - python
   - docutils
   - pygments
-toc: true
-comments: true
 ---
 
 [![pypi](https://img.shields.io/pypi/v/NtDocutils.svg)](https://pypi.python.org/pypi/NtDocutils)
