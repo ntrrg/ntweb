@@ -54,13 +54,11 @@ async function buildSearchIndex() {
     this.field('date')
     this.field('description')
     this.field('content')
-    this.field('authors')
     this.field('series')
     this.field('tags')
 
     for (const doc of data.documents) {
       doc.content = base64Decode(doc.content)
-      doc.authors = doc.taxonomies.authors
       doc.tags = doc.taxonomies.tags
       doc.series = doc.taxonomies.series
       this.add(doc)

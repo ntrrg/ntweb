@@ -74,7 +74,6 @@ languages:
         beforeEach: "["
         afterEach: "] "
 taxonomies:
-  author: authors
   serie: series
   tag: tags
 permalinks:
