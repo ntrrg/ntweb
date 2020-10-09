@@ -3,7 +3,7 @@
   publish = "public"
 
 [build.environment]
-  HUGO_VERSION = "0.76.2"
+  HUGO_VERSION = "0.76.3"
 
 [context.deploy-preview]
   command = "hugo -DEF --baseURL=/"
