@@ -1,0 +1,53 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>
+      {{ if not .IsHome }}
+        {{ .Title }} {{ .Site.Params.titleSeparator }}
+      {{ end }}
+
+      {{ .Site.Params.name }}
+    </title>
+
+    <link>{{ .Permalink }}</link>
+    <description>Recent content from {{ .Title }}</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>{{ .Language.Lang }}</language>
+
+    {{ with .Site.Params.author }}
+      <managingEditor>{{ .email }} ({{ .name }})</managingEditor>
+      <webMaster>{{ .email }} ({{ .name }})</webMaster>
+    {{ end }}
+
+    {{ with .Site.Params.copyright }}
+      <copyright>{{ . }}</copyright>
+    {{ end }}
+
+    {{ if not .Date.IsZero }}
+      <lastBuildDate>
+        {{- .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML -}}
+      </lastBuildDate>
+    {{ end }}
+
+    {{ $image := $.Param "image" }}
+
+    {{ if hasPrefix $image "/" }}
+      {{ $image = absURL $image }}
+    {{ else if not (strings.HasPrefix .Params.image "http") }}
+      {{ $image = path.Join .RelPermalink $image | absURL }}
+    {{ end }}
+
+    <image>
+      <url>{{ $image }}</url>
+      <title>{{ .Site.Params.name }}</title>
+      <link>{{ .Permalink }}</link>
+    </image>
+
+    {{ with .OutputFormats.Get "RSS" }}
+      <atom:link href="{{ .Permalink | safeURL }}" rel="self"
+                 type="{{ .MediaType | safeHTML }}"/>
+    {{ end }}
+
+    {{ block "pages" . }}{{ end }}
+  </channel>
+</rss>
+

@@ -1,0 +1,33 @@
+{{ define "pages" }}
+  {{ range $page := first 50 .Pages }}
+    <item>
+      <title>{{ .Title }}</title>
+      <link>{{ .Permalink }}</link>
+
+      {{ if not .Date.IsZero }}
+        <pubDate>
+          {{- .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML -}}
+        </pubDate>
+      {{ end }}
+
+      <guid>{{ .Permalink }}</guid>
+      <description>{{ .Description }}</description>
+
+      {{ $author := "" }}
+
+      {{ with .Params.authors }}
+        {{ $slug := printf "authors/%v" (index $page.Params.authors 0) }}
+        {{ $author = ($.Site.GetPage $slug).Params.metadata }}
+      {{ end }}
+
+      {{ with .Params.author }}
+        {{ $author = . }}
+      {{ end }}
+
+      {{ with $author }}
+        <author>{{ .email }} ({{ .name }})</author>
+      {{ end }}
+    </item>
+  {{ end }}
+{{ end }}
+
