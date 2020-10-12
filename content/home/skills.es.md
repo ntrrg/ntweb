@@ -17,9 +17,6 @@ desde julio del 2018 para proyectos personales. Es mi lenguaje de programación
 favorito hasta ahora. Puedo crear bibliotecas, CLIs, APIs, servicios,
 aplicaciones completas y probablemente cualquier otra cosa que necesite con él.
 
-I coded with Python and JavaScript (Node.js) in the past. I also finished the
-42 C Piscine in Silicon Valley, so I have basic knowledge of C.
-
 Programé con Python y JavaScript (Node.js) en el pasado. También terminé la 42
 C Piscine en Silicon Valley, así que tengo conocimiento básico de C.
 
