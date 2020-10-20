@@ -17,7 +17,7 @@ import (
 var (
 	Default = Build
 
-	hugoVersion  = "0.76.3"
+	hugoVersion  = "0.76.5"
 	hugoExtended = true
 	hugoPort     = "1313"
 	hugoConfig   = "config.yaml"

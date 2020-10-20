@@ -28,7 +28,7 @@ jobs:
           tar -xf "/tmp/mage.tar.gz" -C "/tmp/"
           sudo cp "/tmp/mage" "/usr/bin/"
           #
-          wget -qO "/tmp/hugo.tar.gz" 'https://github.com/gohugoio/hugo/releases/download/v0.76.3/hugo_extended_0.76.3_Linux-64bit.tar.gz'
+          wget -qO "/tmp/hugo.tar.gz" 'https://github.com/gohugoio/hugo/releases/download/v0.76.5/hugo_extended_0.76.5_Linux-64bit.tar.gz'
           tar -xf "/tmp/hugo.tar.gz" -C "/tmp/"
           sudo cp "/tmp/hugo" "/usr/bin/"
 
