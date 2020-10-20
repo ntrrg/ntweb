@@ -147,8 +147,8 @@ func Reduce(s []int, f func(int, int) int, a int) int {
 {{< /go-playground >}}
 
 * Aritmética de punteros. Es una funcionalidad muy poderosa, pero puede causar
-  errores inesperados si no sabe manejar, además que es un comportamiento muy
-  confuso para los programadores con menos experiencia.
+  errores inesperados si no se sabe manejar, además que es un comportamiento
+  muy confuso para los programadores con menos experiencia.
 
 * Hilos de procesos (threads), una de las tareas que suele agregar muchísima
   complejidad al código fuente es la programación multithreading, aunque claro,
