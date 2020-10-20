@@ -142,6 +142,7 @@ sensible 😂.
 * [ ] JoJo no Kimyō na Bōken
 * [ ] Jocker Game
 * [ ] Juni Taisen Zodiac War
+* [ ] Jujutsu Kaisen
 * [ ] K
 * [ ] Kage Shadow
 * [ ] Kill la Kill
