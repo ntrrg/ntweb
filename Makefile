@@ -1,5 +1,5 @@
-hugo_version := 0.76.5-extended
-hugo_port := 1313
+HUGO_VERSION ?= 0.76.5
+HUGO_PORT ?= 1313
 
 .PHONY: all
 all: build
@@ -8,6 +8,12 @@ all: build
 build:
 	hugo
 
+.PHONY: bump-version-hugo
+bump-version-hugo:
+	@grep -lR "$(HUGO_VERSION)" . | \
+		grep -v "^\./\.git/" | \
+		grep -v "\.swp\$$"
+
 .PHONY: clean
 clean:
 	rm -rf public
@@ -15,9 +21,11 @@ clean:
 .PHONY: run
 run:
 	hugo server -DEF --noHTTPCache --i18n-warnings --disableFastRender \
-		--bind 0.0.0.0 --port $(hugo_port) --baseUrl / --appendPort=false
+		--bind 0.0.0.0 --port $(HUGO_PORT) --baseUrl / --appendPort=false
 
 # Docker
+
+DOCKER_IMAGE_TAG := $(HUGO_VERSION)-extended
 
 .PHONY: docker-build
 docker-build:
@@ -25,19 +33,19 @@ docker-build:
 		-u $$(id -u $$USER) \
 		-v "$${TMPDIR:-/tmp}":/tmp/ \
 		-v "$$PWD":/site/ \
-		ntrrg/hugo:$(hugo_version)
+		ntrrg/hugo:$(DOCKER_IMAGE_TAG)
 
 .PHONY: docker-run
 docker-run:
 	@docker run --rm -it \
-		-e PORT=$(hugo_port) \
-		-p $(hugo_port):$(hugo_port) \
+		-e PORT=$(HUGO_PORT) \
+		-p $(HUGO_PORT):$(HUGO_PORT) \
 		-u $$(id -u $$USER) \
 		-v "$${TMPDIR:-/tmp}":/tmp/ \
 		-v "$$PWD":/site/ \
-		ntrrg/hugo:$(hugo_version) server -DEF --noHTTPCache --i18n-warnings \
+		ntrrg/hugo:$(DOCKER_IMAGE_TAG) server -DEF --noHTTPCache --i18n-warnings \
 			--disableFastRender \
-			--bind 0.0.0.0 --port $(hugo_port) --baseUrl / --appendPort=false
+			--bind 0.0.0.0 --port $(HUGO_PORT) --baseUrl / --appendPort=false
 
 .PHONY: docker-shell
 docker-shell:
@@ -46,5 +54,5 @@ docker-shell:
 		-v "$${TMPDIR:-/tmp}":/tmp/ \
 		-v "$$PWD":/site/ \
 		--entrypoint sh \
-		ntrrg/hugo:$(hugo_version)
+		ntrrg/hugo:$(DOCKER_IMAGE_TAG)
 

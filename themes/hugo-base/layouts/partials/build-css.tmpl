@@ -3,6 +3,7 @@
 {{ $opts := .Scratch.Get "cssOptions" | default dict }}
 
 {{ $cssOpts := dict "targetPath" $output }}
+{{ $cssOpts = merge $cssOpts (dict "includePaths" (slice "node_modules")) }}
 
 {{ if ne hugo.Environment "development" }}
   {{ $cssOpts = merge $cssOpts (dict "outputStyle" "compressed") }}

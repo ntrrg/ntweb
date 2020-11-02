@@ -1,7 +1,7 @@
 ---
 title: Instalar Go 1.15 en Linux
 publishdate: 2020-08-19T16:10:00-04:00
-date: 2020-09-02T12:35:00-04:00
+date: 2020-10-28T07:10:00-04:00
 description: Instalar Go 1.15 es bastante sencillo, con solo seguir unas pocas instrucciones cualquiera puede hacerlo.
 image: images/go.png
 tags:
@@ -29,23 +29,23 @@ serán iguales a las de este artículo.
 1\. Descargar el paquete con los binarios
 
 ```shell-session
-$ wget https://dl.google.com/go/go1.15.1.linux-amd64.tar.gz
+$ wget https://dl.google.com/go/go1.15.3.linux-amd64.tar.gz
 ```
 
 ```shell-session
-$ sha256sum -c <(echo "70ac0dbf60a8ee9236f337ed0daa7a4c3b98f6186d4497826f68e97c0c0413f6  go1.15.1.linux-amd64.tar.gz")
-go1.15.1.linux-amd64.tar.gz: OK
+$ sha256sum -c <(echo "010a88df924a81ec21b293b5da8f9b11c176d27c0ee3962dc1738d2352d3c02d  go1.15.3.linux-amd64.tar.gz")
+go1.15.3.linux-amd64.tar.gz: OK
 ```
 
 ```shell-session
-$ tar -xf go1.15.1.linux-amd64.tar.gz
+$ tar -xf go1.15.3.linux-amd64.tar.gz
 ```
 
 2\. Verificar que funciona correctamente
 
 ```shell-session
 $ go/bin/go version
-go version go1.15.1 linux/amd64
+go version go1.15.3 linux/amd64
 ```
 
 3\. Mover a `/usr/local`
@@ -126,28 +126,28 @@ o más de las circunstancias de arriba aplican.
 El código fuente se puede descargar como paquete desde el sitio oficial de Go
 
 ```shell-session
-$ wget https://dl.google.com/go/go1.15.1.src.tar.gz
+$ wget https://dl.google.com/go/go1.15.3.src.tar.gz
 ```
 
 ```shell-session
-$ sha256sum -c <(echo "d3743752a421881b5cc007c76b4b68becc3ad053e61275567edab1c99e154d30  go1.15.1.src.tar.gz")
-go1.15.1.src.tar.gz: OK
+$ sha256sum -c <(echo "896a602570e54c8cdfc2c1348abd4ffd1016758d0bd086ccd9787dbfc9b64888  go1.15.3.src.tar.gz")
+go1.15.3.src.tar.gz: OK
 ```
 
 ```shell-session
-$ tar -xf go1.15.1.src.tar.gz
+$ tar -xf go1.15.3.src.tar.gz
 ```
 
 O usando Git
 
 ```shell-session
 $ # Desde Google
-$ git clone -b go1.15.1 https://go.googlesource.com/go
+$ git clone -b go1.15.3 https://go.googlesource.com/go
 ```
 
 ```shell-session
 $ # Desde GitHub
-$ git clone -b go1.15.1 https://github.com/golang/go
+$ git clone -b go1.15.3 https://github.com/golang/go
 ```
 
 ## Bootstrap
@@ -287,7 +287,7 @@ hacerlo). Para evitar esto y solo compilar, se puede usar el script `make.bash`.
 
 ```shell-session
 $ go/bin/go version
-go version go1.15.1 linux/amd64
+go version go1.15.3 linux/amd64
 ```
 
 ## Instalación
