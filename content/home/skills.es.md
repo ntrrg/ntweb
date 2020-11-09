@@ -44,12 +44,12 @@ o [mis proyectos](./../projects).
 * **QA:** TDD, BDD, CI/CD (Drone, Travis, GitLab CI, Bitbucket Pipelines,
   GitHub Actions).
 
-* **Administración de sistemas:** Linux (Debian, Alpine), Shell Scripting,
-  Contenedores (Docker), Orquestación de contenedores (Docker Swarm,
-  Kubernetes), Ingeniería Cloud.
+* **Administración de sistemas:** Linux (Alpine, Debian), Shell Scripting,
+  IaC (Terraform), Contenedores (Docker), Orquestación de contenedores (Docker
+  Swarm, Kubernetes), Ingeniería Cloud (GCP).
 
 * **Cloud:** GitHub Pages, Netlify, ZEIT Now, Heroku, Google Cloud Platform.
 
-* **Frameworks y bibliotecas:** [Bleve](https://www.blevesearch.com/),
-  [Hugo](https://gohugo.io/).
+* **Frameworks y bibliotecas:** [Bleve](https://www.blevesearch.com/), [Bulma](bulma.io/),
+  [Hugo](https://gohugo.io/), [Svelte](https://svelte.technology/).
 

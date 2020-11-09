@@ -44,8 +44,8 @@ or [my projects](./../projects).
   GitHub Actions).
 
 * **Systems administration:** Linux (Alpine, Debian), Shell Scripting,
-  IaC (Terraform), Containers (Docker), Containers orchestration (Kubernetes),
-  Cloud Engineering (GCP).
+  IaC (Terraform), Containers (Docker), Containers orchestration (Docker Swarm,
+  Kubernetes), Cloud Engineering (GCP).
 
 * **Cloud:** GitHub Pages, Netlify, ZEIT Now, Heroku, Google Cloud Platform.
 

@@ -3,14 +3,14 @@
   publish = "public"
 
 [build.environment]
-  HUGO_VERSION = "0.76.5"
+  HUGO_VERSION = "0.78.1"
 
 [context.deploy-preview]
   command = "hugo -DEF --baseURL=/"
   publish = "public"
 
 [context.deploy-preview.environment]
-  HUGO_VERSION = "0.76.5"
+  HUGO_VERSION = "0.78.1"
 
 [[redirects]]
   from = "/en/*"

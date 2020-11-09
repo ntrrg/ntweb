@@ -330,7 +330,7 @@ todos los recursos.
 
 **Requerimientos:**
 
-* Hugo >= 0.76
+* Hugo >= 0.78
 
 Descargar el código fuente
 

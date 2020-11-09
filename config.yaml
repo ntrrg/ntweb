@@ -119,6 +119,8 @@ outputs:
   page:
     - HTML
     - JSON
+ignoreErrors: 
+  - error-remote-getjson
 minify: true
 server:
   headers:

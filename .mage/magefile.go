@@ -17,7 +17,7 @@ import (
 var (
 	Default = Build
 
-	hugoVersion  = "0.76.5"
+	hugoVersion  = "0.78.1"
 	hugoExtended = true
 	hugoPort     = "1313"
 	hugoConfig   = "config.yaml"
@@ -88,7 +88,6 @@ func (BumpVersion) Hugo() error {
 	fmt.Println("CONTRIBUTING.md")
 	fmt.Println("content/projects/ntweb/index.es.md")
 	fmt.Println("content/projects/ntweb/index.es.md")
-	fmt.Println("---")
 
 	return filepath.Walk(".", fn)
 }
