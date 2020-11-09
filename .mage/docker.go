@@ -41,7 +41,7 @@ func (Docker) Shell() error {
 }
 
 func runHugoDocker(args ...string) error {
-	image := "ntrrg/hugo:"+hugoVersion
+	image := "ntrrg/hugo:" + hugoVersion
 
 	if hugoExtended {
 		image += "-extended"
