@@ -4,7 +4,7 @@
 {{ else if hasPrefix $url "/" }}
   {{ $url = absURL $url }}
 {{ else if not (findRE "^https?://" $url 1) }}
-  {{ $url = path.Join .Permalink $url }}
+  {{ $url = path.Join .RelPermalink $url | absURL }}
 {{ end }}
 
 {{ .Scratch.Delete "gruName" }}
