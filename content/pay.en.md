@@ -121,6 +121,10 @@ ntrrgx@gmail.com
 
 <https://gcpsignup.page.link/dMVD>
 
+## Google Fi
+
+<https://g.co/fi/r/NDC9RE>
+
 ## MEGA
 
 <https://mega.nz/aff=IkiSGALw5Tw>

@@ -12,13 +12,9 @@
 {{ $description := $.Param "description" }}
 {{ $publishdate := .PublishDate.Format "2006-01-02T15:04:05-07:00" }}
 {{ $date := .Date.Format "2006-01-02T15:04:05-07:00" }}
-{{ $image := $.Param "image" }}
 
-{{ if hasPrefix $image "/" }}
-  {{ $image = absURL $image }}
-{{ else if not (strings.HasPrefix $image "http") }}
-  {{ $image = path.Join .RelPermalink $image | absURL }}
-{{ end }}
+{{ .Scratch.Set "gruName" ($.Param "image") }}
+{{ $image := partial "get-res-url.tmpl" . }}
 
 <link rel="canonical" href="{{ .Permalink }}"/>
 <meta name="robots" content="index, follow"/>

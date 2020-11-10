@@ -44,7 +44,7 @@ ntrrgx@gmail.com
 ntrrgx@gmail.com
 ```
 
-# Crypto
+# Criptomonedas
 
 ## Bitcoin
 
@@ -124,6 +124,10 @@ ntrrgx@gmail.com
 ## Google Cloud Platform
 
 <https://gcpsignup.page.link/dMVD>
+
+## Google Fi
+
+<https://g.co/fi/r/NDC9RE>
 
 ## MEGA
 

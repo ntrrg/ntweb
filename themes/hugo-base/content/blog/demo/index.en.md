@@ -12,8 +12,6 @@ tags:
   - tag1
   - tag2
   - tag3
-comments: true
-toc: true
 draft: true
 ---
 

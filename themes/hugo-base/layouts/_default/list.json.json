@@ -11,15 +11,7 @@
           {{ $desc = .Description }}
         {{ end }}
 
-        {{ $image := .Params.image | default "" }}
-
-        {{ if ne $image "" }}
-          {{ if hasPrefix $image "/" }}
-            {{ $image = absURL $image }}
-          {{ else if not (strings.HasPrefix .Params.image "http") }}
-            {{ $image = path.Join .RelPermalink $image | absURL }}
-          {{ end }}
-        {{ end }}
+        {{ $image := partial "get-image.tmpl" . }}
 
         {{ if ne $i 0 }},{{ end }}
         {{ if ne .Pages nil }}

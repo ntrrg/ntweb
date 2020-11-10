@@ -20,6 +20,7 @@ params:
     - challenges
     - projects
     - series
+  relatedCount: 5
   # googleTagManager: GTM-NZ2R3W7
   disqus: ntweb
   interledger: "$ilp.uphold.com/YM4XLxrdPh44"
@@ -76,6 +77,15 @@ languages:
 taxonomies:
   serie: series
   tag: tags
+related:
+  includeNewer: true
+  indices:
+  - name: keywords
+    weight: 100
+  - name: tags
+    weight: 50
+  threshold: 100
+  toLower: false
 permalinks:
   blog: /:sections/:slug/
   projects: /:sections/:slug/
@@ -121,6 +131,7 @@ outputs:
     - JSON
 ignoreErrors: 
   - error-remote-getjson
+enableGitInfo: true
 minify: true
 server:
   headers:

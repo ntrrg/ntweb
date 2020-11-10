@@ -101,7 +101,8 @@ encoded UTF-8 string and JavaScript strings are UTF-16.
 {{% param name="data" type="Object" %}}
 Resource specific data. For the main page, this contains all the sections,
 taxonomies and top-level pages; for collections this contains its elements and
-pagination information; and for single elements this is an empty object.
+pagination information; and for single elements this contains a list of related
+content.
 {{% /param %}}
 
 {{% param name="altLang" type="Array of Object" %}}
@@ -130,7 +131,7 @@ $ wget -qO - https://ntrrg.dev/en/projects/ntweb/index.json | jq
     "draft": false,
     "iscjklanguage": false,
     "metadata": {
-      "license": "MIT",
+      "license": "CC-BY-4.0",
       "source-code": "https://github.com/ntrrg/ntweb"
     },
     "tags": [
@@ -149,7 +150,9 @@ $ wget -qO - https://ntrrg.dev/en/projects/ntweb/index.json | jq
     "toc": true
   },
   "content": "...",
-  "data": {},
+  "data": {
+    "related": [...]
+  },
   "altLang": [
     {
       "lang": "es",
@@ -257,6 +260,17 @@ element title.
 
 Retrieves a single element. See [API](#api) for more details about common
 properties.
+
+**Properties:**
+
+{{< params >}}
+
+{{% param name="data.related" type="Array of Object" %}}
+List of related content. Every object has the `url`, `type`, `title`,
+`description` and `image` properties.
+{{% /param %}}
+
+{{< /params >}}
 
 ### Search index
 

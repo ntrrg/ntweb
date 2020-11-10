@@ -102,8 +102,8 @@ UTF-16.
 {{% param name="data" type="Objeto" %}}
 Datos específicos del recurso. Para la página principal, contiene todos los
 elementos de primer nivel; para colecciones, contiene los elementos que la
-componen e información sobre la paginación; y para recursos individuales, es un
-objeto vacío.
+componen e información sobre la paginación; y para recursos individuales,
+contiene una lista con contenido relacionado.
 {{% /param %}}
 
 {{% param name="altLang" type="Vector de Objeto" %}}
@@ -132,7 +132,7 @@ $ wget -qO - https://ntrrg.dev/es/projects/ntweb/index.json | jq
     "draft": false,
     "iscjklanguage": false,
     "metadata": {
-      "license": "MIT",
+      "license": "CC-BY-4.0",
       "source-code": "https://github.com/ntrrg/ntweb"
     },
     "tags": [
@@ -151,7 +151,9 @@ $ wget -qO - https://ntrrg.dev/es/projects/ntweb/index.json | jq
     "toc": true
   },
   "content": "...",
-  "data": {},
+  "data": {
+    "related": [...]
+  },
   "altLang": [
     {
       "lang": "en",
@@ -260,6 +262,17 @@ que pertenece y su título codificado para URLs.
 
 Obtiene un elemento. Ver [API](#api) para mas información sobre las propiedades
 en común.
+
+**Propiedades:**
+
+{{< params >}}
+
+{{% param name="data.related" type="Vector de Objeto" %}}
+Lista de contenido relacionado. Cada elemento tiene las propiedades `url`,
+`type`, `title`, `description` e `image`.
+{{% /param %}}
+
+{{< /params >}}
 
 ### Índice de búsqueda
 

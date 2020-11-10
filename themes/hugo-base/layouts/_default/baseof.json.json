@@ -4,18 +4,7 @@
   "type": {{ jsonify .Type }},
   "lang": {{ jsonify .Language.Lang }},
   "title": {{ jsonify .Title }},
-
-  {{ $image := .Params.image | default "" }}
-
-  {{ if ne $image "" }}
-    {{ if hasPrefix $image "/" }}
-      {{ $image = absURL $image }}
-    {{ else if not (strings.HasPrefix .Params.image "http") }}
-      {{ $image = path.Join .RelPermalink $image | absURL }}
-    {{ end }}
-  {{ end }}
-
-  "image": {{ jsonify $image }},
+  "image": {{ partial "get-image.tmpl" . | jsonify }},
   "params": {{ block "params" . }}{{ jsonify .Params }}{{ end }},
   "content": {{ base64Encode .Content | jsonify }},
   "data": {{ block "data" . }}{}{{ end }},

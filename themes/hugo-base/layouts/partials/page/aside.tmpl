@@ -40,3 +40,23 @@
   {{ end }}
 </section>
 
+<section class="article-related-content">
+  {{ $related := .Site.RegularPages.Related . | first .Site.Params.relatedcount }}
+
+  {{ with $related }}
+    <strong class="article-related-content-title">
+      {{ i18n "PAGE_RELATED" }}
+    </strong>
+
+    <ul class="article-related-content-items">
+      {{ range $related }}
+        <li>
+          <a href="{{ .Permalink }}" title="{{ .Description }}">
+            {{ .Title }}
+          </a>
+        </li>
+      {{ end }}
+    </ul>
+  {{ end }}
+</section>
+

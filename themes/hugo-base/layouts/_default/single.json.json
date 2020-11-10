@@ -1,2 +1,26 @@
-{{ define "data" }}{}{{ end }}
+{{ define "data" }}
+{
+  {{ $related := .Site.RegularPages.Related . | first .Site.Params.relatedcount }}
+
+  "related": [
+    {{ range $i := $related }}
+      {{ $desc := "" }}
+      {{ $sectDesc := $.Description }}
+
+      {{ if ne .Description $sectDesc }}
+        {{ $desc = .Description }}
+      {{ end }}
+
+      {{ if ne $i 0 }},{{ end }}
+      {
+        "url": {{ jsonify .Permalink }},
+        "type": {{ jsonify .Type }},
+        "title": {{ jsonify .Title }},
+        "description": {{ jsonify $desc }},
+        "image": {{ partial "get-image.tmpl" . | jsonify }}
+      }
+    {{ end }}
+  ]
+}
+{{ end }}
 

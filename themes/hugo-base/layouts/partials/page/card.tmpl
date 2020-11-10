@@ -1,12 +1,6 @@
 <article class="page-card {{ with .Params.image }}has-image{{ end }}">
   {{ if isset .Params "image" }}
-    {{ $image := .Params.image }}
-
-    {{ if hasPrefix $image "/" }}
-      {{ $image = absURL $image }}
-    {{ else if not (strings.HasPrefix $image "http") }}
-      {{ $image = path.Join .RelPermalink $image | absURL }}
-    {{ end }}
+    {{ $image := partial "get-image.tmpl" . }}
 
     <a class="page-card-image-link" href="{{ .Permalink }}">
       <img class="page-card-image" alt="{{ .Title }}" src="{{ $image }}"/>

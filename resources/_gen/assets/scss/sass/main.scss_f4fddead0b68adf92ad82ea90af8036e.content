@@ -278,10 +278,11 @@ body > main {
   flex-flow: column;
   align-items: center; }
 
-/* Sharing */
+/* TOC */
 .article-toc ul {
   list-style: initial; }
 
+/* Sharing */
 .article-sharing .icon {
   width: 1.5em;
   margin-top: 1em;
@@ -305,6 +306,15 @@ body > main {
 .article-series-serie td.is-active {
   border: 0.2em solid;
   font-weight: bold; }
+
+/* Related */
+.article-related-content-title {
+  display: block;
+  text-align: center; }
+
+.article-related-content-items {
+  list-style: initial;
+  padding: 0 1em; }
 
 @media print {
   .article-sidebar {

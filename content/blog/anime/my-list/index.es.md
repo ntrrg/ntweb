@@ -8,7 +8,6 @@ tags:
   - entretenimiento
   - anime
 toc: false
-comments: true
 ---
 
 [Crunchyroll]: https://crunchyroll.com/

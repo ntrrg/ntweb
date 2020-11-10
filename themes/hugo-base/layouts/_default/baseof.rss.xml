@@ -28,13 +28,8 @@
       </lastBuildDate>
     {{ end }}
 
-    {{ $image := $.Param "image" }}
-
-    {{ if hasPrefix $image "/" }}
-      {{ $image = absURL $image }}
-    {{ else if not (strings.HasPrefix .Params.image "http") }}
-      {{ $image = path.Join .RelPermalink $image | absURL }}
-    {{ end }}
+    {{ .Scratch.Set "gruName" ($.Param "image") }}
+    {{ $image := partial "get-res-url.tmpl" . }}
 
     <image>
       <url>{{ $image }}</url>

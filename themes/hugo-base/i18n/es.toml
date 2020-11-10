@@ -19,6 +19,9 @@ other = "Mostrar comentarios"
 [PAGE_NO_PAGES]
 other = "[WIP] Todavía no hay contenido en esta sección."
 
+[PAGE_RELATED]
+other = "Contenido relacionado"
+
 [PAGE_SHARING]
 other = "Compartir"
 
