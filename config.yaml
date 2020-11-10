@@ -137,10 +137,15 @@ server:
   headers:
     - for: /**
       values:
-        X-Frame-Options: SAMEORIGIN
+        Cache-Control: no-cache, no-store
         X-Content-Type-Options: nosniff
-        X-XSS-Protection: 1; mode=block
         Referrer-Policy: strict-origin-when-cross-origin
+    - for: /**/
+      values:
+        X-XSS-Protection: 1; mode=block
+    - for: /*.html
+      values:
+        X-XSS-Protection: 1; mode=block
     - for: /*.webmanifest
       values:
         Content-Type: application/manifest+json; charset=utf-8

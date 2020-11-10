@@ -26,10 +26,21 @@
   for = "/*"
 
 [headers.values]
-  X-Frame-Options = "SAMEORIGIN"
+  Cache-Control = "no-cache, no-store"
   X-Content-Type-Options = "nosniff"
-  X-XSS-Protection = "1; mode=block"
   Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "/*/"
+
+[headers.values]
+  X-XSS-Protection = "1; mode=block"
+
+[[headers]]
+  for = "/*.html"
+
+[headers.values]
+  X-XSS-Protection = "1; mode=block"
 
 [[headers]]
   for = "/favicon.ico"
