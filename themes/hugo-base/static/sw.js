@@ -1,7 +1,7 @@
 let ENABLED = true
-
 const BASEURL = new Request('/').url.slice(0, -1)
 const BUCKET = 'v1'
+const DEFAULT_CHECKMODE = 'age'
 const DEFAULT_EXT = 'html'
 const DEFAULT_TLL = 1000 * 60 * 60 * 24
 
@@ -42,6 +42,32 @@ self.addEventListener('activate', (event) => {
     caches.open(BUCKET).then((cache) => cache.addAll(PREFETCH)),
   ]))
 })
+
+/**
+ * Checks if the given response has expired.
+ *
+ * @param {Response} res
+ * @returns {Boolean}
+ */
+function checkResponseByAge(res) {
+  let date = null
+  const headers = res.headers.entries()
+
+  for (const [key, val] of headers)
+    if (key === 'date')
+      date = new Date(val)
+
+  if (!date)
+    return true
+
+  const age = new Date().getTime() - date.getTime()
+  const ttl = getTTL(res.url)
+
+  if (age <= ttl)
+    return true
+
+  return false
+}
 
 /**
  * Finds the canonical URL from a given URL.
@@ -87,27 +113,11 @@ async function getResponse(req) {
   const cache = await caches.open(BUCKET)
   let res = await cache.match(req)
 
-  if (res) {
-    let date = null;
-    const headers = res.headers.entries()
-
-    for (const [key, val] of headers)
-      if (key === 'date')
-        date = new Date(val)
-
-    if (!date)
-      return res.clone()
-
-    const age = new Date().getTime() - date.getTime()
-    const ttl = getTTL(req.url)
-
-    if (age <= ttl)
-      return res.clone()
-  }
+  if (isValidResponse(res, DEFAULT_CHECKMODE))
+    return res.clone()
 
   const lang = req.url.split('/')[3] || 'en'
   const offlineURL = `/${lang}/offline/`
-
   let offline = false
 
   res = await fetch(req).catch(() => {
@@ -180,6 +190,26 @@ function isIgnored(url) {
   return false
 }
 
+/**
+ * Checks if the given response is valid depending on the given mode. The
+ * allowed modes are: `age`.
+ *
+ * @param {Response} res
+ * @param {String} mode
+ * @returns {Boolean}
+ */
+function isValidResponse(res, mode='age') {
+  if (!res)
+    return false
+
+  switch(mode) {
+  case 'age':
+    return checkResponseByAge(res)
+  }
+
+  return false
+}
+
 self.addEventListener('fetch', (event) => {
   event.respondWith(getResponse(event.request))
 })
@@ -191,28 +221,33 @@ self.addEventListener('message', (event) => {
   const {action, value} = event.data
 
   switch(action) {
-    case 'enabled':
-      ENABLED = (value) ? true : false
-      break
+  case 'enabled':
+    ENABLED = (value) ? true : false
+    break
 
-    case 'add':
-      caches.open(BUCKET).then((cache) => cache.add(value))
-      break
-    case 'addAll':
-      for (const url of value)
-        caches.open(BUCKET).then((cache) => cache.add(url))
-      break
-    case 'delete':
-      caches.open(BUCKET).then((cache) => cache.delete(value))
-      break
-    case 'deleteAll':
-      caches.delete(BUCKET).then(() => caches.open(BUCKET)
-        .then((cache) => cache.addAll(PREFETCH)))
-      break
+  case 'add':
+    caches.open(BUCKET).then((cache) => cache.add(value))
+    break
 
-    default:
-      console.log(`Unknown action: ${action}`)
-      break
+  case 'addAll':
+    for (const url of value)
+      caches.open(BUCKET).then((cache) => cache.add(url))
+
+    break
+
+  case 'delete':
+    caches.open(BUCKET).then((cache) => cache.delete(value))
+    break
+
+  case 'deleteAll':
+    caches.delete(BUCKET).then(() => caches.open(BUCKET)
+      .then((cache) => cache.addAll(PREFETCH)))
+
+    break
+
+  default:
+    console.log(`Unknown action: ${action}`)
+    break
   }
 })
 
