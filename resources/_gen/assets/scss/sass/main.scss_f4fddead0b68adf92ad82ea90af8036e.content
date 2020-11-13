@@ -282,6 +282,14 @@ body > main {
 .article-toc ul {
   list-style: initial; }
 
+/* Related */
+.article-related-content-title {
+  text-align: center; }
+
+.article-related-content-items {
+  list-style: initial;
+  padding: 0 1em; }
+
 /* Sharing */
 .article-sharing .icon {
   width: 1.5em;
@@ -306,15 +314,6 @@ body > main {
 .article-series-serie td.is-active {
   border: 0.2em solid;
   font-weight: bold; }
-
-/* Related */
-.article-related-content-title {
-  display: block;
-  text-align: center; }
-
-.article-related-content-items {
-  list-style: initial;
-  padding: 0 1em; }
 
 @media print {
   .article-sidebar {

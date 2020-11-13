@@ -4,6 +4,28 @@
   {{ end }}
 </section>
 
+<section class="article-related-content">
+  {{ $related := .Site.RegularPages.Related . | first .Site.Params.relatedcount }}
+
+  {{ with $related }}
+    <details>
+      <summary class="article-related-content-title">
+        <strong>{{ i18n "PAGE_RELATED" }}</strong>
+      </summary>
+
+      <ul class="article-related-content-items">
+        {{ range $related }}
+          <li>
+            <a href="{{ .Permalink }}" title="{{ .Description }}">
+              {{ .Title }}
+            </a>
+          </li>
+        {{ end }}
+      </ul>
+    </details>
+  {{ end }}
+</section>
+
 <section class="article-sharing">
   {{ partial "page/share.tmpl" . }}
 </section>
@@ -37,26 +59,6 @@
       {{ end }}
     </tbody>
     </table>
-  {{ end }}
-</section>
-
-<section class="article-related-content">
-  {{ $related := .Site.RegularPages.Related . | first .Site.Params.relatedcount }}
-
-  {{ with $related }}
-    <strong class="article-related-content-title">
-      {{ i18n "PAGE_RELATED" }}
-    </strong>
-
-    <ul class="article-related-content-items">
-      {{ range $related }}
-        <li>
-          <a href="{{ .Permalink }}" title="{{ .Description }}">
-            {{ .Title }}
-          </a>
-        </li>
-      {{ end }}
-    </ul>
   {{ end }}
 </section>
 
