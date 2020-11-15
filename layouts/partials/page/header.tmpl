@@ -7,7 +7,7 @@
   {{ partial "page/menu-items.tmpl" . }}
 </nav>
 
-<nav role="navigation" class="secundary-menu" aria-label="secundary-menu">
+<nav role="navigation" class="secondary-menu" aria-label="secondary-menu">
   {{ with $.Site.GetPage "/search" }}
     <form class="navbar-search" method="GET" action="{{ .Permalink }}">
       [
@@ -28,7 +28,7 @@
     </form>
   {{ end }}
 
-  {{ .Scratch.Set "menuItems" "secundaryMenu" }}
+  {{ .Scratch.Set "menuItems" "secondaryMenu" }}
   {{ partial "page/menu-items.tmpl" . }}
 </nav>
 

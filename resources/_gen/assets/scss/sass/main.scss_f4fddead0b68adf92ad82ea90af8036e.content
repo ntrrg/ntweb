@@ -223,6 +223,9 @@ nav a.is-active {
 .primary-menu .menu-item {
   margin-left: 1ex; }
 
+.secondary-menu {
+  display: none; }
+
 .navbar-search {
   display: inline-block;
   position: relative; }

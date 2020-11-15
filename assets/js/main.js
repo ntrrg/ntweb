@@ -3,6 +3,13 @@
 import {checkThemes} from './theme'
 import {postMessage as postMessageSW, register as registerSW} from './sw'
 
+// Secondary menu
+
+window.addEventListener('DOMContentLoaded', () => {
+  const el = document.querySelector('.secondary-menu')
+  el.style.display = 'block'
+})
+
 // Privacy Alert
 
 function checkPrivacyAlert() {

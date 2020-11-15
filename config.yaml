@@ -43,7 +43,7 @@ languages:
           - url: "https://www.instagram.com/ntrrg/"
             text: "Gallery"
         beforeEach: "| "
-      secundaryMenu:
+      secondaryMenu:
         items:
           - url: "/settings/"
         beforeEach: "["
@@ -64,7 +64,7 @@ languages:
           - url: "https://www.instagram.com/ntrrg/"
             text: "Galería"
         beforeEach: "| "
-      secundaryMenu:
+      secondaryMenu:
         items:
           - url: "/settings/"
         beforeEach: "["
