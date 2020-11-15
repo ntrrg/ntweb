@@ -33,13 +33,22 @@ sensible 😂.
 
 * **Akatsuki no Yona**
   * [x] [Akatsuki no Yona](https://myanimelist.net/anime/25013/Akatsuki_no_Yona)
-
   * [ ] [Akatsuki no Yona OVA](https://myanimelist.net/anime/30370/Akatsuki_no_Yona_OVA)
 
 * [x] [Aldnoah.Zero](https://myanimelist.net/anime/22729/AldnoahZero)
-* [ ] [Angel Beats!](https://myanimelist.net/anime/6547/Angel_Beats)
-* [ ] AnoHana
-* [ ] Another
+* [x] [Angel Beats!](https://myanimelist.net/anime/6547/Angel_Beats)
+
+* **Ano Hi Mita Hana no Namae wo Bokutachi wa Mada Shiranai. (AnoHana)**
+  * [x] [Ano Hi Mita Hana no Namae wo Bokutachi wa Mada Shiranai.](https://myanimelist.net/anime/9989/Ano_Hi_Mita_Hana_no_Namae_wo_Bokutachi_wa_Mada_Shiranai)
+
+  * [ ] [Ano Hi Mita Hana no Namae wo Bokutachi wa Mada Shiranai.: Menma e no Tegami](https://myanimelist.net/anime/38963/Ano_Hi_Mita_Hana_no_Namae_wo_Bokutachi_wa_Mada_Shiranai__Menma_e_no_Tegami)
+
+  * [ ] [Ano Hi Mita Hana no Namae wo Bokutachi wa Mada Shiranai. Movie](https://myanimelist.net/anime/15039/Ano_Hi_Mita_Hana_no_Namae_wo_Bokutachi_wa_Mada_Shiranai_Movie)
+
+* **Another**
+  * [ ] [Another](https://myanimelist.net/anime/11111/Another)
+
+  * [ ] [Another: The Other - Inga](https://myanimelist.net/anime/11701/Another__The_Other_-_Inga)
 
 * **Appleseed**
   * [x] [Appleseed (Movie)](https://myanimelist.net/anime/54/Appleseed_Movie)
