@@ -46,7 +46,7 @@ sensible 😂.
   * [ ] [Ano Hi Mita Hana no Namae wo Bokutachi wa Mada Shiranai. Movie](https://myanimelist.net/anime/15039/Ano_Hi_Mita_Hana_no_Namae_wo_Bokutachi_wa_Mada_Shiranai_Movie)
 
 * **Another**
-  * [ ] [Another](https://myanimelist.net/anime/11111/Another)
+  * [x] [Another](https://myanimelist.net/anime/11111/Another)
 
   * [ ] [Another: The Other - Inga](https://myanimelist.net/anime/11701/Another__The_Other_-_Inga)
 
@@ -65,7 +65,6 @@ sensible 😂.
 * [ ] Black Clover
 * [ ] Black Lagoon
 * [ ] Blade Runner
-* [ ] Bladedance of Elementalers
 
 * **Bleach**
   * [x] [Bleach](https://myanimelist.net/anime/269/Bleach)
@@ -235,10 +234,19 @@ sensible 😂.
 * [ ] Sakurako-san
 * [ ] Samurai Champloo
 * [ ] Samurai Flamenco
+
+* [x] [Seireitsukai no Blade Dance](https://myanimelist.net/anime/22877/Seireitsukai_no_Blade_Dance)
+
 * [ ] Serial Experiments Lain
 * [ ] Shakugan no Shana
 * [ ] Shaman King
-* [ ] Shigatsu wa Kimi no Uso
+
+* **Shigatsu wa Kimi no Uso**
+
+  * [ ] [Shigatsu wa Kimi no Uso](https://myanimelist.net/anime/23273/Shigatsu_wa_Kimi_no_Uso)
+
+  * [ ] [Shigatsu wa Kimi no Uso: Moments](https://myanimelist.net/anime/28069/Shigatsu_wa_Kimi_no_Uso__Moments)
+
 * [ ] Shiki
 * [x] [Shikioriori](https://myanimelist.net/anime/37396/Shikioriori)
 * [ ] Shin Seiki Evangelion
