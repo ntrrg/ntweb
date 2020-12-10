@@ -97,6 +97,16 @@ $ilp.uphold.com/YM4XLxrdPh44
 ntrrgx@gmail.com
 ```
 
+## PayPal
+
+https://paypal.me/marntrrg
+
+```
+ntrrgx@gmail.com
++584247484276
++15203130363
+```
+
 ## Uphold
 
 ```
