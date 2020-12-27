@@ -22,7 +22,7 @@ C Piscine en Silicon Valley, así que tengo conocimiento básico de C.
 
 Como Desarrollador Web Frontend puedo crear páginas y aplicaciones web para
 usted, utilizando tecnología modernas y ligeras como HTML5, CSS3, JavaScript,
-Hugo, Svelte, Bulma, etc...
+Hugo, Bulma, etc...
 
 También puedo planificar y administrar su infraestructura, desde servidores
 físicos hasta proveedores Cloud, o incluso entornos híbridos. Tengo competencia
@@ -51,5 +51,5 @@ o [mis proyectos](./../projects).
 * **Cloud:** GitHub Pages, Netlify, ZEIT Now, Heroku, Google Cloud Platform.
 
 * **Frameworks y bibliotecas:** [Bleve](https://www.blevesearch.com/), [Bulma](bulma.io/),
-  [Hugo](https://gohugo.io/), [Svelte](https://svelte.technology/).
+  [Hugo](https://gohugo.io/).
 

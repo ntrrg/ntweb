@@ -160,6 +160,9 @@ sensible 😂.
 * [ ] Kimetsu no Yaiba
 * [x] [Kimi no Na wa.](https://myanimelist.net/anime/32281/Kimi_no_Na_wa)
 * [ ] Kino's Journey
+
+* [ ] [Kiseijuu: Sei no Kakuritsu](https://myanimelist.net/anime/22535/Kiseijuu__Sei_no_Kakuritsu)
+
 * [ ] Kite
 * [ ] Knights of Sidonia
 * [x] [Koe no Katachi](https://myanimelist.net/anime/28851/Koe_no_Katachi)
@@ -196,7 +199,6 @@ sensible 😂.
 * [ ] One Piece
 * [ ] One Punch Man
 * [ ] Owari no Seraph
-* [ ] Parasyte
 * [ ] Planetes
 
 * **Psycho-Pass**
