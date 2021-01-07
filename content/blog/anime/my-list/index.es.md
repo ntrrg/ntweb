@@ -161,7 +161,7 @@ sensible 😂.
 * [x] [Kimi no Na wa.](https://myanimelist.net/anime/32281/Kimi_no_Na_wa)
 * [ ] Kino's Journey
 
-* [ ] [Kiseijuu: Sei no Kakuritsu](https://myanimelist.net/anime/22535/Kiseijuu__Sei_no_Kakuritsu)
+* [x] [Kiseijuu: Sei no Kakuritsu](https://myanimelist.net/anime/22535/Kiseijuu__Sei_no_Kakuritsu)
 
 * [ ] Kite
 * [ ] Knights of Sidonia

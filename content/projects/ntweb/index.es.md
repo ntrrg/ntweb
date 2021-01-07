@@ -342,7 +342,7 @@ todos los recursos.
 
 **Requerimientos:**
 
-* Hugo >= 0.78
+* Hugo >= 0.80
 
 Descargar el código fuente
 

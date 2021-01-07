@@ -338,7 +338,7 @@ full offline experience.
 
 **Requirements:**
 
-* Hugo >= 0.78
+* Hugo >= 0.80
 
 Get the source code
 
