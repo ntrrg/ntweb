@@ -21,7 +21,7 @@ params:
     - projects
     - series
   relatedCount: 5
-  # googleTagManager: GTM-NZ2R3W7
+  #googleTagManager: GTM-NZ2R3W7
   disqus: ntweb
   interledger: "$ilp.uphold.com/YM4XLxrdPh44"
   goPlayground: https://play.golang.org
@@ -89,8 +89,7 @@ related:
 permalinks:
   blog: /:sections/:slug/
   projects: /:sections/:slug/
-theme:
-  - hugo-base
+theme: []
 Paginate: 10
 enableEmoji: true
 markup:

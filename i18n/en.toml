@@ -1,11 +1,23 @@
 [METADATA_CLIENT]
 other = "Client"
 
+[METADATA_DATE_MODIFIED]
+other = "Modified"
+
+[METADATA_DATE_PUBLISHED]
+other = "Published"
+
 [METADATA_DIFFICULTY]
 other = "Difficulty"
 
+[METADATA_EMAIL]
+other = "Email"
+
 [METADATA_LICENSE]
 other = "License"
+
+[METADATA_NAME]
+other = "Name"
 
 [METADATA_PLATFORM]
 other = "Platform"
@@ -16,9 +28,42 @@ other = "Role"
 [METADATA_SOURCE_CODE]
 other = "Source code"
 
+[METADATA_TYPE]
+other = "Type"
+
 [METADATA_URL]
 other = "URL"
 
 [METADATA_WEBSITE]
 other = "Website"
+
+[PAGE_COMMENTS_SHOW]
+other = "Show comments"
+
+[PAGE_NO_PAGES]
+other = "[WIP] There is no content in this section yet."
+
+[PAGE_RELATED]
+other = "Related content"
+
+[PAGE_SHARING]
+other = "Share"
+
+[PAGE_TOC_TITLE]
+other = "Table of Contents"
+
+[SHORTCODE_GO_PLAYGROUND_ERROR]
+other = "Couldn't send the source code, try again"
+
+[SHORTCODE_GO_PLAYGROUND_OPEN]
+other = "Open in Go Playground"
+
+[SHORTCODE_GO_PLAYGROUND_RUN]
+other = "Run in Go Playground"
+
+[SHORTCODE_GO_PLAYGROUND_SENDING]
+other = "Sending the source code.."
+
+[SHORTCODE_NOTE_TITLE]
+other = "Note"
 

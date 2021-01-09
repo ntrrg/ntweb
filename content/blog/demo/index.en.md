@@ -750,7 +750,7 @@ from the project root.
 
 **Examples:**
 
-{{< import "/themes/hugo-base/content/blog/demo/files/imports.en.md" >}}
+{{< import "files/imports.en.md" >}}
 
 ## Cards
 
@@ -863,11 +863,11 @@ Opens the foldable snippet.
 
 **Examples:**
 
-{{< snippet "/themes/hugo-base/content/blog/demo/files/hello.go" >}}
+{{< snippet "files/hello.go" >}}
 
 ---
 
-{{< snippet path="/themes/hugo-base/content/blog/demo/files/hello.go" hl="go {linenos=true,hl_lines=[\"1\", \"5-7\"],linenostart=1}" foldable=true name="main.go" open=true >}}
+{{< snippet path="files/hello.go" hl="go {linenos=true,hl_lines=[\"1\", \"5-7\"],linenostart=1}" foldable=true name="main.go" open=true >}}
 
 ```html
 <details class="foldable-snippet" open="open">

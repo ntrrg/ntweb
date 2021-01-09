@@ -17,7 +17,7 @@ import (
 var (
 	Default = Build
 
-	hugoVersion  = "0.78.1"
+	hugoVersion  = "0.80.0"
 	hugoExtended = true
 	hugoPort     = "1313"
 	hugoConfig   = "config.yaml"
@@ -47,7 +47,7 @@ func (BumpVersion) Hugo() error {
 
 		case findString(path,
 			".git",
-			".mage/output", ".mage/vendor",
+			".mage/vendor",
 			"archetypes", "assets", "content", "data", "i18n", "layouts", "themes",
 			"public", "resources",
 		):

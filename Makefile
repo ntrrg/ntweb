@@ -10,8 +10,22 @@ build:
 
 .PHONY: bump-version-hugo
 bump-version-hugo:
+	@echo "CONTRIBUTING.md"
+	@echo "content/projects/ntweb/index.es.md"
+	@echo "content/projects/ntweb/index.es.md"
 	@grep -lR "$(HUGO_VERSION)" . | \
 		grep -v "^\./\.git/" | \
+		grep -v "^\./\.mage/vendor/" | \
+		grep -v "^\./archetypes/" | \
+		grep -v "^\./assets/" | \
+		grep -v "^\./content/" | \
+		grep -v "^\./data/" | \
+		grep -v "^\./i18n/" | \
+		grep -v "^\./layouts/" | \
+		grep -v "^\./node_modules/" | \
+		grep -v "^\./themes/" | \
+		grep -v "^\./public/" | \
+		grep -v "^\./resources/" | \
 		grep -v "\.swp\$$"
 
 .PHONY: clean
@@ -23,7 +37,9 @@ run:
 	hugo server -DEF --noHTTPCache --i18n-warnings --disableFastRender \
 		--bind 0.0.0.0 --port $(HUGO_PORT) --baseUrl / --appendPort=false
 
-# Docker
+##########
+# Docker #
+##########
 
 DOCKER_IMAGE_TAG := $(HUGO_VERSION)-extended
 
@@ -56,3 +72,9 @@ docker-shell:
 		--entrypoint sh \
 		ntrrg/hugo:$(DOCKER_IMAGE_TAG)
 
+########
+# Make #
+########
+
+# Disable parallelism #
+.NOTPARALLEL:

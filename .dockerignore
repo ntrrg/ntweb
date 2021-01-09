@@ -1,5 +1,5 @@
-.github/
-.mage/output/
-.mage/vendor/
+/.github/
+/.mage/output/
+/.mage/vendor/
 /public/
 
