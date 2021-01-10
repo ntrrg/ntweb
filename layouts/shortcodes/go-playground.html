@@ -25,60 +25,19 @@
 </div>
 
 {{ if ne ($.Page.Scratch.Get "sc-go-playground") true }}
-  {{ .Scratch.Set "jsScripts" (slice "vendor/base64js-v1.3.1.min.js") }}
-  {{ partial "import-js.tmpl" . }}
+  <style>
+    .go-playground-link {
+      display: none;
+    }
+  </style>
 
   <script>
-    function base64Encode(str) {
-      const encoder = new TextEncoder()
-      return base64js.fromByteArray(encoder.encode(str))
-    }
-
-    function base64Decode(str) {
-      const decoder = new TextDecoder()
-      return decoder.decode(base64js.toByteArray(str));
-    }
-
-    async function getGoPlaygroundLink(e) {
-      const goPlaygroundURL = '{{ $.Page.Site.Params.goPlayground }}'
-      const link = e.target
-      const code = link.dataset.code
-      const done = link.href[link.href.length - 1] !== "#"
-
-      if (code === undefined || done) {
-        return
-      }
-
-      e.preventDefault()
-      link.title = ''
-      link.innerText = '{{ i18n "SHORTCODE_GO_PLAYGROUND_SENDING" }}'
-
-      const res = await fetch(goPlaygroundURL + '/share', {
-        method: 'POST',
-        body: base64Decode(code)
-      }).catch((err) => {
-        link.title = err
-        link.innerText = '{{ i18n "SHORTCODE_GO_PLAYGROUND_ERROR" }}'
-      })
-
-      if (res.ok) {
-        const id = await res.text()
-        link.href = `${goPlaygroundURL}/p/${id}`
-        link.innerText = '{{ i18n "SHORTCODE_GO_PLAYGROUND_OPEN" }}'
-      } else {
-        link.title = `${res.status} ${res.statusText}`
-        link.innerText = '{{ i18n "SHORTCODE_GO_PLAYGROUND_ERROR" }}'
-      }
-    }
-
-    window.addEventListener('DOMContentLoaded', () => {
-      const links = document.querySelectorAll('a.go-playground-link')
-
-      for (const link of links) {
-        link.addEventListener('click', getGoPlaygroundLink)
-      }
-    })
+    window.goPlaygroundURL = '{{ $.Page.Site.Params.goPlayground }}'
   </script>
+
+  {{ .Scratch.Set "jsSrc" "js/sc-go-playground.js" }}
+  {{ $script := partial "build-js.tmpl" . }}
+  <script defer src="{{ $script.Permalink }}"></script>
 
   {{ $.Page.Scratch.Set "sc-go-playground" true }}
 {{ end }}

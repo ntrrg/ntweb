@@ -24,6 +24,7 @@ const PREFETCH = [
 ]
 
 const IGNORELIST = [
+  (url) => url.startsWith(`http://localhost`),
   (url) => !url.startsWith(`${BASEURL}/`),
   (url) => url === `${BASEURL}/en/build-info/index.json`,
   (url) => url === `${BASEURL}/es/build-info/index.json`,

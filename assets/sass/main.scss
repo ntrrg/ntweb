@@ -1,16 +1,22 @@
 @charset "utf-8";
 
-@import "../vendor/minireset-v0.0.6.min";
+@import "minireset.css/minireset.sass";
+
 @import "../css/markdown";
-
-@import "base.scss";
-@import "short-codes.scss";
-@import "theme.scss";
-
 @import "../css/highlight";
 @import "../css/highlight-monokailight";
 @import "../css/highlight-monokai";
 
+/*********/
+/* ntweb */
+/*********/
+
+@import "base.scss";
+@import "short-codes.scss";
+@import "themes.scss";
 @import "home.scss";
+
+/* Custom pages */
+
 @import "settings.scss";
 

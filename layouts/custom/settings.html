@@ -1,9 +1,3 @@
-{{ define "head-scripts" }}
-  {{ .Scratch.Set "jsSrc" "js/settings.js" }}
-  {{ $script := partial "build-js.tmpl" . }}
-  <script defer src="{{ $script.Permalink }}"></script>
-{{ end }}
-
 {{ define "article/content/before" }}
   <section class="site-settings">
     {{ range .Params.actions }}
@@ -28,5 +22,11 @@
       </div>
     {{ end }}
   </section>
+{{ end }}
+
+{{ define "scripts" }}
+  {{ .Scratch.Set "jsSrc" "js/settings.js" }}
+  {{ $script := partial "build-js.tmpl" . }}
+  <script defer src="{{ $script.Permalink }}"></script>
 {{ end }}
 

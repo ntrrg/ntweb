@@ -42,12 +42,14 @@
     {{ end }}
   </title>
 
-  {{ block "styles" . }}
+  {{ block "styles-default" . }}
     {{ .Scratch.Set "cssSrc" "sass/main.scss" }}
     {{ .Scratch.Set "cssOutput" "css/main.css" }}
     {{ $sheet := partial "build-css.tmpl" . }}
     <link rel="stylesheet" type="text/css" href="{{ $sheet.Permalink }}"/>
   {{ end }}
+
+  {{ block "styles" . }}{{ end }}
 
   {{ block "page-info-js" . }}
     <script>
@@ -67,7 +69,7 @@
     {{ end }}
   {{ end }}
 
-  {{ block "head-scripts" . }}{{ end }}
+  {{ block "scripts-head" . }}{{ end }}
 </head>
 
 {{ $bodyClass := printf "kind-%s type-%s" .Kind .Type }}
@@ -185,11 +187,13 @@
 
   {{ block "pop-up" . }}{{ partial "popup.tmpl" . }}{{ end }}
 
-  {{ block "scripts" . }}
+  {{ block "scripts-default" . }}
     {{ .Scratch.Set "jsSrc" "js/main.js" }}
     {{ $script := partial "build-js.tmpl" . }}
     <script defer src="{{ $script.Permalink }}"></script>
   {{ end }}
+
+  {{ block "scripts" . }}{{ end }}
 </body>
 </html>
 

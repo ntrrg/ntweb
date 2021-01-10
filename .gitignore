@@ -16,9 +16,6 @@ nogit-*
 # GNU Screen
 .screenrc
 
-# Mage
-.mage/output/
-
 # Sublime Text
 *.sublime*
 
