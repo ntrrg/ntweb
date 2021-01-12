@@ -54,3 +54,6 @@ _build:
   list: false
 ---
 
+{{% wrap class="center" style="margin-top: 1em;" %}}
+**GPG:** [`7F90 8F3A 0D38 C1E9 BBBC  3F5E 3D1B 29B6 05EE 7608`](/keys/ntrrg.gpg.asc)
+{{% /wrap %}}

@@ -21,14 +21,14 @@
   {{ end }}
 
   {{ with .Site.GetPage "/home/skills" }}
-    <section class="site-skills markdown">
+    <section id="cl" class="site-skills markdown">
       <div class="section-title">{{ .Title }}</div>
       <div class="section-content markdown">{{ .Content }}</div>
     </section>
   {{ end }}
 
   {{ with .Site.GetPage "/home/social" }}
-    <section class="site-social markdown">
+    <section id="contact" class="site-social markdown">
       <div class="section-title">{{ .Title }}</div>
 
       <div class="section-content">
@@ -46,6 +46,8 @@
             {{ end }}
           {{ end }}
         </ul>
+
+        <div class="markdown">{{ .Content }}</div>
       </div>
     </section>
   {{ end }}
