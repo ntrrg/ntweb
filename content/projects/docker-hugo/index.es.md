@@ -1,6 +1,6 @@
 ---
 publishdate: 2018-05-06T22:07:39-04:00
-date: 2020-10-10T06:26:05-04:00
+date: 2021-01-06T23:06:55-04:00
 metadata:
   source-code: https://github.com/ntrrg/docker-hugo
   license: MIT
@@ -22,9 +22,12 @@ tags:
 
 | Etiqueta | Dockerfile |
 | --: | :-- |
-| `latest`, `0.76.3` | [Dockerfile](https://github.com/ntrrg/docker-hugo/blob/0.76.3/Dockerfile) |
-| `extended`, `0.76.3-extended` | [Dockerfile](https://github.com/ntrrg/docker-hugo/blob/0.76.3/extended.Dockerfile) |
-| `docs`, `0.76.3-docs` | [Dockerfile](https://github.com/ntrrg/docker-hugo/blob/0.76.3/docs.Dockerfile) |
+| `latest`, `0.80.0` | [Dockerfile](https://github.com/ntrrg/docker-hugo/blob/0.80.0/Dockerfile) |
+| `extended`, `0.80.0-extended` | [Dockerfile](https://github.com/ntrrg/docker-hugo/blob/0.80.0/extended.Dockerfile) |
+| `docs`, `0.80.0-docs` | [Dockerfile](https://github.com/ntrrg/docker-hugo/blob/0.80.0/docs.Dockerfile) |
+| `0.79.1` | [Dockerfile](https://github.com/ntrrg/docker-hugo/blob/0.79.1/Dockerfile) |
+| `0.78.2` | [Dockerfile](https://github.com/ntrrg/docker-hugo/blob/0.78.2/Dockerfile) |
+| `0.76.5` | [Dockerfile](https://github.com/ntrrg/docker-hugo/blob/0.76.5/Dockerfile) |
 
 Cada imagen tiene las variaciones `extended` y `docs`. La primera contiene la
 versión extendida de Hugo, y la segunda es el sitio web de Hugo.
