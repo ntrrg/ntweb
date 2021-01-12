@@ -4,7 +4,7 @@
 
 <div {{ with $id }}id="{{ . }}"{{ end }}
      {{ with $class }}class="{{ . }}"{{ end }}
-     {{ with $style }}style="{{ . }}"{{ end }}>
+     {{ with $style }}style="{{ safeCSS . }}"{{ end }}>
   {{ .Inner }}
 </div>
 
