@@ -4,7 +4,7 @@
 
 {{ if or (eq $bundle nil) (eq hugo.Environment "development") }}
   {{ range $scripts }}
-    {{ if strings.HasPrefix . "http" }}
+    {{ if findRE "^https?://" . 1 }}
       <script {{ $mode | safeHTMLAttr }} src="{{ . }}"></script>
     {{ else }}
       {{ $script := resources.Get . }}

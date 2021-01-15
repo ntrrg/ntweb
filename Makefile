@@ -76,5 +76,5 @@ docker-shell:
 # Make #
 ########
 
-# Disable parallelism #
+# Disable parallelism
 .NOTPARALLEL:

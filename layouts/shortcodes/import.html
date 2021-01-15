@@ -1,6 +1,6 @@
 {{ $path := .Get 0 }}
 
-{{ if not (strings.HasPrefix $path "/") }}
+{{ if not (findRE "^https?://" $path 1) }}
   {{ $path = path.Join "content" $.Page.File.Dir $path }}
 {{ end }}
 

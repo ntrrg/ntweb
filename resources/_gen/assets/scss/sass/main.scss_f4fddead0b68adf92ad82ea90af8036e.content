@@ -876,6 +876,7 @@ body > main {
 /* Series */
 .article-series-serie th,
 .article-series-serie td {
+  background: var(--background);
   border: 0.1em solid;
   padding: 0.5em 1em; }
 

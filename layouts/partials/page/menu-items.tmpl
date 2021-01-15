@@ -5,7 +5,7 @@
     {{- if eq $i 0 -}}{{- $menu.before -}}{{- end -}}
     {{- $menu.beforeEach -}}
 
-    {{- if strings.HasPrefix .url "http" -}}
+    {{- if findRE "^https?://" .url 1 -}}
       <a href="{{ .url }}" target="_blank"
          rel="noopener noreferrer">{{ .text }}</a>
     {{- else -}}

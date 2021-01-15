@@ -4,8 +4,8 @@ description: Short description.
 image: https://via.placeholder.com/350x350
 sortBy: PublishDate | -PublishDate
 autolist: true
-toc: false
 aside: false
+toc: false
 comments: false
 draft: true
 ---

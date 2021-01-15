@@ -1,0 +1,15 @@
+{{ define "head" }}
+  {{ $url := .Params.redirectsto }}
+
+  {{ if not (findRE "^https?://" $url 1) }}
+    {{ $page := .Site.GetPage .Params.redirectsto }}
+    {{ $url = $page.Permalink }}
+  {{ end }}
+
+  <meta charset="utf-8">
+  <link rel="canonical" href="{{ $url }}">
+  <meta name="robots" content="noindex">
+  <meta http-equiv="refresh" content="0; url={{ $url }}">
+{{ end }}
+
+{{ define "body" }}&nbsp;{{ end }}

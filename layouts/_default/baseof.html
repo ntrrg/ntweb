@@ -1,6 +1,7 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="{{ .Site.Language | default "en" }}">
 <head>
+{{ block "head" . }}
   {{ if ne hugo.Environment "development" }}
     {{ with .Site.Params.googleTagManager }}
       <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -70,9 +71,14 @@
   {{ end }}
 
   {{ block "scripts-head" . }}{{ end }}
+{{ end }}
 </head>
 
 {{ $bodyClass := printf "kind-%s type-%s" .Kind .Type }}
+
+{{ if isset .Params "layout" }}
+  {{ $bodyClass = printf "%s layout-%s" $bodyClass .Params.layout }}
+{{ end }}
 
 {{ if ne .Pages nil }}
   {{ $bodyClass = printf "%s has-pages" $bodyClass }}
@@ -100,6 +106,7 @@
 {{ end }}
 
 <body class="{{ $bodyClass }}">
+{{ block "body" . }}
   {{ if ne hugo.Environment "development" }}
     {{ with .Site.Params.googleTagManager }}
       <noscript>
@@ -109,81 +116,81 @@
     {{ end }}
   {{ end }}
 
-  {{ block "body" . }}
-    <header role="banner">
-      {{ block "header" . }}
-        {{ partial "page/header.tmpl" . }}
-      {{ end }}
-    </header>
+  <header role="banner">
+  {{ block "header" . }}
+    {{ partial "page/header.tmpl" . }}
+  {{ end }}
+  </header>
 
-    <main role="main">
-      {{ block "main" . }}
-        {{ block "aside" . }}{{ end }}
+  <main role="main">
+  {{ block "main" . }}
+    <aside class="article-sidebar">
+    {{ block "aside" . }}{{ end }}
+    </aside>
 
-        {{ $articleClass := "" }}
+    {{ $articleClass := "" }}
 
+    {{ if isset .Params "image" }}
+      {{ $articleClass = printf "%s has-image" $articleClass }}
+    {{ end }}
+
+    <article class="article {{ $articleClass }}">
+      <header class="article-header">
+      {{ block "article/header" . }}
         {{ if isset .Params "image" }}
-          {{ $articleClass = printf "%s has-image" $articleClass }}
+          <img class="article-image" alt="{{ .Title }}"
+               src="{{ .Params.image }}"/>
         {{ end }}
 
-        <article class="article {{ $articleClass }}">
-          <header class="article-header">
-            {{ block "article/header" . }}
-              {{ if isset .Params "image" }}
-                <img class="article-image" alt="{{ .Title }}"
-                     src="{{ .Params.image }}"/>
-              {{ end }}
+        <h1 class="article-title">{{ .Title }}</h1>
 
-              <h1 class="article-title">{{ .Title }}</h1>
-
-              <p class="article-description">
-                {{ with .Description }}
-                  {{ $sectDesc := ($.Site.GetPage $.Section).Description }}
-                  {{ if or ($.IsSection) (ne . $sectDesc) }}{{ . }}{{ end }}
-                {{ end }}
-              </p>
-
-              <div class="article-metadata">
-                {{ partial "page/metadata.tmpl" . }}
-              </div>
-            {{ end }}
-          </header>
-
-          <section class="article-before-content">
-            {{ block "article/content/before" . }}{{ end }}
-          </section>
-
-          <section class="article-content">
-            {{ block "article/content" . }}
-              <div class="markdown">{{ .Content }}<div>
-            {{ end }}
-          </section>
-
-          <section class="article-after-content">
-            {{ block "article/content/after" . }}{{ end }}
-          </section>
-
-          {{ block "article/footer" . }}
-            <footer class="article-footer"></footer>
+        <p class="article-description">
+          {{ with .Description }}
+            {{ $sectDesc := ($.Site.GetPage $.Section).Description }}
+            {{ if or ($.IsSection) (ne . $sectDesc) }}{{ . }}{{ end }}
           {{ end }}
+        </p>
 
-          {{ block "article/comments" . }}
-            <section class="article-comments">
-              {{ if eq .Params.comments true }}
-                {{ partial "page/comments.tmpl" . }}
-              {{ end }}
-            </section>
-          {{ end }}
-        </article>
+        <div class="article-metadata">
+          {{ partial "page/metadata.tmpl" . }}
+        </div>
       {{ end }}
-    </main>
+      </header>
 
-    <footer>
-      {{ block "footer" . }}
-        {{ partial "page/footer.tmpl" . }}
+      <section class="article-before-content">
+        {{ block "article/content/before" . }}{{ end }}
+      </section>
+
+      <section class="article-content">
+      {{ block "article/content" . }}
+        <div class="markdown">{{ .Content }}<div>
       {{ end }}
-    </footer>
+      </section>
+
+      <section class="article-after-content">
+      {{ block "article/content/after" . }}{{ end }}
+      </section>
+
+      <footer class="article-footer">
+      {{ block "article/footer" . }}{{ end }}
+      </footer>
+
+      <section class="article-comments">
+      {{ block "article/comments" . }}
+        {{ if eq .Params.comments true }}
+          {{ partial "page/comments.tmpl" . }}
+        {{ end }}
+      {{ end }}
+      </section>
+    </article>
   {{ end }}
+  </main>
+
+  <footer>
+  {{ block "footer" . }}
+    {{ partial "page/footer.tmpl" . }}
+  {{ end }}
+  </footer>
 
   {{ block "pop-up" . }}{{ partial "popup.tmpl" . }}{{ end }}
 
@@ -194,6 +201,7 @@
   {{ end }}
 
   {{ block "scripts" . }}{{ end }}
+{{ end }}
 </body>
 </html>
 

@@ -1,3 +1,11 @@
+{{ define "aside" }}
+  <div>
+    {{ if eq .Params.aside true }}
+      {{ partial "page/aside.tmpl" . }}
+    {{ end }}
+  </div>
+{{ end }}
+
 {{ define "article/content/after" }}
   <section class="page-list">
     {{ if ne .Params.autolist false }}

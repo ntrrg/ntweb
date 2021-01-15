@@ -22,7 +22,7 @@ params:
     - series
   relatedCount: 5
   #googleTagManager: GTM-NZ2R3W7
-  disqus: ntweb
+  #disqus: ntweb
   interledger: "$ilp.uphold.com/YM4XLxrdPh44"
   goPlayground: https://play.golang.org
   projects:

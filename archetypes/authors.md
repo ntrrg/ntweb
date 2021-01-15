@@ -7,8 +7,8 @@ metadata:
   name: John Doe
   email: john@example.com
   website: https://example.com/en/authors/john
-toc: false
 aside: false
+toc: false
 comments: false
 ---
 

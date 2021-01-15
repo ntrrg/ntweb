@@ -10,8 +10,8 @@ tags:
   - tag1
   - tag2
   - tag3
-toc: false
 aside: false
+toc: false
 comments: false
 draft: true
 ---

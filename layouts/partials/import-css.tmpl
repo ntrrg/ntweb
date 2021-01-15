@@ -3,7 +3,7 @@
 
 {{ if or (eq $bundle nil) (eq hugo.Environment "development") }}
   {{ range $sheets }}
-    {{ if strings.HasPrefix . "http" }}
+    {{ if findRE "^https?://" . 1 }}
       <link rel="stylesheet" type="text/css" href="{{ . }}"/>
     {{ else }}
       {{ $sheet := resources.Get . }}

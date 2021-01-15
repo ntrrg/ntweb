@@ -1,7 +1,7 @@
 ---
 title: Ciencia de la Computación
 description: Una compilación de artículos ordenados con la intención de hacer más sencillo familiarizarse con la informática, e incluso profundizar en diferentes temas, sin tener que pasar por esos momentos en los que no se tiene ni idea por donde empezar o qué hacer después, algo parecido a ir a la universidad.
-autolist: false
+autolist: true
 draft: true
 ---
 

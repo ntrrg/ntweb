@@ -10,6 +10,7 @@ tags:
   - tag1
   - tag2
   - tag3
+aside: false
 toc: false
 math: false
 comments: true
