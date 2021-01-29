@@ -28,6 +28,8 @@ params:
   projects:
     - https://github.com/ntrrg/docker-hugo
     - https://github.com/ntrrg/ntgo
+    - https://github.com/ntrrg/pish
+    - https://github.com/ntrrg/sdb
 defaultContentLanguage: en
 defaultContentLanguageInSubdir: true
 languages:
