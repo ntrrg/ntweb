@@ -1,4 +1,6 @@
-{{ $.Page.RenderString .Inner }}
+<div class="task-list">
+  {{ $.Page.RenderString .Inner }}
+</div>
 
 {{ if ne ($.Page.Scratch.Get "sc-task-list") true }}
   <script>
@@ -7,10 +9,7 @@
       const inputs = document.querySelectorAll(selector)
 
       for (const input of inputs) {
-        const list = input.closest('ul')
-        list.style.listStyle = 'none'
-        list.style.paddingLeft = '1em'
-        list.style.marginLeft = '0em'
+        input.removeAttribute('disabled')
       }
     })
   </script>

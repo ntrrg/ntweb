@@ -1,0 +1,32 @@
+{{ define "aside" }}
+  <div>
+    <div>
+      [<a id="anime-random-button" href="#">
+        {{- i18n "CUSTOM_ANIME_GET_RANDOM" -}}
+      </a>]
+    </div>
+
+    {{ if eq .Params.aside true }}
+      {{ partial "page/aside.tmpl" . }}
+    {{ end }}
+  </div>
+{{ end }}
+
+{{ define "styles" }}
+  <style>
+    .task-list li.active {
+      border: 0.25em dashed var(--accent-color);
+      padding: 1em;
+
+      margin-top: 0.5em;
+      margin-bottom: 0.5em;
+    }
+  </style>
+{{ end }}
+
+{{ define "scripts" }}
+  {{ .Scratch.Set "jsSrc" "js/anime-list.js" }}
+  {{ $script := partial "build-js.tmpl" . }}
+  <script defer src="{{ $script.Permalink }}"></script>
+{{ end }}
+

@@ -1,6 +1,6 @@
 ---
 publishdate: 2018-07-08T21:29:39-04:00
-date: 2020-05-30T06:53:21-04:00
+date: 2021-02-05T20:50:58-04:00
 metadata:
   source-code: https://github.com/ntrrg/ntgo
   license: MIT
@@ -9,8 +9,6 @@ description: A collection of Go packages.
 tags:
   - library
   - go
-toc: true
-comments: true
 ---
 
 [![GitHub Actions](https://github.com/ntrrg/ntgo/workflows/Go/badge.svg)](https://github.com/ntrrg/ntgo/actions?query=workflow:Go)
@@ -25,15 +23,7 @@ Since this project is personal and experimental, it doesn't provide any kind of
 guarantee or backward compatibility.
 {{% /note %}}
 
-| Package | Status |
-| :-- | :-- |
-| `bytes` | ![API status](https://img.shields.io/badge/status-stable-brightgreen.svg) [![GoDoc](https://godoc.org/ntrrg.dev/go/ntgo/bytes?status.svg)](https://godoc.org/ntrrg.dev/go/ntgo/bytes) |
-| `net` | |
-| `net/http` | ![API status](https://img.shields.io/badge/status-unstable-red.svg) [![GoDoc](https://godoc.org/ntrrg.dev/go/ntgo/net/http?status.svg)](https://godoc.org/ntrrg.dev/go/ntgo/net/http) |
-| `net/http/middleware` | ![API status](https://img.shields.io/badge/status-testing-yellow.svg) [![GoDoc](https://godoc.org/ntrrg.dev/go/ntgo/net/http/middleware?status.svg)](https://godoc.org/ntrrg.dev/go/ntgo/net/http/middleware) |
-| `os` | ![API status](https://img.shields.io/badge/status-stable-brightgreen.svg) [![GoDoc](https://godoc.org/ntrrg.dev/go/ntgo/os?status.svg)](https://godoc.org/ntrrg.dev/go/ntgo/os) |
-| `reflect` | |
-| `reflect/arithmetic` | ![API status](https://img.shields.io/badge/status-stable-brightgreen.svg) [![GoDoc](https://godoc.org/ntrrg.dev/go/ntgo/reflect/arithmetic?status.svg)](https://godoc.org/ntrrg.dev/go/ntgo/reflect/arithmetic) |
+{{< import "packages.md" >}}
 
 # Support
 
