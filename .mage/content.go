@@ -106,7 +106,7 @@ func (Gen) Projects() error {
 			return err
 		}
 
-		if err := ntos.Cp(dst, src); err != nil {
+		if err := ntos.Copy(dst, src); err != nil {
 			return err
 		}
 
