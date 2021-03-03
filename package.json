@@ -8,7 +8,7 @@
     "type": "git",
     "url": "git+https://github.com/ntrrg/ntweb.git"
   },
-  "author": "ntrrg",
+  "author": "Miguel Angel Rivera Notararigo <ntrrgx@gmail.com> (https://ntrrg.dev)",
   "license": "CC-BY-4.0",
   "bugs": {
     "url": "https://github.com/ntrrg/ntweb/issues"

@@ -263,24 +263,17 @@ func main() {
 ## Paquetes
 
 En Go, la unidad mínima con sentido es el paquete, que es un conjunto de
-[Archivos](#archivos) `.go` con el mismo nombre de paquete y están en la misma
-carpeta. 
+archivos `.go` con el mismo nombre de paquete y están en la misma carpeta. 
 
 Para definir el nombre del paquete, los archivos deben iniciar con una línea
 que contenga `package NOMBRE`, donde `NOMBRE` es un valor arbitrario y es el
 identificador con el que otros desarrolladores podrán utilizarlo dentro de sus
 programas (ver [Paquetes externos](#paquetes-externos)).
 
-Dentro de un paquete pueden existir archivos de prueba, estos son ignorados al
-momento de compilar el paquete, pero serán procesados al usar el comando `go
-test`. Los archivos de prueba pueden usar el mismo nombre de paquete que los
-demás archivos, pero también es posible agregarle el sufijo `_test`, lo que
-permite probar el paquete desde la perspectiva de un usuario (ver
-[Pruebas](#pruebas) y [Ejemplos](#ejemplos)).
-
 Todos los archivos de un paquete comparten el ámbito global, por lo que al
 declarar un identificador global en un archivo, este podrá ser utilizado en
-cualquier otro archivo (ver [Ámbito](#ámbito)).
+cualquier otro archivo (ver [Identificadores](#identificadores) y
+[Ámbito](#ámbito)).
 
 Cuando se pretende desarrollar un programa, se debe usar `main` como nombre del
 paquete. `main` es un valor especial que le dice al compilador que la intención
@@ -489,7 +482,7 @@ imag     len   make     new      panic  print
 println  real  recover
 
 // Identificadores especiales
-init
+init main
 ```
 
 ## Constantes
@@ -2515,6 +2508,12 @@ $ godoc -http :6060 -play
 ```
 
 # Pruebas
+
+Dentro de un paquete pueden existir archivos de prueba, estos son ignorados al
+momento de compilar el paquete, pero serán procesados al usar el comando `go
+test`. Los archivos de prueba pueden usar el mismo nombre de paquete que los
+demás archivos, pero también es posible agregarle el sufijo `_test`, lo que
+permite probar el paquete desde la perspectiva de un usuario.
 
 ## Ejemplos
 

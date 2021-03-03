@@ -107,6 +107,9 @@ markup:
     startLevel: 1
     endLevel: 6
   goldmark:
+    attribute:
+      block: true
+      title: true
     renderer:
       unsafe: true
 enableRobotsTXT: true
