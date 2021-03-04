@@ -24,7 +24,7 @@ que hay que tener cuidado si se va a ver alguno con niños o alguna persona
 sensible 😂.
 
 {{< task-list >}}
-* 18if
+* [ ] 18if
 
 * **91 Days**
   * [x] [91 Days](https://myanimelist.net/anime/32998/91_Days)

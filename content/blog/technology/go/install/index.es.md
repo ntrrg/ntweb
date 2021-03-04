@@ -1,8 +1,8 @@
 ---
-title: Instalar Go 1.15 en Linux
-publishdate: 2020-08-19T16:10:00-04:00
-date: 2021-01-11T20:50:00-04:00
-description: Instalar Go 1.15 es bastante sencillo, con solo seguir unas pocas instrucciones cualquiera puede hacerlo.
+title: Instalar Go en Linux
+publishdate: 2019-11-12T10:10:00-04:00
+date: 2021-03-04T10:20:00-04:00
+description: Instalar Go es bastante sencillo, con solo seguir unas pocas instrucciones cualquiera puede hacerlo.
 image: images/go.png
 tags:
   - tecnología
@@ -13,6 +13,11 @@ tags:
   - linux
   - alpine
   - debian
+aliases:
+  - /es/blog/instalar-go-1.13/
+  - /es/blog/instalar-go-1.13-en-linux/
+  - /es/blog/instalar-go-1.14-en-linux/
+  - /es/blog/instalar-go-1.15-en-linux/
 ---
 
 La forma más rápida de instalarlo es descargando la versión binaria, si se
@@ -20,9 +25,11 @@ quiere compilar desde el código fuente, en [esta sección](#desde-el-código-fu
 explico el procedimiento para hacerlo.
 
 {{% note %}}
-Para instalar otra arquitectura, hay que cambiar el `amd64` por el código de la
-arquitectura que se necesite. Las sumas de comprobación de los archivos no
-serán iguales a las de este artículo.
+Para instalar otra versión o usar otra arquitectura, solo hay que cambiar
+`1.15.6` o `amd64` por los valores deseados en los comandos.
+
+Si se hace algún cambio, las sumas de comprobación de los archivos no serán
+iguales a las de este artículo.
 {{% /note %}}
 
 1\. Descargar el paquete con los binarios

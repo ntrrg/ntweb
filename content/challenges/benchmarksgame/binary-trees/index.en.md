@@ -13,10 +13,6 @@ tags:
 
 See the [challenge description](https://benchmarksgame-team.pages.debian.net/benchmarksgame/description/binarytrees.html#binarytrees).
 
-The solution to this challenge is not fully compliant to the challenge rules, I 
-just wanted to learn about profiling Go programs and tweak them to run as fast
-as its C and Rust counter-parts (and indeed it is faster).
-
 # Usage
 
 ```shell-session
@@ -30,6 +26,10 @@ $ echo 10 | ./solution
 {{< challenge-sample >}}
 
 # Solution
+
+This solution is not fully compliant to the challenge rules, I just wanted to
+learn about profiling Go programs and tweak them to run as fast as its C and
+Rust counter-parts (and indeed it is faster).
 
 {{< snippet path="main.go" hl="go" foldable=true >}}
 

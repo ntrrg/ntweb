@@ -65,7 +65,7 @@ desarrollo activo; el estado actual del proyecto puede verse desde <https://buil
 
 * La última versión estable de Go instalada.
 
-{{< card "blog/technology/go/install/1-14/" >}}
+{{< card "blog/technology/go/install/" >}}
 
 * El código fuente. Se puede clonar desde el repositorio oficial o GitHub.
 

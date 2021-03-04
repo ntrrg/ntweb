@@ -6,7 +6,6 @@ import (
 	"bufio"
 	"bytes"
 	"encoding/json"
-	"io/ioutil"
 	"os"
 	"path"
 	"path/filepath"
@@ -79,7 +78,7 @@ func (Gen) Cache() error {
 		return err
 	}
 
-	return ioutil.WriteFile(filepath.Join("static", cacheFile), data, 0644)
+	return os.WriteFile(filepath.Join("static", cacheFile), data, 0644)
 }
 
 //////////////
@@ -137,7 +136,7 @@ metadata:
 		}
 
 		for _, index := range indexes {
-			content, err := ioutil.ReadFile(index)
+			content, err := os.ReadFile(index)
 			if err != nil {
 				return err
 			}
@@ -155,7 +154,7 @@ metadata:
 				return err
 			}
 
-			if err := ioutil.WriteFile(index, content, fi.Mode()); err != nil {
+			if err := os.WriteFile(index, content, fi.Mode()); err != nil {
 				return err
 			}
 		}
@@ -219,7 +218,7 @@ func writeMultiLangFile(
 	for lang, content := range content {
 		path := path[:i] + "." + lang + ext
 
-		err := ioutil.WriteFile(path, content, mode)
+		err := os.WriteFile(path, content, mode)
 		if err != nil {
 			return err
 		}
@@ -238,7 +237,7 @@ func init() {
 
 	// Read config file
 
-	data, err := ioutil.ReadFile(hugoConfig)
+	data, err := os.ReadFile(hugoConfig)
 	if err != nil {
 		panic(err)
 	}

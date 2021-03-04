@@ -172,7 +172,7 @@ Para empezar a programar solo se necesitan dos cosas:
 
 * Un compilador de código fuente Go.
 
-{{< card "blog/technology/go/install/1-15" >}}
+{{< card "blog/technology/go/install/" >}}
 
 * Un editor de texto.
 
