@@ -54,17 +54,16 @@
 
   {{ block "page-info-js" . }}
     <script>
-      window.hpage = { params: {} }
-      window.hpage.params = JSON.parse('{{ .Params | jsonify }}')
+      window.hpage = { params: {{ .Params }} }
     </script>
 
     {{ $i18nFile := printf "i18n/%s.toml" .Site.Language }}
 
     {{ if fileExists $i18nFile }}
-      {{ $i18n := $i18nFile | readFile | unmarshal | jsonify }}
+      {{ $i18n := $i18nFile | readFile | unmarshal }}
 
       <script>
-        window.hi18nData = JSON.parse('{{ $i18n }}')
+        window.hi18nData = {{ $i18n }}
         window.hi18n = (key) => window.hi18nData[key].other
       </script>
     {{ end }}
