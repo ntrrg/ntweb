@@ -32,7 +32,7 @@ jobs:
           tar -xf "/tmp/hugo.tar.gz" -C "/tmp/"
           sudo cp "/tmp/hugo" "/usr/bin/"
           #
-          sudo yarn global add netlify-cli --prefix "/usr/local"
+          sudo yarn global add netlify-cli --prefix "/usr"
 
       - name: Get source code
         uses: actions/checkout@v2
