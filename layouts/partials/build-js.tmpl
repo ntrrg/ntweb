@@ -3,7 +3,7 @@
 {{ $opts := .Scratch.Get "jsOptions" | default dict }}
 
 {{ $jsOpts := dict "targetPath" $output }}
-{{ $jsOpts = merge $jsOpts (dict "target" "esnext") }}
+{{ $jsOpts = merge $jsOpts (dict "target" "es2017") }}
 {{ $jsOpts = merge $jsOpts (dict "format" "iife") }}
 {{ $jsOpts = merge $jsOpts (dict "externals" (slice)) }}
 {{ $jsOpts = merge $jsOpts (dict "defines" (dict)) }}
