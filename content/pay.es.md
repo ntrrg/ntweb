@@ -1,7 +1,8 @@
 ---
+url: /es/pagar
 title: Pagos y donaciones
 aliases:
-  - /es/pagar
+  - /es/pay
   - /es/payments
   - /es/pagos
   - /es/donate
@@ -138,6 +139,10 @@ ntrrgx@gmail.com
 ## Google Fi
 
 <https://g.co/fi/r/NDC9RE>
+
+## Google Pay
+
+<https://g.co/payinvite/v36100h>
 
 ## MEGA
 

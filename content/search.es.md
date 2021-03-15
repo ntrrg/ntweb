@@ -1,5 +1,8 @@
 ---
+url: /es/buscar
 title: Buscar
+aliases:
+  - /es/search
 type: custom
 layout: search
 _build:

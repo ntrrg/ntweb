@@ -135,6 +135,10 @@ ntrrgx@gmail.com
 
 <https://g.co/fi/r/NDC9RE>
 
+## Google Pay
+
+<https://g.co/payinvite/v36100h>
+
 ## MEGA
 
 <https://mega.nz/aff=IkiSGALw5Tw>

@@ -1,4 +1,5 @@
 ---
+url: /es/ajustes
 title: Ajustes
 type: custom
 layout: settings

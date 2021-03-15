@@ -203,8 +203,6 @@ Páginas de primer nivel. Cada objeto tiene las propiedades `url` y `title`.
 
 <https://ntrrg.dev/es/:section/page/:pageNumber/index.json>
 
-<https://ntrrg.dev/es/tags/:tag/index.json>
-
 **Parámetros:**
 
 {{< params >}}
@@ -215,10 +213,6 @@ Nombre de la sección. Puede ser `blog`, `gallery` o `projects`.
 
 {{% param name=":pageNumber" type="Entero" %}}
 Número de página. La primera página es obtenida sin `page/:pageNumber/`.
-{{% /param %}}
-
-{{% param name=":tag" type="Cadena" %}}
-Nombre de la etiqueta. Debe ser [una etiqueta existente](./../../tags).
 {{% /param %}}
 
 {{< /params >}}

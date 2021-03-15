@@ -56,6 +56,9 @@ languages:
           - url: "/pay/"
         beforeEach: "["
         afterEach: "] "
+    permalinks:
+      blog: /blog/:slug/
+      projects: /projects/:slug/
   es:
     languageName: Español
     params:
@@ -77,6 +80,10 @@ languages:
           - url: "/pay/"
         beforeEach: "["
         afterEach: "] "
+    permalinks:
+      blog: /blog/:slug/
+      projects: /proyectos/:slug/
+      tags: /etiquetas/:slug/
 taxonomies:
   serie: series
   tag: tags
@@ -89,9 +96,6 @@ related:
     weight: 50
   threshold: 100
   toLower: false
-permalinks:
-  blog: /:sections/:slug/
-  projects: /:sections/:slug/
 theme: []
 Paginate: 10
 enableEmoji: true

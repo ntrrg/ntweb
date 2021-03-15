@@ -21,7 +21,7 @@ I coded with Python and JavaScript (Node.js) in the past. I also finished the
 
 As a Frontend Web Developer I can build websites and web applications for you,
 using modern and lightweight technologies like HTML5, CSS3, JavaScript, Hugo,
-Bulma, etc...
+Bulma, Alpine.js, etc...
 
 I can also architect and administrate your infrastructure, from bare metal
 servers to Cloud Providers, or even hybrid environments. I have proficiency
@@ -49,6 +49,7 @@ or [my projects](./../projects).
 
 * **Cloud:** GitHub Pages, Netlify, ZEIT Now, Heroku, Google Cloud Platform.
 
-* **Frameworks and libs:** [Bleve](https://www.blevesearch.com/), [Bulma](bulma.io/),
+* **Frameworks and libs:** [Alpine.js](https://github.com/alpinejs/alpine),
+  [Bleve](https://www.blevesearch.com/), [Bulma](bulma.io/),
   [Hugo](https://gohugo.io/).
 

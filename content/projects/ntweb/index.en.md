@@ -202,8 +202,6 @@ Top-level pages. Every object has the `url` and `title` properties.
 
 <https://ntrrg.dev/en/:section/page/:pageNumber/index.json>
 
-<https://ntrrg.dev/en/tags/:tag/index.json>
-
 **Parameters:**
 
 {{< params >}}
@@ -214,10 +212,6 @@ Section name. This should be an existent section.
 
 {{% param name=":pageNumber" type="Integer" %}}
 Page number. The first page is retrieved without `page/:pageNumber/`.
-{{% /param %}}
-
-{{% param name=":tag" %}}
-Tag name. This should be [an existent tag](./../../tags).
 {{% /param %}}
 
 {{< /params >}}

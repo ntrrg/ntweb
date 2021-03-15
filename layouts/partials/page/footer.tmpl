@@ -9,7 +9,9 @@
   <a href="https://fontawesome.com/license">FontAwesome</a>
   and
 
-  <a href="{{ absLangURL "projects/ntweb/" }}">
+  {{ $page := $.Site.GetPage "projects/ntweb" }}
+
+  <a href="{{ $page.Permalink }}">
     some other tools
   </a>
 </div>

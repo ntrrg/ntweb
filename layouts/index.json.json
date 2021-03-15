@@ -14,9 +14,10 @@
       {{ $i := 0 }}
       {{ range $name, $terms := .Site.Taxonomies }}
         {{ if ne $i 0 }},{{ end }}
+        {{ $page := $.Site.GetPage $name }}
         {
-          "url": {{ absLangURL $name | jsonify }},
-          "name": {{ jsonify $name }},
+          "url": {{ jsonify $page.Permalink }},
+          "title": {{ jsonify $page.Title }},
           "terms": {{ len $terms }}
         }
         {{ $i = add $i 1 }}
