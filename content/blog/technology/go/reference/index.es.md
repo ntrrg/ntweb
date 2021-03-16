@@ -148,7 +148,9 @@ func Reduce(s []int, f func(int, int) int, a int) int {
 
 * Aritmética de punteros. Es una funcionalidad muy poderosa, pero puede causar
   errores inesperados si no se sabe manejar, además que es un comportamiento
-  muy confuso para los programadores con menos experiencia.
+  muy confuso para los programadores con menos experiencia. (De hecho se puede
+  hacer con la ayuda de `reflect` y `unsafe`, pero es mejor decir que no para
+  que no se vuelva costumbre romper el sistema de manejo de memoria de Go)
 
 * Hilos de procesos (threads), una de las tareas que suele agregar muchísima
   complejidad al código fuente es la programación multithreading, aunque claro,
@@ -323,7 +325,7 @@ una carpeta `vendor` y un archivo `vendor/module.txt` se usa la opción
 go 1.14
 ```
 
-Y después se declara la lista de dependencias de sus paquetes.
+Y después se declara la lista de dependencias con sus respectivas versiones.
 
 ```
 require (
@@ -345,6 +347,20 @@ Se pueden usar rutas del sistema de archivos para agilizar el desarrollo
 
 ```
 replace github.com/ghodss/yaml v1.0.0 => ../yaml
+```
+
+Para los casos en los que se haya publicado una versión del módulo que no se
+debería usar porque contiene una falla de seguridad, rompe accidentalmente la
+compatibilidad, o cualquier razón relevante para sus usuarios, el autor puede
+usar `retract`, lo que genera una alerta al momento de que Go procese las
+dependencias.
+
+```
+// (Opcional) Razón por la que esta versión fue retractada.
+retract v0.9.0
+
+// Se pueden usar rangos de versiones
+retract [v0.4.0, v0.7.5]
 ```
 
 En resumen, el archivo debe verse de la siguiente manera:
@@ -3068,9 +3084,9 @@ require (
 )
 ```
 
-Suponiendo que el módulo tenga las versiones `v1.0.0`, `v1.0.1`, `v1.1.0`,
-`v1.2.0` y `v1.3.0-rc.1`; es posible especificar cual seleccionar de diferente
-maneras:
+Suponiendo que una dependencia tenga las versiones `v1.0.0`, `v1.0.1`,
+`v1.1.0`, `v1.2.0` y `v1.3.0-rc.1`; es posible especificar cual seleccionar de
+diferente maneras:
 
 * Con la versión completa (`vX.Y.Z`), que apunta a la versión especificada.
 
@@ -3078,10 +3094,10 @@ maneras:
   reciente que tenga ese prefijo. Si se usa `v1.0` la versión apropiada es
   `v1.0.1` y si se usa `v1` la versión apropiada es `v1.2.0`.
 
-* Con una comparación (`(< | <= | > | >=)vX.Y.X`), que apunta la versión más
-  reciente que cumpla la condición. Si se usa `<v1.1.0` la versión apropiada es
-  `v1.0.1`, si se usa `<=v1.1.0` la versión apropiada es `v1.1.0` y si se usa
-  `>=v1.1.0` la versión apropiada es `v1.2.0`
+* Con una comparación (`(< | <= | > | >=)vX.Y.X`), que apunta la versión
+  estable más reciente que cumpla la condición. Si se usa `<v1.1.0` la versión
+  apropiada es `v1.0.1`, si se usa `<=v1.1.0` la versión apropiada es `v1.1.0`
+  y si se usa `>=v1.1.0` la versión apropiada es `v1.2.0`
 
 * Con el nombre de una referencia de Git, puede ser una rama, una etiqueta, un
   hash de confirmación, etc...
@@ -3124,6 +3140,7 @@ require (
 
 exclude go.ntrrg.dev/ntgo v0.6.0
 ```
+
 
 Para agregar `replace`s se usa el comando `go mod edit`.
 
@@ -3191,9 +3208,9 @@ comando `go mod vendor`
 $ go mod vendor
 ```
 
-Para agregar o eliminar dependencias respectivamente de manera automática
-cuando no existan en el archivo `go.mod` pero son usadas por algún paquete o
-cuando ya no son usadas por ningún paquete se usa el comando `go mod tidy`.
+Para agregar o eliminar dependencias de manera automática cuando no existan en
+el archivo `go.mod` o cuando ya no son necesarias se usa el comando `go mod
+tidy`.
 
 ```shell-session
 $ go mod tidy
@@ -3222,6 +3239,34 @@ github.com/ntrrg/calc github.com/ghodss/yaml@v1.0.0
 github.com/ntrrg/calc go.ntrrg.dev/ntgo@v0.5.0
 github.com/ntrrg/calc gopkg.in/yaml.v2@v2.3.0
 gopkg.in/yaml.v2@v2.3.0 gopkg.in/check.v1@v0.0.0-20161208181325-20d25e280405
+```
+
+Para retractar una versión del módulo se usa el comando el comando `go mod
+edit`.
+
+```shell-session
+$ go mod edit -retract v0.1.0
+
+$ go mod edit -retract [v0.3.0, v0.7.0]
+```
+
+`go.mod`:
+
+```
+module github.com/ntrrg/calc
+
+go 1.14
+
+require (
+  github.com/ghodss/yaml v1.0.0
+  go.ntrrg.dev/ntgo v0.5.0
+  gopkg.in/yaml.v2 v2.3.0 // indirect
+)
+
+retract (
+  [v0.3.0, v0.7.0]
+  v0.1.0
+)
 ```
 
 ## Condiciones de compilación

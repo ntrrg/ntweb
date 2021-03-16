@@ -40,7 +40,7 @@ languages:
       description: I am Miguel Angel, just another developer working hard to not be just another developer.
       menu:
         items:
-          - url: "/blog/"
+          #- url: "/blog/"
           - url: "/projects/"
           - url: "/challenges/"
           - url: "https://www.instagram.com/ntrrg/"

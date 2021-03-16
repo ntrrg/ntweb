@@ -15,6 +15,8 @@ https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/
 
 https://ebookfoundation.github.io/free-programming-books/
 
+https://github.com/ossu/computer-science
+
 # Introducción
 
 {{< card "blog/technology/computer-science/intro" >}}
