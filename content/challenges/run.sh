@@ -2,16 +2,20 @@
 
 set -e
 
-main() {
+CHALLENGES_DIR="."
+TEST_CASE_FLAG=""
+
+_main() {
   case $1 in
     -h | --help )
-      show_help
+      _show_help
       return 0
       ;;
 
     -t | --test )
-      TEST_CASES_FLAG="input/input$2.txt"
-      shift; shift
+      TEST_CASE_FLAG="input/input$2.txt"
+      shift
+			shift
       ;;
   esac
 
@@ -26,7 +30,7 @@ main() {
 
   for CHALLENGE in $CHALLENGES; do
     local DIR="$(dirname "$CHALLENGE")"
-    local PREFIX="$(get_prefix "$DIR")"
+    local PREFIX="$(_get_prefix "$DIR")"
     local NAME=""
     local LANGUAGE=""
     local MODE=""
@@ -52,10 +56,10 @@ main() {
         ;;
     esac
 
-    local TEST_CASES="${TEST_CASES_FLAG:-$(
+    local TEST_CASES="${TEST_CASE_FLAG:-"$(
       find "input" -name "input??.txt" |
       LC_ALL="C" sort
-    )}"
+    )"}"
 
     local TEST_CASE=""
 
@@ -69,7 +73,7 @@ main() {
       fi
 
       printf "%s  * Test case %s: " "$PREFIX" "$TEST_CASE"
-      run "$INPUT" "$OUTPUT" "$MODE" || ERRORS=$?
+      _run "$INPUT" "$OUTPUT" "$MODE" || ERRORS=$?
     done
 
     cd "$OLDPWD"
@@ -78,7 +82,7 @@ main() {
   return $ERRORS
 }
 
-get_prefix() {
+_get_prefix() {
   local COUNT=$(( ($(echo "$1" | tr "/" "\n" | wc -l) - 2) * 2 ))
 
   while [ $COUNT -gt 0 ]; do
@@ -87,7 +91,7 @@ get_prefix() {
   done
 }
 
-run() {
+_run() {
   local INPUT="$1"
   local OUTPUT="$2"
   local MODE="$3"
@@ -110,11 +114,13 @@ run() {
   echo "[PASS]"
 }
 
-show_help() {
-  cat <<EOF
-$0 - Challenges runner.
+_show_help() {
+	BIN_NAME="$(basename "$0")"
 
-Usage: $0 [OPTIONS] [PATH]
+  cat <<EOF
+$BIN_NAME - Challenges runner.
+
+Usage: $BIN_NAME [OPTIONS] [PATH]
 
 Arguments:
   PATH
@@ -128,8 +134,5 @@ Options:
 EOF
 }
 
-CHALLENGES_DIR="."
-TEST_CASES_FLAG=""
-
-main "$@"
+_main "$@"
 

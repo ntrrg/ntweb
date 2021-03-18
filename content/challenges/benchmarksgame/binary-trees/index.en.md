@@ -1,5 +1,5 @@
 ---
-title: "binary-trees"
+title: "Binary Trees"
 date: 2020-12-05T17:00:00-04:00
 metadata:
   difficulty: Medium

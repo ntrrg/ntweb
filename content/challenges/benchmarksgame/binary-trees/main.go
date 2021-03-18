@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"os"
-	"runtime"
 	"runtime/pprof"
 	"sync"
 )
@@ -80,7 +79,6 @@ func main() {
 		}
 
 		defer f.Close()
-		runtime.GC()
 
 		if err := pprof.WriteHeapProfile(f); err != nil {
 			fmt.Fprintf(os.Stderr, "Can't profile memory usage: %v", err)
