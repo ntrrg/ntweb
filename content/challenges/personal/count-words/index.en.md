@@ -11,7 +11,35 @@ tags:
   - go
 ---
 
-See the [challenge description](https://benhoyt.com/writings/count-words/).
+Write a program to count the frequencies of unique words from standard input,
+then print them out with their frequencies, ordered most frequent first.
+
+A word is a case insensitive sequence of non-white-space characters, it means
+`Hello` and `hello` are the same word, but `bye` and `bye.` are different.
+
+**Rules:**
+
+* Do not load the whole input to memory, read it by chunks (unless it is a
+  small piece of text).
+
+* Don't parallelize the algorithm.
+
+* Don't implement fancy hash tables (unless the language doesn't have a
+  built-in hash table).
+
+* Use only the language standard library.
+
+# Input Format
+
+The whole input is a single test case. It may contain multiple lines.
+
+**Constraints:**
+
+* Text will be only ASCII character.
+
+# Output Format
+
+The output should be a line-separated list of words and their frequency.
 
 # Usage
 
