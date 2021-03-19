@@ -1,3 +1,13 @@
+@font-face {
+  src: local("monospace");
+  font-family: "monospace";
+  font-display: swap;
+
+  ascent-override: 73%;
+  descent-override: 25%;
+  line-gap-override: 2%;
+}
+
 :root {
   --font-family: monospace;
   --font-size: 16px;

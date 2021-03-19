@@ -837,6 +837,8 @@ nav a.is-active {
 
 /* Main */
 body > main {
+  content-visibility: auto;
+  contain-intrinsict-size: 0 70vh;
   max-width: 100vw;
   box-sizing: border-box;
   padding: 0em 1em;
@@ -939,6 +941,10 @@ body > main {
 
 .article-metadata {
   font-size: 0.8em; }
+
+.article-content {
+  content-visibility: auto;
+  contain-intrinsict-size: 0 500px; }
 
 .markdown h2::before,
 .markdown h3::before,
@@ -1140,6 +1146,14 @@ body > footer {
 
 .param-body p:first-child {
   margin-top: 0em; }
+
+@font-face {
+  src: local("monospace");
+  font-family: "monospace";
+  font-display: swap;
+  ascent-override: 73%;
+  descent-override: 25%;
+  line-gap-override: 2%; }
 
 :root {
   --font-family: monospace;
