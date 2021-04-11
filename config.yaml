@@ -26,6 +26,8 @@ params:
   interledger: "$ilp.uphold.com/YM4XLxrdPh44"
   goPlayground: https://play.golang.org
   projects:
+    - https://github.com/ntrrg/docker-bulma-docs
+    - https://github.com/ntrrg/docker-hdsentinel
     - https://github.com/ntrrg/docker-hugo
     - https://github.com/ntrrg/ntgo
     - https://github.com/ntrrg/pish
@@ -41,8 +43,8 @@ languages:
       menu:
         items:
           #- url: "/blog/"
-          - url: "/projects/"
           - url: "/challenges/"
+          - url: "/projects/"
           - url: "https://www.instagram.com/ntrrg/"
             text: "Gallery"
         beforeEach: "| "
