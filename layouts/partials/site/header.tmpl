@@ -4,7 +4,7 @@
   </strong>
 
   {{ .Scratch.Set "menuItems" "menu" }}
-  {{ partial "page/menu-items.tmpl" . }}
+  {{ partial "site/menu-items.tmpl" . }}
 </nav>
 
 <nav role="navigation" class="secondary-menu" aria-label="secondary-menu">
@@ -29,7 +29,7 @@
   {{ end }}
 
   {{ .Scratch.Set "menuItems" "secondaryMenu" }}
-  {{ partial "page/menu-items.tmpl" . }}
+  {{ partial "site/menu-items.tmpl" . }}
 </nav>
 
 {{ if .IsTranslated }}

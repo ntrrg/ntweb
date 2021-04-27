@@ -946,6 +946,9 @@ body > main {
   content-visibility: auto;
   contain-intrinsict-size: 0 500px; }
 
+.article-content .markdown > p:first-child {
+  display: none; }
+
 .markdown h2::before,
 .markdown h3::before,
 .markdown h4::before,

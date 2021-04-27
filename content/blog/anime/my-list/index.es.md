@@ -384,6 +384,7 @@ sensible 😂.
 * [ ] Tokyo ESP
 * [ ] Tokyo Ghoul
 * [ ] Tokyo Magnitude 8.0
+* [ ] Tokyo Revengers
 * [ ] Toradora!
 * [ ] Triage X
 * [ ] [Trigun](https://myanimelist.net/anime/6/Trigun)

@@ -38,6 +38,10 @@ func (Gen) Default() {
 	mg.SerialDeps(Gen.Projects, Gen.Cache)
 }
 
+func (Gen) DefaultDocker() {
+	mg.SerialDeps(Gen.Projects, Gen.CacheDocker)
+}
+
 func (Gen) Clean() error {
 	return sh.Rm(gitRepos)
 }
@@ -52,6 +56,21 @@ func (Gen) Cache() error {
 		return err
 	}
 
+	return genCache()
+}
+
+func (Gen) CacheDocker() error {
+	dockerOpts = append(dockerOpts, "-v", cacheDir+":"+cacheDir)
+
+	err := runHugoDocker("--cleanDestinationDir", "-d", cacheDir)
+	if err != nil {
+		return err
+	}
+
+	return genCache()
+}
+
+func genCache() error {
 	var files []string
 
 	fn := func(path string, info os.FileInfo, err error) error {
@@ -169,7 +188,7 @@ func cloneRepo(dst, src string) error {
 	}
 
 	if _, err := os.Stat(dst); err == nil {
-		return sh.Run("git", "-C", dst, "pull", "origin", "master")
+		return sh.Run("git", "-C", dst, "pull")
 	}
 
 	if err := sh.Run("git", "clone", src, dst); err != nil {
@@ -232,6 +251,10 @@ func init() {
 	cleanDeps = append(cleanDeps, Gen.Clean)
 
 	if err := os.MkdirAll(gitRepos, 0755); err != nil {
+		panic(err)
+	}
+
+	if err := os.MkdirAll(cacheDir, 0755); err != nil {
 		panic(err)
 	}
 

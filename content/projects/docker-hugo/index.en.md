@@ -1,6 +1,6 @@
 ---
 publishdate: 2018-05-06T22:07:39-04:00
-date: 2021-02-26T09:14:23-04:00
+date: 2021-03-31T05:31:11-04:00
 metadata:
   source-code: https://github.com/ntrrg/docker-hugo
   license: MIT
@@ -22,9 +22,10 @@ tags:
 
 | Tag | Dockerfile |
 | --: | :-- |
-| `latest`, `0.81.0` | [Dockerfile](https://github.com/ntrrg/docker-hugo/blob/0.81.0/Dockerfile) |
-| `extended`, `0.81.0-extended` | [Dockerfile](https://github.com/ntrrg/docker-hugo/blob/0.81.0/extended.Dockerfile) |
-| `docs`, `0.81.0-docs` | [Dockerfile](https://github.com/ntrrg/docker-hugo/blob/0.81.0/docs.Dockerfile) |
+| `latest`, `0.82.0` | [Dockerfile](https://github.com/ntrrg/docker-hugo/blob/0.82.0/Dockerfile) |
+| `extended`, `0.82.0-extended` | [Dockerfile](https://github.com/ntrrg/docker-hugo/blob/0.82.0/extended.Dockerfile) |
+| `docs`, `0.82.0-docs` | [Dockerfile](https://github.com/ntrrg/docker-hugo/blob/0.82.0/docs.Dockerfile) |
+| `0.81.0` | [Dockerfile](https://github.com/ntrrg/docker-hugo/blob/0.81.0/Dockerfile) |
 | `0.80.0` | [Dockerfile](https://github.com/ntrrg/docker-hugo/blob/0.80.0/Dockerfile) |
 | `0.79.1` | [Dockerfile](https://github.com/ntrrg/docker-hugo/blob/0.79.1/Dockerfile) |
 | `0.78.2` | [Dockerfile](https://github.com/ntrrg/docker-hugo/blob/0.78.2/Dockerfile) |
