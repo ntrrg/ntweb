@@ -1,7 +1,7 @@
 ---
 title: Introducción a la Informática
 publishdate: 2020-03-17T11:00:00-04:00
-date: 2020-06-05T15:20:00-04:00
+date: 2021-05-06T17:10:00-04:00
 description: Fundamentos de la informática. Orientado a personas sin conocimiento previo, pero también puede ser interesante para los que ya están familiarizados con la tecnología.
 series:
   - computer-science
@@ -158,16 +158,24 @@ que lo ejecute.
 
 # Conclusiones
 
-En resumen, la informática consiste en sistematizar y automatizar procesos,
-pero con los grandes avances tecnológicos que se han logrado estos últimos años
-y lo complejas que se han vuelto sus aplicaciones, es imposible que una sola
-persona pueda cumplir con todos los perfiles del mercado.
+En resumen, la informática consiste en sistematizar y automatizar procesos, en
+tratar de simplificar tareas y hacer lo más fácil posible la vida de la
+humanidad.
+
+Generalmente la informática se relaciona con la matemática, y de hecho tiene
+mucho sentido pues la computación es el producto de la aplicación de muchas
+teorías matemáticas, pero algunas ramas se enfocan más en la creatividad y el
+arte, otras en la gerencia y manejo de recursos, por lo que se puede catalogar
+como un área de estudio multidisciplinaria en la que pueden participar personas
+con inteligencias muy variadas.
 
 Algunas de las actividades que desempeñan los profesionales de la informática
 son:
 
 * Desarrollo de Software
   * Desarrollo de Firmware
+  * Desarrollo de Sistemas Operativos
+  * Desarrollo de Lenguajes de Programación
   * Desarrollo de Aplicaciones de escritorio
   * Desarrollo de Videojuegos
   * Desarrollo Web
@@ -177,6 +185,9 @@ son:
   * Desarrollo Móvil
   * Desarrollo de Realidad Virtual/Realidad Aumentada
   * Desarrollo de Aplicaciones distribuidas
+* Seguridad informática
+  * Informática forense
+  * Hacking ético
 * Administración de Sistemas
   * Servicio Técnico
   * Administración de Servidores
@@ -196,7 +207,12 @@ son:
 * ...
 
 **Nota:** se debe resaltar que cada perfil se subdivide en los lenguajes de
-programación y herramientas que se usen.
+programación y herramientas que se usen, por ejemplo: un desarrollador backend
+que se haya especializado en el lenguaje de programación Go no encajará en
+roles en los que se necesite un programador backend que use JavaScript;
+inclusive, un programador frontend que use JavaScript y React (que es una
+herramienta creada con JavaScript), no encajará en un perfil fontend que use
+JavaScript y Vue (que es otra herramienta creada con JavaScript).
 
 El nivel de complejidad de cada perfil sigue expandiéndose en cada área, por lo
 que es muy probable que en un futuro, cada uno de estos temas representen una
@@ -213,6 +229,9 @@ carrera universitaria completa cada uno.
 **Wikipedia.** *Algorithm.* <https://en.wikipedia.org/wiki/Algorithm>
 
 # Registro de cambios
+
+* **2021/05/06:** Mejoré la sección de conclusiones, agregué algunos roles más
+  y mejoré la explicación sobre la complejidad de cada perfil.
 
 * **2020/06/04:** Decidí mover la explicación sobre cómo es representada la
   información a su [propio artículo](./../data/) para dedicarle la suficiente

@@ -17,7 +17,7 @@ draft: true
 
 # Paragraphs
 
-Any line with blank lines before and after it is a paragrah, consequent lines
+Any line with blank lines before and after it is a paragraph, consequent lines
 are joined.
 
 You need a blank line for a new paragraph.
