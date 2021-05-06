@@ -2,10 +2,10 @@
   position: relative;
 }
 
-/* Paragrahps */
+/* Paragraphs */
 
 .markdown p {
-  margin-bottom: 0.5em;
+  margin-bottom: 1em;
 }
 
 .markdown p:last-child {
