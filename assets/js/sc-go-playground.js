@@ -23,22 +23,22 @@ async function getGoPlaygroundLink(e) {
 
   e.preventDefault()
   link.title = ''
-  link.innerText = hi18n('SHORTCODE_GO_PLAYGROUND_SENDING')
+  link.innerText = i18n('SHORTCODE_GO_PLAYGROUND_SENDING')
 
   const res = await fetch(goPlaygroundURL + '/share', {
     method: 'POST',
     body: base64Decode(code)
   }).catch((err) => {
     link.title = err
-    link.innerText = hi18n('SHORTCODE_GO_PLAYGROUND_ERROR')
+    link.innerText = i18n('SHORTCODE_GO_PLAYGROUND_ERROR')
   })
 
   if (res.ok) {
     const id = await res.text()
     link.href = `${goPlaygroundURL}/p/${id}`
-    link.innerText = hi18n('SHORTCODE_GO_PLAYGROUND_OPEN')
+    link.innerText = i18n('SHORTCODE_GO_PLAYGROUND_OPEN')
   } else {
     link.title = `${res.status} ${res.statusText}`
-    link.innerText = hi18n('SHORTCODE_GO_PLAYGROUND_ERROR')
+    link.innerText = i18n('SHORTCODE_GO_PLAYGROUND_ERROR')
   }
 }

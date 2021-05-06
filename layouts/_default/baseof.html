@@ -68,8 +68,36 @@
       {{ $i18n := $i18nFile | readFile | unmarshal }}
 
       <script>
-        window.hi18nData = {{ $i18n }}
-        window.hi18n = (key) => window.hi18nData[key].other
+        function goTemplate(tmpl, ctx) {
+          const ids = tmpl.match(/\{\{ ?\.[A-Za-z0-9_-]* ?\}\}/g)
+
+          for (const id of ids) {
+            let key = id.match(/\.[A-Za-z0-9_-]*/)[0]
+
+            if (key === '.') {
+              tmpl = tmpl.replace(id, ctx)
+              continue
+            }
+
+            key = key[1].toLowerCase() + key.substring(2)
+            tmpl = tmpl.replace(id, ctx[key])
+          }
+
+          return tmpl
+        }
+
+        window.i18n = (key, ctx) => {
+          const i18nData = {{ $i18n }}
+          const t = i18nData[key]
+
+          if (ctx === undefined)
+            return t.other
+
+          if (ctx.count === 1)
+            return goTemplate(t.one, ctx)
+
+          return goTemplate(t.other, ctx)
+        }
       </script>
     {{ end }}
   {{ end }}
