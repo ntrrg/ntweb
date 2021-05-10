@@ -57,9 +57,9 @@ cualquier servicio que soporte archivos estáticos.
 
 Casi todas las páginas HTML tienen JSON como formato alternativo, que puede ser
 obtenido agregando `index.json` al final de su URL. Por ejemplo, para esta
-página, el URL de su formato JSON sería `https://ntrrg.dev/es/projects/ntweb/index.json`.
+página, el URL de su formato JSON sería `https://ntrrg.dev/es/proyectos/ntweb/index.json`.
 
-Cada página tiene los siguientes propiedades:
+Cada página tiene las siguientes propiedades:
 
 {{% params %}}
 
@@ -88,14 +88,14 @@ URL de la imagen del recurso.
 {{% /param %}}
 
 {{% param name="params" type="Cadena" %}}
-Parámetros del frontmatter del recurso. Puede variar segur el tipo del
+Parámetros del frontmatter del recurso. Puede variar según el tipo del
 contenido.
 {{% /param %}}
 
 {{% param name="content" type="Cadena" %}}
 Contenido Markdown procesado del recurso (HTML). Se debe tener en cuenta que
-esta propiedad contiene una cadena UTF-8 y las cadenas de JavaScript son
-UTF-16.
+esta propiedad contiene una cadena UTF-8 codificada en Base64 y las cadenas de
+JavaScript son UTF-16.
 {{% /param %}}
 
 {{% param name="data" type="Objeto" %}}
@@ -117,9 +117,9 @@ Formatos alternativos del recurso. Cada objeto tiene las propiedades
 {{% /params %}}
 
 ```shell-session
-$ wget -qO - https://ntrrg.dev/es/projects/ntweb/index.json | jq
+$ wget -qO - https://ntrrg.dev/es/proyectos/ntweb/index.json | jq
 {
-  "url": "https://ntrrg.dev/es/projects/ntweb/",
+  "url": "https://ntrrg.dev/es/proyectos/ntweb/",
   "kind": "page",
   "type": "projects",
   "lang": "es",
@@ -156,13 +156,13 @@ $ wget -qO - https://ntrrg.dev/es/projects/ntweb/index.json | jq
   "altLang": [
     {
       "lang": "en",
-      "url": "https://ntrrg.dev/en/projects/ntweb/"
+      "url": "https://ntrrg.dev/en/proyectos/ntweb/"
     }
   ],
   "altMediaType": [
     {
       "mediaType": "text/html",
-      "url": "https://ntrrg.dev/es/projects/ntweb/"
+      "url": "https://ntrrg.dev/es/proyectos/ntweb/"
     }
   ]
 }
@@ -208,7 +208,7 @@ Páginas de primer nivel. Cada objeto tiene las propiedades `url` y `title`.
 {{< params >}}
 
 {{% param name=":section" type="Cadena" %}}
-Nombre de la sección. Puede ser `blog`, `gallery` o `projects`.
+Nombre de la sección. Puede ser `blog`, `galeria` o `proyectos`.
 {{% /param %}}
 
 {{% param name=":pageNumber" type="Entero" %}}

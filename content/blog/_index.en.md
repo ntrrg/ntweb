@@ -11,5 +11,3 @@ comments: false
 paginate: true
 ---
 
-See also [Series](./../series) and [Tags](./../tags)
-

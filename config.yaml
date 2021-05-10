@@ -14,12 +14,10 @@ params:
   ampImage: /icon-206x60.png
   articleTypes:
     - blog
-    - series
   searchIndexTypes:
     - blog
     - challenges
     - projects
-    - series
   relatedCount: 5
   #googleTagManager: GTM-NZ2R3W7
   #disqus: ntweb
@@ -87,7 +85,6 @@ languages:
       projects: /proyectos/:slug/
       tags: /etiquetas/:slug/
 taxonomies:
-  serie: series
   tag: tags
 related:
   includeNewer: true

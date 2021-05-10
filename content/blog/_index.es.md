@@ -12,5 +12,3 @@ comments: false
 paginate: true
 ---
 
-Ver también [Series](./../series) y [Etiquetas](./../tags)
-

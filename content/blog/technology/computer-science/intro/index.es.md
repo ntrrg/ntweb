@@ -3,8 +3,8 @@ title: Introducción a la Informática
 publishdate: 2020-03-17T11:00:00-04:00
 date: 2021-05-06T17:10:00-04:00
 description: Fundamentos de la informática. Orientado a personas sin conocimiento previo, pero también puede ser interesante para los que ya están familiarizados con la tecnología.
-series:
-  - computer-science
+keywords:
+  - computer-science-roadmap
 tags:
   - tecnología
   - ciencia-de-la-computación

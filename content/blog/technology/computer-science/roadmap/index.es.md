@@ -1,27 +1,21 @@
 ---
 title: Ciencia de la Computación
+date: 2021-05-06T18:00:00-04:00
 description: Una compilación de artículos ordenados con la intención de hacer más sencillo familiarizarse con la informática, e incluso profundizar en diferentes temas, sin tener que pasar por esos momentos en los que no se tiene ni idea por donde empezar o qué hacer después, algo parecido a ir a la universidad.
-autolist: false
+keywords:
+  - computer-science-roadmap
+tags:
+  - tecnología
+  - ciencia-de-la-computación
+  - fundamentos
 draft: true
 ---
-
-https://roadmap.sh/
-
-http://catalog.mit.edu/subjects/6/
-
-https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/
-
-**Prakhar Srivastav.** *Awesome CS Courses.* <https://github.com/prakhar1989/awesome-courses>
-
-https://ebookfoundation.github.io/free-programming-books/
-
-https://github.com/ossu/computer-science
 
 # Introducción
 
 {{< card "blog/technology/computer-science/intro" >}}
 
-{{< card "series/math-fundamentals" >}}
+{{< card "blog/math/intro" >}}
 
 https://introtcs.org/public/index.html
 
@@ -291,4 +285,18 @@ https://en.wikipedia.org/wiki/IP_address_management
 # Inteligencia Artificial
 
 https://www.ibm.com/developerworks/library/cc-beginner-guide-machine-learning-ai-cognitive/index.html?cm_mmc=dw-_-cognitive-_-TPC2017-_-community&utm_source=Topcoder+Cognitive+Community&utm_campaign=2600ffc7dc-EMAIL_CAMPAIGN_2017_05_10&utm_medium=email&utm_term=0_934e9ffdc5-2600ffc7dc-160764397
+
+# Atribuciones
+
+**Kamran Ahmed.** *Developer Roadmaps.* <https://roadmap.sh/>
+
+**MIT.** *Electrical Engineering and Computer Science.* <http://catalog.mit.edu/subjects/6/>
+
+**MIT OpenCourseWare.** *Electrical Engineering and Computer Science.* <https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/>
+
+**Prakhar Srivastav.** *Awesome CS Courses.* <https://github.com/prakhar1989/awesome-courses>
+
+**EbookFoundation.** *free-programming-books.* <https://ebookfoundation.github.io/free-programming-books/>
+
+**Open Source Society University.** *Path to a free self-taught education in Computer Science! .* <https://github.com/ossu/computer-science>
 

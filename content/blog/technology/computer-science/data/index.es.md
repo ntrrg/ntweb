@@ -28,9 +28,9 @@ comunicación se ve afectada o incluso es imposible si no existe un método en
 común (el idioma, por ejemplo).
 
 Esto mismo pasa con los autómatas, para que realicen sus tareas primero se les
-debe enseñar cómo llevarlas a cabo, y después se les debe entregar la
-información que necesiten, pero ¿cómo una persona y un autómata podrían
-establecer esta comunicación?.
+debe enseñar cómo llevarlas a cabo (se programan), y después se les debe
+entregar la información que necesiten, pero ¿cómo una persona y un autómata
+podrían establecer esta comunicación?.
 
 Actualmente todos los autómatas programables son máquinas electrónicas, por lo
 que todo el proceso de traducción de la información está orientado a la
@@ -39,10 +39,11 @@ desarrollando diferentes métodos de representación, pero la
 [digitalización](#digitalización) es el que ha tenido mayor existo en sus
 aplicaciones.
 
-La computación cuántica ha estado ganando mucha popularidad últimamente, pero
-su tecnología está en pleno desarrollo (a pesar de que se está investigando
-desde los 1980s) y probablemente no sea accesible hasta dentro de unos cuantos
-años.
+La computación cuántica, que usa otro método de traducción, ha estado ganando
+mucha popularidad últimamente, pero su tecnología está en pleno desarrollo (a
+pesar de que se está investigando desde los 80s) y probablemente no sea
+accesible hasta dentro de un buen tiempo, por ejemplo, hace unos años un disco
+duro de 10MB tenía un costo cercano a los 3500 USD.
 
 # Digitalización
 
