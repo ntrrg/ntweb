@@ -8,6 +8,7 @@ tags:
   - tecnología
   - ciencia-de-la-computación
   - fundamentos
+  - series
 draft: true
 ---
 

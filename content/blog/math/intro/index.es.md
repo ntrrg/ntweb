@@ -9,6 +9,7 @@ tags:
   - aritmética
   - álgebra
   - fundamentos
+  - series
 draft: true
 ---
 
