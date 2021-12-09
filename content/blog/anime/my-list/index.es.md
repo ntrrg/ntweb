@@ -24,43 +24,40 @@ sensible 😂.
 
 {{< task-list >}}
 * [ ] 18if
+* [ ] 86
 
 * **91 Days**
-  * [x] [91 Days](https://myanimelist.net/anime/32998/91_Days)
-
-  * [x] [91 Days: Toki no Asase/Subete no Kinou/Ashita, Mata Ashita](https://myanimelist.net/anime/34777/91_Days__Toki_no_Asase_Subete_no_Kinou_Ashita_Mata_Ashita)
+  * [x] [91 Days](https://myanimelist.net/anime/32998)
+  * [x] [91 Days: Toki no Asase/Subete no Kinou/Ashita, Mata Ashita](https://myanimelist.net/anime/34777)
 
 * [ ] A Place Further than the Universe
 * [ ] Action Heroine Cheer Fruits
 * [ ] Afro Samurai
 * [ ] Aggretsuko
 * [ ] Akagi
-* [x] [Akame ga Kill!](https://myanimelist.net/anime/22199/Akame_ga_Kill)
+* [x] [Akame ga Kill!](https://myanimelist.net/anime/22199)
 
 * **Akatsuki no Yona**
-  * [x] [Akatsuki no Yona](https://myanimelist.net/anime/25013/Akatsuki_no_Yona)
-  * [ ] [Akatsuki no Yona OVA](https://myanimelist.net/anime/30370/Akatsuki_no_Yona_OVA)
+  * [x] [Akatsuki no Yona](https://myanimelist.net/anime/25013)
+  * [ ] [Akatsuki no Yona OVA](https://myanimelist.net/anime/30370)
 
-* [x] [Aldnoah.Zero](https://myanimelist.net/anime/22729/AldnoahZero)
+* [x] [Aldnoah.Zero](https://myanimelist.net/anime/22729)
 * [ ] Amagi Brilliant Park
-* [x] [Angel Beats!](https://myanimelist.net/anime/6547/Angel_Beats)
+* [x] [Angel Beats!](https://myanimelist.net/anime/6547)
 
 * **Ano Hi Mita Hana no Namae wo Bokutachi wa Mada Shiranai. (AnoHana)**
-  * [x] [Ano Hi Mita Hana no Namae wo Bokutachi wa Mada Shiranai.](https://myanimelist.net/anime/9989/Ano_Hi_Mita_Hana_no_Namae_wo_Bokutachi_wa_Mada_Shiranai)
-
-  * [ ] [Ano Hi Mita Hana no Namae wo Bokutachi wa Mada Shiranai.: Menma e no Tegami](https://myanimelist.net/anime/38963/Ano_Hi_Mita_Hana_no_Namae_wo_Bokutachi_wa_Mada_Shiranai__Menma_e_no_Tegami)
-
-  * [ ] [Ano Hi Mita Hana no Namae wo Bokutachi wa Mada Shiranai. Movie](https://myanimelist.net/anime/15039/Ano_Hi_Mita_Hana_no_Namae_wo_Bokutachi_wa_Mada_Shiranai_Movie)
+  * [x] [Ano Hi Mita Hana no Namae wo Bokutachi wa Mada Shiranai.](https://myanimelist.net/anime/9989)
+  * [ ] [Ano Hi Mita Hana no Namae wo Bokutachi wa Mada Shiranai.: Menma e no Tegami](https://myanimelist.net/anime/38963)
+  * [ ] [Ano Hi Mita Hana no Namae wo Bokutachi wa Mada Shiranai. Movie](https://myanimelist.net/anime/15039)
 
 * **Another**
-  * [x] [Another](https://myanimelist.net/anime/11111/Another)
-
-  * [ ] [Another: The Other - Inga](https://myanimelist.net/anime/11701/Another__The_Other_-_Inga)
+  * [x] [Another](https://myanimelist.net/anime/11111)
+  * [ ] [Another: The Other - Inga](https://myanimelist.net/anime/11701)
 
 * [ ] Appare Ranman
 
 * **Appleseed**
-  * [x] [Appleseed (Movie)](https://myanimelist.net/anime/54/Appleseed_Movie)
+  * [x] [Appleseed (Movie)](https://myanimelist.net/anime/54)
   * [ ] Appleseed Ex Machina
   * [ ] Appleseed XIII
   * [ ] Appleseed Alpha
@@ -79,16 +76,15 @@ sensible 😂.
 * [ ] Blade Runner
 
 * **Bleach**
-  * [x] [Bleach](https://myanimelist.net/anime/269/Bleach)
-
-  * [ ] [Bleach: Sennen Kessen-hen](https://myanimelist.net/anime/41467/Bleach__Sennen_Kessen-hen)
+  * [x] [Bleach](https://myanimelist.net/anime/269)
+  * [ ] [Bleach: Sennen Kessen-hen](https://myanimelist.net/anime/41467)
 
 * [ ] Blood+
 * [ ] Blood-C
 * [ ] Blood: The Last Vampire
-* [ ] Blood Blockade Battlefront
 * [ ] Blue Exorcist
 * [ ] BNA: Brand New Animal
+* [x] [Boku dake ga Inai Machi](https://myanimelist.net/anime/31043)
 * [ ] Bokusatsu Tenshi Dokuro-chan
 * [ ] Brave 10
 * [ ] Btooom
@@ -100,6 +96,7 @@ sensible 😂.
 * [ ] CLANNAD
 * [ ] Chaika
 * [ ] Chain Chronicles
+* [ ] Chaos;Head
 * [ ] Charlotte
 * [ ] Chrono Crusade
 * [ ] Chronos Ruler
@@ -109,25 +106,22 @@ sensible 😂.
 * [ ] Concrete Revolutio
 * [ ] Convenience Store Boyfriends
 * [ ] Corpse Party
-* [ ] Cowboy Bebop
+* [x] [Cowboy Bebop](https://myanimelist.net/anime/1)
 * [ ] Cross Ange
 * [ ] Darker than Black
 * [ ] Darling in the FranXX
-
-* [x] [Deadman Wonderland](https://myanimelist.net/anime/6880/Deadman_Wonderland)
-
+* [x] [Deadman Wonderland](https://myanimelist.net/anime/6880)
 * [ ] Death March to the Parallel World Rhapsody
-* [x] [Death Note](https://myanimelist.net/anime/1535/Death_Note)
+* [x] [Death Note](https://myanimelist.net/anime/1535)
 * [ ] Death Parade
 * [ ] Deca-Dence
 * [ ] Dennou Coil
 * [ ] Denpa teki na Kanojo
 
 * **Dragon Ball**
-  * [x] [Dragon Ball](https://myanimelist.net/anime/223/Dragon_Ball)
-  * [x] [Dragon Ball Z](https://myanimelist.net/anime/813/Dragon_Ball_Z)
-
-  * [ ] [Dragon Ball Super](https://myanimelist.net/anime/30694/Dragon_Ball_Super)
+  * [x] [Dragon Ball](https://myanimelist.net/anime/223)
+  * [x] [Dragon Ball Z](https://myanimelist.net/anime/813)
+  * [x] [Dragon Ball Super](https://myanimelist.net/anime/30694)
 
 * [ ] Dragon Pilot: Hisone & Maso-tan
 * [ ] Dramatical Murder
@@ -142,23 +136,21 @@ sensible 😂.
 * [ ] Fantastic Children
 
 * **Fate**
-  * [x] [Fate/stay night](https://myanimelist.net/anime/356/Fate_stay_night)
-  * [x] [Fate/Zero](https://myanimelist.net/anime/10087/Fate_Zero)
-
-  * [ ] [Emiya-san Chi no Kyou no Gohan](https://myanimelist.net/anime/37033/Emiya-san_Chi_no_Kyou_no_Gohan)
+  * [x] [Fate/stay night](https://myanimelist.net/anime/356)
+  * [x] [Fate/Zero](https://myanimelist.net/anime/10087)
+  * [ ] [Emiya-san Chi no Kyou no Gohan](https://myanimelist.net/anime/37033)
 
 * [ ] Figure 17
 * [ ] FLCL
 * [ ] Flip Flappers
 * [ ] Flowers of Evil
-
-* [x] [Fullmetal Alchemist: Brotherhood](https://myanimelist.net/anime/5114/Fullmetal_Alchemist__Brotherhood)
-
+* [x] [Fullmetal Alchemist: Brotherhood](https://myanimelist.net/anime/5114)
 * [ ] Ga-rei
 * [ ] Gantz
-* [ ] Gargantia on the Verdurous Planet
 * [ ] Gatchaman Crowds
+* [ ] Gate
 * [ ] Genocyber
+* [ ] Ghost Hound
 * [ ] Ghost in the Shell
 * [ ] Ghost Stories
 * [ ] Gintama
@@ -179,11 +171,13 @@ sensible 😂.
 * [ ] Hell Girl
 
 * **Hellsing Ultimate**
-  * [x] [Hellsing](https://myanimelist.net/anime/270/Hellsing)
-  * [x] [Hellsing Ultimate](https://myanimelist.net/anime/777/Hellsing_Ultimate)
+  * [x] [Hellsing](https://myanimelist.net/anime/270)
+  * [x] [Hellsing Ultimate](https://myanimelist.net/anime/777)
   * [ ] Hellsing: The Dawn
 
+* [ ] High School DxD
 * [ ] High School Fleet
+* [ ] Highschool of the Dead
 * [ ] Higurashi no Naku Koro ni
 * [ ] Hotaru no Haka
 * [ ] Hunter x Hunter
@@ -193,13 +187,12 @@ sensible 😂.
 * [ ] Inferno Cop
 
 * **InuYasha**
-  * [x] [InuYasha](https://myanimelist.net/anime/249/InuYasha)
-
-  * [x] [InuYasha: Kanketsu-Hen](https://myanimelist.net/anime/6811/InuYasha__Kanketsu-hen)
-
-  * [ ] [Hanyou no Yashahime: Sengoku Otogizoushi](https://myanimelist.net/anime/41911/Hanyou_no_Yashahime__Sengoku_Otogizoushi)
+  * [x] [InuYasha](https://myanimelist.net/anime/249)
+  * [x] [InuYasha: Kanketsu-Hen](https://myanimelist.net/anime/6811)
+  * [ ] [Hanyou no Yashahime: Sengoku Otogizoushi](https://myanimelist.net/anime/41911)
 
 * [ ] Iroduku: The World In Color
+* [ ] Ishuzoku Reviewers 
 * [ ] JoJo no Kimyō na Bōken
 * [ ] Jocker Game
 * [ ] Jujutsu Kaisen
@@ -208,23 +201,31 @@ sensible 😂.
 * [ ] K
 * [ ] Kabaneri of the Iron Fortress
 * [ ] Kage Shadow
+* [ ] Kaifuku Jutsushi no Yarinaoshi
 * [ ] Kaiji: Ultimate Survivor
 * [ ] Kamichu!
+
+* **Kekkai Sensen**
+  * [x] [Kekkai Sensen](https://myanimelist.net/anime/24439)
+  * [x] [Kekkai Sensen & Beyond](https://myanimelist.net/anime/34451)
+
 * [ ] Kemonozume
-* [x] [Kill la Kill](https://myanimelist.net/anime/18679/Kill_la_Kill)
+* [x] [Kill la Kill](https://myanimelist.net/anime/18679)
 * [ ] Kimetsu no Yaiba
-* [x] [Kimi no Na wa.](https://myanimelist.net/anime/32281/Kimi_no_Na_wa)
+* [x] [Kimi no Na wa.](https://myanimelist.net/anime/32281)
 * [ ] Kimi ni Todoke
 * [ ] Kingdom
 * [ ] Kino's Journey
-
-* [x] [Kiseijuu: Sei no Kakuritsu](https://myanimelist.net/anime/22535/Kiseijuu__Sei_no_Kakuritsu)
-
+* [x] [Kiseijuu: Sei no Kakuritsu](https://myanimelist.net/anime/22535)
 * [ ] Kite
-* [ ] Kiznaiver
+* [x] [Kiznaiver](https://myanimelist.net/anime/31798)
 * [ ] Knights of Sidonia
-* [x] [Koe no Katachi](https://myanimelist.net/anime/28851/Koe_no_Katachi)
-* [ ] Kokoro Connect
+* [x] [Koe no Katachi](https://myanimelist.net/anime/28851)
+
+* **Kokoro Connect**
+  * [x] [Kokoro Connect](https://myanimelist.net/anime/11887)
+  * [ ] [Kokoro Connect: Michi Random](https://myanimelist.net/anime/16001)
+
 * [ ] Konosuba
 * [ ] Kyousougiga
 * [ ] Lady Death
@@ -236,20 +237,23 @@ sensible 😂.
 * [ ] Little Witch Academia
 * [ ] Log Horizon
 * [ ] Macross
-* [ ] Madoka★Magica
 * [ ] Magi: The Labyrinth of Magic
 * [ ] Magic User's Club
 * [ ] Magical Shopping Arcade Abenobashi
+* [ ] Mahou Shoujo Madoka☆Magica
 * [ ] Mai-hime
 * [ ] Makai Ōji: Devils and Realist
 * [ ] March comes in like a Lion
 * [ ] Mawaru Penguindrum
+* [x] [Mayoiga](https://myanimelist.net/anime/32438)
 * [ ] Megalobox
 * [ ] Michiko and Hatchin
 * [ ] Mirai Nikki
 * [ ] Mnemosyne
 * [ ] Mob Psycho 100
 * [ ] Monster
+* [ ] Monster Musume no Iru Nichijou
+* [ ] Monster Musume no Oishasan
 * [ ] Monthly Girls' Nozaki-kun
 * [ ] Mushishi
 * [ ] Nadia: The Secret of Blue Water
@@ -257,15 +261,11 @@ sensible 😂.
 * [ ] Nanatsu no Taizai
 
 * **Naruto**
-  * [x] [Naruto](https://myanimelist.net/anime/20/Naruto)
-
-  * [x] [Naruto Shippuden](https://myanimelist.net/anime/1735/Naruto__Shippuuden)
-
-  * [ ] [The Last: Naruto the Movie](https://myanimelist.net/anime/16870/The_Last__Naruto_the_Movie)
-
-  * [ ] [Boruto: Naruto the Movie](https://myanimelist.net/anime/28755/Boruto__Naruto_the_Movie)
-
-  * [ ] [Boruto: Naruto Next Generations](https://myanimelist.net/anime/34566/Boruto__Naruto_Next_Generations)
+  * [x] [Naruto](https://myanimelist.net/anime/20)
+  * [x] [Naruto Shippuden](https://myanimelist.net/anime/1735)
+  * [ ] [The Last: Naruto the Movie](https://myanimelist.net/anime/16870)
+  * [ ] [Boruto: Naruto the Movie](https://myanimelist.net/anime/28755)
+  * [ ] [Boruto: Naruto Next Generations](https://myanimelist.net/anime/34566)
 
 * [ ] Natsuiro Kiseki
 * [ ] Natsume Yūjin-Chō
@@ -286,26 +286,21 @@ sensible 😂.
 * [ ] Paranoia Agent
 * [ ] Planet With
 * [ ] Planetes
-* [ ] Plastic Memories
+* [x] [Plastic Memories](https://myanimelist.net/anime/27775)
 * [ ] Pretty Cure
 * [ ] Princess Principal
 * [ ] Princess Tutu
+* [ ] Prision School
 
 * **Psycho-Pass**
-  * [x] [Psycho-Pass](https://myanimelist.net/anime/13601/Psycho-Pass)
-  * [x] [Psycho-Pass 2](https://myanimelist.net/anime/23281/Psycho-Pass_2)
-
-  * [ ] [Psycho-Pass Movie](https://myanimelist.net/anime/21339/Psycho-Pass_Movie)
-
-  * [ ] [Psycho-Pass: Sinners of the System Case.1 - Tsumi to Bachi](https://myanimelist.net/anime/37440/Psycho-Pass__Sinners_of_the_System_Case1_-_Tsumi_to_Bachi)
-
-  * [ ] [Psycho-Pass: Sinners of the System Case.2 - First Guardian](https://myanimelist.net/anime/37441/Psycho-Pass__Sinners_of_the_System_Case2_-_First_Guardian)
-
-  * [ ] [Psycho-Pass: Sinners of the System Case.3 - Onshuu no Kanata ni＿＿](https://myanimelist.net/anime/37442/Psycho-Pass__Sinners_of_the_System_Case3_-_Onshuu_no_Kanata_ni%EF%BC%BF%EF%BC%BF)
-  
-  * [ ] [Psycho-Pass 3](https://myanimelist.net/anime/39491/Psycho-Pass_3)
-
-  * [ ] [Psycho-Pass 3: First Inspector](https://myanimelist.net/anime/40858/Psycho-Pass_3__First_Inspector)
+  * [x] [Psycho-Pass](https://myanimelist.net/anime/13601)
+  * [x] [Psycho-Pass 2](https://myanimelist.net/anime/23281)
+  * [ ] [Psycho-Pass Movie](https://myanimelist.net/anime/21339)
+  * [ ] [Psycho-Pass: Sinners of the System Case.1 - Tsumi to Bachi](https://myanimelist.net/anime/37440)
+  * [ ] [Psycho-Pass: Sinners of the System Case.2 - First Guardian](https://myanimelist.net/anime/37441)
+  * [ ] [Psycho-Pass: Sinners of the System Case.3 - Onshuu no Kanata ni＿＿](https://myanimelist.net/anime/37442)
+  * [ ] [Psycho-Pass 3](https://myanimelist.net/anime/39491)
+  * [ ] [Psycho-Pass 3: First Inspector](https://myanimelist.net/anime/40858)
 
 * [ ] Puella Magi Madoka Magica
 * [ ] Ranma
@@ -313,14 +308,12 @@ sensible 😂.
 * [ ] Re:zero
 * [ ] Revolutionary Girl Utena
 * [ ] Revue Starlight
-* [ ] Rokka no Yusha
+* [x] [Rokka no Yuusha](https://myanimelist.net/anime/28497)
 
 * **Rurouni Kenshin**
-  * [x] [Rurouni Kenshin: Meiji Kenkaku Romantan](https://myanimelist.net/anime/45/Rurouni_Kenshin__Meiji_Kenkaku_Romantan)
-
-  * [x] [Rurouni Kenshin: Meiji Kenkaku Romantan - Tsuioku-hen](https://myanimelist.net/anime/44/Rurouni_Kenshin__Meiji_Kenkaku_Romantan_-_Tsuioku-hen)
-
-  * [x] [Rurouni Kenshin: Meiji Kenkaku Romantan - Seisou-hen](https://myanimelist.net/anime/401/Rurouni_Kenshin__Meiji_Kenkaku_Romantan_-_Seisou-hen)
+  * [x] [Rurouni Kenshin: Meiji Kenkaku Romantan](https://myanimelist.net/anime/45)
+  * [x] [Rurouni Kenshin: Meiji Kenkaku Romantan - Tsuioku-hen](https://myanimelist.net/anime/44)
+  * [x] [Rurouni Kenshin: Meiji Kenkaku Romantan - Seisou-hen](https://myanimelist.net/anime/401)
 
 * [ ] Saikano
 * [ ] Saint Seiya
@@ -330,28 +323,26 @@ sensible 😂.
 * [ ] Sakurako-san
 * [ ] Samurai Champloo
 * [ ] Samurai Flamenco
-
-* [x] [Seireitsukai no Blade Dance](https://myanimelist.net/anime/22877/Seireitsukai_no_Blade_Dance)
-
+* [x] [Satsuriku no Tenshi](https://myanimelist.net/anime/35994)
+* [x] [Seireitsukai no Blade Dance](https://myanimelist.net/anime/22877)
 * [ ] Serial Experiments Lain
 * [ ] Shakugan no Shana
 * [ ] Shaman King
 
 * **Shigatsu wa Kimi no Uso**
-
-  * [x] [Shigatsu wa Kimi no Uso](https://myanimelist.net/anime/23273/Shigatsu_wa_Kimi_no_Uso)
-
-  * [ ] [Shigatsu wa Kimi no Uso: Moments](https://myanimelist.net/anime/28069/Shigatsu_wa_Kimi_no_Uso__Moments)
+  * [x] [Shigatsu wa Kimi no Uso](https://myanimelist.net/anime/23273)
+  * [ ] [Shigatsu wa Kimi no Uso: Moments](https://myanimelist.net/anime/28069)
 
 * [ ] Shiki
-* [x] [Shikioriori](https://myanimelist.net/anime/37396/Shikioriori)
+* [x] [Shikioriori](https://myanimelist.net/anime/37396)
 * [ ] Shin Seiki Evangelion
-* [ ] Shin Sekai Yori
+* [x] [Shin Sekai Yori](https://myanimelist.net/anime/13125)
 * [ ] Shingeki no Bahamut Genesis
 * [ ] Shingeki no Kyojin
 * [ ] Shingetsutan Tsukihime
 * [ ] Shinmai Maō no Tesutamento
 * [ ] Shirobako
+* [ ] Shokugeki Souma
 * [ ] Showa Genroku Rakugo Shinju
 * [ ] Simoun
 * [ ] Soul Eater
@@ -359,8 +350,14 @@ sensible 😂.
 * [ ] Space Patrol Luluco
 * [ ] Spice & Wolf
 * [ ] Steins;Gate
+
+* **Suisei no Gargantia**
+  * [x] [Suisei no Gargantia](https://myanimelist.net/anime/16524)
+  * [x] [Suisei no Gargantia: Meguru Kouro, Haruka](https://myanimelist.net/anime/23319)
+
 * [ ] Sword Art Online
 * [ ] Tada Never Falls in Love
+* [ ] takt op.Destiny
 * [ ] Tamako Market
 * [ ] Tari Tari
 * [ ] Tengen Toppa Gurren-Lagann
@@ -371,7 +368,6 @@ sensible 😂.
 * [ ] The Eccentric Family
 * [ ] The Fruit of Grisaia
 * [ ] The Irregular at Magic High School
-* [ ] The Lost Village
 * [ ] The Melancholy of Haruhi Suzumiya
 * [ ] The Promised Neverland
 * [ ] The Roling Girls
@@ -380,13 +376,14 @@ sensible 😂.
 * [ ] The World God Only Knows
 * [ ] Tico & Friends
 * [ ] Time of Eve
+* [ ] To LOVE-Ru
 * [ ] Tokyo ESP
 * [ ] Tokyo Ghoul
 * [ ] Tokyo Magnitude 8.0
 * [ ] Tokyo Revengers
 * [ ] Toradora!
 * [ ] Triage X
-* [ ] [Trigun](https://myanimelist.net/anime/6/Trigun)
+* [x] [Trigun](https://myanimelist.net/anime/6)
 * [ ] Tsuki ge Kirei
 * [ ] Twin Star Exorcists
 * [ ] Tweeny Witches
@@ -396,6 +393,8 @@ sensible 😂.
 * [ ] Windy Tales
 * [ ] Wish Upon the Pleiades
 * [ ] Wolf's Rain
+* [ ] Yosuga no Sora: In Solitude, Where We Are Least Alone.
+* [ ] Youjo Senki
 * [ ] Yu Yu Hakusho
 * [ ] Yu-Gi-Oh!
 * [ ] Yuki Yuna is a Hero

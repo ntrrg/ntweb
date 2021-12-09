@@ -48,9 +48,10 @@ o [mis proyectos](./../projects).
   IaC (Terraform), Contenedores (Docker), Orquestación de contenedores (Docker
   Swarm, Kubernetes), Ingeniería Cloud (GCP).
 
-* **Cloud:** GitHub Pages, Netlify, ZEIT Now, Heroku, Google Cloud Platform.
+* **Cloud:** GitHub Pages, Netlify, Heroku, Google Cloud Platform.
 
 * **Frameworks y bibliotecas:** [Alpine.js](https://github.com/alpinejs/alpine),
   [Bleve](https://www.blevesearch.com/), [Bulma](bulma.io/),
-  [Hugo](https://gohugo.io/).
+  [Hugo](https://gohugo.io/), [sqlx](http://jmoiron.github.io/sqlx/),
+  [Svelte](https://svelte.dev/), [SvelteKit](https://kit.svelte.dev/).
 

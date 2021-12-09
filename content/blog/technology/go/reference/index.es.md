@@ -474,31 +474,35 @@ significado especial para Go:
 
 ```go
 // Palabras reservadas
-break      case    chan     const        continue
-default    defer   else     fallthrough  for
-func       go      goto     if           import
-interface  map     package  range        return
-select     struct  switch   type         var
+break        case     chan       const
+continue     default  defer      else
+fallthrough  for      func       go
+goto         if       import     interface
+map          package  range      return
+select       struct   switch     type
+var
 
 // Tipos de datos
-bool     byte     complex64  complex128  error
-float32  float64  int        int8        int16
-int32    int64    rune       string      uint
-uint8    uint16   uint32     uint64      uintptr
+bool         byte     complex64  complex128
+error        float32  float64    int
+int8         int16    int32      int64
+rune         string   uint       uint8
+uint16       uint32   uint64     uintptr
 
 // Constantes
-true  false  iota
+true         false    iota
 
 // Valor cero
 nil
 
 // Funciones
-append   cap   close    complex  copy   delete
-imag     len   make     new      panic  print
-println  real  recover
+append       cap      close      complex
+copy         delete   imag       len
+make         new      panic      print
+println      real     recover
 
-// Identificadores especiales
-init main
+// Funciones especiales (definidas por el programador)
+init         main
 ```
 
 ## Constantes

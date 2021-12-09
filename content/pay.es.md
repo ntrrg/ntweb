@@ -39,24 +39,30 @@ ntrrgx@gmail.com
 04247484276
 ```
 
-## Mueve
-
-```
-ntrrgx@gmail.com
-```
-
 # Criptomonedas
 
-## Bitcoin
+## BNB
 
 ```
-1GaWFTw2WBA4cYooG4LFGC8EGRghgh178A
+0xb4deb0c79e47af139eb4a5d51c75cf178304547c
 ```
 
-## Ether
+## BTC
 
 ```
-0x7E28247A3a20E9E064F8872094194bA29f3AceDB
+1WrULEZ9xYPnntT9z2T7tQ19FGC4ihDCx
+```
+
+## ETH
+
+```
+0xb4deb0c79e47af139eb4a5d51c75cf178304547c
+```
+
+## USDT
+
+```
+TRbym2zoG78UVgMNGmB9enkxZoJ5bhhkPn
 ```
 
 # Dólares
@@ -86,6 +92,8 @@ ntrrgx@gmail.com
 +15203130363
 ```
 
+https://gpay.app.goo.gl/pay-KvnJ81AYwVP
+
 ## Interledger
 
 ```
@@ -100,12 +108,18 @@ ntrrgx@gmail.com
 
 ## PayPal
 
-https://paypal.me/marntrrg
-
 ```
 ntrrgx@gmail.com
 +584247484276
 +15203130363
+```
+
+https://paypal.me/marntrrg
+
+## Reserve
+
+```
+ntrrg
 ```
 
 ## Uphold
@@ -132,6 +146,10 @@ ntrrgx@gmail.com
 
 # Enlaces de referido
 
+## AirTM
+
+<https://app.airtm.com/ivt/ntrrg>
+
 ## Google Cloud Platform
 
 <https://gcpsignup.page.link/dMVD>
@@ -148,7 +166,7 @@ ntrrgx@gmail.com
 
 <https://mega.nz/aff=IkiSGALw5Tw>
 
-## Privacy
+## Uphold
 
-<https://privacy.com/join/43QD7>
+<https://uphold.com/signup?referral=efa3ae9325>
 

@@ -1,0 +1,114 @@
+arm_64bit=1
+#total_mem=1024
+
+##################
+# Audio settings #
+##################
+
+dtparam=audio=on
+
+##################
+# Video settings #
+##################
+# https://www.raspberrypi.org/documentation/configuration/config-txt/video.md
+
+# GPU reserved memory in megabytes, at least 32MB must be assigned
+gpu_mem=76
+
+# Set maximum framebuffers allowed. 0 for headless setup.
+max_framebuffers=2
+
+# Graphics driver
+dtoverlay=vc4-kms-v3d-pi4,cma-512
+dtoverlay=rpivid-v4l2
+
+# Disable mode detection from hardware, let KMS to do its job
+disable_fw_kms_setup=1
+
+# Disable overscanning
+disable_overscan=1
+
+# HDMI ports output
+# 1 = only video
+# 2 = audio and video
+hdmi_drive=2
+
+# Enable 60Hz refresh rate on HDMI0
+hdmi_enable_4kp60=1
+
+# Set output mode
+#
+# +---------------------------+
+# |    hdmi_group=1 (CEA)     |
+# +---------------------------+
+# |   1 | 640x480      | 60Hz |
+# |   2 | 480p - 4:3   | 60Hz |
+# |   3 | 480p - 16:9  | 60Hz |
+# |   4 | 720p - 16:9  | 60Hz |
+# |   8 | 240p - 4:3   | 60Hz |
+# |   9 | 240p - 16:9  | 60Hz |
+# |  65 | Custom mode         |
+# |  67 | 720p - 21:9  | 30Hz |
+# |  69 | 720p - 21:9  | 60Hz |
+# |  74 | 1080p - 21:9 | 30Hz |
+# |  76 | 1080p - 21:9 | 60Hz |
+# |  81 | 1680x720     | 30Hz |
+# |  82 | 1680x720     | 60Hz |
+# |  88 | 2560x720     | 30Hz |
+# |  90 | 2560x720     | 60Hz |
+# |  95 | 2160p - 16:9 | 30Hz |
+# |  97 | 2160p - 16:9 | 60Hz |
+# | 100 | 4096x2160    | 30Hz |
+# | 102 | 4096x2160    | 60Hz |
+# | 105 | 2160p - 21:9 | 30Hz |
+# | 107 | 2160p - 21:9 | 60Hz |
+# +---------------------------+
+#
+# +-----------------------+
+# |  hdmi_group=2 (DMT)   |
+# +-----------------------+
+# |  4 | 640x480   | 60Hz |
+# |  9 | 800x600   | 60Hz |
+# | 16 | 1024x768  | 60Hz |
+# | 22 | 1280x768  | 60Hz |
+# | 27 | 1280x800  | 60Hz |
+# | 32 | 1280x960  | 60Hz |
+# | 35 | 1280x1024 | 60Hz |
+# | 39 | 1360x768  | 60Hz |
+# | 41 | 1400x1050 | 60Hz |
+# | 46 | 1440x900  | 60Hz |
+# | 51 | 1600x1200 | 60Hz |
+# | 57 | 1680x1050 | 60Hz |
+# | 62 | 1792x1344 | 60Hz |
+# | 65 | 1856x1392 | 60Hz |
+# | 68 | 1920x1200 | 60Hz |
+# | 73 | 1920x1440 | 60Hz |
+# | 76 | 2560x1600 | 60Hz |
+# | 82 | 1920x1080 | 60Hz |
+# | 83 | 1600x900  | 60Hz |
+# | 84 | 2048x1152 | 60Hz |
+# | 85 | 1280x720  | 60Hz |
+# | 86 | 1366x768  | 60Hz |
+# | 87 | Custom mode      |
+# +-----------------------+
+#
+# Custom mode arguments:
+#   * WIDTH: Width in pixels.
+#   * HEIGHT: Height in pixels.
+#   * FRAMERATE: Frame rate in Hz.
+#
+#   * ASPECT: Aspect ratio. Values: 1 (4:3), 2 (14:9), 3 (16:9), 4 (5:4),
+#             5 (16:10), 6 (15:9). Default: 3.
+#
+#   * MARGINS: Enable screen margins. Values: 0, 1. Default: 0
+#   * INTERLACE: Enable interlaced scan. Values: 0, 1. Default: 0.
+#   * RB: Enable reduced blanking. Values: 0, 1. Default: 0,
+#hdmi_cvt=WIDTH HEIGHT FRAMERATE [ASPECT] [MARGINS] [INTERLACE] [RB]
+#hdmi_group=2
+#hdmi_mode=87
+
+# Don't change TV channel or wake it up during boot
+hdmi_ignore_cec_init=1
+
+# Enable safe mode, useful for troubleshooting
+#hdmi_safe=1
