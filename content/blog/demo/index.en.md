@@ -122,6 +122,8 @@ This paragraph has a footnote[^1].
 |    text |            text |
 |    text |            text |
 
+<https://github.github.com/gfm/#tables-extension->
+
 # Images
 
 ![Alternative text](images/ntrrg.png "This is the title")
