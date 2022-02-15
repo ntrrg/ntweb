@@ -1,6 +1,6 @@
 ---
 title: "One Piece: Cronología"
-date: 2022-02-07T19:40:00-04:00
+date: 2022-02-15T08:40:00-04:00
 image: images/mugiwara.jpg
 description: Orden cronológico de publicaciones relacionadas a One Piece.
 tags:
@@ -25,8 +25,6 @@ tags:
 **Fecha:** 1998/07/26
 
 **Notas:** Prototipo, no es una adaptación del manga.
-
-<https://t.me/c/1649546859/6>
 
 <https://onepiece.fandom.com/wiki/OVA_1>
 
@@ -80,8 +78,6 @@ tags:
 
 **Episodios:** 1 - 47
 
-<https://t.me/c/1649546859/7>
-
 <https://onepiece.fandom.com/wiki/Opening_1>
 
 {{% /note %}}
@@ -100,8 +96,6 @@ tags:
 
 **Episodios:** 1 - 30
 
-<https://t.me/c/1649546859/8>
-
 <https://onepiece.fandom.com/wiki/Ending_1>
 
 {{% /note %}}
@@ -116,8 +110,6 @@ tags:
 
 **Fecha:** 1999/10/20
 
-<https://t.me/c/1649546859/18>
-
 <https://onepiece.fandom.com/wiki/Episode_1>
 
 {{% /note %}}
@@ -126,8 +118,6 @@ tags:
 
 **Fecha:** 1999/11/17
 
-<https://t.me/c/1649546859/19>
-
 <https://onepiece.fandom.com/wiki/Episode_2>
 
 {{% /note %}}
@@ -135,8 +125,6 @@ tags:
 {{% note "Episodio 3" %}}
 
 **Fecha:** 1999/11/24
-
-<https://t.me/c/1649546859/20>
 
 <https://onepiece.fandom.com/wiki/Episode_3>
 
@@ -150,7 +138,7 @@ tags:
 
 {{% note "Arco 2" %}}
 
-**Título:** Orange Town.
+**Título:** Ciudad Orange.
 
 **Episodios:** 4 - 8
 
@@ -170,8 +158,6 @@ tags:
 
 **Notas:** El pasado de Luffy.
 
-<https://t.me/c/1649546859/21>
-
 <https://onepiece.fandom.com/wiki/Episode_4>
 
 {{% /note %}}
@@ -179,8 +165,6 @@ tags:
 {{% note "Episodio 5" %}}
 
 **Fecha:** 1999/12/15
-
-<https://t.me/c/1649546859/22>
 
 <https://onepiece.fandom.com/wiki/Episode_5>
 
@@ -190,8 +174,6 @@ tags:
 
 **Fecha:** 1999/12/29
 
-<https://t.me/c/1649546859/23>
-
 <https://onepiece.fandom.com/wiki/Episode_6>
 
 {{% /note %}}
@@ -200,8 +182,6 @@ tags:
 
 **Fecha:** 1999/12/29
 
-<https://t.me/c/1649546859/24>
-
 <https://onepiece.fandom.com/wiki/Episode_7>
 
 {{% /note %}}
@@ -209,8 +189,6 @@ tags:
 {{% note "Episodio 8" %}}
 
 **Fecha:** 1999/12/29
-
-<https://t.me/c/1649546859/25>
 
 <https://onepiece.fandom.com/wiki/Episode_8>
 
@@ -224,7 +202,7 @@ tags:
 
 {{% note "Arco 3" %}}
 
-**Título:** Syrup Village.
+**Título:** Villa Syrup.
 
 **Episodios:** 9 - 18
 
@@ -242,8 +220,6 @@ tags:
 
 **Fecha:** 2000/01/12
 
-<https://t.me/c/1649546859/27>
-
 <https://onepiece.fandom.com/wiki/Episode_9>
 
 {{% /note %}}
@@ -251,8 +227,6 @@ tags:
 {{% note "Episodio 10" %}}
 
 **Fecha:** 2000/01/19
-
-<https://t.me/c/1649546859/28>
 
 <https://onepiece.fandom.com/wiki/Episode_10>
 
@@ -262,8 +236,6 @@ tags:
 
 **Fecha:** 2000/01/26
 
-<https://t.me/c/1649546859/29>
-
 <https://onepiece.fandom.com/wiki/Episode_11>
 
 {{% /note %}}
@@ -271,8 +243,6 @@ tags:
 {{% note "Episodio 12" %}}
 
 **Fecha:** 2000/02/02
-
-<https://t.me/c/1649546859/31>
 
 <https://onepiece.fandom.com/wiki/Episode_12>
 
@@ -282,8 +252,6 @@ tags:
 
 **Fecha:** 2000/02/09
 
-<https://t.me/c/1649546859/32>
-
 <https://onepiece.fandom.com/wiki/Episode_13>
 
 {{% /note %}}
@@ -291,8 +259,6 @@ tags:
 {{% note "Episodio 14" %}}
 
 **Fecha:** 2000/02/16
-
-<https://t.me/c/1649546859/33>
 
 <https://onepiece.fandom.com/wiki/Episode_14>
 
@@ -302,8 +268,6 @@ tags:
 
 **Fecha:** 2000/02/23
 
-<https://t.me/c/1649546859/34>
-
 <https://onepiece.fandom.com/wiki/Episode_15>
 
 {{% /note %}}
@@ -311,8 +275,6 @@ tags:
 {{% note "Episodio 16" %}}
 
 **Fecha:** 2000/03/01
-
-<https://t.me/c/1649546859/35>
 
 <https://onepiece.fandom.com/wiki/Episode_16>
 
@@ -332,8 +294,6 @@ tags:
 
 **Notas:** No es una adaptación del manga.
 
-<https://t.me/c/1649546859/69>
-
 <https://onepiece.fandom.com/wiki/Movie_1>
 
 {{% /note %}}
@@ -348,8 +308,6 @@ tags:
 
 **Fecha:** 2000/03/08
 
-<https://t.me/c/1649546859/72>
-
 <https://onepiece.fandom.com/wiki/Episode_17>
 
 {{% /note %}}
@@ -359,8 +317,6 @@ tags:
 **Fecha:** 2000/03/15
 
 **Notas:** Gaimon y la isla del tesoro.
-
-<https://t.me/c/1649546859/73>
 
 <https://onepiece.fandom.com/wiki/Episode_18>
 
@@ -394,8 +350,6 @@ tags:
 
 **Notas:** El pasado de Zoro.
 
-<https://t.me/c/1649546859/74>
-
 <https://onepiece.fandom.com/wiki/Episode_19>
 
 {{% /note %}}
@@ -403,8 +357,6 @@ tags:
 {{% note "Episodio 20" %}}
 
 **Fecha:** 2000/04/12
-
-<https://t.me/c/1649546859/75>
 
 <https://onepiece.fandom.com/wiki/Episode_20>
 
@@ -414,8 +366,6 @@ tags:
 
 **Fecha:** 2000/04/12
 
-<https://t.me/c/1649546859/76>
-
 <https://onepiece.fandom.com/wiki/Episode_21>
 
 {{% /note %}}
@@ -423,8 +373,6 @@ tags:
 {{% note "Episodio 22" %}}
 
 **Fecha:** 2000/04/26
-
-<https://t.me/c/1649546859/77>
 
 <https://onepiece.fandom.com/wiki/Episode_22>
 
@@ -434,8 +382,6 @@ tags:
 
 **Fecha:** 2000/05/03
 
-<https://t.me/c/1649546859/78>
-
 <https://onepiece.fandom.com/wiki/Episode_23>
 
 {{% /note %}}
@@ -444,8 +390,6 @@ tags:
 
 **Fecha:** 2000/05/10
 
-<https://t.me/c/1649546859/79>
-
 <https://onepiece.fandom.com/wiki/Episode_24>
 
 {{% /note %}}
@@ -453,8 +397,6 @@ tags:
 {{% note "Episodio 25" %}}
 
 **Fecha:** 2000/05/17
-
-<https://t.me/c/1649546859/80>
 
 <https://onepiece.fandom.com/wiki/Episode_25>
 
@@ -466,8 +408,6 @@ tags:
 
 **Notas:** El pasado de Sanji.
 
-<https://t.me/c/1649546859/81>
-
 <https://onepiece.fandom.com/wiki/Episode_26>
 
 {{% /note %}}
@@ -475,8 +415,6 @@ tags:
 {{% note "Episodio 27" %}}
 
 **Fecha:** 2000/05/31
-
-<https://t.me/c/1649546859/82>
 
 <https://onepiece.fandom.com/wiki/Episode_27>
 
@@ -486,8 +424,6 @@ tags:
 
 **Fecha:** 2000/06/07
 
-<https://t.me/c/1649546859/83>
-
 <https://onepiece.fandom.com/wiki/Episode_28>
 
 {{% /note %}}
@@ -496,8 +432,6 @@ tags:
 
 **Fecha:** 2000/06/21
 
-<https://t.me/c/1649546859/84>
-
 <https://onepiece.fandom.com/wiki/Episode_29>
 
 {{% /note %}}
@@ -505,8 +439,6 @@ tags:
 {{% note "Episodio 30" %}}
 
 **Fecha:** 2000/06/28
-
-<https://t.me/c/1649546859/85>
 
 <https://onepiece.fandom.com/wiki/Episode_30>
 
@@ -542,8 +474,6 @@ tags:
 
 **Episodios:** 31 - 63
 
-<https://t.me/c/1649546859/86>
-
 <https://onepiece.fandom.com/wiki/Ending_2>
 
 {{% /note %}}
@@ -558,8 +488,6 @@ tags:
 
 **Fecha:** 2000/07/12
 
-<https://t.me/c/1649546859/87>
-
 <https://onepiece.fandom.com/wiki/Episode_31>
 
 {{% /note %}}
@@ -567,8 +495,6 @@ tags:
 {{% note "Episodio 32" %}}
 
 **Fecha:** 2000/07/19
-
-<https://t.me/c/1649546859/88>
 
 <https://onepiece.fandom.com/wiki/Episode_32>
 
@@ -578,8 +504,6 @@ tags:
 
 **Fecha:** 2000/07/19
 
-<https://t.me/c/1649546859/89>
-
 <https://onepiece.fandom.com/wiki/Episode_33>
 
 {{% /note %}}
@@ -587,8 +511,6 @@ tags:
 {{% note "Episodio 34" %}}
 
 **Fecha:** 2000/07/26
-
-<https://t.me/c/1649546859/90>
 
 <https://onepiece.fandom.com/wiki/Episode_34>
 
@@ -600,8 +522,6 @@ tags:
 
 **Notas:** El pasado de Nami.
 
-<https://t.me/c/1649546859/91>
-
 <https://onepiece.fandom.com/wiki/Episode_35>
 
 {{% /note %}}
@@ -612,8 +532,6 @@ tags:
 
 **Notas:** El pasado de Nami.
 
-<https://t.me/c/1649546859/92>
-
 <https://onepiece.fandom.com/wiki/Episode_36>
 
 {{% /note %}}
@@ -621,8 +539,6 @@ tags:
 {{% note "Episodio 37" %}}
 
 **Fecha:** 2000/08/16
-
-<https://t.me/c/1649546859/93>
 
 <https://onepiece.fandom.com/wiki/Episode_37>
 
@@ -632,8 +548,6 @@ tags:
 
 **Fecha:** 2000/08/23
 
-<https://t.me/c/1649546859/94>
-
 <https://onepiece.fandom.com/wiki/Episode_38>
 
 {{% /note %}}
@@ -641,8 +555,6 @@ tags:
 {{% note "Episodio 39" %}}
 
 **Fecha:** 2000/08/30
-
-<https://t.me/c/1649546859/95>
 
 <https://onepiece.fandom.com/wiki/Episode_39>
 
@@ -652,8 +564,6 @@ tags:
 
 **Fecha:** 2000/09/06
 
-<https://t.me/c/1649546859/96>
-
 <https://onepiece.fandom.com/wiki/Episode_40>
 
 {{% /note %}}
@@ -661,8 +571,6 @@ tags:
 {{% note "Episodio 41" %}}
 
 **Fecha:** 2000/09/13
-
-<https://t.me/c/1649546859/97>
 
 <https://onepiece.fandom.com/wiki/Episode_41>
 
@@ -672,8 +580,6 @@ tags:
 
 **Fecha:** 2000/09/27
 
-<https://t.me/c/1649546859/98>
-
 <https://onepiece.fandom.com/wiki/Episode_42>
 
 {{% /note %}}
@@ -682,8 +588,6 @@ tags:
 
 **Fecha:** 2000/09/27
 
-<https://t.me/c/1649546859/99>
-
 <https://onepiece.fandom.com/wiki/Episode_43>
 
 {{% /note %}}
@@ -691,8 +595,6 @@ tags:
 {{% note "Episodio 44" %}}
 
 **Fecha:** 2000/10/11
-
-<https://t.me/c/1649546859/100>
 
 <https://onepiece.fandom.com/wiki/Episode_44>
 
@@ -706,11 +608,11 @@ tags:
 
 {{% note "Arco 6" %}}
 
-**Título:** Logetown.
+**Título:** Loguetown.
 
-**Episodios:** 45 - 54
+**Episodios:** 45 - 53
 
-<https://onepiece.fandom.com/wiki/Logetown_Arc>
+<https://onepiece.fandom.com/wiki/Loguetown_Arc>
 
 {{% /note %}}
 
@@ -726,8 +628,6 @@ tags:
 
 **Notas:** La recompesa por Luffy.
 
-<https://t.me/c/1649546859/101>
-
 <https://onepiece.fandom.com/wiki/Episode_45>
 
 {{% /note %}}
@@ -738,9 +638,19 @@ tags:
 
 **Notas:** Es una adaptación de *Aventura de la tripulación de Buggy*.
 
-<https://t.me/c/1649546859/102>
-
 <https://onepiece.fandom.com/wiki/Episode_46>
+
+<https://onepiece.fandom.com/wiki/Buggy%27s_Crew_Adventure_Chronicles>
+
+{{% /note %}}
+
+{{% note "Episodio 47" %}}
+
+**Fecha:** 2000/11/08
+
+**Notas:** Es una adaptación de *Aventura de la tripulación de Buggy*.
+
+<https://onepiece.fandom.com/wiki/Episode_47>
 
 <https://onepiece.fandom.com/wiki/Buggy%27s_Crew_Adventure_Chronicles>
 
@@ -750,25 +660,271 @@ tags:
 
 <!-- ---------------------------------------------------------------------- -->
 
-* Episodes 45 - 47
+{{% details "2000/11/22 - Opening 2" %}}
 
-* Opening 2
+{{% note "Opening 2" %}}
 
-* Episodes 48 - 52
+**Título:** Believe - Folder 5.
 
-* Special 1
+**Fecha:** 2000/11/22
 
-* Episodes 53
+**Episodios:** 48 - 115
 
-* Arc 7
+<https://onepiece.fandom.com/wiki/Opening_2>
 
-* Episodes 54 - 61
+{{% /note %}}
+
+{{% /details %}}
+
+<!-- ---------------------------------------------------------------------- -->
+
+{{% details "2000/11/22 - Episodios 48 - 52" %}}
+
+{{% note "Episodio 48" %}}
+
+**Fecha:** 2000/11/22
+
+<https://onepiece.fandom.com/wiki/Episode_48>
+
+{{% /note %}}
+
+{{% note "Episodio 49" %}}
+
+**Fecha:** 2000/11/22
+
+<https://onepiece.fandom.com/wiki/Episode_49>
+
+{{% /note %}}
+
+{{% note "Episodio 50" %}}
+
+**Fecha:** 2000/11/29
+
+**Notas:** Usopp vs. Daddy, el Padre. Adaptado de la novela de Loguetown.
+
+<https://onepiece.fandom.com/wiki/Episode_50>
+
+<https://onepiece.fandom.com/wiki/Loguetown_Arc_(Novel)>
+
+{{% /note %}}
+
+{{% note "Episodio 51" %}}
+
+**Fecha:** 2000/12/06
+
+**Notas:** Relleno, solo hace referencia al atún elefante de aleta azul de la
+página 2 del capítulo 98, pero en el manga, Sanji simplemente compra el pecado.
+
+<https://onepiece.fandom.com/wiki/Episode_51>
+
+{{% /note %}}
+
+{{% note "Episodio 52" %}}
+
+**Fecha:** 2000/12/13
+
+<https://onepiece.fandom.com/wiki/Episode_52>
+
+{{% /note %}}
+
+{{% /details %}}
+
+<!-- ---------------------------------------------------------------------- -->
+
+{{% details "2000/12/20 - Especial de TV 1" %}}
+
+{{% note "Especial de TV 1" %}}
+
+**Título:** Rufi Rakka! Hikyō Umi no Heso no Dai Bōken.
+
+**Fecha:** 2000/12/20
+
+<https://onepiece.fandom.com/wiki/Special_1>
+
+{{% /note %}}
+
+{{% /details %}}
+
+<!-- ---------------------------------------------------------------------- -->
+
+{{% details "2001/01/10 - Episodio 53" %}}
+
+{{% note "Episodio 53" %}}
+
+**Fecha:** 2000/01/10
+
+<https://onepiece.fandom.com/wiki/Episode_53>
+
+{{% /note %}}
+
+{{% /details %}}
+
+<!-- ---------------------------------------------------------------------- -->
+
+{{% details "2001/01/17 - Arco 7" %}}
+
+{{% note "Arco 7" %}}
+
+**Título:** Isla Buque de Guerra.
+
+**Episodios:** 54 - 61
+
+**Notas:** La mayor parte del arco es relleno.
+
+<https://onepiece.fandom.com/wiki/Warship_Island_Arc>
+
+{{% /note %}}
+
+{{% /details %}}
+
+<!-- ---------------------------------------------------------------------- -->
+
+{{% details "2001/01/17 - Episodios 54 - 60" %}}
+
+{{% note "Episodio 54" %}}
+
+**Fecha:** 2001/01/17
+
+**Notas:** Relleno.
+
+<https://onepiece.fandom.com/wiki/Episode_54>
+
+{{% /note %}}
+
+{{% note "Episodio 55" %}}
+
+**Fecha:** 2001/01/24
+
+**Notas:** Es una adaptación de las páginas 6 - 11 del capítulo 101 hasta el
+minuto 05:40. En el manga la tripulación entra al Calm Belt por coincidencia,
+Apis no existe y el Going Merry remota el camino a la Reverse Mountain cuando
+el rey marino estornuda.
+
+<https://onepiece.fandom.com/wiki/Episode_55>
+
+{{% /note %}}
+
+{{% note "Episodio 56" %}}
+
+**Fecha:** 2001/01/31
+
+<https://onepiece.fandom.com/wiki/Episode_56>
+
+{{% /note %}}
+
+{{% note "Episodio 57" %}}
+
+**Fecha:** 2001/02/07
+
+<https://onepiece.fandom.com/wiki/Episode_57>
+
+{{% /note %}}
+
+{{% note "Episodio 58" %}}
+
+**Fecha:** 2001/02/21
+
+<https://onepiece.fandom.com/wiki/Episode_58>
+
+{{% /note %}}
+
+{{% note "Episodio 59" %}}
+
+**Fecha:** 2001/02/21
+
+**Notas:** En este episodio, Zoro es capaz de cortar el acero, pero en el manga
+solo logra hacerlo hasta el arco de Arabasta.
+
+<https://onepiece.fandom.com/wiki/Episode_59>
+
+{{% /note %}}
+
+{{% note "Episodio 60" %}}
+
+**Fecha:** 2001/02/28
+
+<https://onepiece.fandom.com/wiki/Episode_60>
+
+{{% /note %}}
+
+{{% /details %}}
+
+<!-- ---------------------------------------------------------------------- -->
+
+{{% details "2001/03/03 - Película 2" %}}
+
+{{% note "Película 2" %}}
+
+**Título:** Nejimaki-jima no Bōken.
+
+**Fecha:** 2001/03/03
+
+**Notas:** No es una adaptación del manga.
+
+<https://onepiece.fandom.com/wiki/Movie_1>
+
+{{% /note %}}
+
+{{% note "Corto 1" %}}
+
+**Título:** Jango no Dansu Kānibaru.
+
+**Fecha:** 2001/03/03
+
+**Notas:** Es una adaptación de *Paraiso de Baile de Jango*.
+
+<https://onepiece.fandom.com/wiki/Jango%27s_Dance_Carnival>
+
+<https://onepiece.fandom.com/wiki/Jango%27s_Dance_Paradise>
+
+{{% /note %}}
+
+{{% /details %}}
+
+<!-- ---------------------------------------------------------------------- -->
+
+{{% details "2001/03/07 - Episodio 61" %}}
+
+{{% note "Episodio 61" %}}
+
+**Fecha:** 2001/03/07
+
+**Notas:** Desde el minuto 11:18 es una adaptación de las páginas 3 - 5 y 12 -
+19.
+
+<https://onepiece.fandom.com/wiki/Episode_61>
+
+{{% /note %}}
+
+{{% /details %}}
+
+<!-- ---------------------------------------------------------------------- -->
 
 * Saga 2
 
+* Arco 8
+
+* Episodios 62 - 63
+
+* Arco 9
+
+* Episodios 64 - 102
+
+* Película 3
+
+* Corto 2
+
+* Episodios 103 - 130
+
+* Saga 3
+
+* Episodios 131 - 138
+
 <https://onepiece.fandom.com/wiki/Real-Life_Timeline>
 
-<https://onepiece.fandom.com/wiki/Episode_45>
+<https://onepiece.fandom.com/wiki/Episode_62>
 
-<https://onepiece.fandom.com/wiki/Logetown_Arc>
+<https://onepiece.fandom.com/wiki/Reverse_Mountain_Arc>
+
+<https://onepiece.fandom.com/wiki/Arabasta_Saga>
 
