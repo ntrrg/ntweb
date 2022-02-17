@@ -1,6 +1,7 @@
 ---
 title: "One Piece: Cronología"
-date: 2022-02-15T08:40:00-04:00
+piblishdate: 2022-02-15T08:40:00-04:00
+date: 2022-02-15T21:15:00-04:00
 image: images/mugiwara.jpg
 description: Orden cronológico de publicaciones relacionadas a One Piece.
 tags:
@@ -900,21 +901,293 @@ solo logra hacerlo hasta el arco de Arabasta.
 
 <!-- ---------------------------------------------------------------------- -->
 
+{{% details "2001/03/21 - Saga 2" %}}
+
+{{% note "Saga 2" %}}
+
+**Título:** Arabasta.
+
+**Arcos:** 8 - ...
+
+**Episodios:** 62 - 130
+
+<https://onepiece.fandom.com/wiki/Arabasta_Saga>
+
+{{% /note %}}
+
+{{% /details %}}
+
+<!-- ---------------------------------------------------------------------- -->
+
+{{% details "2001/03/21 - Arco 8" %}}
+
+{{% note "Arco 8" %}}
+
+**Título:** Reverse Mountain.
+
+**Episodios:** 62 - 63
+
+<https://onepiece.fandom.com/wiki/Reverse_Mountain_Arc>
+
+{{% /note %}}
+
+{{% /details %}}
+
+<!-- ---------------------------------------------------------------------- -->
+
+{{% details "2001/03/21 - Episodios 62 - 63" %}}
+
+{{% note "Episodio 62" %}}
+
+**Fecha:** 2001/03/21
+
+<https://onepiece.fandom.com/wiki/Episode_62>
+
+{{% /note %}}
+
+{{% note "Episodio 63" %}}
+
+**Fecha:** 2001/03/21
+
+<https://onepiece.fandom.com/wiki/Episode_63>
+
+{{% /note %}}
+
+{{% /details %}}
+
+<!-- ---------------------------------------------------------------------- -->
+
+{{% details "2001/04/15 - Arco 9" %}}
+
+{{% note "Arco 9" %}}
+
+**Título:** Whisky Peak.
+
+**Episodios:** 64 - 67
+
+<https://onepiece.fandom.com/wiki/Whisky_Peak_Arc>
+
+{{% /note %}}
+
+{{% /details %}}
+
+<!-- ---------------------------------------------------------------------- -->
+
+{{% details "2001/04/15 - Ending 3" %}}
+
+{{% note "Ending 3" %}}
+
+**Título:** Watashi ga Iru Yo  - Tomato Cube.
+
+**Fecha:** 2001/04/15
+
+**Episodios:** 64 - 73
+
+<https://onepiece.fandom.com/wiki/Ending_3>
+
+{{% /note %}}
+
+{{% /details %}}
+
+<!-- ---------------------------------------------------------------------- -->
+
+{{% details "2001/04/15 - Episodios 64 - 67" %}}
+
+{{% note "Episodio 64" %}}
+
+**Fecha:** 2001/04/15
+
+<https://onepiece.fandom.com/wiki/Episode_64>
+
+{{% /note %}}
+
+{{% note "Episodio 65" %}}
+
+**Fecha:** 2001/04/15
+
+<https://onepiece.fandom.com/wiki/Episode_65>
+
+{{% /note %}}
+
+{{% note "Episodio 66" %}}
+
+**Fecha:** 2001/04/22
+
+<https://onepiece.fandom.com/wiki/Episode_66>
+
+{{% /note %}}
+
+{{% note "Episodio 67" %}}
+
+**Fecha:** 2001/04/29
+
+<https://onepiece.fandom.com/wiki/Episode_67>
+
+{{% /note %}}
+
+{{% /details %}}
+
+<!-- ---------------------------------------------------------------------- -->
+
+{{% details "2001/05/13 - Diario de Koby-Meppo" %}}
+
+{{% note "Episodio 68" %}}
+
+**Fecha:** 2001/05/13
+
+**Notas:** Es una adaptación de *Diario de Koby-Meppo*.
+
+<https://onepiece.fandom.com/wiki/Episode_68>
+
+<https://onepiece.fandom.com/wiki/Diary_of_Koby-Meppo>
+
+{{% /note %}}
+
+{{% note "Episodio 69" %}}
+
+**Fecha:** 2001/05/20
+
+**Notas:** Es una adaptación de *Diario de Koby-Meppo*.
+
+<https://onepiece.fandom.com/wiki/Episode_69>
+
+<https://onepiece.fandom.com/wiki/Diary_of_Koby-Meppo>
+
+{{% /note %}}
+
+{{% /details %}}
+
+<!-- ---------------------------------------------------------------------- -->
+
+{{% details "2001/05/27 - Arco 10" %}}
+
+{{% note "Arco 10" %}}
+
+**Título:** Little Garden.
+
+**Episodios:** 70 - 77
+
+<https://onepiece.fandom.com/wiki/Little_Garden_Arc>
+
+{{% /note %}}
+
+{{% /details %}}
+
+<!-- ---------------------------------------------------------------------- -->
+
+{{% details "2001/05/27 - Episodios 70 - 73" %}}
+
+{{% note "Episodio 70" %}}
+
+**Fecha:** 2001/05/27
+
+<https://onepiece.fandom.com/wiki/Episode_70>
+
+{{% /note %}}
+
+{{% note "Episodio 71" %}}
+
+**Fecha:** 2001/06/03
+
+<https://onepiece.fandom.com/wiki/Episode_71>
+
+{{% /note %}}
+
+{{% note "Episodio 72" %}}
+
+**Fecha:** 2001/06/17
+
+<https://onepiece.fandom.com/wiki/Episode_72>
+
+{{% /note %}}
+
+{{% note "Episodio 73" %}}
+
+**Fecha:** 2001/06/24
+
+<https://onepiece.fandom.com/wiki/Episode_73>
+
+{{% /note %}}
+
+{{% /details %}}
+
+<!-- ---------------------------------------------------------------------- -->
+
+{{% details "2001/07/15 - Ending 4" %}}
+
+{{% note "Ending 4" %}}
+
+**Título:** Shōchi no suke  - Suitei Shoujo.
+
+**Fecha:** 2001/07/15
+
+**Episodios:** 74 - 81
+
+<https://onepiece.fandom.com/wiki/Ending_4>
+
+{{% /note %}}
+
+{{% /details %}}
+
+<!-- ---------------------------------------------------------------------- -->
+
+{{% details "2001/07/15 - Episodios 74 - 77" %}}
+
+{{% note "Episodio 74" %}}
+
+**Fecha:** 2001/07/15
+
+<https://onepiece.fandom.com/wiki/Episode_74>
+
+{{% /note %}}
+
+{{% note "Episodio 75" %}}
+
+**Fecha:** 2001/08/12
+
+<https://onepiece.fandom.com/wiki/Episode_75>
+
+{{% /note %}}
+
+{{% note "Episodio 76" %}}
+
+**Fecha:** 2001/08/19
+
+<https://onepiece.fandom.com/wiki/Episode_76>
+
+{{% /note %}}
+
+{{% note "Episodio 77" %}}
+
+**Fecha:** 2001/08/19
+
+<https://onepiece.fandom.com/wiki/Episode_77>
+
+{{% /note %}}
+
+{{% /details %}}
+
+<!-- ---------------------------------------------------------------------- -->
+
 * Saga 2
 
-* Arco 8
+* Arco 11
 
-* Episodios 62 - 63
+* Episodios 78 - 81
 
-* Arco 9
+* Ending 5
 
-* Episodios 64 - 102
+* Episodios 82 - 102
 
 * Película 3
 
 * Corto 2
 
-* Episodios 103 - 130
+* Episodios 103 - 115
+
+* Opening 3
+
+* Episodios 116 - 130
 
 * Saga 3
 
@@ -922,9 +1195,9 @@ solo logra hacerlo hasta el arco de Arabasta.
 
 <https://onepiece.fandom.com/wiki/Real-Life_Timeline>
 
-<https://onepiece.fandom.com/wiki/Episode_62>
+<https://onepiece.fandom.com/wiki/Episode_78>
 
-<https://onepiece.fandom.com/wiki/Reverse_Mountain_Arc>
+<https://onepiece.fandom.com/wiki/Drum_Island_Arc>
 
 <https://onepiece.fandom.com/wiki/Arabasta_Saga>
 
