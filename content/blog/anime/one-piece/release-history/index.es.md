@@ -21,7 +21,7 @@ tags:
 
 {{% note "OVA 1" %}}
 
-**Título:** One Piece - Taose! Kaizoku Gyanzakku.
+**Título:** One Piece: ¡Te derrotaré! Pirata Ganzack.
 
 **Fecha:** 1998/07/26
 
@@ -736,7 +736,7 @@ página 2 del capítulo 98, pero en el manga, Sanji simplemente compra el pecado
 
 {{% note "Especial de TV 1" %}}
 
-**Título:** Rufi Rakka! Hikyō Umi no Heso no Dai Bōken.
+**Título:** ¡Luffy cae! Aventura en el ombligo del océano inexplorado.
 
 **Fecha:** 2000/12/20
 
@@ -856,23 +856,23 @@ solo logra hacerlo hasta el arco de Arabasta.
 
 {{% note "Película 2" %}}
 
-**Título:** Nejimaki-jima no Bōken.
+**Título:** Aventura en la Isla Engranaje.
 
 **Fecha:** 2001/03/03
 
 **Notas:** No es una adaptación del manga.
 
-<https://onepiece.fandom.com/wiki/Movie_1>
+<https://onepiece.fandom.com/wiki/Movie_2>
 
 {{% /note %}}
 
 {{% note "Corto 1" %}}
 
-**Título:** Jango no Dansu Kānibaru.
+**Título:** Jango's Dance Carnival.
 
 **Fecha:** 2001/03/03
 
-**Notas:** Es una adaptación de *Paraiso de Baile de Jango*.
+**Notas:** Está inspirado en *Paraíso Dance de Jango*.
 
 <https://onepiece.fandom.com/wiki/Jango%27s_Dance_Carnival>
 
@@ -907,7 +907,7 @@ solo logra hacerlo hasta el arco de Arabasta.
 
 **Título:** Arabasta.
 
-**Arcos:** 8 - ...
+**Arcos:** 8 - 12
 
 **Episodios:** 62 - 130
 
@@ -1327,35 +1327,653 @@ solo logra hacerlo hasta el arco de Arabasta.
 
 <!-- ---------------------------------------------------------------------- -->
 
-* Saga 2
+{{% details "2001/12/09 - Arco 12" %}}
 
-* Arco 12
+{{% note "Arco 12" %}}
 
-* Episodios 92 - 94
+**Título:** Arabasta.
 
-* Ending 6
+**Episodios:** 92 - 130
 
-* Episodios 95 - 102
+<https://onepiece.fandom.com/wiki/Arabasta_Arc>
 
-* Película 3
+{{% /note %}}
 
-* Corto 2
+{{% /details %}}
 
-* Episodios 103 - 115
+<!-- ---------------------------------------------------------------------- -->
 
-* Opening 3
+{{% details "2001/12/09 - Episodios 92 - 94" %}}
 
-* Episodios 116 - 130
+{{% note "Episodio 92" %}}
+
+**Fecha:** 2001/12/09
+
+<https://onepiece.fandom.com/wiki/Episode_92>
+
+{{% /note %}}
+
+{{% note "Episodio 93" %}}
+
+**Fecha:** 2001/12/16
+
+<https://onepiece.fandom.com/wiki/Episode_93>
+
+{{% /note %}}
+
+{{% note "Episodio 94" %}}
+
+**Fecha:** 2001/12/23
+
+<https://onepiece.fandom.com/wiki/Episode_94>
+
+{{% /note %}}
+
+{{% /details %}}
+
+<!-- ---------------------------------------------------------------------- -->
+
+{{% details "2002/01/06 - Ending 6" %}}
+
+{{% note "Ending 6" %}}
+
+**Título:** fish - The Kaleidoscope.
+
+**Fecha:** 2002/01/06
+
+**Episodios:** 95 - 106
+
+<https://onepiece.fandom.com/wiki/Ending_6>
+
+{{% /note %}}
+
+{{% /details %}}
+
+<!-- ---------------------------------------------------------------------- -->
+
+{{% details "2002/01/06 - Episodios 95 - 102" %}}
+
+{{% note "Episodio 95" %}}
+
+**Fecha:** 2002/01/06
+
+<https://onepiece.fandom.com/wiki/Episode_95>
+
+{{% /note %}}
+
+{{% note "Episodio 96" %}}
+
+**Fecha:** 2002/01/13
+
+<https://onepiece.fandom.com/wiki/Episode_96>
+
+{{% /note %}}
+
+{{% note "Episodio 97" %}}
+
+**Fecha:** 2002/01/20
+
+<https://onepiece.fandom.com/wiki/Episode_97>
+
+{{% /note %}}
+
+{{% note "Episodio 98" %}}
+
+**Fecha:** 2002/01/27
+
+<https://onepiece.fandom.com/wiki/Episode_98>
+
+{{% /note %}}
+
+{{% note "Episodio 99" %}}
+
+**Fecha:** 2002/02/03
+
+<https://onepiece.fandom.com/wiki/Episode_99>
+
+{{% /note %}}
+
+{{% note "Episodio 100" %}}
+
+**Fecha:** 2002/02/10
+
+<https://onepiece.fandom.com/wiki/Episode_100>
+
+{{% /note %}}
+
+{{% note "Episodio 101" %}}
+
+**Fecha:** 2002/02/17
+
+<https://onepiece.fandom.com/wiki/Episode_101>
+
+{{% /note %}}
+
+{{% note "Episodio 102" %}}
+
+**Fecha:** 2002/02/24
+
+<https://onepiece.fandom.com/wiki/Episode_102>
+
+{{% /note %}}
+
+{{% /details %}}
+
+<!-- ---------------------------------------------------------------------- -->
+
+{{% details "2002/03/02 - Película 3" %}}
+
+{{% note "Película 3" %}}
+
+**Título:** El reino de Chopper en la isla de los extraños monstruos.
+
+**Fecha:** 2002/03/02
+
+**Notas:** No es una adaptación del manga.
+
+<https://onepiece.fandom.com/wiki/Movie_3>
+
+{{% /note %}}
+
+{{% note "Corto 2" %}}
+
+**Título:** Rey del Fútbol de Ensueño.
+
+**Fecha:** 2002/03/02
+
+**Notas:** No es una adaptación del manga.
+
+<https://onepiece.fandom.com/wiki/Dream_Soccer_King>
+
+{{% /note %}}
+
+{{% /details %}}
+
+<!-- ---------------------------------------------------------------------- -->
+
+{{% details "2002/03/03 - Episodios 103 - 106" %}}
+
+{{% note "Episodio 103" %}}
+
+**Fecha:** 2002/03/03
+
+<https://onepiece.fandom.com/wiki/Episode_103>
+
+{{% /note %}}
+
+{{% note "Episodio 104" %}}
+
+**Fecha:** 2002/03/10
+
+<https://onepiece.fandom.com/wiki/Episode_104>
+
+{{% /note %}}
+
+{{% note "Episodio 105" %}}
+
+**Fecha:** 2002/03/17
+
+<https://onepiece.fandom.com/wiki/Episode_105>
+
+{{% /note %}}
+
+{{% note "Episodio 106" %}}
+
+**Fecha:** 2002/03/24
+
+<https://onepiece.fandom.com/wiki/Episode_106>
+
+{{% /note %}}
+
+{{% /details %}}
+
+<!-- ---------------------------------------------------------------------- -->
+
+{{% details "2002/04/14 - Ending 7" %}}
+
+{{% note "Ending 7" %}}
+
+**Título:** GLORY -Kimi ga Iru Kara- - Uehara Takako.
+
+**Fecha:** 2002/04/14
+
+**Episodios:** 107 - 118
+
+<https://onepiece.fandom.com/wiki/Ending_7>
+
+{{% /note %}}
+
+{{% /details %}}
+
+<!-- ---------------------------------------------------------------------- -->
+
+{{% details "2002/04/14 - Episodios 107 - 115" %}}
+
+{{% note "Episodio 107" %}}
+
+**Fecha:** 2002/04/14
+
+<https://onepiece.fandom.com/wiki/Episode_107>
+
+{{% /note %}}
+
+{{% note "Episodio 108" %}}
+
+**Fecha:** 2002/04/21
+
+<https://onepiece.fandom.com/wiki/Episode_108>
+
+{{% /note %}}
+
+{{% note "Episodio 109" %}}
+
+**Fecha:** 2002/04/28
+
+<https://onepiece.fandom.com/wiki/Episode_109>
+
+{{% /note %}}
+
+{{% note "Episodio 110" %}}
+
+**Fecha:** 2002/05/05
+
+<https://onepiece.fandom.com/wiki/Episode_110>
+
+{{% /note %}}
+
+{{% note "Episodio 111" %}}
+
+**Fecha:** 2002/05/12
+
+<https://onepiece.fandom.com/wiki/Episode_111>
+
+{{% /note %}}
+
+{{% note "Episodio 112" %}}
+
+**Fecha:** 2002/05/19
+
+<https://onepiece.fandom.com/wiki/Episode_112>
+
+{{% /note %}}
+
+{{% note "Episodio 113" %}}
+
+**Fecha:** 2002/06/02
+
+<https://onepiece.fandom.com/wiki/Episode_113>
+
+{{% /note %}}
+
+{{% note "Episodio 114" %}}
+
+**Fecha:** 2002/06/09
+
+<https://onepiece.fandom.com/wiki/Episode_114>
+
+{{% /note %}}
+
+{{% note "Episodio 115" %}}
+
+**Fecha:** 2002/06/16
+
+<https://onepiece.fandom.com/wiki/Episode_115>
+
+{{% /note %}}
+
+{{% /details %}}
+
+<!-- ---------------------------------------------------------------------- -->
+
+{{% details "2002/06/23 - Opening 3" %}}
+
+{{% note "Opening 3" %}}
+
+**Título:** Hikari e - The Babystars.
+
+**Fecha:** 2002/06/23
+
+**Episodios:** 116 - 168
+
+<https://onepiece.fandom.com/wiki/Opening_3>
+
+{{% /note %}}
+
+{{% /details %}}
+
+<!-- ---------------------------------------------------------------------- -->
+
+{{% details "2002/06/23 - Episodios 116 - 118" %}}
+
+{{% note "Episodio 116" %}}
+
+**Fecha:** 2002/06/23
+
+<https://onepiece.fandom.com/wiki/Episode_116>
+
+{{% /note %}}
+
+{{% note "Episodio 117" %}}
+
+**Fecha:** 2002/06/30
+
+<https://onepiece.fandom.com/wiki/Episode_117>
+
+{{% /note %}}
+
+{{% note "Episodio 118" %}}
+
+**Fecha:** 2002/07/14
+
+<https://onepiece.fandom.com/wiki/Episode_118>
+
+{{% /note %}}
+
+{{% /details %}}
+
+<!-- ---------------------------------------------------------------------- -->
+
+{{% details "2002/07/21 - Ending 8" %}}
+
+{{% note "Ending 8" %}}
+
+**Título:** Shining ray - Janne Da Arc.
+
+**Fecha:** 2002/07/21
+
+**Episodios:** 119 - 132
+
+<https://onepiece.fandom.com/wiki/Ending_8>
+
+{{% /note %}}
+
+{{% /details %}}
+
+<!-- ---------------------------------------------------------------------- -->
+
+{{% details "2002/07/21 - Episodios 119 - 130" %}}
+
+{{% note "Episodio 119" %}}
+
+**Fecha:** 2002/07/21
+
+<https://onepiece.fandom.com/wiki/Episode_119>
+
+{{% /note %}}
+
+{{% note "Episodio 120" %}}
+
+**Fecha:** 2002/08/04
+
+<https://onepiece.fandom.com/wiki/Episode_120>
+
+{{% /note %}}
+
+{{% note "Episodio 121" %}}
+
+**Fecha:** 2002/08/11
+
+<https://onepiece.fandom.com/wiki/Episode_121>
+
+{{% /note %}}
+
+{{% note "Episodio 122" %}}
+
+**Fecha:** 2002/08/18
+
+<https://onepiece.fandom.com/wiki/Episode_122>
+
+{{% /note %}}
+
+{{% note "Episodio 123" %}}
+
+**Fecha:** 2002/08/25
+
+<https://onepiece.fandom.com/wiki/Episode_123>
+
+{{% /note %}}
+
+{{% note "Episodio 124" %}}
+
+**Fecha:** 2002/09/01
+
+<https://onepiece.fandom.com/wiki/Episode_124>
+
+{{% /note %}}
+
+{{% note "Episodio 125" %}}
+
+**Fecha:** 2002/09/08
+
+<https://onepiece.fandom.com/wiki/Episode_125>
+
+{{% /note %}}
+
+{{% note "Episodio 126" %}}
+
+**Fecha:** 2002/09/15
+
+<https://onepiece.fandom.com/wiki/Episode_126>
+
+{{% /note %}}
+
+{{% note "Episodio 127" %}}
+
+**Fecha:** 2002/10/06
+
+<https://onepiece.fandom.com/wiki/Episode_127>
+
+{{% /note %}}
+
+{{% note "Episodio 128" %}}
+
+**Fecha:** 2002/10/06
+
+<https://onepiece.fandom.com/wiki/Episode_128>
+
+{{% /note %}}
+
+{{% note "Episodio 129" %}}
+
+**Fecha:** 2002/10/20
+
+<https://onepiece.fandom.com/wiki/Episode_129>
+
+{{% /note %}}
+
+{{% note "Episodio 130" %}}
+
+**Fecha:** 2002/10/27
+
+<https://onepiece.fandom.com/wiki/Episode_130>
+
+{{% /note %}}
+
+{{% /details %}}
+
+<!-- ---------------------------------------------------------------------- -->
+
+{{% details "2002/11/03 - Saga 3" %}}
+
+{{% note "Saga 3" %}}
+
+**Título:** Isla del Cielo.
+
+**Arcos:** 13 - ...
+
+**Episodios:** 131 - 206
+
+<https://onepiece.fandom.com/wiki/Sky_Island_Saga>
+
+{{% /note %}}
+
+{{% /details %}}
+
+<!-- ---------------------------------------------------------------------- -->
+
+{{% details "2002/11/03 - Arco 13" %}}
+
+{{% note "Arco 13" %}}
+
+**Título:** Después de Arabasta.
+
+**Episodios:** 131 - 135
+
+<https://onepiece.fandom.com/wiki/Post-Arabasta_Arc>
+
+{{% /note %}}
+
+{{% /details %}}
+
+<!-- ---------------------------------------------------------------------- -->
+
+{{% details "2002/11/03 - Episodios 131 - 132" %}}
+
+{{% note "Episodio 131" %}}
+
+**Fecha:** 2002/11/03
+
+<https://onepiece.fandom.com/wiki/Episode_131>
+
+{{% /note %}}
+
+{{% note "Episodio 132" %}}
+
+**Fecha:** 2002/11/10
+
+<https://onepiece.fandom.com/wiki/Episode_132>
+
+{{% /note %}}
+
+{{% /details %}}
+
+<!-- ---------------------------------------------------------------------- -->
+
+{{% details "2002/11/17 - Ending 9" %}}
+
+{{% note "Ending 9" %}}
+
+**Título:** Free Will - Ruppina.
+
+**Fecha:** 2002/11/17
+
+**Episodios:** 133 - 156
+
+<https://onepiece.fandom.com/wiki/Ending_9>
+
+{{% /note %}}
+
+{{% /details %}}
+
+<!-- ---------------------------------------------------------------------- -->
+
+{{% details "2002/11/17 - Episodios 133 - 135" %}}
+
+{{% note "Episodio 133" %}}
+
+**Fecha:** 2002/11/17
+
+<https://onepiece.fandom.com/wiki/Episode_133>
+
+{{% /note %}}
+
+{{% note "Episodio 134" %}}
+
+**Fecha:** 2002/11/24
+
+<https://onepiece.fandom.com/wiki/Episode_134>
+
+{{% /note %}}
+
+{{% note "Episodio 135" %}}
+
+**Fecha:** 2002/12/01
+
+<https://onepiece.fandom.com/wiki/Episode_135>
+
+{{% /note %}}
+
+{{% /details %}}
+
+<!-- ---------------------------------------------------------------------- -->
+
+{{% details "2002/12/08 - Arco 14" %}}
+
+{{% note "Arco 14" %}}
+
+**Título:** Isla de la Cabra.
+
+**Episodios:** 136 - 138
+
+<https://onepiece.fandom.com/wiki/Goat_Island_Arc>
+
+{{% /note %}}
+
+{{% /details %}}
+
+<!-- ---------------------------------------------------------------------- -->
+
+{{% details "2002/11/17 - Episodios 136 - 138" %}}
+
+{{% note "Episodio 136" %}}
+
+**Fecha:** 2002/12/08
+
+<https://onepiece.fandom.com/wiki/Episode_136>
+
+{{% /note %}}
+
+{{% note "Episodio 137" %}}
+
+**Fecha:** 2002/12/15
+
+<https://onepiece.fandom.com/wiki/Episode_137>
+
+{{% /note %}}
+
+{{% note "Episodio 138" %}}
+
+**Fecha:** 2002/12/22
+
+<https://onepiece.fandom.com/wiki/Episode_138>
+
+{{% /note %}}
+
+{{% /details %}}
+
+<!-- ---------------------------------------------------------------------- -->
+
+---
 
 * Saga 3
 
-* Episodios 131 - 138
+* Arco 15
+
+* Episodios 139 - ...
+
+* Episodios ... - 157
+
+* Ending 10
+
+* Episodios 158 - ...
+
+* Episodios ... - 168
+
+* Opening 4
+
+* Episodios 169 - ...
+
+* Episodios ... - 206
+
+* Saga 4
+
+* Episodios 207 - ...
+
+<https://onepiece.fandom.com/wiki/Episode_139>
+
+<https://onepiece.fandom.com/wiki/Ruluka_Island_Arc>
+
+<https://onepiece.fandom.com/wiki/Sky_Island_Saga>
 
 <https://onepiece.fandom.com/wiki/Real-Life_Timeline>
-
-<https://onepiece.fandom.com/wiki/Episode_78>
-
-<https://onepiece.fandom.com/wiki/Drum_Island_Arc>
-
-<https://onepiece.fandom.com/wiki/Arabasta_Saga>
 
