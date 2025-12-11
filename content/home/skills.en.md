@@ -8,49 +8,43 @@ _build:
 I am a Software Developer passionate about creating high performance solutions
 that take the most advantage they can from the hardware they use. I always code
 following the best standards, verifying the code quality with analysis tools
-and automated tests. I am a huge fan of maths, process automation, distributed
+and automated tests. I am a huge fan of maths, problem solving, distributed
 computing and Open Source.
 
-Currently my main programming language is Go, I have been coding with it since
-July 2018 in personal projects. It is my favorite programming language so far.
-I can build libraries, CLIs, APIs, services, full applications and probably
-anything you need with it.
+Currently my main programming language is Zig. It is my favorite programming
+language so far. I can build libraries, CLIs, APIs, services, full
+applications and probably anything I need.
 
-I coded with Python and JavaScript (Node.js) in the past. I also finished the
-42 C Piscine in Silicon Valley, so I have basic knowledge of C.
+I know how to code with Go, Python and JavaScript. I also finished the 42 C
+Piscine in Silicon Valley, so I have basic knowledge of C.
 
 As a Frontend Web Developer I can build websites and web applications for you,
-using modern and lightweight technologies like HTML5, CSS3, JavaScript, Hugo,
-Bulma, Alpine.js, etc...
+using modern and lightweight technologies like HTML5, CSS3, JavaScript, Astro,
+Tailwind, Svelte, WASM (with Zig), etc...
 
-I can also architect and administrate your infrastructure, from bare metal
-servers to Cloud Providers, or even hybrid environments. I have proficiency
-with Linux, Shell Scripting, IaC, containers and orchestration.
+I can also architect and administrate infrastructure, from bare metal servers
+to Cloud Providers, or even hybrid environments. I have proficiency with Linux,
+Shell Scripting, containers and orchestration.
 
-Take a look at my [CV](https://docs.google.com/document/d/1dbXk7CYAAG_MefJ4i5bddwkH6z9esE-y-NjpB1_PGdQ/edit?usp=sharing) ([PDF](/en/cv.pdf))
+Here is my [CV](https://docs.google.com/document/d/1dbXk7CYAAG_MefJ4i5bddwkH6z9esE-y-NjpB1_PGdQ/edit?usp=sharing) ([PDF](/en/cv.pdf))
 or [my projects](./../projects).
 
 # Skills
 
-* **Programming languages:** Go, C.
+* **Programming languages:** Zig, Go, C, Python.
 
-* **User interfaces:** Web (HTML, CSS, JavaScript).
+* **User interfaces:** Web (HTML, CSS, JavaScript, WASM), Raylib.
 
-* **Databases:** SQL (SQLite, PostgreSQL, MySQL), K/V Stores (Badger).
+* **Databases:** SQL (SQLite, PostgreSQL, MySQL), NoSQL.
 
 * **VCS:** Git.
 
-* **QA:** TDD, BDD, CI/CD (Drone, Travis, GitLab CI, Bitbucket Pipelines,
-  GitHub Actions).
+* **QA:** TDD, BDD, CI/CD (Drone, GitLab CI, Bitbucket Pipelines, GitHub
+  Actions).
 
-* **Systems administration:** Linux (Alpine, Debian), Shell Scripting,
-  IaC (Terraform), Containers (Docker), Containers orchestration (Docker Swarm,
-  Kubernetes), Cloud Engineering (GCP).
+* **Systems administration:** Linux (Alpine, Debian), Shell Scripting, IaC
+  (Terraform), Containers (Docker, Podman), Containers orchestration (Docker
+  Swarm, Kubernetes), Cloud Engineering (GCP).
 
 * **Cloud:** GitHub Pages, Netlify, Heroku, Google Cloud Platform.
-
-* **Frameworks and libs:** [Alpine.js](https://github.com/alpinejs/alpine),
-  [Bleve](https://www.blevesearch.com/), [Bulma](bulma.io/),
-  [Hugo](https://gohugo.io/), [sqlx](http://jmoiron.github.io/sqlx/),
-  [Svelte](https://svelte.dev/), [SvelteKit](https://kit.svelte.dev/).
 
