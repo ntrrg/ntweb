@@ -13,35 +13,17 @@ jobs:
       matrix:
         os:
           - ubuntu-latest
-        go_version:
-          - "1.16"
     runs-on: ${{ matrix.os }}
     steps:
-      - name: Set up Go
-        uses: actions/setup-go@v1
-        with:
-          go-version: ${{ matrix.go_version }}
-
       - name: Set up tools
         run: |
-          wget -qO "/tmp/mage.tar.gz" 'https://github.com/magefile/mage/releases/download/v1.11.0/mage_1.11.0_Linux-64bit.tar.gz'
-          tar -xf "/tmp/mage.tar.gz" -C "/tmp/"
-          sudo cp "/tmp/mage" "/usr/bin/"
-          #
-          wget -qO "/tmp/hugo.tar.gz" 'https://github.com/gohugoio/hugo/releases/download/v0.82.0/hugo_extended_0.82.0_Linux-64bit.tar.gz'
-          tar -xf "/tmp/hugo.tar.gz" -C "/tmp/"
-          sudo cp "/tmp/hugo" "/usr/bin/"
-          #
           sudo yarn global add netlify-cli --prefix "/usr"
 
       - name: Get source code
         uses: actions/checkout@v2
 
-      - name: Lint
-        run: ./mage -v lint
-
       - name: Build
-        run: ./mage -v buildall
+        run: make
 
       - name: Deploy
         env:

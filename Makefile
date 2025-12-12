@@ -1,12 +1,13 @@
 HUGO_VERSION ?= 0.82.0
 HUGO_PORT ?= 1313
+HUGO_OUTPUT ?= public
 
 .PHONY: all
 all: build
 
 .PHONY: build
 build:
-	hugo
+	hugo -d "$(HUGO_OUTPUT)"
 
 .PHONY: bump-version-hugo
 bump-version-hugo:
@@ -41,36 +42,35 @@ run:
 # Docker #
 ##########
 
-DOCKER_IMAGE_TAG := $(HUGO_VERSION)-extended
+CONTAINER_RUNTIME ?= podman
+CONTAINER_TAG := $(HUGO_VERSION)-extended
+CONTAINER_IMG := ntrrg/hugo:$(CONTAINER_TAG)
+CONTAINER_USER ?= $(shell id -u $$USER)
 
-.PHONY: docker-build
-docker-build:
-	@docker run --rm -it \
-		-u $$(id -u $$USER) \
-		-v "$${TMPDIR:-/tmp}":/tmp/ \
-		-v "$$PWD":/site/ \
-		ntrrg/hugo:$(DOCKER_IMAGE_TAG)
+CONTAINER_CMD := $(CONTAINER_RUNTIME) run --rm -it \
+	-e PORT=$(HUGO_PORT) \
+	-p $(HUGO_PORT):$(HUGO_PORT) \
+	-v "$${TMPDIR:-/tmp}":/tmp/ \
+	-v "$$PWD":/site/
 
-.PHONY: docker-run
-docker-run:
-	@docker run --rm -it \
-		-e PORT=$(HUGO_PORT) \
-		-p $(HUGO_PORT):$(HUGO_PORT) \
-		-u $$(id -u $$USER) \
-		-v "$${TMPDIR:-/tmp}":/tmp/ \
-		-v "$$PWD":/site/ \
-		ntrrg/hugo:$(DOCKER_IMAGE_TAG) server -DEF --noHTTPCache --i18n-warnings \
+ifeq "$(shell $(CONTAINER_RUNTIME) --version | cut -F 1)" "Docker"
+	CONTAINER_CMD := $(CONTAINER_CMD) -u $(CONTAINER_USER)
+endif
+
+.PHONY: container-build
+container-build:
+	$(CONTAINER_CMD) $(CONTAINER_IMG) -d "$(HUGO_OUTPUT)"
+
+.PHONY: container-run
+container-run:
+	$(CONTAINER_CMD) $(CONTAINER_IMG) server \
+			-DEF --noHTTPCache --i18n-warnings \
 			--disableFastRender \
 			--bind 0.0.0.0 --port $(HUGO_PORT) --baseUrl / --appendPort=false
 
-.PHONY: docker-shell
-docker-shell:
-	@docker run --rm -it \
-		-u $$(id -u $$USER) \
-		-v "$${TMPDIR:-/tmp}":/tmp/ \
-		-v "$$PWD":/site/ \
-		--entrypoint sh \
-		ntrrg/hugo:$(DOCKER_IMAGE_TAG)
+.PHONY: container-shell
+container-shell:
+	$(CONTAINER_CMD) --entrypoint sh $(CONTAINER_IMG)
 
 ########
 # Make #
