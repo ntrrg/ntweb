@@ -1,5 +1,6 @@
 nogit-*
 /content/challenges/**/solution
+/content/challenges/**/solution-*
 /static/cache.json
 
 #######################
